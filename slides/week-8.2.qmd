@@ -1,0 +1,95 @@
+---
+title: Regression Practice
+date: today
+date-format: long
+footer: "[DATS 1001 Website](https://ds4all.rocks)"
+logo: images/ds4all-logo.png
+format:
+  revealjs:
+    theme: [simple, custom.scss]
+    transition: fade
+    slide-number: true
+    #multiplex: true
+    chalkboard: true
+execute:
+  echo: false
+  message: false
+  warning: false
+  freeze: auto
+---
+
+## Your Turn
+
+<br>
+
+**Are democracies less corrupt?**
+
+<br>
+
+- V-Dem includes a Political Corruption Index, which aggregates corruption in a number of spheres (see codebook for details).  
+
+- The variable name is: *v2x_corr* : lower values mean less corruption
+
+
+## Your Turn {.smaller}
+
+<br>
+
+**Are democracies less corrupt?**
+
+<br>
+
+::: {.smaller}
+- Filter the V-Dem data to only include the year 2019
+- Make a scatterplot to visualize the relationship between democracy (X) and corruption (Y) (use the *v2x_libdem* variable for democracy)
+- Fit a linear model with `lm()`
+- Interpret results for the slope and intercept
+- For a country with the average (mean) level of democracy, what is the predicted level of corruption?
+:::
+
+```{r}
+#| label: time1
+
+library(countdown)
+
+countdown(minutes = 15, 
+          id = "timer1", 
+          bottom = "5%", 
+          right = "10%",
+          color_border = "#fff",
+          color_text = "#fff",
+          color_running_background = "#42affa",
+          color_running_text = "black",
+          color_finished_background = "#E5D19D",
+          color_finished_text = "#00264A")
+```
+
+## Create Your Own Model {.smaller}
+
+<br>
+
+- What is a theory of democracy you could test with V-Dem?
+- What is the dependent variable? 
+- What is the independent variable? 
+- Map out steps to wrangle the data and fit a regression model
+- What do you expect to find? 
+- Now go ahead and wrangle the data
+- Fit the model
+- Interpret the coefficients and their significance
+- Did the results match your expectations?
+
+```{r}
+countdown(minutes = 15, 
+          id = "timer2", 
+          bottom = "5%", 
+          right = "10%")
+```
+
+
+## Final Project 
+
+<br>
+
+- Project assignment 1 due this Sunday
+- Can access [here](project/project-assignment-1.qmd)
+- Let's get started!

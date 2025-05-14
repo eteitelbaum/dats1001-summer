@@ -1,0 +1,27 @@
+---
+title: "Week 11"
+subtitle: "The Political Economy of Labor"
+editor: visual
+---
+
+## Readings
+
+📖 Gumbrell-McCormick and Hyman, ["Democracy in Trade Unions, Democracy
+Through Trade
+Unions?"](https://journals-sagepub-com.proxygw.wrlc.org/doi/full/10.1177/0143831X18780327)
+
+📖 Hall and Soskice, [*Varities of
+Capitalism*](https://academic.oup.com/book/301/chapter/134893294),
+Chapter 1
+
+## Slides
+
+🖥️ [Unions and collective bargaining](/slides/lecture-11.1.html)
+
+🖥️ [Varieties of capitalism](/slides/lecture-11.2.html)
+
+<br><br>
+
+::: {style="font-size: 0.875em;"}
+Back to [course schedule](/ "Course schedule") ⏎
+:::

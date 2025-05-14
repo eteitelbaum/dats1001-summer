@@ -1,0 +1,22 @@
+{
+  "hash": "63d6858debc873b839e010c93d827f4d",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: Regression Practice\ndate: today\ndate-format: long\nfooter: \"[DATS 1001 Website](https://ds4all.rocks)\"\nlogo: images/ds4all-logo.png\nformat:\n  revealjs:\n    theme: [simple, custom.scss]\n    transition: fade\n    slide-number: true\n    #multiplex: true\n    chalkboard: true\nexecute:\n  echo: false\n  message: false\n  warning: false\n  freeze: auto\n---\n\n\n\n## Your Turn\n\n<br>\n\n**Are democracies less corrupt?**\n\n<br>\n\n- V-Dem includes a Political Corruption Index, which aggregates corruption in a number of spheres (see codebook for details).  \n\n- The variable name is: *v2x_corr* : lower values mean less corruption\n\n\n## Your Turn {.smaller}\n\n<br>\n\n**Are democracies less corrupt?**\n\n<br>\n\n::: {.smaller}\n- Filter the V-Dem data to only include the year 2019\n- Make a scatterplot to visualize the relationship between democracy (X) and corruption (Y) (use the *v2x_libdem* variable for democracy)\n- Fit a linear model with `lm()`\n- Interpret results for the slope and intercept\n- For a country with the average (mean) level of democracy, what is the predicted level of corruption?\n:::\n\n\n\n::: {.cell}\n::: {.cell-output-display}\n\n```{=html}\n<div class=\"countdown\" id=\"timer1\" data-update-every=\"1\" tabindex=\"0\" style=\"right:10%;bottom:5%;\">\n<div class=\"countdown-controls\"><button class=\"countdown-bump-down\">&minus;</button><button class=\"countdown-bump-up\">&plus;</button></div>\n<code class=\"countdown-time\"><span class=\"countdown-digits minutes\">15</span><span class=\"countdown-digits colon\">:</span><span class=\"countdown-digits seconds\">00</span></code>\n</div>\n```\n\n:::\n:::\n\n\n\n## Create Your Own Model {.smaller}\n\n<br>\n\n- What is a theory of democracy you could test with V-Dem?\n- What is the dependent variable? \n- What is the independent variable? \n- Map out steps to wrangle the data and fit a regression model\n- What do you expect to find? \n- Now go ahead and wrangle the data\n- Fit the model\n- Interpret the coefficients and their significance\n- Did the results match your expectations?\n\n\n\n::: {.cell}\n::: {.cell-output-display}\n\n```{=html}\n<div class=\"countdown\" id=\"timer2\" data-update-every=\"1\" tabindex=\"0\" style=\"right:10%;bottom:5%;\">\n<div class=\"countdown-controls\"><button class=\"countdown-bump-down\">&minus;</button><button class=\"countdown-bump-up\">&plus;</button></div>\n<code class=\"countdown-time\"><span class=\"countdown-digits minutes\">15</span><span class=\"countdown-digits colon\">:</span><span class=\"countdown-digits seconds\">00</span></code>\n</div>\n```\n\n:::\n:::\n\n\n\n\n## Final Project \n\n<br>\n\n- Project assignment 1 due this Sunday\n- Can access [here](project/project-assignment-1.qmd)\n- Let's get started!",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {
+      "include-in-header": [
+        "<link href=\"../site_libs/countdown-0.4.0/countdown.css\" rel=\"stylesheet\" />\n<script src=\"../site_libs/countdown-0.4.0/countdown.js\"></script>\n"
+      ],
+      "include-after-body": [
+        "\n<script>\n  // htmlwidgets need to know to resize themselves when slides are shown/hidden.\n  // Fire the \"slideenter\" event (handled by htmlwidgets.js) when the current\n  // slide changes (different for each slide format).\n  (function () {\n    // dispatch for htmlwidgets\n    function fireSlideEnter() {\n      const event = window.document.createEvent(\"Event\");\n      event.initEvent(\"slideenter\", true, true);\n      window.document.dispatchEvent(event);\n    }\n\n    function fireSlideChanged(previousSlide, currentSlide) {\n      fireSlideEnter();\n\n      // dispatch for shiny\n      if (window.jQuery) {\n        if (previousSlide) {\n          window.jQuery(previousSlide).trigger(\"hidden\");\n        }\n        if (currentSlide) {\n          window.jQuery(currentSlide).trigger(\"shown\");\n        }\n      }\n    }\n\n    // hookup for slidy\n    if (window.w3c_slidy) {\n      window.w3c_slidy.add_observer(function (slide_num) {\n        // slide_num starts at position 1\n        fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);\n      });\n    }\n\n  })();\n</script>\n\n"
+      ]
+    },
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

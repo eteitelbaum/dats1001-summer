@@ -1,0 +1,10 @@
+---
+title: "About"
+editor: visual
+---
+
+This site was built with [Quarto](https://www.quarto.org) and is based
+on a [template](https://github.com/sta210-s22/website) provided by [Mine
+Çetinkaya-Rundel](https://mine-cr.com) under a Creative Commons
+[Attribution-NonCommercial
+4.0](https://creativecommons.org/licenses/by-nc/4.0/) Iicense.

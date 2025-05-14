@@ -1,0 +1,25 @@
+---
+title: "Course Description"
+editor: visual
+---
+
+This course provides a comprehensive introduction to data science,
+blending theoretical foundations with practical applications. Students
+will begin with data visualization, learning the essential tools and
+principles for creating informative and impactful visual representations
+of data. The course then progresses to data wrangling, where students
+will clean, manipulate, and prepare data for analysis.
+
+As the semester unfolds, students will explore web scraping techniques
+to gather data from online sources, followed by an examination of the
+ethical considerations surrounding data collection, privacy, and
+algorithmic bias. The course then delves into statistical modeling,
+introducing both linear and logistic regression, and other core methods
+used in predictive analytics.
+
+Throughout the course, various special topics, such as bootstrapping,
+randomization tests, or interactive web applications, will be covered,
+offering students a chance to explore current trends and tools in data
+science. The curriculum is designed to equip students with a versatile
+toolkit, enabling them to tackle real-world data challenges and
+communicate their findings effectively.

@@ -1,0 +1,285 @@
+---
+title: R Coding Basics
+#subtitle: 
+date: today
+date-format: long
+footer: "[DATS 1001 Website](https://ds4all.rocks)"
+logo: images/ds4all-logo.png
+format:
+  revealjs:
+    theme: [simple, custom.scss]
+    transition: fade
+    slide-number: true
+    chalkboard: true
+execute:
+  echo: false
+  message: false
+  warning: false
+  freeze: auto
+---
+
+# R Programming Basics
+
+## What Can R Do? 
+
+<br>
+
+::: incremental
+- R is a powerful language for data analysis and visualization
+- It is also a general-purpose programming language
+- Does everything from web development to machine learning
+- It is open-source and has a large community of users and developers
+:::
+
+## R as a Calculator
+
+<br>
+
+- R can be used as a simple calculator
+- You can perform arithmetic operations on numbers
+
+```{r}
+#| label: arithmetic
+#| echo: true
+
+# Addi a number and store it to a value
+sum_of_2plus2 <- 2 + 2
+
+
+sum_of_2plus2
+```
+
+## Some Common Arithmetic Operators
+
+<br>
+
+- `+` addition
+- `-` subtraction
+- `*` multiplication
+- `/` division
+- `^` exponentiation (also `**`)
+
+## Your Turn! 
+
+<br>
+
+- Try some basic calculations 
+- Try them in a code chunk in the Quarto doc
+- Then try some in the console
+
+```{r}
+library(countdown)
+countdown(minutes = 5, 
+          bottom = "10%",
+          right = "10%",
+          color_border = "#fff",
+          color_text = "#fff",
+          color_running_background = "#42affa",
+          color_running_text = "black",
+          color_finished_background = "#E5D19D",
+          color_finished_text = "#00264A")
+```
+
+# Objects
+
+## What is an Object?
+
+::: incremental
+- An object in R is a data structure used to store data
+- It can vary from simple scalar types to more complex data structures like vectors, lists, or data frames
+- Objects hold not only data but also information about the type of data and the operations that can be performed on them
+- Every entity in R is considered an object, making R a language based around the manipulation of objects
+:::
+
+## How to Store Data
+
+- In R, you can store data in objects using the assignment operator `<-`
+- The object name is on the left of `<-`, and the data or value you wish to assign to the object is on the right
+- Then you can print the object to the console using the object name
+
+```{r}
+#| label: objects
+#| echo: true
+
+# Store the value 42 in the object my_number
+my_number <- 42
+
+# Print the value of my_number
+my_number 
+```
+
+## Storing a Vector 
+
+<br>
+
+- Sometimes you want to store more than one number
+- In this case you can store a *vector*
+- A vector is a collection of numbers or characters
+
+```{r}
+#| echo: true
+
+my_numbers <- c(1, 2, 3, 4, 5)
+
+my_numbers
+```
+
+## "Printing" objects
+
+<br>
+
+- Sometimes you will see `print()` used to display the contents of objects
+- This is not typically necessary
+- Sometimes you need it (like when printing inside of a function)
+- But usually you can just type the name of the object
+
+## Your Turn!
+
+<br>
+
+- Store a number in an object
+- Create a vector of numbers and store it in an object
+- "Print" the objects by typing the object names
+
+```{r}
+countdown(minutes = 5, 
+          bottom = "10%",
+          right = "10%")
+```
+
+# Functions
+
+## Functions
+
+- A function is a set of instructions that produces some output
+- In R, you can use built-in functions to perform specific tasks
+- For example, you can use the `mean()` function to calculate the average of a set of numbers
+- To do this you have to use the combine function `c()` to create a vector of numbers
+
+## 
+
+<br> 
+
+Create a vector of numbers and take the mean...
+
+<br>
+
+```{r}
+#| echo: true
+
+# Create a vector of numbers
+numbers <- c(1, 2, 3, 4, 5)
+
+# Calculate the mean of the numbers
+mean(numbers)
+```
+
+## Some Common Base R Functions {.smaller}
+
+- `mean()` calculates the mean of a set of numbers
+- `median()` calculates the median of a set of numbers
+- `sd()` calculates the standard deviation of a set of numbers
+- `sum()` calculates the sum of a set of numbers
+- `length()` calculates the length of a vector
+- `max()` and `min()` calculate the maximum and minimum values of a vector
+- `round()` rounds a number to a specified number of decimal places
+- `sqrt()` calculates the square root of a number
+- `log()` calculates the natural logarithm of a number
+- `exp()` calculates the exponential of a number
+- `abs()` calculates the absolute value of a number
+
+## Your Turn!
+
+<br>
+
+- Create a vector of numbers
+- Store as an object
+- Apply a function to the object
+
+```{r}
+countdown(minutes = 5, 
+          bottom = "10%",
+          right = "10%")
+```
+
+# Packages
+
+## From Functions to Packages {.smaller}
+
+<br>
+
+::: {.incremental}
+-   A *function* is a set of instructions
+    -   `read_csv()` is a function
+    -   `ggplot()` is a function
+-   A *package* is a collection of functions
+    -   `readr` is a package that contains the `read_csv()` function
+    -   `ggplot2` is a package that contains the `ggplot()` function
+-   Use `install.packages()` to install packages
+-   Use `library()` to load packages
+-   You can install packages from CRAN
+:::
+
+## Installing Packages
+
+<br>
+
+- You can install packages from CRAN (Comprehensive R Archive Network)
+- Use the `install.packages()` function to install packages
+- For example, to install the `tidyverse` package, you would run `install.packages("tidyverse")`
+
+## Installing Packages
+
+<br>
+
+- Another way to install packages is from a GitHub repository
+- We will use the `pak` package to install packages from GitHub
+- To install `pak`, run `install.packages("pak")`
+- Then you can use `pak::pkg_install()` to install packages from GitHub
+- For example, to install the `vdemlite` package, you would run `pak::pkg_install("eteitelbaum/vdemlite")`
+
+## Installing Packages
+
+<br>
+
+- You only need to install a package once
+- After you install a package, you can load it with the `library()` function
+- Do **not** put `install.packages()` in your R script or Quarto document
+
+## Your Turn!
+
+<br>
+
+- Install the `tidyverse` package in your environment
+- Load the `tidyverse` package
+- Install the `pak` package
+- Install `vdemlite` using `pak::pkg_install()`
+- Load the `vdemlite` package
+
+```{r}
+countdown(minutes = 5, 
+          bottom = "10%",
+          right = "10%")
+```
+
+# Running R and RStudio Locally
+
+## Installing R and RStudio
+
+<br>
+
+- You can install R and RStudio on your local machine
+- Visit [Posit](https://posit.co/download/rstudio-desktop/) to download R and RStudio
+- Install R first, then RStudio
+- You download R from CRAN and RStudio from the RStudio website
+
+
+## Try It!
+
+<br>
+
+- Install R and RStudio on your local machine
+- Open RStudio
+- Open a Quarto document
+- Try some of the code we have used today
+- Install the `tidyverse` package

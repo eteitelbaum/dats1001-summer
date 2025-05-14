@@ -1,0 +1,20 @@
+---
+title: "Week 14"
+subtitle: "Climate Politics and Final Project Workshop"
+editor: visual
+---
+
+## Readings
+
+📖 Aklin and Matto, ["Prisoners of the Wrong
+Dilemma"](https://direct.mit.edu/glep/article/20/4/4/95068/Prisoners-of-the-Wrong-Dilemma-Why-Distributive)
+
+## Slides
+
+🖥️ Climate change and collective action
+
+<br><br>
+
+::: {style="font-size: 0.875em;"}
+Back to [course schedule](/ "Course schedule") ⏎
+:::

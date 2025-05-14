@@ -1,0 +1,95 @@
+project:
+  type: website
+website:
+  page-navigation: true
+  title: "DATS 1001--Fall Schedule"
+  description: "Homepage for DATS 1001 - Data Science for All, George Washington University."
+  site-url: "https://ds4all.rocks"
+  repo-url: "https://github.com/dats1001-fall-2024"
+  repo-actions: [edit, issue]
+  open-graph: true
+  favicon: "images/ds4all-logo.png"
+  twitter-card: true
+  page-footer:
+    right: "This page is built with [Quarto](https://quarto.org/). 👷🛠️"
+    left: "&copy; Copyright 2025, [Emmanuel Teitelbaum](https://emmanuel.teitelbaum.com)"
+    background: "#1F3867"
+  sidebar:
+    background: "#1F3867"
+    logo: "images/ds4all-logo.png"
+    pinned: true
+    align: center
+    tools:
+      - icon: mortarboard-fill
+        text: "Blackboard"
+        href: https://blackboard.gwu.edu
+      - icon: bar-chart-fill
+        href: https://library.gwu.edu/work-data
+        text: "Gelman Data Services"
+      - icon: r-circle
+        href: https://posit.cloud
+        text: "Access R and RStudio"
+    style: "docked"
+    search: true
+    collapse-level: 1
+    contents:
+      - section: "Course information"
+        contents:
+          - href: course-description.qmd
+            text: Description
+          - href: course-syllabus.qmd
+            text: Syllabus
+          - href: course-support.qmd
+            text: Support
+          - href: instructor.qmd
+            text: Instructor
+          - href: index.qmd
+            text: Schedule
+          - href: course-links.qmd
+            text: Useful links
+          - href: faq.qmd
+            text: FAQ
+      - section: "Coding Asignments"
+        contents:
+          - href: assignments/coding-assignment-1.qmd
+            text: "Assignment 1"
+          - href: assignments/coding-assignment-2.qmd
+            text: "Assignment 2"
+          - href: assignments/coding-assignment-3.qmd
+            text: "Assignment 3"
+          - href: assignments/coding-assignment-4.qmd
+            text: "Assignment 4"
+      - section: "Project"
+        contents:
+           #- href: project-description.qmd
+            # text: Description
+          - href: project/project-assignment-1.qmd
+            text: "Assignment 1"
+          - href: project/project-assignment-2.qmd
+            text: "Assignment 2"
+          - href: project/project-assignment-3.qmd
+            text: "Assignment 3"
+          - href: project/project-datasets.qmd
+            text: Datasets
+      - section: "Weekly materials"
+        contents:
+          - href: weeks/week-1.qmd
+            text: "Week 1"
+          - href: weeks/week-2.qmd
+            text: "Week 2"
+          - href: weeks/week-3.qmd
+            text: "Week 3"
+          - href: weeks/week-4.qmd
+            text: "Week 4"
+format:
+  html:
+    theme:
+      light: cosmo
+      dark: cyborg
+    mainfont: "Atkinson Hyperlegible"
+    code-copy: true
+    code-overflow: wrap
+    toc: true
+    link-external-newwindow: true
+freeze: auto
+editor: source

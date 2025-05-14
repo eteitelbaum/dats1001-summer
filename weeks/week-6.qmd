@@ -1,0 +1,31 @@
+---
+title: "Week 6"
+subtitle: "Distributive Politics in Developing Countries"
+editor: visual
+---
+
+## Readings
+
+📖 Edward Miguel, ["Tribe or
+Nation?"](http://www.jstor.org/stable/25054263)
+
+📖 Holland and Ben Ross Schneider, ["Easy and Hard
+Redistribution"](https://doi-org.proxygw.wrlc.org/10.1017/S1537592717002122)
+
+## Slides
+
+🖥️ [Ethnicity and public goods](/slides/lecture-6.1.html)
+
+🖥️ [Democracy and redistribution](/slides/lecture-6.2.html)
+
+## Videos
+
+📺 [Bar chart video](https://www.youtube.com/watch?v=G9vKgrtDZ-w&t=19s)
+
+📺 [Line chart video](https://www.youtube.com/watch?v=YOpwcihO-iY&t=65s)
+
+<br><br>
+
+::: {style="font-size: 0.875em;"}
+Back to [course schedule](/ "Course schedule") ⏎
+:::

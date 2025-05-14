@@ -1,0 +1,43 @@
+---
+title: "Week 7"
+subtitle: "The Legacies of Neoliberalism"
+editor: visual
+---
+
+::: callout-important
+"Data Assignment 2: Cleaning & Visualizing Data in Excel" is due on
+Sunday, March 5
+:::
+
+## Readings
+
+Archibong et. al., ["Washington Consensus Reforms and Economic
+Performance in Sub-Saharan
+Africa"](https://www.brookings.edu/wp-content/uploads/2021/02/Washington-Consensus-Reforms.pdf)
+
+Benería et. al., ["Markets, Globalization and
+Gender"](https://eresgw-wrlc-org.proxygw.wrlc.org/x/docs/gelm/teitelbaum_emmanuel/LourdesChapter3.pdf)
+
+## Slides
+
+🖥️ [Washington consensus reforms](/slides/lecture-7.1.html)
+
+🖥️ [The gendered legacy of reform](/slides/lecture-7.2.html)
+
+## Videos
+
+📺 [Scatter plot
+video](https://www.youtube.com/watch?v=NDszBjbvSFA&t=24s)
+
+📺 [Map video](https://www.youtube.com/watch?v=ixjWeXbYVl0&t=44s)
+
+## Assignments
+
+🧮 [Data Assignment 2: Cleaning & Visualizing Data in
+Excel](/assignments/data-assignment-2.html)
+
+<br><br>
+
+::: {style="font-size: 0.875em;"}
+Back to [course schedule](/ "Course schedule") ⏎
+:::

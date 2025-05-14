@@ -1,0 +1,26 @@
+---
+title: "Week 13"
+subtitle: "The Rise of Radical Politics"
+editor: visual
+---
+
+## Readings
+
+📖 John Judis, [*The Politics of Our
+Time*](https://www-jstor-org.proxygw.wrlc.org/stable/j.ctv2dzzqsn)
+
+-   *For Tuesday, choose one chapter to read from Part I*
+
+-   *For Thursday, choose one chapter to read from Part II or Part III*
+
+## Slides
+
+🖥️ [The populist backlash in the West](/slides/lecture-14.1.html)
+
+🖥️ [The rise of nationalism and socialism](/slides/lecture-14.2.html)
+
+<br><br>
+
+::: {style="font-size: 0.875em;"}
+Back to [course schedule](/ "Course schedule") ⏎
+:::

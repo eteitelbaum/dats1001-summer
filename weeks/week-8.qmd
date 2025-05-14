@@ -1,0 +1,34 @@
+---
+title: "Week 8"
+subtitle: "Populism and Social Policy"
+editor: visual
+---
+
+::: callout-important
+Exam 2 is due on Sunday, March 19.
+:::
+
+## Readings
+
+📖 James Putzel, ["The 'Populist' Right Challenge to
+Neoliberalism"](https://onlinelibrary-wiley-com.proxygw.wrlc.org/doi/full/10.1111/dech.12578)
+
+📖 Mary Cullen, ["How to Write and Format a White
+Paper"](https://www.instructionalsolutions.com/blog/how-to-write-white-paper)
+
+## Slides
+
+🖥️ [Populism and social policy](/slides/lecture-8.1.html)
+
+🖥️ [Exam 2 review](/slides/lecture-8.2.html)
+
+## Assignments
+
+📘 [Exam
+2](https://blackboard.gwu.edu/webapps/blackboard/content/listContentEditable.jsp?course_id=_380501_1&content_id=_12817116_1&mode=reset)
+
+<br><br>
+
+::: {style="font-size: 0.875em;"}
+Back to [course schedule](/ "Course schedule") ⏎
+:::

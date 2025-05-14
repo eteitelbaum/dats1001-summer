@@ -1,0 +1,27 @@
+---
+title: "Week 5"
+subtitle: "Distributive Politics"
+editor: visual
+---
+
+## Readings
+
+📖 Stokes et. al., [*Brokers, Voters and
+Clientelism*](https://blackboard.gwu.edu/webapps/blackboard/execute/content/file?cmd=view&mode=designer&content_id=_12817119_1&course_id=_380501_1 "Stokes et. al."),
+Chapter 1
+
+📖 Aspinall and Berenschot, [*Democracy for
+Sale*](https://ebookcentral.proquest.com/lib/gwu/reader.action?docID=5732981&ppg=112),
+Chapter 5
+
+## Slides
+
+🖥️ [Programmatic politics vs. clientelism](/slides/lecture-5.1.html)
+
+🖥️ [Vote buying](/slides/lecture-5.2.html)
+
+<br><br>
+
+::: {style="font-size: 0.875em;"}
+Back to [course schedule](/ "Course schedule") ⏎
+:::

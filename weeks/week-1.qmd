@@ -1,0 +1,37 @@
+---
+title: "Week 1"
+subtitle: "Course Overview"
+---
+
+## Readings
+
+📖 Review the [course syllabus](/course-syllabus.qmd) and [support
+resources](/course-support.qmd)
+
+📖 [HOPWR](https://rstudio-education.github.io/hopr/starting.html),
+Appendix A and B
+
+📖 [Hello,
+Quarto](https://quarto.org/docs/get-started/hello/rstudio.html)
+
+📖 [Markdown Guide](https://www.markdownguide.org/getting-started/)
+
+## Videos
+
+📺 [Getting Started with R and RStudio](https://youtu.be/eimM6pNkYjE)
+
+📺 [Getting Started with Quarto](https://youtu.be/6QN9ZYURDFg)
+
+📺 [Markdown Crash Course](https://www.youtube.com/watch?v=bTVIMt3XllM)
+
+## Slides
+
+🖥 [Coding Examples](/slides/week-1.1.qmd)
+
+🖥 [Meet ouR Tech Stack](/slides/week-1.2.qmd)
+
+<br><br>
+
+::: {style="font-size: 0.875em;"}
+Back to [course schedule](/ "Course schedule") ⏎
+:::

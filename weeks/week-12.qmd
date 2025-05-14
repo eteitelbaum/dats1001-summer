@@ -1,0 +1,35 @@
+---
+title: "Week 12"
+subtitle: "Globalization and Inequality"
+editor: visual
+---
+
+::: callout-important
+"Project Assignment 2: White Paper" is due on Sunday, April 9
+:::
+
+## Readings
+
+📖 Autor, Dorn and Hanson, ["The China
+Shock"](https://www.annualreviews.org/doi/full/10.1146/annurev-economics-080315-015041)
+
+📖 Joseph Stiglitz, [*People, Power, and
+Profits*](https://www.amazon.com/gp/product/B07P92PDLF/ref=dbs_a_def_rwt_bibl_vppi_i2)*,
+Chapter 3*
+
+## Slides
+
+🖥️ [Globalization](/slides/lecture-12.1.html)
+
+🖥️ [Inequality](/slides/lecture-12.2.html)
+
+## Assignments
+
+✍️ [Project Assignment 2: White
+Paper](/project/project-assignment-2.html)
+
+<br><br>
+
+::: {style="font-size: 0.875em;"}
+Back to [course schedule](/ "Course schedule") ⏎
+:::

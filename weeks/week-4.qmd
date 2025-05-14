@@ -1,0 +1,32 @@
+---
+title: "Week 4"
+subtitle: "DataViz Extras"
+editor: visual
+---
+
+::: callout-important
+Coding Assignment 1 is due on Monday, February 10
+:::
+
+## Readings
+
+📖 r4ds, [Communication](https://r4ds.hadley.nz/communication)
+
+📖 Lipset, [Some Social Requisites of
+Democracy](https://www-jstor-org.proxygw.wrlc.org/stable/1951731?seq=8)
+
+## Slides
+
+🖥 [Visualization Best Practices](/slides/week-4.1.qmd)
+
+🖥 [Red green colourblindess, do you have it?](https://youtu.be/l6AVQOxkzxQ?si=UUFExkQgdzfaJOHW)
+
+## Assignments
+
+🧮 [Coding Assignment 1](/assignments/coding-assignment-1.qmd)
+
+<br><br>
+
+::: {style="font-size: 0.875em;"}
+Back to [course schedule](/ "Course schedule") ⏎
+:::

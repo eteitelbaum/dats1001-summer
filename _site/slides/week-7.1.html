@@ -1,0 +1,1065 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<link href="../images/ds4all-logo.png" rel="icon" type="image/png">
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-html/tabby.min.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-c374e8903e699ee474c14b9fa33e2f95.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.7.11">
+
+  <meta name="dcterms.date" content="2025-02-07">
+  <title>DATS 1001--Fall Schedule – Tidying Data</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+      }
+    pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+    div.sourceCode
+      { color: #f8f8f2;  }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #f8f8f2; } /* Normal */
+    code span.al { color: #f07178; background-color: #2a0f15; font-weight: bold; } /* Alert */
+    code span.an { color: #d4d0ab; } /* Annotation */
+    code span.at { color: #00e0e0; } /* Attribute */
+    code span.bn { color: #d4d0ab; } /* BaseN */
+    code span.bu { color: #abe338; } /* BuiltIn */
+    code span.cf { color: #ffa07a; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #abe338; } /* Char */
+    code span.cn { color: #ffd700; } /* Constant */
+    code span.co { color: #f8f8f2; font-style: italic; } /* Comment */
+    code span.cv { color: #ffd700; } /* CommentVar */
+    code span.do { color: #f8f8f2; } /* Documentation */
+    code span.dt { color: #ffa07a; } /* DataType */
+    code span.dv { color: #d4d0ab; } /* DecVal */
+    code span.er { color: #f07178; text-decoration: underline; } /* Error */
+    code span.ex { color: #00e0e0; font-weight: bold; } /* Extension */
+    code span.fl { color: #d4d0ab; } /* Float */
+    code span.fu { color: #ffa07a; } /* Function */
+    code span.im { color: #abe338; } /* Import */
+    code span.in { color: #d4d0ab; } /* Information */
+    code span.kw { color: #ffa07a; font-weight: bold; } /* Keyword */
+    code span.op { color: #ffa07a; } /* Operator */
+    code span.ot { color: #00e0e0; } /* Other */
+    code span.pp { color: #dcc6e0; } /* Preprocessor */
+    code span.re { color: #00e0e0; background-color: #f8f8f2; } /* RegionMarker */
+    code span.sc { color: #abe338; } /* SpecialChar */
+    code span.ss { color: #abe338; } /* SpecialString */
+    code span.st { color: #abe338; } /* String */
+    code span.va { color: #00e0e0; } /* Variable */
+    code span.vs { color: #abe338; } /* VerbatimString */
+    code span.wa { color: #dcc6e0; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-4edacd88dc60bc598ab4576b0ddbcace.css">
+  <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-chalkboard/font-awesome/css/all.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-chalkboard/style.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+  <link href="../site_libs/countdown-0.4.0/countdown.css" rel="stylesheet">
+  <script src="../site_libs/countdown-0.4.0/countdown.js"></script>
+<meta property="og:title" content="Tidying Data – DATS 1001–Fall Schedule">
+<meta property="og:site_name" content="DATS 1001--Fall Schedule">
+<meta name="twitter:title" content="Tidying Data – DATS 1001–Fall Schedule">
+<meta name="twitter:card" content="summary">
+</head>
+<body class="quarto-dark">
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" class="quarto-title-block center">
+  <h1 class="title">Tidying Data</h1>
+
+<div class="quarto-title-authors">
+</div>
+
+  <p class="date">February 7, 2025</p>
+</section>
+<section>
+<section id="tidying-data" class="title-slide slide level1 center">
+<h1>Tidying Data</h1>
+
+</section>
+<section id="what-is-tyding-data" class="slide level2">
+<h2>What is Tyding Data?</h2>
+<ul>
+<li>Earlier we talked about the concept of “tidy data”
+<ul>
+<li>Each variable forms a column</li>
+<li>Each observation is in a row</li>
+<li>Each cell has a single value</li>
+</ul></li>
+<li>The process of tidying data involves reshaping (or pivoting) data into a tidy format</li>
+<li>We want to use the <code>pivot_longer()</code> or <code>pivot_wider()</code> functions from <code>tidyr</code> to do this</li>
+</ul>
+</section>
+<section id="section" class="slide level2">
+<h2></h2>
+<p><strong>Query:</strong> Are these data in a tidy format?</p>
+<p><br></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">library</span>(tidyr)</span>
+<span id="cb1-2"><a></a></span>
+<span id="cb1-3"><a></a>smiths</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 5
+  subject     time   age weight height
+  &lt;chr&gt;      &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;
+1 John Smith     1    33     90   1.87
+2 Mary Smith     1    NA     NA   1.54</code></pre>
+</div>
+</div>
+<p><br></p>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Tip</strong></p>
+</div>
+<div class="callout-content">
+<p>To get a list of data frames available in a package use the <code>data()</code> function, e.g.&nbsp;<code>data(package = "tidyr")</code>.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="section-1" class="slide level2 smaller">
+<h2></h2>
+<p><br></p>
+<p>How about these data?</p>
+<p><br></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a>world_bank_pop</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1,064 × 20
+   country indicator      `2000`  `2001`  `2002`  `2003`  `2004`  `2005`  `2006`
+   &lt;chr&gt;   &lt;chr&gt;           &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
+ 1 ABW     SP.URB.TOTL    4.16e4 4.20e+4 4.22e+4 4.23e+4 4.23e+4 4.24e+4 4.26e+4
+ 2 ABW     SP.URB.GROW    1.66e0 9.56e-1 4.01e-1 1.97e-1 9.46e-2 1.94e-1 3.67e-1
+ 3 ABW     SP.POP.TOTL    8.91e4 9.07e+4 9.18e+4 9.27e+4 9.35e+4 9.45e+4 9.56e+4
+ 4 ABW     SP.POP.GROW    2.54e0 1.77e+0 1.19e+0 9.97e-1 9.01e-1 1.00e+0 1.18e+0
+ 5 AFE     SP.URB.TOTL    1.16e8 1.20e+8 1.24e+8 1.29e+8 1.34e+8 1.39e+8 1.44e+8
+ 6 AFE     SP.URB.GROW    3.60e0 3.66e+0 3.72e+0 3.71e+0 3.74e+0 3.81e+0 3.81e+0
+ 7 AFE     SP.POP.TOTL    4.02e8 4.12e+8 4.23e+8 4.34e+8 4.45e+8 4.57e+8 4.70e+8
+ 8 AFE     SP.POP.GROW    2.58e0 2.59e+0 2.61e+0 2.62e+0 2.64e+0 2.67e+0 2.70e+0
+ 9 AFG     SP.URB.TOTL    4.31e6 4.36e+6 4.67e+6 5.06e+6 5.30e+6 5.54e+6 5.83e+6
+10 AFG     SP.URB.GROW    1.86e0 1.15e+0 6.86e+0 7.95e+0 4.59e+0 4.47e+0 5.03e+0
+# ℹ 1,054 more rows
+# ℹ 11 more variables: `2007` &lt;dbl&gt;, `2008` &lt;dbl&gt;, `2009` &lt;dbl&gt;, `2010` &lt;dbl&gt;,
+#   `2011` &lt;dbl&gt;, `2012` &lt;dbl&gt;, `2013` &lt;dbl&gt;, `2014` &lt;dbl&gt;, `2015` &lt;dbl&gt;,
+#   `2016` &lt;dbl&gt;, `2017` &lt;dbl&gt;</code></pre>
+</div>
+</div>
+</section></section>
+<section>
+<section id="pivot-longer" class="title-slide slide level1 center">
+<h1>Pivot Longer</h1>
+
+</section>
+<section id="pivot-longer-1" class="slide level2">
+<h2>Pivot Longer</h2>
+<p><br></p>
+<p><code>pivot_longer()</code> takes three arguments:</p>
+<ul>
+<li><strong>cols</strong> - which columns you want to pivot</li>
+<li><strong>names_to</strong> - the name of the column where the old column names are going to (identifier)</li>
+<li><strong>values_to</strong> - the name of the column where the values are going to</li>
+</ul>
+</section>
+<section id="example-wb-population-data" class="slide level2">
+<h2>Example: WB Population Data</h2>
+<p><br></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="fu">library</span>(tidyr)</span>
+<span id="cb5-2"><a></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb5-3"><a></a></span>
+<span id="cb5-4"><a></a><span class="co"># Pivot using pivot_longer</span></span>
+<span id="cb5-5"><a></a></span>
+<span id="cb5-6"><a></a>long_pop_data <span class="ot">&lt;-</span> world_bank_pop <span class="sc">|&gt;</span></span>
+<span id="cb5-7"><a></a>  <span class="fu">pivot_longer</span>(</span>
+<span id="cb5-8"><a></a>    <span class="at">cols =</span> <span class="st">`</span><span class="at">2000</span><span class="st">`</span><span class="sc">:</span><span class="st">`</span><span class="at">2017</span><span class="st">`</span>,   <span class="co"># The columns you want to pivot (years)</span></span>
+<span id="cb5-9"><a></a>    <span class="at">names_to =</span> <span class="st">"year"</span>,      <span class="co"># New column name for the years</span></span>
+<span id="cb5-10"><a></a>    <span class="at">values_to =</span> <span class="st">"pop"</span>       <span class="co"># New column name for the values</span></span>
+<span id="cb5-11"><a></a>  ) </span>
+<span id="cb5-12"><a></a></span>
+<span id="cb5-13"><a></a><span class="co"># View the tidied data</span></span>
+<span id="cb5-14"><a></a>long_pop_data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 19,152 × 4
+   country indicator   year    pop
+   &lt;chr&gt;   &lt;chr&gt;       &lt;chr&gt; &lt;dbl&gt;
+ 1 ABW     SP.URB.TOTL 2000  41625
+ 2 ABW     SP.URB.TOTL 2001  42025
+ 3 ABW     SP.URB.TOTL 2002  42194
+ 4 ABW     SP.URB.TOTL 2003  42277
+ 5 ABW     SP.URB.TOTL 2004  42317
+ 6 ABW     SP.URB.TOTL 2005  42399
+ 7 ABW     SP.URB.TOTL 2006  42555
+ 8 ABW     SP.URB.TOTL 2007  42729
+ 9 ABW     SP.URB.TOTL 2008  42906
+10 ABW     SP.URB.TOTL 2009  43079
+# ℹ 19,142 more rows</code></pre>
+</div>
+</div>
+</section>
+<section id="section-2" class="slide level2">
+<h2></h2>
+<p><br></p>
+<p>This is better, usable even, but are we done if we want a tidy data frame?</p>
+<p><br></p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 19,152 × 4
+   country indicator   year    pop
+   &lt;chr&gt;   &lt;chr&gt;       &lt;chr&gt; &lt;dbl&gt;
+ 1 ABW     SP.URB.TOTL 2000  41625
+ 2 ABW     SP.URB.TOTL 2001  42025
+ 3 ABW     SP.URB.TOTL 2002  42194
+ 4 ABW     SP.URB.TOTL 2003  42277
+ 5 ABW     SP.URB.TOTL 2004  42317
+ 6 ABW     SP.URB.TOTL 2005  42399
+ 7 ABW     SP.URB.TOTL 2006  42555
+ 8 ABW     SP.URB.TOTL 2007  42729
+ 9 ABW     SP.URB.TOTL 2008  42906
+10 ABW     SP.URB.TOTL 2009  43079
+# ℹ 19,142 more rows</code></pre>
+</div>
+</div>
+</section>
+<section id="section-3" class="slide level2">
+<h2></h2>
+<p><br></p>
+<p>Issue is that the data are in long form (which is OK for some purposes), but we want to make it wider. Wider, but tidy…</p>
+<p><br></p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 19,152 × 4
+   country indicator   year    pop
+   &lt;chr&gt;   &lt;chr&gt;       &lt;chr&gt; &lt;dbl&gt;
+ 1 ABW     SP.URB.TOTL 2000  41625
+ 2 ABW     SP.URB.TOTL 2001  42025
+ 3 ABW     SP.URB.TOTL 2002  42194
+ 4 ABW     SP.URB.TOTL 2003  42277
+ 5 ABW     SP.URB.TOTL 2004  42317
+ 6 ABW     SP.URB.TOTL 2005  42399
+ 7 ABW     SP.URB.TOTL 2006  42555
+ 8 ABW     SP.URB.TOTL 2007  42729
+ 9 ABW     SP.URB.TOTL 2008  42906
+10 ABW     SP.URB.TOTL 2009  43079
+# ℹ 19,142 more rows</code></pre>
+</div>
+</div>
+</section></section>
+<section>
+<section id="pivot-wider" class="title-slide slide level1 center">
+<h1>Pivot Wider</h1>
+
+</section>
+<section id="pivot-wider-1" class="slide level2">
+<h2>Pivot Wider</h2>
+<p><br></p>
+<p><code>pivot_wider()</code> takes three main arguments:</p>
+<ul>
+<li><strong>names_from</strong> - the column whose values will become new column names (identifier)</li>
+<li><strong>values_from</strong> - the column containing the values that will fill the new columns</li>
+<li><strong>values_fill</strong> (optional) - specifies what to use for missing values (e.g., <code>NA</code>, <code>0</code>)</li>
+</ul>
+</section>
+<section id="pivotwider-the-wb-data" class="slide level2 smaller">
+<h2><code>pivotwider()</code> the WB Data</h2>
+<p><br></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a><span class="co"># pivot wider</span></span>
+<span id="cb9-2"><a></a>tidy_pop_data <span class="ot">&lt;-</span> long_pop_data <span class="sc">|&gt;</span></span>
+<span id="cb9-3"><a></a>  <span class="fu">pivot_wider</span>(</span>
+<span id="cb9-4"><a></a>    <span class="at">names_from =</span> indicator, </span>
+<span id="cb9-5"><a></a>    <span class="at">values_from =</span> pop</span>
+<span id="cb9-6"><a></a>  )</span>
+<span id="cb9-7"><a></a></span>
+<span id="cb9-8"><a></a><span class="co"># view the data</span></span>
+<span id="cb9-9"><a></a>tidy_pop_data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 4,788 × 6
+   country year  SP.URB.TOTL SP.URB.GROW SP.POP.TOTL SP.POP.GROW
+   &lt;chr&gt;   &lt;chr&gt;       &lt;dbl&gt;       &lt;dbl&gt;       &lt;dbl&gt;       &lt;dbl&gt;
+ 1 ABW     2000        41625      1.66         89101       2.54 
+ 2 ABW     2001        42025      0.956        90691       1.77 
+ 3 ABW     2002        42194      0.401        91781       1.19 
+ 4 ABW     2003        42277      0.197        92701       0.997
+ 5 ABW     2004        42317      0.0946       93540       0.901
+ 6 ABW     2005        42399      0.194        94483       1.00 
+ 7 ABW     2006        42555      0.367        95606       1.18 
+ 8 ABW     2007        42729      0.408        96787       1.23 
+ 9 ABW     2008        42906      0.413        97996       1.24 
+10 ABW     2009        43079      0.402        99212       1.23 
+# ℹ 4,778 more rows</code></pre>
+</div>
+</div>
+</section>
+<section id="pivotwider-the-wb-data-1" class="slide level2">
+<h2><code>pivotwider()</code> the WB Data</h2>
+<p><br></p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 4,788 × 6
+   country year  SP.URB.TOTL SP.URB.GROW SP.POP.TOTL SP.POP.GROW
+   &lt;chr&gt;   &lt;chr&gt;       &lt;dbl&gt;       &lt;dbl&gt;       &lt;dbl&gt;       &lt;dbl&gt;
+ 1 ABW     2000        41625      1.66         89101       2.54 
+ 2 ABW     2001        42025      0.956        90691       1.77 
+ 3 ABW     2002        42194      0.401        91781       1.19 
+ 4 ABW     2003        42277      0.197        92701       0.997
+ 5 ABW     2004        42317      0.0946       93540       0.901
+ 6 ABW     2005        42399      0.194        94483       1.00 
+ 7 ABW     2006        42555      0.367        95606       1.18 
+ 8 ABW     2007        42729      0.408        96787       1.23 
+ 9 ABW     2008        42906      0.413        97996       1.24 
+10 ABW     2009        43079      0.402        99212       1.23 
+# ℹ 4,778 more rows</code></pre>
+</div>
+</div>
+</section></section>
+<section>
+<section id="exercise" class="title-slide slide level1 center">
+<h1>Exercise</h1>
+
+</section>
+<section id="download-some-messy-data" class="slide level2">
+<h2>Download Some Messy Data</h2>
+<p><br></p>
+<ul>
+<li>Download some messy WB data</li>
+<li>Make it multiple variables</li>
+<li>Download as a CSV file</li>
+<li>Save in your project <code>/data</code> folder</li>
+</ul>
+</section>
+<section id="messy-data-example" class="slide level2">
+<h2>Messy Data Example</h2>
+
+<img data-src="images/messy_wb_data.jpg" style="width:70.0%" class="r-stretch"></section>
+<section id="read-data" class="slide level2">
+<h2>Read Data</h2>
+<p><br></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a><span class="co"># Load packages</span></span>
+<span id="cb12-2"><a></a><span class="fu">library</span>(readr) </span>
+<span id="cb12-3"><a></a><span class="fu">library</span>(dplyr) </span>
+<span id="cb12-4"><a></a></span>
+<span id="cb12-5"><a></a><span class="co"># Read data from csv file into an object called "wb_data_messy"</span></span>
+<span id="cb12-6"><a></a>wb_data_messy <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/your_file_name.csv"</span>)</span>
+<span id="cb12-7"><a></a></span>
+<span id="cb12-8"><a></a><span class="co"># View the data</span></span>
+<span id="cb12-9"><a></a><span class="fu">glimpse</span>(wb_data_messy)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="pivot-the-data" class="slide level2">
+<h2>Pivot the Data</h2>
+<p><br></p>
+<ul>
+<li>Use <code>pivot_longer()</code> to get the data in long form</li>
+<li>Use <code>pivot_wider()</code> to get the series in the columns</li>
+</ul>
+</section>
+<section id="special-considerations" class="slide level2">
+<h2>Special Considerations</h2>
+<p><br></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a><span class="co"># Load tidyr</span></span>
+<span id="cb13-2"><a></a><span class="fu">library</span>(tidyr)</span>
+<span id="cb13-3"><a></a></span>
+<span id="cb13-4"><a></a><span class="co"># Reshape the data</span></span>
+<span id="cb13-5"><a></a>wb_data <span class="ot">&lt;-</span> wb_data_messy <span class="sc">|&gt;</span> </span>
+<span id="cb13-6"><a></a>  <span class="fu">pivot_longer</span>(             </span>
+<span id="cb13-7"><a></a>    <span class="at">cols =</span> <span class="st">`</span><span class="at">1973 [YR1973]</span><span class="st">`</span><span class="sc">:</span> <span class="st">`</span><span class="at">2022 [YR2022]</span><span class="st">`</span>, <span class="co"># columns to pivot</span></span>
+<span id="cb13-8"><a></a>    <span class="at">names_to =</span> <span class="st">"year"</span>, <span class="co"># name the identifier column "year"</span></span>
+<span id="cb13-9"><a></a>    <span class="at">values_to =</span> <span class="st">"values"</span> <span class="co"># name the numeric var column </span></span>
+<span id="cb13-10"><a></a>  ) </span>
+<span id="cb13-11"><a></a></span>
+<span id="cb13-12"><a></a><span class="co"># View the data</span></span>
+<span id="cb13-13"><a></a><span class="fu">glimpse</span>(wb_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="special-considerations-1" class="slide level2">
+<h2>Special Considerations</h2>
+<p><br></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a>wb_data <span class="ot">&lt;-</span> wb_data <span class="sc">|&gt;</span></span>
+<span id="cb14-2"><a></a>  <span class="fu">select</span>(<span class="sc">-</span><span class="st">`</span><span class="at">Series Name</span><span class="st">`</span>)</span>
+<span id="cb14-3"><a></a></span>
+<span id="cb14-4"><a></a><span class="co"># Reshape the data</span></span>
+<span id="cb14-5"><a></a>tidy_data <span class="ot">&lt;-</span> wb_data <span class="sc">|&gt;</span> </span>
+<span id="cb14-6"><a></a>  <span class="fu">pivot_wider</span>(             </span>
+<span id="cb14-7"><a></a>    <span class="at">names_from =</span> <span class="st">`</span><span class="at">Series Code</span><span class="st">`</span>,</span>
+<span id="cb14-8"><a></a>    <span class="at">values_from =</span> values</span>
+<span id="cb14-9"><a></a>  ) </span>
+<span id="cb14-10"><a></a></span>
+<span id="cb14-11"><a></a><span class="co"># View the data</span></span>
+<span id="cb14-12"><a></a><span class="fu">glimpse</span>(wb_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="give-it-a-shot" class="slide level2">
+<h2>Give it a Shot!</h2>
+<p><br></p>
+<ul>
+<li>Try downloading some messy WB data and make it tidy</li>
+<li>Refer to previous slides for help</li>
+</ul>
+<div class="cell">
+<div class="cell-output-display">
+<div class="countdown" id="timer3" data-update-every="1" tabindex="0" style="right:10%;bottom:10%;">
+<div class="countdown-controls"><button class="countdown-bump-down">−</button><button class="countdown-bump-up">+</button></div>
+<code class="countdown-time"><span class="countdown-digits minutes">10</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+</div>
+</div>
+</div>
+</section></section>
+<section>
+<section id="mutate" class="title-slide slide level1 center">
+<h1>Mutate</h1>
+
+</section>
+<section id="mutating-variables" class="slide level2">
+<h2>Mutating Variables</h2>
+<p><br></p>
+<ul>
+<li>Anytime we want to change a variable, we are going to use the <code>dplyr</code> verbs <code>mutate()</code> or <code>mutate_at()</code></li>
+<li><code>mutate()</code> is if you want to change on variable</li>
+<li>Use <code>across()</code> for multiple variables</li>
+</ul>
+</section>
+<section id="lets-fix-our-variables" class="slide level2">
+<h2>Let’s Fix Our Variables</h2>
+<p><br></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a><span class="co"># Fix year and flfp</span></span>
+<span id="cb15-2"><a></a>wb_data <span class="ot">&lt;-</span> wb_data <span class="sc">|&gt;</span> </span>
+<span id="cb15-3"><a></a>  <span class="fu">mutate</span>(<span class="at">year =</span> <span class="fu">substring</span>(year, <span class="dv">1</span>, <span class="dv">4</span>)) <span class="sc">|&gt;</span>  <span class="co"># truncate year</span></span>
+<span id="cb15-4"><a></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">c</span>(<span class="st">"year"</span>, <span class="st">"flfp"</span>), as.numeric))  <span class="co"># convert year and flfp to numeric</span></span>
+<span id="cb15-5"><a></a></span>
+<span id="cb15-6"><a></a><span class="co"># View the data</span></span>
+<span id="cb15-7"><a></a><span class="fu">glimpse</span>(wb_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="now-try-it-with-multiple-varaibles" class="slide level2">
+<h2>Now Try it With Multiple Varaibles</h2>
+<p><br></p>
+<ul>
+<li>Go to the data frame with multiple variables that you created earlier</li>
+<li>How would you modify this code to make sure the variables are in the right format?</li>
+</ul>
+</section>
+<section id="clean-variable-names" class="slide level2">
+<h2>Clean Variable Names</h2>
+<p><br></p>
+<div class="line-block">Very simple: use the <code>janitor</code> package!</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a></a><span class="co"># Load janitor</span></span>
+<span id="cb16-2"><a></a><span class="fu">library</span>(janitor)</span>
+<span id="cb16-3"><a></a></span>
+<span id="cb16-4"><a></a><span class="co"># Apply clean_names() to wb_data, store in new data frame called wb_data_clean</span></span>
+<span id="cb16-5"><a></a>wb_data_clean <span class="ot">&lt;-</span> wb_data <span class="sc">|&gt;</span>  </span>
+<span id="cb16-6"><a></a>  <span class="fu">clean_names</span>() </span>
+<span id="cb16-7"><a></a></span>
+<span id="cb16-8"><a></a><span class="co"># Write wb_data_clean to a csv file</span></span>
+<span id="cb16-9"><a></a><span class="fu">write_csv</span>(wb_data_clean, <span class="st">"data/wb_data_clean.csv"</span>)</span>
+<span id="cb16-10"><a></a></span>
+<span id="cb16-11"><a></a><span class="co"># View the data</span></span>
+<span id="cb16-12"><a></a><span class="fu">glimpse</span>(wb_data_clean)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="column-specifications" class="slide level2">
+<h2>Column Specifications</h2>
+<p><br></p>
+<ul>
+<li>Can clean columns on backend</li>
+<li>But can also specify data types in <code>read_csv()</code> or <code>read_excel()</code></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a><span class="fu">spec</span>(wb_data_messy) <span class="co"># show column specifications (from `readr`)</span></span>
+<span id="cb17-2"><a></a></span>
+<span id="cb17-3"><a></a>wb_data_messy <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/your_file_name.csv"</span>, </span>
+<span id="cb17-4"><a></a>                          <span class="at">col_types =</span> <span class="fu">cols</span>(</span>
+<span id="cb17-5"><a></a>                           <span class="fu">col_double</span>(<span class="st">`</span><span class="at">1990 [YR1990]</span><span class="st">`</span>) </span>
+<span id="cb17-6"><a></a>                          ))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+
+
+</section></section>
+    </div>
+  <div class="quarto-auto-generated-content" style="display: none;">
+<p><img src="images/ds4all-logo.png" class="slide-logo"></p>
+<div class="footer footer-default">
+<p><a href="https://ds4all.rocks">DATS 1001 Website</a></p>
+</div>
+</div></div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="../site_libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="../site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="../site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="../site_libs/revealjs/plugin/reveal-chalkboard/plugin.js"></script>
+  <script src="../site_libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="../site_libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="../site_libs/revealjs/plugin/search/search.js"></script>
+  <script src="../site_libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="../site_libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'jumpToSlide': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleChalkboard(event)\"><kbd>b</kbd> Toggle Chalkboard</a></li>\n<li class=\"slide-tool-item\" data-item=\"6\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleNotesCanvas(event)\"><kbd>c</kbd> Toggle Notes Canvas</a></li>\n<li class=\"slide-tool-item\" data-item=\"7\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.downloadDrawings(event)\"><kbd>d</kbd> Download Drawings</a></li>\n<li class=\"slide-tool-item\" data-item=\"8\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'chalkboard': {"buttons":true},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'fade',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1050,
+
+        height: 700,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        math: {
+          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealChalkboard, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
+    <script id="quarto-html-after-body" type="application/javascript">
+    window.document.addEventListener("DOMContentLoaded", function (event) {
+      const toggleBodyColorMode = (bsSheetEl) => {
+        const mode = bsSheetEl.getAttribute("data-mode");
+        const bodyEl = window.document.querySelector("body");
+        if (mode === "dark") {
+          bodyEl.classList.add("quarto-dark");
+          bodyEl.classList.remove("quarto-light");
+        } else {
+          bodyEl.classList.add("quarto-light");
+          bodyEl.classList.remove("quarto-dark");
+        }
+      }
+      const toggleBodyColorPrimary = () => {
+        const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+        if (bsSheetEl) {
+          toggleBodyColorMode(bsSheetEl);
+        }
+      }
+      toggleBodyColorPrimary();  
+      const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+      tabsets.forEach(function(tabset) {
+        const tabby = new Tabby('#' + tabset.id);
+      });
+      const isCodeAnnotation = (el) => {
+        for (const clz of el.classList) {
+          if (clz.startsWith('code-annotation-')) {                     
+            return true;
+          }
+        }
+        return false;
+      }
+      const onCopySuccess = function(e) {
+        // button target
+        const button = e.trigger;
+        // don't keep focus
+        button.blur();
+        // flash "checked"
+        button.classList.add('code-copy-button-checked');
+        var currentTitle = button.getAttribute("title");
+        button.setAttribute("title", "Copied!");
+        let tooltip;
+        if (window.bootstrap) {
+          button.setAttribute("data-bs-toggle", "tooltip");
+          button.setAttribute("data-bs-placement", "left");
+          button.setAttribute("data-bs-title", "Copied!");
+          tooltip = new bootstrap.Tooltip(button, 
+            { trigger: "manual", 
+              customClass: "code-copy-button-tooltip",
+              offset: [0, -8]});
+          tooltip.show();    
+        }
+        setTimeout(function() {
+          if (tooltip) {
+            tooltip.hide();
+            button.removeAttribute("data-bs-title");
+            button.removeAttribute("data-bs-toggle");
+            button.removeAttribute("data-bs-placement");
+          }
+          button.setAttribute("title", currentTitle);
+          button.classList.remove('code-copy-button-checked');
+        }, 1000);
+        // clear code selection
+        e.clearSelection();
+      }
+      const getTextToCopy = function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+      }
+      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+        text: getTextToCopy
+      });
+      clipboard.on('success', onCopySuccess);
+      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+          text: getTextToCopy,
+          container: window.document.getElementById('quarto-embedded-source-code-modal')
+        });
+        clipboardModal.on('success', onCopySuccess);
+      }
+        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+        var mailtoRegex = new RegExp(/^mailto:/);
+          var filterRegex = new RegExp("https:\/\/ds4all\.rocks");
+        var isInternal = (href) => {
+            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+        }
+        // Inspect non-navigation links and adorn them if external
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+        for (var i=0; i<links.length; i++) {
+          const link = links[i];
+          if (!isInternal(link.href)) {
+            // undo the damage that might have been done by quarto-nav.js in the case of
+            // links that we want to consider external
+            if (link.dataset.originalHref !== undefined) {
+              link.href = link.dataset.originalHref;
+            }
+          }
+        }
+      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+        const config = {
+          allowHTML: true,
+          maxWidth: 500,
+          delay: 100,
+          arrow: false,
+          appendTo: function(el) {
+              return el.closest('section.slide') || el.parentElement;
+          },
+          interactive: true,
+          interactiveBorder: 10,
+          theme: 'light-border',
+          placement: 'bottom-start',
+        };
+        if (contentFn) {
+          config.content = contentFn;
+        }
+        if (onTriggerFn) {
+          config.onTrigger = onTriggerFn;
+        }
+        if (onUntriggerFn) {
+          config.onUntrigger = onUntriggerFn;
+        }
+          config['offset'] = [0,0];
+          config['maxWidth'] = 700;
+        window.tippy(el, config); 
+      }
+      const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+      for (var i=0; i<noterefs.length; i++) {
+        const ref = noterefs[i];
+        tippyHover(ref, function() {
+          // use id or data attribute instead here
+          let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+          try { href = new URL(href).hash; } catch {}
+          const id = href.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note) {
+            return note.innerHTML;
+          } else {
+            return "";
+          }
+        });
+      }
+      const findCites = (el) => {
+        const parentEl = el.parentElement;
+        if (parentEl) {
+          const cites = parentEl.dataset.cites;
+          if (cites) {
+            return {
+              el,
+              cites: cites.split(' ')
+            };
+          } else {
+            return findCites(el.parentElement)
+          }
+        } else {
+          return undefined;
+        }
+      };
+      var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+      for (var i=0; i<bibliorefs.length; i++) {
+        const ref = bibliorefs[i];
+        const citeInfo = findCites(ref);
+        if (citeInfo) {
+          tippyHover(citeInfo.el, function() {
+            var popup = window.document.createElement('div');
+            citeInfo.cites.forEach(function(cite) {
+              var citeDiv = window.document.createElement('div');
+              citeDiv.classList.add('hanging-indent');
+              citeDiv.classList.add('csl-entry');
+              var biblioDiv = window.document.getElementById('ref-' + cite);
+              if (biblioDiv) {
+                citeDiv.innerHTML = biblioDiv.innerHTML;
+              }
+              popup.appendChild(citeDiv);
+            });
+            return popup.innerHTML;
+          });
+        }
+      }
+    });
+    </script>
+    
+
+</body></html>
