@@ -1,5 +1,6 @@
 ---
-title: "Getting Started"
+title: "Module 1.1"
+subtitle: "Getting Started"
 format: html
 execute: 
   echo: true
