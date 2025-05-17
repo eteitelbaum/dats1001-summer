@@ -7,10 +7,13 @@ editor: visual
 ```{r setup, include = FALSE}
 library(lubridate)
 
-sun <- as_date("2025-01-12")
+sun <- as_date("2025-05-18")
 mon <- sun+days(1)
+tues <- sun+days(2)
 wed <- sun+days(3)
+thur <- sun+days(4)
 fri <- sun+days(5)
+sat <- sun+days(6)
 
 advdate <- function(day, week) {
   date <- (day + weeks(week))
@@ -23,40 +26,45 @@ advdate <- function(day, week) {
 
 This page displays an outline of the topics, content, and assignments
 for the semester. Links, to slides, assignments and course resources
-will go live as the semester progresses. ***All assignments must be
-submitted by 11:59 p.m. on the due date***.
+will go live as the semester progresses.
 
 ::: column-screen-inset-right
-| Week | Date | Topic | Reading | Video | Slides | Assignment | Due Date |
-|:-------:|---------|---------|:-------:|:-------:|:-------:|:-------:|:-------:|
-| 1 | `r advdate(wed,0)` | Welcome to DATS 1001 | [📖](https://rstudio-education.github.io/hopr/starting.html "hopwr, Appendix A and B") [📖](https://quarto.org/docs/get-started/hello/rstudio.html "Hello, Quarto") | [📺](https://youtu.be/eimM6pNkYjE) [📺](https://youtu.be/6QN9ZYURDFg) | [🖥️](slides/week-1.1.qmd "Week 1.2 slides") |  |  |
-|  | `r advdate(fri,0)` | Meet ouR tech stack | [📖](https://www.markdownguide.org/getting-started/ "Markdown Guide") | [📺](https://www.youtube.com/watch?v=bTVIMt3XllM) | [🖥️](slides/week-1.2.qmd "Week 1.2 slides") |  |  |
-| 2 | `r advdate(wed,1)` | R coding basics | [📖](https://rstudio-education.github.io/hopr/basics.html "hopwr, ch. 2") | [📺](https://www.youtube.com/watch?v=hvFBDmT4bdY "Using Functions and Objects in R") [📺](https://youtu.be/9f2g7RN5N0I?si=WMsaGlhFC7Fx-ZNy "Explore the Data Frame") | [🖥️](slides/week-2.1.qmd "R Coding Basics") |  |  |
-|  | `r advdate(fri,1)` | Intro to the Tidyverse | [📖](https://r4ds.hadley.nz/intro "rd4s, intro") | [📺](https://youtu.be/izFssYRsLZs?si=b6Oy4atpRrkfEKzB "Hadley Wickham on code maintenance") | [🖥️](slides/week-2.2.qmd "Intro to the Tidyverse") |  |  |
-| 3 | `r advdate(wed,2)` | Grammar of graphics | [📖](https://r4ds.hadley.nz/data-import "r4ds, chap. 7") [📖](https://r4ds.hadley.nz/data-visualize.html "r4ds, 2") | [📺](https://youtu.be/QG1oDJPoIio "Make a bar chart") [📺](https://youtu.be/-1YhCql-gMo "Make a histogram") | [🖥️](slides/week-3.1.qmd "Week 3.1 slides") |  |  |
-|  | `r advdate(fri,2)` | Which visualization do I use? | [📖](https://r4ds.hadley.nz/layers "r4ds, 9.1-9.4") | [📺](https://youtu.be/PnmQ2MFQpIc "Make a line chart") [📺](https://youtu.be/FiosjUVyfLM "Make a scatterplot") | [🖥️](slides/week-3.2.qmd "Week 3.2 slides") |  |  |
-| 4 | `r advdate(wed,3)` | Visualization best practices | [📖](https://r4ds.hadley.nz/communication "r4ds, chap. 11") | [📺](https://youtu.be/l6AVQOxkzxQ?si=UUFExkQgdzfaJOHW "Red green colourblindness") | [🖥️](slides/week-4.1.qmd "Week 4.1 slides") |  |  |
-|  | `r advdate(fri,3)` | Coding assignment 1 | [📖](https://www-jstor-org.proxygw.wrlc.org/stable/1951731?seq=8 "Lipset") |  |  | [🧮](assignments/coding-assignment-1.qmd "Coding assignment 1") | `r advdate(mon,4)` |
-| 5 | `r advdate(wed,4)` | What is tidy data? | [📖](https://r4ds.hadley.nz/data-tidy#sec-tidy-data "r4ds, chap. 5.2") | [📺](https://youtu.be/ZwJsSjJRuMU?si=A6ucJ7jHL1s3T3uT "Reading data into R") | [🖥️](slides/week-5.1.qmd "Week 5.1 slides") |  |  |
-|  | `r advdate(fri,4)` | Working with data | [📖](https://r4ds.hadley.nz/data-transform "rd4s, chap. 3.1-3.4") | [📺](https://youtu.be/ScQD47eJeAE?si=Rc6epCTKhQVtkCjS "Transforming data w/ dplyr verbs") | [🖥️](slides/week-5.2 "Week 5.2 slides") |  |  |
-| 6 | `r advdate(wed,5)` | Grammar of data wrangling | [📖](https://r4ds.hadley.nz/data-transform#groups "r4ds, chap. 3.5") | [📺](https://youtu.be/mgBwVzMV-v8?si=4KP-qyDyssI92iFe "Grouping and summarizing data") | [🖥️](slides/week-6.1 "Week 6.1 slides") |  |  |
-|  | `r advdate(fri,5)` | Joining data frames | [📖](https://r4ds.hadley.nz/joins.html "r4ds, chap. 19") | [📺](https://youtu.be/wNF3ZPneHWw?si=TyiXrsAxgbdrztD4 "Merge data frames with left_join()") | [🖥️](slides/week-6.2.qmd "Week 6.2 slides") |  |  |
-| 7 | `r advdate(wed,6)` | Tidying data | [📖](https://r4ds.hadley.nz/data-tidy "r4ds, chap. 5.3-5.5") | [📺](https://youtu.be/xa0tYCfHHTI?si=1YII-L90IY05UZ70 "Tidying data") | [🖥️](slides/week-7.1.qmd "Week 7 slides") |  |  |
-|  | `r advdate(fri,6)` | Coding assignment 2 | [📖](https://link.springer.com/article/10.1057/palgrave.ap.5500151 "Norris") |  |  | [🧮](assignments/coding-assignment-2.qmd "Coding assingment 2") | `r advdate(mon,7)` |
-| 8 | `r advdate(wed,7)` | The language of models |  |  | [🖥️](slides/week-8.1.qmd "Week 8.1 slides") |  |  |
-|  | `r advdate(fri,7)` | Linear regression | [📖](https://openintro-ims.netlify.app/model-slr "IMS, chap. 7") | [📺](https://youtu.be/dLc-lfEEYss?si=-Zelb-HBAP-MPvnF) | [🖥️](slides/week-8.2.qmd "Week 8.2 slides") |  |  |
-| 9 | `r advdate(wed,8)` | Spring Break 🏄‍♂️ 🌴 🏖️ |  |  |  |  |  |
-|  | `r advdate(fri,8)` | Spring Break |  |  |  |  |  |
-| 10 | `r advdate(wed,9)` | Multiple regression | [📖](https://openintro-ims.netlify.app/model-mlr "IMS, chap. 8") | [📺](https://youtu.be/jXg0vU0y1ak?si=rhQ9uWhuhVqnI-Ox) | [🖥️](slides/week-9.1.qmd "Week 9 sides") |  |  |
-|  | `r advdate(fri,9)` | Logistic regression | [📖](https://openintro-ims.netlify.app/model-logistic "IMS, chap. 9") | [📺](https://youtu.be/xuTiAW0OR40?si=sUoIr5pzHwHEpazO) | [🖥️](slides/week-9.2.qmd "Week 9.2 slides") | [✍️](project/project-assignment-1.qmd "Project assignment 1") | `r advdate(mon,10)` |
-| 11 | `r advdate(wed,10)` | Predictive modeling | 📖 | 📺 | 🖥️ |  |  |
-|  | `r advdate(fri,10)` | Coding assignment 3 | 📖 |  | 🖥️ | [🧮](assignments/coding-assignment-3.qmd "Coding assingment 3") | `r advdate(mon,11)` |
-| 12 | `r advdate(wed,11)` | Categorical Data | [📖](https://openintro-ims.netlify.app/explore-categorical "IMS, chap. 4") | [📺](https://youtu.be/7NhNeADL8fA?si=InH8FFc1BIVT0ktM "Exploring Categorical Data") | [🖥️](slides/week-11.1.qmd "Week 11.1 slides") |  |  |
-|  | `r advdate(fri,11)` | Continuous Data | [📖](https://openintro-ims.netlify.app/explore-numerical "IMS, chap. 5") | [📺](https://youtu.be/Xm0PPtci3JE?si=MocqDt05YqllA9k5 "Exploring Numerical Data") | [🖥️](slides/week-11.2.qmd "Week 11.2 slides") | [✍️](project/project-assignment-2.qmd "Project assignment 2") | `r advdate(wed,12)` |
-| 13 | `r advdate(wed,12)` | Sampling and uncertainty | [📖](https://openintro-ims.netlify.app/foundations-bootstrapping "IMS, chap. 12") | [📺](https://youtu.be/Xz0x-8-cgaQ?si=v_YCi-dU5YBdcb99 "Bootstrapping Main Ideas") | [🖥️](slides/week-12.1.qmd "Week 12.1 slides") |  |  |
-|  | `r advdate(fri,12)` | Hypothesis testing 1 | [📖](https://openintro-ims.netlify.app/inference-one-prop "IMS, chap. 16") | 📺 | [🖥️](slides/week-12.2.qmd "Week 12.2 slides") |  |  |
-| 14 | `r advdate(wed,13)` | Hypothesis testing 2 | [📖](https://openintro-ims.netlify.app/foundations-randomization "IMS, chap. 11") | 📺 | [🖥️](slides/week-13.1.qmd "Week 13.1 slides") |  |  |
-|  | `r advdate(fri,13)` | Coding assignment 4 (**class online**) | 📖 | 📺 |  | [🧮](assignments/coding-assignment-4.qmd "Coding assingment 4") | `r advdate(mon,14)` |
-| 15 | `r advdate(wed,14)` | Final project workshop |  |  | [🖥️](slides/week-13.2.qmd "Week 13.2 slides") |  |  |
-|  | `r advdate(fri,14)` | Final project workshop |  |  |  | [✍️](project/project-assignment-3.qmd "Project assignment 3") | See assignment |
+| Week | Date | Topic | Reading | Video | Module | Assignment | Due Date |
+|:-----:|---------------------|---------|:-------:|:-------:|:-------:|:-------:|:-------:|
+| 1 | `r advdate(mon,0)` | Getting Started | [📖](https://rstudio-education.github.io/hopr/starting.html "hopwr, Appendix A and B") [📖](https://quarto.org/docs/get-started/hello/rstudio.html "Hello, Quarto") | [📺](https://youtu.be/eimM6pNkYjE "R & RStudio") [📺](https://youtu.be/6QN9ZYURDFg "Getting Started with Quarto") | [📒](/modules/getting-started.qmd "Getting Started") |  |  |
+|  | `r advdate(tues,0)` | Meet ouR tech stack | [📖](https://www.markdownguide.org/getting-started/ "Markdown Guide") | [📺](https://www.youtube.com/watch?v=bTVIMt3XllM) | 📒 |  |  |
+|  | `r advdate(wed,0)` | R coding basics | [📖](https://rstudio-education.github.io/hopr/basics.html "hopwr, ch. 2") | [📺](https://www.youtube.com/watch?v=hvFBDmT4bdY "Using Functions and Objects in R") [📺](https://youtu.be/9f2g7RN5N0I?si=WMsaGlhFC7Fx-ZNy "Explore the Data Frame") | 📒 | 📘 | `r advdate(wed,0)` |
+|  | `r advdate(thur,0)` | Intro to the Tidyverse | [📖](https://r4ds.hadley.nz/intro "rd4s, intro") | [📺](https://youtu.be/izFssYRsLZs?si=b6Oy4atpRrkfEKzB "Hadley Wickham on code maintenance") | 📒 |  |  |
+|  | `r advdate(fri,0)` | Grammar of graphics | [📖](https://r4ds.hadley.nz/data-import "r4ds, chap. 7") [📖](https://r4ds.hadley.nz/data-visualize.html "r4ds, 2") | [📺](https://youtu.be/QG1oDJPoIio "Make a bar chart") [📺](https://youtu.be/-1YhCql-gMo "Make a histogram") | 📒 |  |  |
+|  | `r advdate(sat,0)` | Which visualization do I use? | [📖](https://r4ds.hadley.nz/layers "r4ds, 9.1-9.4") | [📺](https://youtu.be/PnmQ2MFQpIc "Make a line chart") [📺](https://youtu.be/FiosjUVyfLM "Make a scatterplot") | 📒 | [🧮](assignments/coding-assignment-1.qmd "Coding assignment 1") | `r advdate(sun,0)` |
+| 2 | `r advdate(mon,1)` | What is tidy data? | [📖](https://r4ds.hadley.nz/data-tidy#sec-tidy-data "r4ds, chap. 5.2") | [📺](https://youtu.be/ZwJsSjJRuMU?si=A6ucJ7jHL1s3T3uT "Reading data into R") | 📒 |  |  |
+|  | `r advdate(tues,1)` | Working with data | [📖](https://r4ds.hadley.nz/data-transform "rd4s, chap. 3.1-3.4") | [📺](https://youtu.be/ScQD47eJeAE?si=Rc6epCTKhQVtkCjS "Transforming data w/ dplyr verbs") | 📒 |  |  |
+|  | `r advdate(wed,1)` | Grammar of data wrangling | [📖](https://r4ds.hadley.nz/data-transform#groups "r4ds, chap. 3.5") | [📺](https://youtu.be/mgBwVzMV-v8?si=4KP-qyDyssI92iFe "Grouping and summarizing data") | 📒 | 📘 | `r advdate(wed,1)` |
+|  | `r advdate(thur,1)` | Joining data frames | [📖](https://r4ds.hadley.nz/joins.html "r4ds, chap. 19") | [📺](https://youtu.be/wNF3ZPneHWw?si=TyiXrsAxgbdrztD4 "Merge data frames with left_join()") | 📒 |  |  |
+|  | `r advdate(fri,1)` | Tidying data | [📖](https://r4ds.hadley.nz/data-tidy "r4ds, chap. 5.3-5.5") | [📺](https://youtu.be/xa0tYCfHHTI?si=1YII-L90IY05UZ70 "Tidying data") | 📒 |  |  |
+|  | `r advdate(sat,1)` | Advanced wrangling topics | [📖](https://link.springer.com/article/10.1057/palgrave.ap.5500151 "Norris") |  | 📒 | [🧮](assignments/coding-assignment-2.qmd "Coding assingment 2") | `r advdate(sun,1)` |
+| 3 | `r advdate(mon,2)` | Categorical data | [📖](https://openintro-ims.netlify.app/explore-categorical "IMS, chap. 4") | [📺](https://youtu.be/7NhNeADL8fA?si=InH8FFc1BIVT0ktM "Exploring Categorical Data") | 📒 |  |  |
+|  | `r advdate(tues,2)` | Continuous data | [📖](https://openintro-ims.netlify.app/explore-numerical "IMS, chap. 5") | [📺](https://youtu.be/Xm0PPtci3JE?si=MocqDt05YqllA9k5 "Exploring Numerical Data") | 📒 |  |  |
+|  | `r advdate(wed,2)` | Data summary tools |  |  | 📒 | 📘 | `r advdate(wed,2)` |
+|  | `r advdate(thur,2)` | Sampling and uncertainty | [📖](https://openintro-ims.netlify.app/foundations-bootstrapping "IMS, chap. 12") | [📺](https://youtu.be/Xz0x-8-cgaQ?si=v_YCi-dU5YBdcb99 "Bootstrapping Main Ideas") | 📒 |  |  |
+|  | `r advdate(fri,2)` | Single proportion tests | [📖](https://openintro-ims.netlify.app/inference-one-prop "IMS, chap. 16") | 📺 | 📒 |  |  |
+|  | `r advdate(sat,2)` | Relationship between two variables | [📖](https://openintro-ims.netlify.app/foundations-randomization "IMS, chap. 11") | 📺 | 📒 | [🧮](assignments/coding-assignment-3.qmd "Coding assingment 3") | `r advdate(sun,2)` |
+| 4 | `r advdate(mon,3)` | The language of models |  |  | 📒 |  |  |
+|  | `r advdate(tues,3)` | Interpreting linear models | [📖](https://openintro-ims.netlify.app/model-slr "IMS, chap. 7") | [📺](https://youtu.be/dLc-lfEEYss?si=-Zelb-HBAP-MPvnF) | 📒 |  |  |
+|  | `r advdate(wed,3)` | Estimation and line fitting |  |  | 📒 | 📘 | `r advdate(wed,3)` |
+|  | `r advdate(thur,3)` | Multiple regression | [📖](https://openintro-ims.netlify.app/model-mlr "IMS, chap. 8") | [📺](https://youtu.be/jXg0vU0y1ak?si=rhQ9uWhuhVqnI-Ox) | 📒 |  |  |
+|  | `r advdate(fri,3)` | Assumptions, EDA and diagnostics |  |  | 📒 |  |  |
+|  | `r advdate(sat,3)` | Feature engineering |  |  | 📒 | 🧮 | `r advdate(sun,3)` |
+| 5 | `r advdate(mon,4)` | Why logistic regression? | [📖](https://openintro-ims.netlify.app/model-logistic "IMS, chap. 9") | [📺](https://youtu.be/xuTiAW0OR40?si=sUoIr5pzHwHEpazO) | 📒 |  |  |
+|  | `r advdate(tues,4)` | The logistic regression model | 📖 📖 | 📺 | 📒 |  |  |
+|  | `r advdate(wed,4)` | Interpreting results |  | 📺 | 📒 | 📘 | `r advdate(wed,4)` |
+|  | `r advdate(thur,4)` | Prediction and overfitting |  |  | 📒 |  |  |
+|  | `r advdate(fri,4)` | Model evaluation |  |  | 📒 |  |  |
+|  | `r advdate(sat,4)` | Multiple predictors, interactions and diagnostics | 📖 |  | 📒 | 🧮 | `r advdate(sun,4)` |
+| 6 | `r advdate(mon,5)` | Final Project |  |  | 📒 | [✍️](project/project-assignment-1.qmd "Project assignment 1") | `r advdate(mon,5)` |
+|  | `r advdate(tues,5)` | Final Project |  |  | 📒 |  |  |
+|  | `r advdate(wed,5)` | Final Project |  |  |  | [✍️](project/project-assignment-2.qmd "Project assignment 2") | `r advdate(wed,5)` |
+|  | `r advdate(thur,5)` | Final Project |  |  |  |  |  |
+|  | `r advdate(fri,5)` | Final project |  |  |  |  |  |
+|  | `r advdate(sat,6)` | Final project |  |  |  | [✍️](project/project-assignment-3.qmd "Project assignment 3") | `r advdate(sat,5)` |
 :::
