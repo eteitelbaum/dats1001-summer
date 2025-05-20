@@ -39,7 +39,7 @@ All academic readings will be linked to the course website. There are no textboo
 
 ### Quizzes
 
-Students will complete approximately six graded quizzes. These exercises will be oriented towards strengthening the student's ability to manipulate, visualize and communicate data with R and Quarto. 
+Students will complete approximately ten graded quizzes. These exercises will be oriented towards strengthening the student's ability to manipulate, visualize and communicate data with R and Quarto. 
 
 ### Coding Assignments
 
@@ -165,7 +165,7 @@ To fully participate in our course, you will need regular access to broadband In
 -   Quarto: a document generation tool that allows you to create documents that combine code, data, and text.
 -   Discord: a real-time chat application.
 
-#### Skills
+### Skills
 
 For our course, you should be able to:
 
