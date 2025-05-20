@@ -13,8 +13,10 @@ execute:
 
 ::: {.callout-tip}
 ## Prework
-- Install R, R Studio and the Tidyverse collection of packages if you have not done so already (see [getting started](/modules/module-1.1.qmd))
-- Read this [markdown guide](https://www.markdownguide.org/getting-started/)
+- Install R, R Studio and the Tidyverse collection of packages if you have not done so already (see [getting started](/modules/module-1.1.qmd)).
+- Read this [markdown guide](https://www.markdownguide.org/getting-started/).
+- Start a project folder for module 1 in the way that we learned in the [getting started module](/modules/module-1.1.qmd). You can call it module-1 or whatever you like, but try to use a consistent naming convention like kebab-case, snake_case or camelCase.
+- Create a new Quarto document in your project folder and name it `module-1.2.qmd`. Use that to take notes and do the exercise at the end of the module.
 :::
 
 ## Overview

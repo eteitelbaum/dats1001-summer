@@ -1,0 +1,189 @@
+---
+title: "Module 1.3"
+subtitle: "R Coding Basics"
+format: 
+  html:
+    code-link: true
+highlight-style: atom-one
+execute: 
+  echo: true
+  message: false
+  warning: false
+---
+
+::: {.callout-tip}
+## Prework
+- Familiarize yourself with the [Tidyverse](https://www.tidyverse.org/packages/) group of packages.
+- We will not be using all of these, but the first four (`ggplot2`, `dplyr`, `tidyr`, and `readr`) are essential for this course.
+- You should have a project folder for Module 1 that you created in the last lesson. In it, create a Quarto document called `module-1.3.qmd` and use it to take notes and do the exercises in the module. 
+:::
+
+## Overview
+
+This module introduces the core concepts of programming in R. You will learn how R can be used as a calculator, how to store data in objects, and how to interact with R through both the console and code chunks in Quarto. We want to build comfort with R syntax and programming logic so you’re well-prepared for more advanced topics like data wrangling and visualization in upcoming modules.
+
+{{< video https://youtu.be/hvFBDmT4bdY?si=RQ5EpjCbBBkGLcaN title='R Programming for Beginners' >}}
+
+## What Can R Do?
+
+R is a versatile programming language renowned for its strengths in data analysis and visualization, making it a favorite among statisticians and data scientists. Beyond these core capabilities, R functions as a general-purpose language that supports a wide range of tasks—from building web applications to developing machine learning models. Its open-source nature ensures that it is freely available and constantly evolving, thanks to a vibrant and active community of contributors who expand its functionality through packages and collaborative development.
+
+## Using R as a Calculator
+
+R handles basic arithmetic with ease. You can enter simple expressions in the console, such as:
+
+```{r}
+2 + 2
+```
+
+And you can perform many other operations, like subtraction, multiplication, and division. Here are some common arithmetic operators in R:
+
+- `+` addition
+- `-` subtraction
+- `*` multiplication
+- `/` division
+- `^` exponentiation (also `**`)
+
+## Objects in R
+
+In R, everything is an object. An object is a named data structure that stores values and associated metadata. Objects can hold simple data like numbers or more complex structures like vectors, lists, or data frames.
+
+You create an object using the assignment operator `<-`. To take a simple example from earlier in this module, we can take the sum of 2 and 2 and assign it to an object called `sum_of_2plus2`:
+
+```{r}
+sum_of_2plus2 <- 2 + 2
+```
+
+Now that we have the object created we can do lots of things with it. We could simply print what is in the object by calling it (printing it out) in another code chunk:
+
+```{r}
+sum_of_2plus2
+```
+
+::: {.callout-note}
+In the console, you need to use `print()` to display the contents of an object. In Quarto, you can just type the name of the object and it will print it out for you.
+:::
+
+Or we could use it in another calculation. For example, we could multiply it by 2:
+
+```{r}
+sum_of_2plus2 * 2
+```
+
+We could then assign that to another object:
+
+```{r}
+sum_of_2plus2_times_2 <- sum_of_2plus2 * 2
+```
+
+And so on... But we can store lots of things in objects, not just `2 + 2`. For example, we can store a string in an object. Let's store the string "Hello, world!" in an object called `my_string` and then print it out:
+
+```{r}
+my_string <- "Hello, world!"
+
+my_string
+```
+
+Sometimes you want to store more than one number. In this case you can store a *vector*. A vector is a collection of numbers or characters. You can create a vector using the `c()` function, which stands for "combine." For example, to create a vector of numbers from 1 to 5, you would do:
+
+```{r}
+my_vector <- c(1, 2, 3, 4, 5)
+
+my_vector
+```
+
+## Your Turn!
+
+1. In your Quarto document, create a vector of numbers from 1 to 10 and assign it to an object called `my_vector`.
+2. Print out the object.
+3. Create a new object called `my_vector_squared` that is equal to `my_vector` squared and print it out.
+4. Create a new object with a string in it called `another_string` and print it out.
+
+## Functions
+
+A function is a set of instructions that produces some output. In R, you can use built-in functions to perform specific tasks. For example, you can use the `mean()` function to calculate the average of a set of numbers. Let's take the mean of the vector that we created earlier:
+
+```{r}
+mean(my_vector)
+```
+
+Here we see that the mean of `c(1, 2, 3, 4, 5)` is 3. Some common functions in R include:
+
+- `mean()` calculates the mean of a set of numbers
+- `median()` calculates the median of a set of numbers
+- `sd()` calculates the standard deviation of a set of numbers
+- `sum()` calculates the sum of a set of numbers
+- `length()` calculates the length of a vector
+- `max()` and `min()` calculate the maximum and minimum values of a vector
+- `round()` rounds a number to a specified number of decimal places
+- `sqrt()` calculates the square root of a number
+- `log()` calculates the natural logarithm of a number
+- `exp()` calculates the exponential of a number
+- `abs()` calculates the absolute value of a number
+
+You can even create your own functions in R. For example, we could create a function that takes a number and returns its square:
+
+```{r}
+square <- function(x) {
+  x^2
+}
+```
+
+Then you can use this function to square any number:
+
+```{r}
+square(2)
+```
+
+Creating functions is somewhat of an advanced topic, but it is a very useful one. You can use functions for all sorts of things, including data wrangling and visualization. 
+
+## Your Turn!
+
+1. Create a vector of numbers from 1 to 20 and assign it to an object called `another_vector`.
+2. Print out the object.
+3. Now apply the `mean()` function to `another_vector` and print out the result.
+4. Next try some of the other functions listed earlier in the module on `another_vector` and print out the results.
+5. Finally, create a function that takes a number and returns its cube. Call it `cube()`. Use it to cube the number 3 and print out the result.
+
+## Data Frames
+
+{{< video https://youtu.be/9f2g7RN5N0I?si=yftzP1UXlOKMNQ-U title='Using the Data Frame in R' >}}
+
+A data frame is a two-dimensional table-like structure that can hold different types of data. Each column can contain different types of data (e.g., numeric, character, factor), and each row represents an observation. Data frames are one of the most common data structures in R and are used to store and manipulate datasets.
+
+To create a data frame, you can use the `data.frame()` function. For example, let's create a simple data frame with two columns: `x` and `y`:
+
+```{r}
+my_data <- data.frame(
+  name = c("Alice", "Bob", "Charlie", "David", "Eve"),
+  age = c(25, 30, 35, 40, 45),
+  height = c(5.5, 6.0, 5.8, 5.9, 5.7),
+  starwars_fan = c(TRUE, FALSE, TRUE, FALSE, TRUE)
+)
+```
+
+Here we have a data frame with 5 rows and 4 columns. The first column is a character vector (name), the second (age) and third (height) columns are numeric vectors, and the last column (starwars_fan) is a logical vector. You can print out the data frame by simply typing its name:
+
+```{r}
+my_data
+```
+
+Now you can access individual columns or rows of the data frame using the `$` operator or by using indexing. For example, to access the `age` column, you can do:
+
+```{r}
+my_data$age
+```
+
+You may also see people using indexing to access columns. For example, you can access the first column of the data frame using:
+
+```{r}
+my_data[, 1]
+```
+
+We will learn a lot more about manipulating data frames in subsequent modules when we talk about the `dplyr` package. For now, just know that data frames are a powerful and flexible way to store and manipulate data in R.
+
+## Your Turn!
+
+- Create an original data frame with 5 rows and 3 columns. The first column should be a character vector, the second should be a numeric vector, and the third should be a logical vector. Call it `my_data_2` and print it out.
+- Use the `$` operator to access the second column of `my_data_2` and print it out.
+- Use indexing to access the third row of `my_data_2` and print it out.

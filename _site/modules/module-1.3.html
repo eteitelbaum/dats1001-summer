@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.7.11">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<title>Module 1.2 – DATS 1001–Fall Schedule</title>
+<title>Module 1.3 – DATS 1001–Fall Schedule</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -98,14 +98,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
-<meta property="og:title" content="Module 1.2 – DATS 1001–Fall Schedule">
-<meta property="og:description" content="Meet ouR Tech Stack">
-<meta property="og:image" content="https://ds4all.rocks/modules/images/code-chunks.gif">
+<meta property="og:title" content="Module 1.3 – DATS 1001–Fall Schedule">
+<meta property="og:description" content="R Coding Basics">
 <meta property="og:site_name" content="DATS 1001--Fall Schedule">
-<meta name="twitter:title" content="Module 1.2 – DATS 1001–Fall Schedule">
-<meta name="twitter:description" content="Meet ouR Tech Stack">
-<meta name="twitter:image" content="https://ds4all.rocks/modules/images/code-chunks.gif">
-<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Module 1.3 – DATS 1001–Fall Schedule">
+<meta name="twitter:description" content="R Coding Basics">
+<meta name="twitter:card" content="summary">
 </head>
 <body class="nav-sidebar docked">
 
@@ -114,7 +112,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Module 1.2</li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Module 1.3</li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -307,18 +305,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
 <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a></li>
-  <li><a href="#why-project-oriented-workflows-matter" id="toc-why-project-oriented-workflows-matter" class="nav-link" data-scroll-target="#why-project-oriented-workflows-matter">Why Project-Oriented Workflows Matter</a></li>
-  <li><a href="#yaml-front-matter-revisited" id="toc-yaml-front-matter-revisited" class="nav-link" data-scroll-target="#yaml-front-matter-revisited">YAML Front Matter Revisited</a></li>
-  <li><a href="#authoring-with-markdown" id="toc-authoring-with-markdown" class="nav-link" data-scroll-target="#authoring-with-markdown">Authoring with Markdown</a></li>
-  <li><a href="#code-chunks-in-depth" id="toc-code-chunks-in-depth" class="nav-link" data-scroll-target="#code-chunks-in-depth">Code Chunks in Depth</a></li>
+  <li><a href="#what-can-r-do" id="toc-what-can-r-do" class="nav-link" data-scroll-target="#what-can-r-do">What Can R Do?</a></li>
+  <li><a href="#using-r-as-a-calculator" id="toc-using-r-as-a-calculator" class="nav-link" data-scroll-target="#using-r-as-a-calculator">Using R as a Calculator</a></li>
+  <li><a href="#objects-in-r" id="toc-objects-in-r" class="nav-link" data-scroll-target="#objects-in-r">Objects in R</a></li>
   <li><a href="#your-turn" id="toc-your-turn" class="nav-link" data-scroll-target="#your-turn">Your Turn!</a></li>
-  <li><a href="#final-tips" id="toc-final-tips" class="nav-link" data-scroll-target="#final-tips">Final Tips</a></li>
-  </ul><div class="toc-actions"><ul><li><a href="https://github.com/dats1001-fall-2024/edit/main/modules/module-1.2.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/dats1001-fall-2024/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+  <li><a href="#functions" id="toc-functions" class="nav-link" data-scroll-target="#functions">Functions</a></li>
+  <li><a href="#your-turn-1" id="toc-your-turn-1" class="nav-link" data-scroll-target="#your-turn-1">Your Turn!</a></li>
+  <li><a href="#data-frames" id="toc-data-frames" class="nav-link" data-scroll-target="#data-frames">Data Frames</a></li>
+  <li><a href="#your-turn-2" id="toc-your-turn-2" class="nav-link" data-scroll-target="#your-turn-2">Your Turn!</a></li>
+  </ul><div class="toc-actions"><ul><li><a href="https://github.com/dats1001-fall-2024/edit/main/modules/module-1.3.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/dats1001-fall-2024/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
-<h1 class="title">Module 1.2</h1>
-<p class="subtitle lead">Meet ouR Tech Stack</p>
+<h1 class="title">Module 1.3</h1>
+<p class="subtitle lead">R Coding Basics</p>
 </div>
 
 
@@ -343,63 +343,197 @@ Prework
 </div>
 <div class="callout-body-container callout-body">
 <ul>
-<li>Install R, R Studio and the Tidyverse collection of packages if you have not done so already (see <a href="../modules/module-1.1.html">getting started</a>).</li>
-<li>Read this <a href="https://www.markdownguide.org/getting-started/">markdown guide</a>.</li>
-<li>Start a project folder for module 1 in the way that we learned in the <a href="../modules/module-1.1.html">getting started module</a>. You can call it module-1 or whatever you like, but try to use a consistent naming convention like kebab-case, snake_case or camelCase.</li>
-<li>Create a new Quarto document in your project folder and name it <code>module-1.2.qmd</code>. Use that to take notes and do the exercise at the end of the module.</li>
+<li>Familiarize yourself with the <a href="https://www.tidyverse.org/packages/">Tidyverse</a> group of packages.</li>
+<li>We will not be using all of these, but the first four (<code>ggplot2</code>, <code>dplyr</code>, <code>tidyr</code>, and <code>readr</code>) are essential for this course.</li>
+<li>You should have a project folder for Module 1 that you created in the last lesson. In it, create a Quarto document called <code>module-1.3.qmd</code> and use it to take notes and do the exercises in the module.</li>
 </ul>
 </div>
 </div>
 <section id="overview" class="level2"><h2 class="anchored" data-anchor-id="overview">Overview</h2>
-<p>In this module, we’ll build on your first experience with Quarto documents and go deeper into effective authoring and project organization. By the end, you should feel comfortable creating reproducible reports that include well-organized text, code, and outputs.</p>
-</section><section id="why-project-oriented-workflows-matter" class="level2"><h2 class="anchored" data-anchor-id="why-project-oriented-workflows-matter">Why Project-Oriented Workflows Matter</h2>
-<p>When you’re just starting out, it’s tempting to save your files wherever is convenient—maybe the Desktop, maybe the Downloads folder. But as your analysis grows more complex or involves collaborators, maintaining an organized file structure becomes essential. A good Quarto project keeps all your materials—data, scripts, and reports—in a consistent, portable format. This not only helps avoid broken file paths, but also supports reproducibility, sharing, and long-term clarity.</p>
-<p>A typical layout might include your main <code>.qmd</code> document, a <code>data/</code> folder for input files, a separate folder for images or plots, and a designated location for rendered outputs. Keeping everything bundled in a single project folder also makes it easier to track changes and collaborate via Git or GitHub.</p>
-</section><section id="yaml-front-matter-revisited" class="level2"><h2 class="anchored" data-anchor-id="yaml-front-matter-revisited">YAML Front Matter Revisited</h2>
-<p>You’ve already encountered the YAML block at the top of a Quarto document. Now let’s take a closer look at what it does.</p>
-<p>The YAML front matter sets key metadata and document options. For example:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"My Report"</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">author</span><span class="kw">:</span><span class="at"> </span><span class="st">"Your Name"</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">date</span><span class="kw">:</span><span class="at"> today</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">format</span><span class="kw">:</span><span class="at"> html</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">execute</span><span class="kw">:</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">echo</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">message</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Here, the <code>title</code>, <code>author</code>, and <code>date</code> fields define the document header. The <code>format</code> field tells Quarto what type of file to create—HTML in this case. The <code>execute</code> section controls global options for code chunks. In this example, code won’t be shown (<code>echo: false</code>) and messages will be suppressed (<code>message: false</code>). These defaults apply to all chunks in the document, though individual chunks can override them.</p>
-</section><section id="authoring-with-markdown" class="level2"><h2 class="anchored" data-anchor-id="authoring-with-markdown">Authoring with Markdown</h2>
-<p>Quarto documents are written in Markdown, a lightweight markup language designed for readability. You don’t need to remember complex formatting commands. To create section headings, you simply use hash signs—<code>#</code> for the main title, <code>##</code> for sections, and so on. Italics and bold are created with asterisks, like <code>*italic*</code> and <code>**bold**</code>.</p>
-<div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/bTVIMt3XllM?si=krDEL4lvyT-T5DZc" title="Markdown Crash Course" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
-<p>You can also create numbered or unnumbered lists by just typing them directly, and you can include links with <code>[text](https://quarto.org)</code> syntax. Images work the same way—just add an exclamation mark in front, like <code>![](images/myplot.png)</code>. The goal is to keep your writing clear and uncluttered while supporting rich formatting features.</p>
-</section><section id="code-chunks-in-depth" class="level2"><h2 class="anchored" data-anchor-id="code-chunks-in-depth">Code Chunks in Depth</h2>
-<p>One of the key advantages of Quarto is the ability to weave together code and prose. You can insert a code chunk by typing three backticks and specifying the language, like this:</p>
+<p>This module introduces the core concepts of programming in R. You will learn how R can be used as a calculator, how to store data in objects, and how to interact with R through both the console and code chunks in Quarto. We want to build comfort with R syntax and programming logic so you’re well-prepared for more advanced topics like data wrangling and visualization in upcoming modules.</p>
+<div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/hvFBDmT4bdY?si=RQ5EpjCbBBkGLcaN" title="R Programming for Beginners" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
+</section><section id="what-can-r-do" class="level2"><h2 class="anchored" data-anchor-id="what-can-r-do">What Can R Do?</h2>
+<p>R is a versatile programming language renowned for its strengths in data analysis and visualization, making it a favorite among statisticians and data scientists. Beyond these core capabilities, R functions as a general-purpose language that supports a wide range of tasks—from building web applications to developing machine learning models. Its open-source nature ensures that it is freely available and constantly evolving, thanks to a vibrant and active community of contributors who expand its functionality through packages and collaborative development.</p>
+</section><section id="using-r-as-a-calculator" class="level2"><h2 class="anchored" data-anchor-id="using-r-as-a-calculator">Using R as a Calculator</h2>
+<p>R handles basic arithmetic with ease. You can enter simple expressions in the console, such as:</p>
 <div class="cell">
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fl">2</span> <span class="op">+</span> <span class="fl">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>     speed           dist       
- Min.   : 4.0   Min.   :  2.00  
- 1st Qu.:12.0   1st Qu.: 26.00  
- Median :15.0   Median : 36.00  
- Mean   :15.4   Mean   : 42.98  
- 3rd Qu.:19.0   3rd Qu.: 56.00  
- Max.   :25.0   Max.   :120.00  </code></pre>
+<pre><code>[1] 4</code></pre>
 </div>
 </div>
-<p>You can also control how chunks behave using chunk options. Quarto supports a special <code>#|</code> syntax that lets you configure each chunk individually. For instance, you can use <code>#| echo:</code> to control whether the code is displayed along with the output, or <code>#| label:</code> to add a label to a code chunk (labels can be useful if you want to identify where an error is coming from or to reuse code from a chunk).</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="images/code-chunks.gif" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
-</figure>
+<p>And you can perform many other operations, like subtraction, multiplication, and division. Here are some common arithmetic operators in R:</p>
+<ul>
+<li>
+<code>+</code> addition</li>
+<li>
+<code>-</code> subtraction</li>
+<li>
+<code>*</code> multiplication</li>
+<li>
+<code>/</code> division</li>
+<li>
+<code>^</code> exponentiation (also <code>**</code>)</li>
+</ul></section><section id="objects-in-r" class="level2"><h2 class="anchored" data-anchor-id="objects-in-r">Objects in R</h2>
+<p>In R, everything is an object. An object is a named data structure that stores values and associated metadata. Objects can hold simple data like numbers or more complex structures like vectors, lists, or data frames.</p>
+<p>You create an object using the assignment operator <code>&lt;-</code>. To take a simple example from earlier in this module, we can take the sum of 2 and 2 and assign it to an object called <code>sum_of_2plus2</code>:</p>
+<div class="cell">
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">sum_of_2plus2</span> <span class="op">&lt;-</span> <span class="fl">2</span> <span class="op">+</span> <span class="fl">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>In this example, we’ve given the chunk a label (<code>mtcars_plot</code>) and hidden the code from the final output using <code>echo: false</code>. Notice how in the rendered version the first chunk shows the code but the second and third do not. This is useful when you want to show the results—like a plot—without showing the code that generated it. You can also hide messages, warnings, and even outputs in a similar way.</p>
+<p>Now that we have the object created we can do lots of things with it. We could simply print what is in the object by calling it (printing it out) in another code chunk:</p>
+<div class="cell">
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">sum_of_2plus2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 4</code></pre>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>In the console, you need to use <code><a href="https://rdrr.io/r/base/print.html">print()</a></code> to display the contents of an object. In Quarto, you can just type the name of the object and it will print it out for you.</p>
+</div>
+</div>
+<p>Or we could use it in another calculation. For example, we could multiply it by 2:</p>
+<div class="cell">
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">sum_of_2plus2</span> <span class="op">*</span> <span class="fl">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 8</code></pre>
+</div>
+</div>
+<p>We could then assign that to another object:</p>
+<div class="cell">
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">sum_of_2plus2_times_2</span> <span class="op">&lt;-</span> <span class="va">sum_of_2plus2</span> <span class="op">*</span> <span class="fl">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>And so on… But we can store lots of things in objects, not just <code>2 + 2</code>. For example, we can store a string in an object. Let’s store the string “Hello, world!” in an object called <code>my_string</code> and then print it out:</p>
+<div class="cell">
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">my_string</span> <span class="op">&lt;-</span> <span class="st">"Hello, world!"</span></span>
+<span></span>
+<span><span class="va">my_string</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Hello, world!"</code></pre>
+</div>
+</div>
+<p>Sometimes you want to store more than one number. In this case you can store a <em>vector</em>. A vector is a collection of numbers or characters. You can create a vector using the <code><a href="https://rdrr.io/r/base/c.html">c()</a></code> function, which stands for “combine.” For example, to create a vector of numbers from 1 to 5, you would do:</p>
+<div class="cell">
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">my_vector</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span>, <span class="fl">4</span>, <span class="fl">5</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">my_vector</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1 2 3 4 5</code></pre>
+</div>
+</div>
 </section><section id="your-turn" class="level2"><h2 class="anchored" data-anchor-id="your-turn">Your Turn!</h2>
-<p>Let’s put everything together in a small project. Start by creating a new folder and placing a new Quarto document inside it. Here is an illustration to remind you how to do that (for a fuller explanation, review the <a href="getting-started.qmd">Getting Started</a> module).</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="images/intro_quarto.gif" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
-</figure>
+<ol type="1">
+<li>In your Quarto document, create a vector of numbers from 1 to 10 and assign it to an object called <code>my_vector</code>.</li>
+<li>Print out the object.</li>
+<li>Create a new object called <code>my_vector_squared</code> that is equal to <code>my_vector</code> squared and print it out.</li>
+<li>Create a new object with a string in it called <code>another_string</code> and print it out.</li>
+</ol></section><section id="functions" class="level2"><h2 class="anchored" data-anchor-id="functions">Functions</h2>
+<p>A function is a set of instructions that produces some output. In R, you can use built-in functions to perform specific tasks. For example, you can use the <code><a href="https://rdrr.io/r/base/mean.html">mean()</a></code> function to calculate the average of a set of numbers. Let’s take the mean of the vector that we created earlier:</p>
+<div class="cell">
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">my_vector</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 3</code></pre>
 </div>
-<p>Write a few short paragraphs of narrative text and include a code chunk that generates a plot with <code>ggplot2</code>. If you have images or data files, place them in subfolders and link to them using relative paths.</p>
-<p>Once you’ve written your report, render the document to HTML. Open the result in your browser and make sure everything displays correctly. Along the way, try adjusting chunk options to control what appears in the final output. If you run into rendering errors, use the error messages to debug step-by-step—this is a valuable part of learning.</p>
-</section><section id="final-tips" class="level2"><h2 class="anchored" data-anchor-id="final-tips">Final Tips</h2>
-<p>As a rule of thumb, always use relative file paths inside your Quarto projects. This means referring to files based on their position in the folder structure, not their full computer location. It helps keep your project portable so that it runs smoothly on any machine, whether yours or a collaborator’s.</p>
-<p>When in doubt, label your chunks, write clearly, and remember that Quarto documents are meant to evolve. The more you write and render, the more confident you’ll become.</p>
+</div>
+<p>Here we see that the mean of <code>c(1, 2, 3, 4, 5)</code> is 3. Some common functions in R include:</p>
+<ul>
+<li>
+<code><a href="https://rdrr.io/r/base/mean.html">mean()</a></code> calculates the mean of a set of numbers</li>
+<li>
+<code><a href="https://rdrr.io/r/stats/median.html">median()</a></code> calculates the median of a set of numbers</li>
+<li>
+<code><a href="https://rdrr.io/r/stats/sd.html">sd()</a></code> calculates the standard deviation of a set of numbers</li>
+<li>
+<code><a href="https://rdrr.io/r/base/sum.html">sum()</a></code> calculates the sum of a set of numbers</li>
+<li>
+<code><a href="https://rdrr.io/r/base/length.html">length()</a></code> calculates the length of a vector</li>
+<li>
+<code><a href="https://rdrr.io/r/base/Extremes.html">max()</a></code> and <code><a href="https://rdrr.io/r/base/Extremes.html">min()</a></code> calculate the maximum and minimum values of a vector</li>
+<li>
+<code><a href="https://rdrr.io/r/base/Round.html">round()</a></code> rounds a number to a specified number of decimal places</li>
+<li>
+<code><a href="https://rdrr.io/r/base/MathFun.html">sqrt()</a></code> calculates the square root of a number</li>
+<li>
+<code><a href="https://rdrr.io/r/base/Log.html">log()</a></code> calculates the natural logarithm of a number</li>
+<li>
+<code><a href="https://rdrr.io/r/base/Log.html">exp()</a></code> calculates the exponential of a number</li>
+<li>
+<code><a href="https://rdrr.io/r/base/MathFun.html">abs()</a></code> calculates the absolute value of a number</li>
+</ul>
+<p>You can even create your own functions in R. For example, we could create a function that takes a number and returns its square:</p>
+<div class="cell">
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">square</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="va">x</span><span class="op">^</span><span class="fl">2</span></span>
+<span><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Then you can use this function to square any number:</p>
+<div class="cell">
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">square</span><span class="op">(</span><span class="fl">2</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 4</code></pre>
+</div>
+</div>
+<p>Creating functions is somewhat of an advanced topic, but it is a very useful one. You can use functions for all sorts of things, including data wrangling and visualization.</p>
+</section><section id="your-turn-1" class="level2"><h2 class="anchored" data-anchor-id="your-turn-1">Your Turn!</h2>
+<ol type="1">
+<li>Create a vector of numbers from 1 to 20 and assign it to an object called <code>another_vector</code>.</li>
+<li>Print out the object.</li>
+<li>Now apply the <code><a href="https://rdrr.io/r/base/mean.html">mean()</a></code> function to <code>another_vector</code> and print out the result.</li>
+<li>Next try some of the other functions listed earlier in the module on <code>another_vector</code> and print out the results.</li>
+<li>Finally, create a function that takes a number and returns its cube. Call it <code>cube()</code>. Use it to cube the number 3 and print out the result.</li>
+</ol></section><section id="data-frames" class="level2"><h2 class="anchored" data-anchor-id="data-frames">Data Frames</h2>
+<div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/9f2g7RN5N0I?si=yftzP1UXlOKMNQ-U" title="Using the Data Frame in R" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
+<p>A data frame is a two-dimensional table-like structure that can hold different types of data. Each column can contain different types of data (e.g., numeric, character, factor), and each row represents an observation. Data frames are one of the most common data structures in R and are used to store and manipulate datasets.</p>
+<p>To create a data frame, you can use the <code><a href="https://rdrr.io/r/base/data.frame.html">data.frame()</a></code> function. For example, let’s create a simple data frame with two columns: <code>x</code> and <code>y</code>:</p>
+<div class="cell">
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">my_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span></span>
+<span>  name <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Alice"</span>, <span class="st">"Bob"</span>, <span class="st">"Charlie"</span>, <span class="st">"David"</span>, <span class="st">"Eve"</span><span class="op">)</span>,</span>
+<span>  age <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">25</span>, <span class="fl">30</span>, <span class="fl">35</span>, <span class="fl">40</span>, <span class="fl">45</span><span class="op">)</span>,</span>
+<span>  height <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">5.5</span>, <span class="fl">6.0</span>, <span class="fl">5.8</span>, <span class="fl">5.9</span>, <span class="fl">5.7</span><span class="op">)</span>,</span>
+<span>  starwars_fan <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Here we have a data frame with 5 rows and 4 columns. The first column is a character vector (name), the second (age) and third (height) columns are numeric vectors, and the last column (starwars_fan) is a logical vector. You can print out the data frame by simply typing its name:</p>
+<div class="cell">
+<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">my_data</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     name age height starwars_fan
+1   Alice  25    5.5         TRUE
+2     Bob  30    6.0        FALSE
+3 Charlie  35    5.8         TRUE
+4   David  40    5.9        FALSE
+5     Eve  45    5.7         TRUE</code></pre>
+</div>
+</div>
+<p>Now you can access individual columns or rows of the data frame using the <code>$</code> operator or by using indexing. For example, to access the <code>age</code> column, you can do:</p>
+<div class="cell">
+<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">my_data</span><span class="op">$</span><span class="va">age</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 25 30 35 40 45</code></pre>
+</div>
+</div>
+<p>You may also see people using indexing to access columns. For example, you can access the first column of the data frame using:</p>
+<div class="cell">
+<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">my_data</span><span class="op">[</span>, <span class="fl">1</span><span class="op">]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Alice"   "Bob"     "Charlie" "David"   "Eve"    </code></pre>
+</div>
+</div>
+<p>We will learn a lot more about manipulating data frames in subsequent modules when we talk about the <code>dplyr</code> package. For now, just know that data frames are a powerful and flexible way to store and manipulate data in R.</p>
+</section><section id="your-turn-2" class="level2"><h2 class="anchored" data-anchor-id="your-turn-2">Your Turn!</h2>
+<ul>
+<li>Create an original data frame with 5 rows and 3 columns. The first column should be a character vector, the second should be a numeric vector, and the third should be a logical vector. Call it <code>my_data_2</code> and print it out.</li>
+<li>Use the <code>$</code> operator to access the second column of <code>my_data_2</code> and print it out.</li>
+<li>Use indexing to access the third row of <code>my_data_2</code> and print it out.</li>
+</ul>
 
 
 </section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
@@ -975,7 +1109,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/dats1001-fall-2024/edit/main/modules/module-1.2.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/dats1001-fall-2024/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/dats1001-fall-2024/edit/main/modules/module-1.3.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/dats1001-fall-2024/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>This page is built with <a href="https://quarto.org/">Quarto</a>. 👷🛠️</p>
 </div>

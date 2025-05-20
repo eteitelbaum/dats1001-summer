@@ -5665,7 +5665,7 @@
     "href": "modules/module-1.2.html",
     "title": "Module 1.2",
     "section": "",
-    "text": "Prework\n\n\n\n\nInstall R, R Studio and the Tidyverse collection of packages if you have not done so already (see getting started)\nRead this markdown guide"
+    "text": "Prework\n\n\n\n\nInstall R, R Studio and the Tidyverse collection of packages if you have not done so already (see getting started).\nRead this markdown guide.\nStart a project folder for module 1 in the way that we learned in the getting started module. You can call it module-1 or whatever you like, but try to use a consistent naming convention like kebab-case, snake_case or camelCase.\nCreate a new Quarto document in your project folder and name it module-1.2.qmd. Use that to take notes and do the exercise at the end of the module."
   },
   {
     "objectID": "modules/module-1.2.html#why-project-oriented-workflows-matter",
@@ -5743,5 +5743,75 @@
     "title": "Module 1.1",
     "section": "Quarto",
     "text": "Quarto\n\nOnce you have R, R Studio and Quarto installed, you are ready to start integrating text and code with Quarto. Quarto is an open source publishing platform that enables you to integrate text with code. If you have used R Markdown before then Quarto will look familiar to you because Quarto is the next generation of R Markdown.\nRStudio comes with a version of Quarto already installed, but it can be useful to install the most recent version separately and because doing so will allow you to use Quarto with another IDE like VS Code. You can install the most recent version of Quarto by visiting this page and selecting the version for your operating system.\nNow take a little time to create a Quarto project in R Studio and make sure everything is working properly. But before you get started, create a new folder(directory) for this course on your computer somewhere. Once that is done, go to File &gt; New Project. Then select Quarto Project and name the project something like “test-project” in the Directory name field. Next, select Browse and navigate to the folder that you created for this course. Select Create Project.\nYou will notice that in your new project folder there is a file with an .Rproj extension. The .Rproj file is what tells RStudio which files are associated with the project and it obviates the need to set the working directory. It also makes it possible to share the folder with anyone who is running R and RStudio and have them run your code without having to set a working directory. This is what we refer to as a project-based workflow and we will use it for every assignment in this class.\nNow try rendering the document with the Render toggle button. By default, Quarto renders an .html file that it will open in a browser and save to your project folder. Next we want to try rendering a .pdf document. To do this, we have to install tinytex, a lightweight version of LaTeX. To do this, go to the Terminal and type quarto install tinytex. Now, change the format from html to pdf by inserting format: pdf in the YAML header. Then render the document again. A .pdf document should open up.\nNow take a few minutes and try changing more of the code in the YAML header. You can try changing the title, adding a subtitle (subtitle:) or changing the execution options. By default, Quarto uses the visual editor but behind the scenes it is using Markdown. Try and edit some text using the toggle buttons available in the visual editor and then switch to Source to view the underlying Markdown code. Play with the R code chunks embedded in the document or try adding new code chunks.\nYou may already have some experience writing in Markdown, which is a lightweight markup language that enables you to format plaintext files. If you have not used Markdown, or if your memory is hazy, don’t worry: it is really easy to learn. Have a look at this Markdown cheat sheet and try to familiarize yourself with its basic syntax. Finally, take some time to get familiar with the Guide and Reference sections of the Quarto website. Then take a look at the gallery so that you can get an idea of the kinds of things you can produce with Quarto."
+  },
+  {
+    "objectID": "modules/module-1.3.html",
+    "href": "modules/module-1.3.html",
+    "title": "Module 1.3",
+    "section": "",
+    "text": "Prework\n\n\n\n\nFamiliarize yourself with the Tidyverse group of packages.\nWe will not be using all of these, but the first four (ggplot2, dplyr, tidyr, and readr) are essential for this course.\nYou should have a project folder for Module 1 that you created in the last lesson. In it, create a Quarto document called module-1.3.qmd and use it to take notes and do the exercises in the module."
+  },
+  {
+    "objectID": "modules/module-1.3.html#overview",
+    "href": "modules/module-1.3.html#overview",
+    "title": "Module 1.3",
+    "section": "Overview",
+    "text": "Overview\nThis module introduces the core concepts of programming in R. You will learn how R can be used as a calculator, how to store data in objects, and how to interact with R through both the console and code chunks in Quarto. We want to build comfort with R syntax and programming logic so you’re well-prepared for more advanced topics like data wrangling and visualization in upcoming modules."
+  },
+  {
+    "objectID": "modules/module-1.3.html#what-can-r-do",
+    "href": "modules/module-1.3.html#what-can-r-do",
+    "title": "Module 1.3",
+    "section": "What Can R Do?",
+    "text": "What Can R Do?\nR is a versatile programming language renowned for its strengths in data analysis and visualization, making it a favorite among statisticians and data scientists. Beyond these core capabilities, R functions as a general-purpose language that supports a wide range of tasks—from building web applications to developing machine learning models. Its open-source nature ensures that it is freely available and constantly evolving, thanks to a vibrant and active community of contributors who expand its functionality through packages and collaborative development."
+  },
+  {
+    "objectID": "modules/module-1.3.html#using-r-as-a-calculator",
+    "href": "modules/module-1.3.html#using-r-as-a-calculator",
+    "title": "Module 1.3",
+    "section": "Using R as a Calculator",
+    "text": "Using R as a Calculator\nR handles basic arithmetic with ease. You can enter simple expressions in the console, such as:\n\n2 + 2\n\n[1] 4\n\n\nAnd you can perform many other operations, like subtraction, multiplication, and division. Here are some common arithmetic operators in R:\n\n\n+ addition\n\n- subtraction\n\n* multiplication\n\n/ division\n\n^ exponentiation (also **)"
+  },
+  {
+    "objectID": "modules/module-1.3.html#objects-in-r",
+    "href": "modules/module-1.3.html#objects-in-r",
+    "title": "Module 1.3",
+    "section": "Objects in R",
+    "text": "Objects in R\nIn R, everything is an object. An object is a named data structure that stores values and associated metadata. Objects can hold simple data like numbers or more complex structures like vectors, lists, or data frames.\nYou create an object using the assignment operator &lt;-. To take a simple example from earlier in this module, we can take the sum of 2 and 2 and assign it to an object called sum_of_2plus2:\n\nsum_of_2plus2 &lt;- 2 + 2\n\nNow that we have the object created we can do lots of things with it. We could simply print what is in the object by calling it (printing it out) in another code chunk:\n\nsum_of_2plus2\n\n[1] 4\n\n\n\n\n\n\n\n\nNote\n\n\n\nIn the console, you need to use print() to display the contents of an object. In Quarto, you can just type the name of the object and it will print it out for you.\n\n\nOr we could use it in another calculation. For example, we could multiply it by 2:\n\nsum_of_2plus2 * 2\n\n[1] 8\n\n\nWe could then assign that to another object:\n\nsum_of_2plus2_times_2 &lt;- sum_of_2plus2 * 2\n\nAnd so on… But we can store lots of things in objects, not just 2 + 2. For example, we can store a string in an object. Let’s store the string “Hello, world!” in an object called my_string and then print it out:\n\nmy_string &lt;- \"Hello, world!\"\n\nmy_string\n\n[1] \"Hello, world!\"\n\n\nSometimes you want to store more than one number. In this case you can store a vector. A vector is a collection of numbers or characters. You can create a vector using the c() function, which stands for “combine.” For example, to create a vector of numbers from 1 to 5, you would do:\n\nmy_vector &lt;- c(1, 2, 3, 4, 5)\n\nmy_vector\n\n[1] 1 2 3 4 5"
+  },
+  {
+    "objectID": "modules/module-1.3.html#your-turn",
+    "href": "modules/module-1.3.html#your-turn",
+    "title": "Module 1.3",
+    "section": "Your Turn!",
+    "text": "Your Turn!\n\nIn your Quarto document, create a vector of numbers from 1 to 10 and assign it to an object called my_vector.\nPrint out the object.\nCreate a new object called my_vector_squared that is equal to my_vector squared and print it out.\nCreate a new object with a string in it called another_string and print it out."
+  },
+  {
+    "objectID": "modules/module-1.3.html#functions",
+    "href": "modules/module-1.3.html#functions",
+    "title": "Module 1.3",
+    "section": "Functions",
+    "text": "Functions\nA function is a set of instructions that produces some output. In R, you can use built-in functions to perform specific tasks. For example, you can use the mean() function to calculate the average of a set of numbers. Let’s take the mean of the vector that we created earlier:\n\nmean(my_vector)\n\n[1] 3\n\n\nHere we see that the mean of c(1, 2, 3, 4, 5) is 3. Some common functions in R include:\n\n\nmean() calculates the mean of a set of numbers\n\nmedian() calculates the median of a set of numbers\n\nsd() calculates the standard deviation of a set of numbers\n\nsum() calculates the sum of a set of numbers\n\nlength() calculates the length of a vector\n\nmax() and min() calculate the maximum and minimum values of a vector\n\nround() rounds a number to a specified number of decimal places\n\nsqrt() calculates the square root of a number\n\nlog() calculates the natural logarithm of a number\n\nexp() calculates the exponential of a number\n\nabs() calculates the absolute value of a number\n\nYou can even create your own functions in R. For example, we could create a function that takes a number and returns its square:\n\nsquare &lt;- function(x) {\n  x^2\n}\n\nThen you can use this function to square any number:\n\nsquare(2)\n\n[1] 4\n\n\nCreating functions is somewhat of an advanced topic, but it is a very useful one. You can use functions for all sorts of things, including data wrangling and visualization."
+  },
+  {
+    "objectID": "modules/module-1.3.html#your-turn-1",
+    "href": "modules/module-1.3.html#your-turn-1",
+    "title": "Module 1.3",
+    "section": "Your Turn!",
+    "text": "Your Turn!\n\nCreate a vector of numbers from 1 to 20 and assign it to an object called another_vector.\nPrint out the object.\nNow apply the mean() function to another_vector and print out the result.\nNext try some of the other functions listed earlier in the module on another_vector and print out the results.\nFinally, create a function that takes a number and returns its cube. Call it cube(). Use it to cube the number 3 and print out the result."
+  },
+  {
+    "objectID": "modules/module-1.3.html#data-frames",
+    "href": "modules/module-1.3.html#data-frames",
+    "title": "Module 1.3",
+    "section": "Data Frames",
+    "text": "Data Frames\n\nA data frame is a two-dimensional table-like structure that can hold different types of data. Each column can contain different types of data (e.g., numeric, character, factor), and each row represents an observation. Data frames are one of the most common data structures in R and are used to store and manipulate datasets.\nTo create a data frame, you can use the data.frame() function. For example, let’s create a simple data frame with two columns: x and y:\n\nmy_data &lt;- data.frame(\n  name = c(\"Alice\", \"Bob\", \"Charlie\", \"David\", \"Eve\"),\n  age = c(25, 30, 35, 40, 45),\n  height = c(5.5, 6.0, 5.8, 5.9, 5.7),\n  starwars_fan = c(TRUE, FALSE, TRUE, FALSE, TRUE)\n)\n\nHere we have a data frame with 5 rows and 4 columns. The first column is a character vector (name), the second (age) and third (height) columns are numeric vectors, and the last column (starwars_fan) is a logical vector. You can print out the data frame by simply typing its name:\n\nmy_data\n\n     name age height starwars_fan\n1   Alice  25    5.5         TRUE\n2     Bob  30    6.0        FALSE\n3 Charlie  35    5.8         TRUE\n4   David  40    5.9        FALSE\n5     Eve  45    5.7         TRUE\n\n\nNow you can access individual columns or rows of the data frame using the $ operator or by using indexing. For example, to access the age column, you can do:\n\nmy_data$age\n\n[1] 25 30 35 40 45\n\n\nYou may also see people using indexing to access columns. For example, you can access the first column of the data frame using:\n\nmy_data[, 1]\n\n[1] \"Alice\"   \"Bob\"     \"Charlie\" \"David\"   \"Eve\"    \n\n\nWe will learn a lot more about manipulating data frames in subsequent modules when we talk about the dplyr package. For now, just know that data frames are a powerful and flexible way to store and manipulate data in R."
+  },
+  {
+    "objectID": "modules/module-1.3.html#your-turn-2",
+    "href": "modules/module-1.3.html#your-turn-2",
+    "title": "Module 1.3",
+    "section": "Your Turn!",
+    "text": "Your Turn!\n\nCreate an original data frame with 5 rows and 3 columns. The first column should be a character vector, the second should be a numeric vector, and the third should be a logical vector. Call it my_data_2 and print it out.\nUse the $ operator to access the second column of my_data_2 and print it out.\nUse indexing to access the third row of my_data_2 and print it out."
   }
 ]
