@@ -14,6 +14,8 @@ execute:
 - Read this [markdown guide](https://www.markdownguide.org/getting-started/)
 :::
 
+## Overview
+
 In this module, we'll build on your first experience with Quarto documents and go deeper into effective authoring and project organization. By the end, you should feel comfortable creating reproducible reports that include well-organized text, code, and outputs.
 
 ## Why Project-Oriented Workflows Matter

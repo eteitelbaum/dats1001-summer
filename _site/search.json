@@ -5665,7 +5665,7 @@
     "href": "modules/module-1.2.html",
     "title": "Module 1.2",
     "section": "",
-    "text": "Prework\n\n\n\n\nInstall R, R Studio and the Tidyverse collection of packages if you have not done so already (see getting started)\nRead this markdown guide\nIn this module, we’ll build on your first experience with Quarto documents and go deeper into effective authoring and project organization. By the end, you should feel comfortable creating reproducible reports that include well-organized text, code, and outputs."
+    "text": "Prework\n\n\n\n\nInstall R, R Studio and the Tidyverse collection of packages if you have not done so already (see getting started)\nRead this markdown guide"
   },
   {
     "objectID": "modules/module-1.2.html#why-project-oriented-workflows-matter",
@@ -5715,5 +5715,12 @@
     "title": "Module 1.2",
     "section": "Your Turn!",
     "text": "Your Turn!\nLet’s put everything together in a small project. Start by creating a new folder and placing a new Quarto document inside it. Here is an illustration to remind you how to do that (for a fuller explanation, review the Getting Started module).\n\n\n\n\n\nWrite a few short paragraphs of narrative text and include a code chunk that generates a plot with ggplot2. If you have images or data files, place them in subfolders and link to them using relative paths.\nOnce you’ve written your report, render the document to HTML. Open the result in your browser and make sure everything displays correctly. Along the way, try adjusting chunk options to control what appears in the final output. If you run into rendering errors, use the error messages to debug step-by-step—this is a valuable part of learning."
+  },
+  {
+    "objectID": "modules/module-1.2.html#overview",
+    "href": "modules/module-1.2.html#overview",
+    "title": "Module 1.2",
+    "section": "Overview",
+    "text": "Overview\nIn this module, we’ll build on your first experience with Quarto documents and go deeper into effective authoring and project organization. By the end, you should feel comfortable creating reproducible reports that include well-organized text, code, and outputs."
   }
 ]
