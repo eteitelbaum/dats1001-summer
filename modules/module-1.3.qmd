@@ -46,7 +46,7 @@ And you can perform many other operations, like subtraction, multiplication, and
 
 ## Objects in R
 
-In R, everything is an object. An object is a named data structure that stores values and associated metadata. Objects can hold simple data like numbers or more complex structures like vectors, lists, or data frames.
+In R, everything is an object. An object is a named container that stores data or functions and associated metadata. Objects can hold simple data like numbers or more complex structures like vectors, lists, or data frames.
 
 You create an object using the assignment operator `<-`. To take a simple example from earlier in this module, we can take the sum of 2 and 2 and assign it to an object called `sum_of_2plus2`:
 
