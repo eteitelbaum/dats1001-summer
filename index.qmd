@@ -30,9 +30,9 @@ will go live as the semester progresses.
 
 ::: column-screen-inset-right
 | Week | Date | Topic | Reading | Video | Module | Assignment | Due Date |
-|:-----:|---------------------|---------|:-------:|:-------:|:-------:|:-------:|:-------:|
+|:-------:|----------|---------|:-------:|:-------:|:-------:|:-------:|:-------:|
 | 1 | `r advdate(mon,0)` | Getting Started | [📖](https://rstudio-education.github.io/hopr/starting.html "hopwr, Appendix A and B") [📖](https://quarto.org/docs/get-started/hello/rstudio.html "Hello, Quarto") | [📺](https://youtu.be/eimM6pNkYjE "R & RStudio") [📺](https://youtu.be/6QN9ZYURDFg "Getting Started with Quarto") | [📒](/modules/getting-started.qmd "Getting Started") |  |  |
-|  | `r advdate(tues,0)` | Meet ouR tech stack | [📖](https://www.markdownguide.org/getting-started/ "Markdown Guide") | [📺](https://www.youtube.com/watch?v=bTVIMt3XllM) | 📒 |  |  |
+|  | `r advdate(tues,0)` | Meet ouR tech stack | [📖](https://www.markdownguide.org/getting-started/ "Markdown Guide") | [📺](https://youtu.be/bTVIMt3XllM?si=krDEL4lvyT-T5DZc "Markdown Crash Course") | [📒](modules/module-1.2.qmd "Meet ouR Tech Stack") |  |  |
 |  | `r advdate(wed,0)` | R coding basics | [📖](https://rstudio-education.github.io/hopr/basics.html "hopwr, ch. 2") | [📺](https://www.youtube.com/watch?v=hvFBDmT4bdY "Using Functions and Objects in R") [📺](https://youtu.be/9f2g7RN5N0I?si=WMsaGlhFC7Fx-ZNy "Explore the Data Frame") | 📒 | 📘 | `r advdate(wed,0)` |
 |  | `r advdate(thur,0)` | Intro to the Tidyverse | [📖](https://r4ds.hadley.nz/intro "rd4s, intro") | [📺](https://youtu.be/izFssYRsLZs?si=b6Oy4atpRrkfEKzB "Hadley Wickham on code maintenance") | 📒 |  |  |
 |  | `r advdate(fri,0)` | Grammar of graphics | [📖](https://r4ds.hadley.nz/data-import "r4ds, chap. 7") [📖](https://r4ds.hadley.nz/data-visualize.html "r4ds, 2") | [📺](https://youtu.be/QG1oDJPoIio "Make a bar chart") [📺](https://youtu.be/-1YhCql-gMo "Make a histogram") | 📒 |  |  |

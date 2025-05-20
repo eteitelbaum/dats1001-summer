@@ -5659,5 +5659,54 @@
     "title": "Module 1.1",
     "section": "GitHub and GitHub Classroom",
     "text": "GitHub and GitHub Classroom\n\nGitHub is a platform for hosting version control repositories. In this course we will learn to use GitHub to store, manage and collaborate on code.\nOne central concept you want to be familiar with is a repository or “repo” for short. Repos are essentially folders where code can be stored and then accessed and changed by multiple users. All of the assignments for this course will be managed in repos.\nGitHub repos are managed using a version control system named Git. Git allows developers to make and track changes to the code stored in the repo. Git also enables users to create branches to work on the code without affecting the main codebase and then merge those changes back into the main branch when they are ready.\nThe first thing you are going to want to do is to register a GitHub account. From there, you want to install Git and initiate Git using the usethis package. Be sure to install usethis first (install.packages(\"usethis\")) if you don’t have it installed already. Then load usethis (library(usethis)) and type use_git_config(user.name = \"Jane Doe\", user.email = \"jane@example.org\") substituting the name and email associated with your GitHub account.\nNext, you need to generate a personal access token (PAT) by typing create_github_token() and set your credentials with the gitcreds package. This is pretty simple once you have your PAT. After installing and loading gitcreds (install.packages(\"gitcreds\"); library(gitcreds)), you can type gitcreds_get() to see whether you already have credentials set up. Then type gitcreds_set() to enter your new credentials (your username and your password, which will be the PAT that you just generated).\nNow, you can create a GitHub repo and clone it to your computer in RStudio. There a number of ways to clone a repo, but the recommended method for this course involves creating a new project in RStudio and selecting “Version Control” for the method (instead of “New Directory” as we did before). From there, select “Git”, copy the URL from the green “Code” tab in the GitHub repo, and paste it into “Repository URL” field. Next, select the directory where you want the repository to be created and click “create project.”\nFor our purposes all of your repos will be private repos in the GitHub Classroom environment. To access them, simply click on the invitation link that you see for the coding assignment in the relevant module on Blackboard. This should take you directly to the repo. Then you can clone it using the steps outlined in the previous paragrah."
+  },
+  {
+    "objectID": "modules/module-1.2.html",
+    "href": "modules/module-1.2.html",
+    "title": "Module 1.2",
+    "section": "",
+    "text": "In this module, we’ll build on your first experience with Quarto documents and go deeper into effective authoring and project organization. By the end, you should feel comfortable creating reproducible reports that include well-organized text, code, and outputs."
+  },
+  {
+    "objectID": "modules/module-1.2.html#why-project-oriented-workflows-matter",
+    "href": "modules/module-1.2.html#why-project-oriented-workflows-matter",
+    "title": "Module 1.2",
+    "section": "Why Project-Oriented Workflows Matter",
+    "text": "Why Project-Oriented Workflows Matter\nWhen you’re just starting out, it’s tempting to save your files wherever is convenient—maybe the Desktop, maybe the Downloads folder. But as your analysis grows more complex or involves collaborators, maintaining an organized file structure becomes essential. A good Quarto project keeps all your materials—data, scripts, and reports—in a consistent, portable format. This not only helps avoid broken file paths, but also supports reproducibility, sharing, and long-term clarity.\nA typical layout might include your main .qmd document, a data/ folder for input files, a separate folder for images or plots, and a designated location for rendered outputs. Keeping everything bundled in a single project folder also makes it easier to track changes and collaborate via Git or GitHub."
+  },
+  {
+    "objectID": "modules/module-1.2.html#yaml-front-matter-revisited",
+    "href": "modules/module-1.2.html#yaml-front-matter-revisited",
+    "title": "Module 1.2",
+    "section": "YAML Front Matter Revisited",
+    "text": "YAML Front Matter Revisited\nYou’ve already encountered the YAML block at the top of a Quarto document. Now let’s take a closer look at what it does.\nThe YAML front matter sets key metadata and document options. For example:\ntitle: \"My Report\"\nauthor: \"Your Name\"\ndate: today\nformat: html\nexecute:\n  echo: false\n  message: false\nHere, the title, author, and date fields define the document header. The format field tells Quarto what type of file to create—HTML in this case. The execute section controls global options for code chunks. In this example, code won’t be shown (echo: false) and messages will be suppressed (message: false). These defaults apply to all chunks in the document, though individual chunks can override them."
+  },
+  {
+    "objectID": "modules/module-1.2.html#authoring-with-markdown",
+    "href": "modules/module-1.2.html#authoring-with-markdown",
+    "title": "Module 1.2",
+    "section": "Authoring with Markdown",
+    "text": "Authoring with Markdown\nQuarto documents are written in Markdown, a lightweight markup language designed for readability. You don’t need to remember complex formatting commands. To create section headings, you simply use hash signs—# for the main title, ## for sections, and so on. Italics and bold are created with asterisks, like *italic* and **bold**.\n\nYou can also create numbered or unnumbered lists by just typing them directly, and you can include links with [text](https://quarto.org) syntax. Images work the same way—just add an exclamation mark in front, like ![](images/myplot.png). The goal is to keep your writing clear and uncluttered while supporting rich formatting features."
+  },
+  {
+    "objectID": "modules/module-1.2.html#code-chunks-in-depth",
+    "href": "modules/module-1.2.html#code-chunks-in-depth",
+    "title": "Module 1.2",
+    "section": "Code Chunks in Depth",
+    "text": "Code Chunks in Depth\nOne of the key advantages of Quarto is the ability to weave together code and prose. You can insert a code chunk by typing three backticks and specifying the language, like this:\n\nsummary(cars)\n\n     speed           dist       \n Min.   : 4.0   Min.   :  2.00  \n 1st Qu.:12.0   1st Qu.: 26.00  \n Median :15.0   Median : 36.00  \n Mean   :15.4   Mean   : 42.98  \n 3rd Qu.:19.0   3rd Qu.: 56.00  \n Max.   :25.0   Max.   :120.00  \n\n\nYou can also control how chunks behave using chunk options. Quarto supports a special #| syntax that lets you configure each chunk individually. For instance, you can use #| echo: to control whether the code is displayed along with the output, or #| label: to add a label to a code chunk (labels can be useful if you want to identify where an error is coming from or to reuse code from a chunk).\n\n\n\n\n\nIn this example, we’ve given the chunk a label (mtcars_plot) and hidden the code from the final output using echo: false. Notice how in the rendered version the first chunk shows the code but the second and third do not. This is useful when you want to show the results—like a plot—without showing the code that generated it. You can also hide messages, warnings, and even outputs in a similar way."
+  },
+  {
+    "objectID": "modules/module-1.2.html#a-mini-project",
+    "href": "modules/module-1.2.html#a-mini-project",
+    "title": "Module 1.2",
+    "section": "A Mini Project",
+    "text": "A Mini Project\nLet’s put everything together in a small project. Start by creating a new folder and placing a new Quarto document inside it. Here is an illustration to remind you how to do that (for a fuller explanation, review the Getting Started module).\n\n\n\n\n\nWrite a few short paragraphs of narrative text and include a code chunk that generates a plot with ggplot2. If you have images or data files, place them in subfolders and link to them using relative paths.\nOnce you’ve written your report, render the document to HTML. Open the result in your browser and make sure everything displays correctly. Along the way, try adjusting chunk options to control what appears in the final output. If you run into rendering errors, use the error messages to debug step-by-step—this is a valuable part of learning."
+  },
+  {
+    "objectID": "modules/module-1.2.html#final-tips",
+    "href": "modules/module-1.2.html#final-tips",
+    "title": "Module 1.2",
+    "section": "Final Tips",
+    "text": "Final Tips\nAs a rule of thumb, always use relative file paths inside your Quarto projects. This means referring to files based on their position in the folder structure, not their full computer location. It helps keep your project portable so that it runs smoothly on any machine, whether yours or a collaborator’s.\nWhen in doubt, label your chunks, write clearly, and remember that Quarto documents are meant to evolve. The more you write and render, the more confident you’ll become."
   }
 ]
