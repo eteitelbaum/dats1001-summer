@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.7.11">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<title>Module 1.4 – DATS 1001–Fall Schedule</title>
+<title>Module 1.5 – DATS 1001–Fall Schedule</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -98,17 +98,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
-<meta property="og:title" content="Module 1.4 – DATS 1001–Fall Schedule">
-<meta property="og:description" content="Intro to the Tidyverse">
-<meta property="og:image" content="https://ds4all.rocks/modules/images/ds-workflow.png">
+<meta property="og:title" content="Module 1.5 – DATS 1001–Fall Schedule">
+<meta property="og:description" content="The Grammar of Graphics">
+<meta property="og:image" content="https://ds4all.rocks/modules/module-1.5_files/figure-html/barchart-1.png">
 <meta property="og:site_name" content="DATS 1001--Fall Schedule">
-<meta property="og:image:height" content="508">
-<meta property="og:image:width" content="1504">
-<meta name="twitter:title" content="Module 1.4 – DATS 1001–Fall Schedule">
-<meta name="twitter:description" content="Intro to the Tidyverse">
-<meta name="twitter:image" content="https://ds4all.rocks/modules/images/ds-workflow.png">
-<meta name="twitter:image-height" content="508">
-<meta name="twitter:image-width" content="1504">
+<meta property="og:image:height" content="960">
+<meta property="og:image:width" content="1344">
+<meta name="twitter:title" content="Module 1.5 – DATS 1001–Fall Schedule">
+<meta name="twitter:description" content="The Grammar of Graphics">
+<meta name="twitter:image" content="https://ds4all.rocks/modules/module-1.5_files/figure-html/barchart-1.png">
+<meta name="twitter:image-height" content="960">
+<meta name="twitter:image-width" content="1344">
 <meta name="twitter:card" content="summary_large_image">
 </head>
 <body class="nav-sidebar docked">
@@ -118,7 +118,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Module 1.4</li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Module 1.5</li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -311,16 +311,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
 <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a></li>
-  <li><a href="#working-with-tidyverse-packages" id="toc-working-with-tidyverse-packages" class="nav-link" data-scroll-target="#working-with-tidyverse-packages">Working with Tidyverse Packages</a></li>
-  <li><a href="#reading-data-into-r" id="toc-reading-data-into-r" class="nav-link" data-scroll-target="#reading-data-into-r">Reading Data into R</a></li>
-  <li><a href="#viewing-the-data" id="toc-viewing-the-data" class="nav-link" data-scroll-target="#viewing-the-data">Viewing the Data</a></li>
+  <li><a href="#the-grammar-of-graphics" id="toc-the-grammar-of-graphics" class="nav-link" data-scroll-target="#the-grammar-of-graphics">The Grammar of Graphics</a></li>
+  <li><a href="#which-visualization-do-i-use" id="toc-which-visualization-do-i-use" class="nav-link" data-scroll-target="#which-visualization-do-i-use">Which Visualization Do I Use?</a></li>
+  <li><a href="#bar-charts" id="toc-bar-charts" class="nav-link" data-scroll-target="#bar-charts">Bar charts</a></li>
   <li><a href="#your-turn" id="toc-your-turn" class="nav-link" data-scroll-target="#your-turn">Your Turn!</a></li>
-  </ul><div class="toc-actions"><ul><li><a href="https://github.com/dats1001-fall-2024/edit/main/modules/module-1.4.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/dats1001-fall-2024/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+  <li><a href="#histograms" id="toc-histograms" class="nav-link" data-scroll-target="#histograms">Histograms</a></li>
+  <li><a href="#your-turn-1" id="toc-your-turn-1" class="nav-link" data-scroll-target="#your-turn-1">Your Turn!</a></li>
+  </ul><div class="toc-actions"><ul><li><a href="https://github.com/dats1001-fall-2024/edit/main/modules/module-1.5.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/dats1001-fall-2024/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
-<h1 class="title">Module 1.4</h1>
-<p class="subtitle lead">Intro to the Tidyverse</p>
+<h1 class="title">Module 1.5</h1>
+<p class="subtitle lead">The Grammar of Graphics</p>
 </div>
 
 
@@ -345,57 +347,90 @@ Prework
 </div>
 <div class="callout-body-container callout-body">
 <ul>
-<li>Make sure that the Tidyverse is installed. You can do this by running the <code>install.packages("tidyverse")</code> command in the console if you have not done so already.</li>
-<li>Familiarize yourself with the <a href="https://www.tidyverse.org/packages/">Tidyverse</a> group of packages.</li>
-<li>We will not be using all of these, but the first four (<code>ggplot2</code>, <code>dplyr</code>, <code>tidyr</code>, and <code>readr</code>) are essential for this course.</li>
-<li>Create and save a QMD file for this module in your Module 1 project folder.</li>
+<li>Have a look at the documentation for <a href="https://ggplot2.tidyverse.org/">ggplot2</a>
+</li>
+<li>Familiarize yourself with the <code>ggplot2</code> <a href="https://posit.co/wp-content/uploads/2022/10/data-visualization-1.pdf">cheatseet</a>
+</li>
+<li>Generate a QMD file in your modules project folder so that you can code along with me and do the exercises.</li>
 </ul>
+<p>If you have installed the Tidyverse, then you should already have the packages for this model, including <code>ggplot2</code>. You can go ahead and load <code>ggplot2</code> along with <code>readr</code> and <code>dplyr</code>.</p>
+<div class="cell">
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://readr.tidyverse.org">readr</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </div>
 </div>
 <section id="overview" class="level2"><h2 class="anchored" data-anchor-id="overview">Overview</h2>
-<p>Data science involves a systematic workflow that takes us from raw data to meaningful insights. This journey typically includes data import, tidying, transformation, visualization, modeling, and communication of results. This is the workflow that we are going to be discussing for the rest of the course.</p>
-<p><img src="images/ds-workflow.png" class="img-fluid"></p>
-<p>At the heart of this workflow and modern data science in R lies the Tidyverse, an ecosystem of packages designed to work harmoniously together. The Tidyverse represents not just a collection of tools but also a philosophy about how data analysis should be approached—with consistency, clarity, and a focus on human readability. To get a better sense of what the it is all about, watch this video of Hadley Wickham, the creator of the Tidyverse, discussing the importance of code maintenance and the evolution of the Tidyverse.</p>
-<div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/izFssYRsLZs?si=b6Oy4atpRrkfEKzB" title="Hadley Wickham on Code Maintenance" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
-<p>In this module, you’ll begin your journey with several core Tidyverse packages that form the foundation of data science work. While we will touch on most of the Tidyverse packages in this, course, there are four that are essential for our work:</p>
-<ul>
-<li>
-<code>readr</code> streamlines the process of importing data into R</li>
-<li>
-<code>dplyr</code> provides intuitive verbs for data manipulation and transformation</li>
-<li>
-<code>ggplot2</code> enables creation of beautiful visualizations using the grammar of graphics</li>
-<li>
-<code>tidyr</code> will be helpful when we want to reshape (pivot) our data Today, we are going to get a general sense of the Tidyverse. We will also talk about how to use the <code>readr</code> package to read data into R and a couple of ways to view the contents of the data frame. Then we will cover <code>ggplot2</code> in the next couple of modules and <code>dplyr</code> and <code>tidyr</code> will come into focus next week when we turn to data wrangling.</li>
-</ul></section><section id="working-with-tidyverse-packages" class="level2"><h2 class="anchored" data-anchor-id="working-with-tidyverse-packages">Working with Tidyverse Packages</h2>
-<p>When using Tidyverse packages, you have a few options for how to load and access their functions.</p>
-<p>Initially, we’ll load individual packages as needed. This approach helps you understand which functions come from which packages and allows you to be selective about which parts of the Tidyverse you’re using.</p>
-<p>For example, to load the ggplot2 package you would go:</p>
-<div class="cell">
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>As you become more comfortable with the Tidyverse ecosystem, you might prefer to load all the core packages at once:</p>
-<div class="cell">
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>This command loads all of the core Tidyverse packages, including <code>readr</code>, <code>ggplot2</code>, <code>dplyr</code>, <code>tidyr</code>, and others.</p>
-<p>Sometimes you might see code where the author loads a package using its namespace by using the <code>::</code> operator, like this:</p>
-<div class="cell">
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">data</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">variable1</span>, y <span class="op">=</span> <span class="va">variable2</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>This will not be as common a workflow for us, but it is helpful in context where you want to use a function from a package without loading the entire package. This can be helpful when putting code into production or writing packages because it helps to avoid conflicts between functions and minimize resources.</p>
-</section><section id="reading-data-into-r" class="level2"><h2 class="anchored" data-anchor-id="reading-data-into-r">Reading Data into R</h2>
-<p>The first step in most data analysis projects is importing your data. The <code>readr</code> package makes this process straightforward and efficient, especially when working with CSV files, which are one of the most common data formats.</p>
-<p>Let’s start by loading the readr package and importing a dataset about democracy measures around the world. Download this data set and move it in your project folder as <code>dem_summary.csv</code>:</p>
+<p>In the last module we learned about the Tidyverse. This week we are going to delve into the key package used to visualize data in the context of the Tidyverse–<code>ggplot2</code>. We will learn how to make bar charts (also known as column charts), histograms, line charts and scatter plots. Along the way we are going to be talking about the “grammar of graphics” that <code>ggplot2</code> is based on.</p>
+</section><section id="the-grammar-of-graphics" class="level2"><h2 class="anchored" data-anchor-id="the-grammar-of-graphics">The Grammar of Graphics</h2>
+<p>The “gg” in ggplot stands for “grammar of graphics”, which is a layered approach to constructing graphs based on a <a href="https://link-springer-com.proxygw.wrlc.org/book/10.1007/0-387-28695-0">book</a> by Leland Wilkinson.</p>
+<p>The grammar of graphics is a framework for thinking about how to construct visualizations in a consistent and coherent way. The basic idea behind it is that data visualization has a language with its own grammar, and that the elements of this grammar can be combined in a systematic way to create a wide variety of visualizations.</p>
+<p>The basic components of a ggplot2 visualization are the data that you want to visualize, the aesthetics (or dimensions) of the visualization, the geometric objects (or geoms) that you want to use to represent the data, and various other elements like color scales, themes, and annotations. As you will see, each of these elments is “added” onto the plot in a systematic way quite literally using the <code>+</code> sign.</p>
+</section><section id="which-visualization-do-i-use" class="level2"><h2 class="anchored" data-anchor-id="which-visualization-do-i-use">Which Visualization Do I Use?</h2>
+<p>Choosing the right visualization depends on the type of question you’re asking and the structure of your data. If you’re looking at trends over time, such as stock prices, a line chart is typically most effective. To show the distribution of a variable, like income within a country, use a histogram, density plot, or boxplot. When comparing values across categories—such as female labor force participation across MENA countries—a bar chart works well. Finally, to explore relationships between two variables, like poverty and inequality across countries, a scatterplot is the appropriate choice.</p>
+</section><section id="bar-charts" class="level2"><h2 class="anchored" data-anchor-id="bar-charts">Bar charts</h2>
+<div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/QG1oDJPoIio" title="Make a Bar Chart" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
+<p>Let’s get started with our first visualization–a basic bar chart. Our aim here is going to be to summarize levels of democracy across different regions like we did in the last lesson, but this time we will illustrate the differences with a chart.</p>
+<p>We will start by loading in the <code>dem_summary.csv</code> file that we made in the last lesson. You should already have it stored in your <code>data</code> subfolder for this module. But just in case here it is again:</p>
 <p><a href="data/dem_summary.csv" download="">📥 Download dem_summary.csv</a></p>
-<p>A best practice is to save your data files in a subfolder within your project directory. Usually we would call that folder “data” and reference the file as <code>data/name_of_file.csv</code>. This keeps your workspace organized and makes it easier to find your data files later.</p>
-<p>Now try reading in the data and storing it in an object using the <code><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv()</a></code> function from the readr package like this:</p>
+<p>Next we will use these data for our first <code><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot()</a></code> call. The <code><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot()</a></code> function takes two arguments: <code>data</code> and <code>mapping</code>. <code>data</code> refers to the data frame that includes the variables we want to visualize and <code>mapping</code> refers to the aesthetics mappings for the visualization. The aesthetics mappings are themselves presented in a quoting function <code><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes()</a></code> that defines the x and y values of the plot along with other aesthetic values like <code>fill</code>, <code>color</code> and <code>linetype</code>. We will focus on x and y values here and return to these additional aesthetic values later.</p>
+<p>After our <code><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot()</a></code> call, we can add a series of additional functions to define our visualization following a <code>+</code> sign. The most important group are the geoms which will define the basic type of plot we want to make. In this case, we are calling <code><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_col()</a></code> for our histogram and specifying that the fill color should be “steelblue.”</p>
+<p>From there we will further customize our visualization with the <code><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs()</a></code> function to provide a title, axis labels and a caption.</p>
 <div class="cell">
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://readr.tidyverse.org">readr</a></span><span class="op">)</span></span>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">dem_summary</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="st">"data/dem_summary.csv"</span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">dem_summary</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="st">"data/dem_summary.csv"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">dem_summary</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">region</span>, y <span class="op">=</span> <span class="va">polyarchy</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> <span class="co"># ggplot call</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_col</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"steelblue"</span><span class="op">)</span> <span class="op">+</span> <span class="co"># we use geom_col() for a a bar chart</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span></span>
+<span>    x <span class="op">=</span> <span class="st">"Region"</span>, </span>
+<span>    y <span class="op">=</span> <span class="st">"Avg. Polyarchy Score"</span>, </span>
+<span>    title <span class="op">=</span> <span class="st">"Democracy by region, 1990 - present"</span>, </span>
+<span>    caption <span class="op">=</span> <span class="st">"Source: V-Dem Institute"</span></span>
+<span>    <span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="module-1.5_files/figure-html/barchart-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
 </div>
-<p>When you run this code, readr will display a message showing how it interpreted each column (e.g., as character, numeric, etc.). This is helpful for quickly identifying if any columns were parsed incorrectly.</p>
+</div>
+</div>
+<p>This looks like a pretty good columnn chart, but frequently we would want the bars of our bar chart to be sorted in order of the values being displayed. Let’s go ahead and add the <a href="https://stat.ethz.ch/R-manual/R-devel/library/stats/html/reorder.factor.html">reorder()</a> function to our <code><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes()</a></code> call so that we are reordering the bars based on descending values of the average polyarchy score.</p>
+<div class="cell">
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">dem_summary</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/reorder.factor.html">reorder</a></span><span class="op">(</span><span class="va">region</span>, <span class="op">-</span><span class="va">polyarchy</span><span class="op">)</span>, y <span class="op">=</span> <span class="va">polyarchy</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_col</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"steelblue"</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span></span>
+<span>    x <span class="op">=</span> <span class="st">"Region"</span>, </span>
+<span>    y <span class="op">=</span> <span class="st">"Avg. Polyarchy Score"</span>, </span>
+<span>    title <span class="op">=</span> <span class="st">"Democracy by region, 1990 - present"</span>, </span>
+<span>    caption <span class="op">=</span> <span class="st">"Source: V-Dem Institute"</span></span>
+<span>    <span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="module-1.5_files/figure-html/reorder-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section><section id="your-turn" class="level2"><h2 class="anchored" data-anchor-id="your-turn">Your Turn!</h2>
+<ol type="1">
+<li>
+<code><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse()</a></code> the data</li>
+<li>Find a new variable and a new to visualize</li>
+<li>Make a bar chart with it</li>
+<li>Change the <a href="http://sape.inf.usi.ch/quick-reference/ggplot2/colour">color</a> of the bars</li>
+<li>Order the bars on the x-axis according to the value of the y-axis variable</li>
+<li>Add labels</li>
+<li>Try adding a <a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme</a>
+</li>
+<li>Try saving your plot as an object</li>
+<li>Then change the labels and/or theme</li>
+</ol></section><section id="histograms" class="level2"><h2 class="anchored" data-anchor-id="histograms">Histograms</h2>
+<div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/-1YhCql-gMo" title="Make a Histogram" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
+<p>Now let’s do another <code><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot()</a></code> call to make a histogram. We’ll start by reading in the <code>dem_women.csv</code> file from our previous lesson. Again, these should already be stored in the <code>data</code> subfolder for this module, but just in case:</p>
+<p><a href="data/dem_women.csv" download="">📥 Download dem_women.csv</a></p>
+<p>For these data, we are going to have select one year to visualize because they feature a time series. We will use the <code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code> function from <code>dplyr</code> to select the year 2015. We use the pipe operator (<code>|&gt;</code>) to pass the data frame to the <code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code> function. We are going to cover the <code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code> verb and the pipe operator in more detail in the next module, but for now just know that <code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code> selects a column and the pipe operator allows us to pass the data frame to the next function without having to re-specify it.</p>
+<p>From there, we call <code><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot()</a></code>, specifying the polyarchy score on x-axis. But this time we change the geom to <code><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram()</a></code>. We also change the title and axis labels to reflect the fact that we are plotting the number of cases falling in each bin.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -406,101 +441,51 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>We could also have used the base R read function <code><a href="https://rdrr.io/r/utils/read.table.html">read.csv()</a></code> to read in the data, but <code><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv()</a></code> is generally faster and more efficient. It also has a number of advantages over the base R function. For example, it automatically handles column types, so you don’t have to specify them manually. <code><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv()</a></code> also provides better handling of missing values and other common issues that can arise when importing data.</p>
+<p>Note that we leave the y-axis blank for the histogram because ggplot will automatically know to plot the number of units in each bin on the y-axis.</p>
 </div>
 </div>
-</section><section id="viewing-the-data" class="level2"><h2 class="anchored" data-anchor-id="viewing-the-data">Viewing the Data</h2>
-<p>Once you’ve imported your data, it’s important to take a look at it to ensure everything looks correct. One way to do this is to type <code><a href="https://rdrr.io/r/utils/View.html">View()</a></code> in your console or (equivalently) click on the name of the object in your Environment tab to see the data in a spreadsheet:</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="images/view_df.gif" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+<div class="cell">
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">dem_women_2015</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="st">"data/dem_women.csv"</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">year</span> <span class="op">==</span> <span class="fl">2015</span><span class="op">)</span> </span>
+<span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">dem_women_2015</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">polyarchy</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> <span class="co"># only specify x for histogram</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"steelblue"</span><span class="op">)</span> <span class="op">+</span> <span class="co"># geom is a histogram</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span></span>
+<span>    x <span class="op">=</span> <span class="st">"Polyarchy Score, 2015"</span>, </span>
+<span>    y <span class="op">=</span> <span class="st">"Count"</span>,</span>
+<span>    title <span class="op">=</span> <span class="st">"Distribution of democracy, 2015"</span>, </span>
+<span>    caption <span class="op">=</span> <span class="st">"Source: V-Dem Institute"</span></span>
+<span>    <span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="module-1.5_files/figure-html/histogram-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
-<p>This will open a new tab in RStudio with a spreadsheet-like view of your data frame. This is a great way to get a quick overview of your data.</p>
-<p>The <code><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse()</a></code> function from the dplyr package is another great way to get an overview of your data frame. It provides a quick summary of the data, including the number of rows and columns, the names of the columns, and the data types of each column.</p>
-<div class="cell">
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span></span>
-<span></span>
-<span><span class="va">dem_summary</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="st">"data/dem_summary.csv"</span><span class="op">)</span></span>
-<span></span>
-<span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">dem_summary</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Rows: 6
-Columns: 5
-$ region    &lt;chr&gt; "The West", "Latin America", "Eastern Europe", "Asia", "Afri…
-$ polyarchy &lt;dbl&gt; 0.8709230, 0.6371358, 0.5387451, 0.4076602, 0.3934166, 0.245…
-$ gdp_pc    &lt;dbl&gt; 37.913054, 9.610284, 12.176554, 9.746391, 4.410484, 21.134319
-$ flfp      &lt;dbl&gt; 52.99082, 48.12645, 50.45894, 50.32171, 56.69530, 26.57872
-$ women_rep &lt;dbl&gt; 28.12921, 21.32548, 17.99728, 14.45225, 17.44296, 10.21568</code></pre>
 </div>
 </div>
-<p>Here we see that the data frame consists of five columns: <code>region</code>; <code>polyarchy</code> (a measure of democracy); GDP per capita (<code>gdp_pc</code>); female labor force participation rates (<code>flfp</code>); and levels of women’s representation (<code>women_rep</code>). We also see that <code>region</code> is a character variable and the other four columns are numeric variables. Finally, we see that there are six rows in the data frame representing the average values of these variables for each region in the world.</p>
-<p>Note that there are some other base R functions that can be useful for viewing data frames. You can use the <code><a href="https://rdrr.io/r/utils/head.html">head()</a></code> function to view the first few rows of a data frame:</p>
-<div class="cell">
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">dem_summary</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 6 × 5
-  region         polyarchy gdp_pc  flfp women_rep
-  &lt;chr&gt;              &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;
-1 The West           0.871  37.9   53.0      28.1
-2 Latin America      0.637   9.61  48.1      21.3
-3 Eastern Europe     0.539  12.2   50.5      18.0
-4 Asia               0.408   9.75  50.3      14.5
-5 Africa             0.393   4.41  56.7      17.4
-6 Middle East        0.246  21.1   26.6      10.2</code></pre>
-</div>
-</div>
-<p>You can also use the <code><a href="https://rdrr.io/r/utils/head.html">tail()</a></code> function to view the last few rows of a data frame:</p>
-<div class="cell">
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">tail</a></span><span class="op">(</span><span class="va">dem_summary</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 6 × 5
-  region         polyarchy gdp_pc  flfp women_rep
-  &lt;chr&gt;              &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;
-1 The West           0.871  37.9   53.0      28.1
-2 Latin America      0.637   9.61  48.1      21.3
-3 Eastern Europe     0.539  12.2   50.5      18.0
-4 Asia               0.408   9.75  50.3      14.5
-5 Africa             0.393   4.41  56.7      17.4
-6 Middle East        0.246  21.1   26.6      10.2</code></pre>
-</div>
-</div>
-<p>And the <code><a href="https://rdrr.io/r/base/summary.html">summary()</a></code> function to get a summary of the data frame, including the minimum, maximum, mean, and median values for each column:</p>
-<div class="cell">
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">dem_summary</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>    region            polyarchy          gdp_pc            flfp      
- Length:6           Min.   :0.2459   Min.   : 4.410   Min.   :26.58  
- Class :character   1st Qu.:0.3970   1st Qu.: 9.644   1st Qu.:48.68  
- Mode  :character   Median :0.4732   Median :10.961   Median :50.39  
-                    Mean   :0.5156   Mean   :15.832   Mean   :47.53  
-                    3rd Qu.:0.6125   3rd Qu.:18.895   3rd Qu.:52.36  
-                    Max.   :0.8709   Max.   :37.913   Max.   :56.70  
-   women_rep    
- Min.   :10.22  
- 1st Qu.:15.20  
- Median :17.72  
- Mean   :18.26  
- 3rd Qu.:20.49  
- Max.   :28.13  </code></pre>
-</div>
-</div>
-</section><section id="your-turn" class="level2"><h2 class="anchored" data-anchor-id="your-turn">Your Turn!</h2>
-<ul>
-<li>Make sure that you are able to do all of the above-mentioned steps in this lesson, e.g.&nbsp;download the <a href="data/dem_summary.csv">dem_summary.csv</a> file, read it into R and store it in an object, view the data frame, use the <code><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse()</a></code> function to summarize it, and use the <code><a href="https://rdrr.io/r/utils/head.html">head()</a></code>, <code><a href="https://rdrr.io/r/utils/head.html">tail()</a></code>, and <code><a href="https://rdrr.io/r/base/summary.html">summary()</a></code> functions.</li>
-<li>Repeat the steps above using a different data frame. Download the <a href="data/dem_women.csv">dem_women.csv</a> file and store it in an object called <code>dem_women</code> or some name that is reflective of its content.</li>
-<li>In your Quarto document, below your code chunk, write a few short paragraphs describing the data frame.
-<ul>
-<li>What are the data frame’s dimensions (e.g.&nbsp;how many rows and columns does it have)?</li>
-<li>What are the names of the columns? What do they represent and what are the data types?</li>
-<li>What are the first few rows of the data frame? The last few rows?</li>
-<li>What do the rows represent? How are these data different from the the data in the <code>dem_summary</code> data frame? (Hint: there are more rows in this data frame.)</li>
-<li>Take one or two columns and describe the summary statistics. What do these summary statistics represent? (Hint: there is a temporal dimension to consider.)</li>
-</ul>
+</section><section id="your-turn-1" class="level2"><h2 class="anchored" data-anchor-id="your-turn-1">Your Turn!</h2>
+<ol type="1">
+<li>Pick a variable that you want to explore the distribution of<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>
 </li>
-</ul>
+<li>Make a histogram
+<ol type="a">
+<li>Only specify <code>x =</code> in <code><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes()</a></code>
+</li>
+<li>Specify geom as <code>geom_histogram</code>
+</li>
+</ol>
+</li>
+<li>Choose color for bars</li>
+<li>Choose appropriate labels</li>
+<li>Change number of bins</li>
+<li>Change from count to density</li>
+</ol>
 
 
-</section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+</section><div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+<ol>
+<li id="fn1"><p>Note that the data for GDP per capita spotty after 2015<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol></section></div></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");
@@ -1073,7 +1058,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/dats1001-fall-2024/edit/main/modules/module-1.4.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/dats1001-fall-2024/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/dats1001-fall-2024/edit/main/modules/module-1.5.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/dats1001-fall-2024/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>This page is built with <a href="https://quarto.org/">Quarto</a>. 👷🛠️</p>
 </div>

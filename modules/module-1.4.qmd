@@ -35,7 +35,6 @@ In this module, you'll begin your journey with several core Tidyverse packages t
 - `dplyr` provides intuitive verbs for data manipulation and transformation
 - `ggplot2` enables creation of beautiful visualizations using the grammar of graphics
 - `tidyr` will be helpful when we want to reshape (pivot) our data 
-
 Today, we are going to get a general sense of the Tidyverse. We will also talk about how to use the `readr` package to read data into R and a couple of ways to view the contents of the data frame. Then we will cover `ggplot2` in the next couple of modules and `dplyr` and `tidyr` will come into focus next week when we turn to data wrangling. 
 
 ## Working with Tidyverse Packages
@@ -75,7 +74,7 @@ The first step in most data analysis projects is importing your data. The `readr
 
 Let's start by loading the readr package and importing a dataset about democracy measures around the world. Download this data set and move it in your project folder as `dem_summary.csv`: 
 
-<a href="data/dem_summary.csv" download>📥 Download CSV</a>
+<a href="data/dem_summary.csv" download>📥 Download dem_summary.csv</a>
 
 A best practice is to save your data files in a subfolder within your project directory. Usually we would call that folder "data" and reference the file as `data/name_of_file.csv`. This keeps your workspace organized and makes it easier to find your data files later.
 
@@ -111,7 +110,9 @@ dem_summary <- read_csv("data/dem_summary.csv")
 glimpse(dem_summary)
 ```
 
-There are some other base R functions that can be useful for viewing data frames. You can use the `head()` function to view the first few rows of a data frame:
+Here we see that the data frame consists of five columns: `region`; `polyarchy` (a measure of democracy); GDP per capita (`gdp_pc`); female labor force participation rates (`flfp`); and levels of women's representation (`women_rep`). We also see that `region` is a character variable and the other four columns are numeric variables. Finally, we see that there are six rows in the data frame representing the average values of these variables for each region in the world.
+
+Note that there are some other base R functions that can be useful for viewing data frames. You can use the `head()` function to view the first few rows of a data frame:
 
 ```{r}
 head(dem_summary)
