@@ -13,8 +13,6 @@ execute:
 
 ::: {.callout-tip}
 ## Prework
-- Familiarize yourself with the [Tidyverse](https://www.tidyverse.org/packages/) group of packages.
-- We will not be using all of these, but the first four (`ggplot2`, `dplyr`, `tidyr`, and `readr`) are essential for this course.
 - You should have a project folder for Module 1 that you created in the last lesson. In it, create a Quarto document called `module-1.3.qmd` and use it to take notes and do the exercises in the module. 
 :::
 
