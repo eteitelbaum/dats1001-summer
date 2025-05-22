@@ -58,10 +58,13 @@ You can also create numbered or unnumbered lists by just typing them directly, a
 
 One of the key advantages of Quarto is the ability to weave together code and prose. You can insert a code chunk by typing three backticks and specifying the language, like this:
 
-
 ```{r}
 summary(cars)
 ```
+
+There are also a couple of shortcuts you can use to create code chunks in RStudio. You can use the keyboard shortcut `Ctrl + Alt + I` (or `Cmd + Option + I` on Mac) to insert a code chunk, or you can go to the menu bar and select on this icon:
+
+![](images/insert-chunk.png){fig-align="center"}
 
 You can also control how chunks behave using chunk options. Quarto supports a special `#|` syntax that lets you configure each chunk individually. For instance, you can use `#| echo: ` to control whether the code is displayed along with the output, or `#| label: ` to add a label to a code chunk (labels can be useful if you want to identify where an error is coming from or to reuse code from a chunk).
 

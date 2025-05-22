@@ -100,11 +100,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }</script>
 <meta property="og:title" content="Module 1.2 – DATS 1001–Fall Schedule">
 <meta property="og:description" content="Meet ouR Tech Stack">
-<meta property="og:image" content="https://ds4all.rocks/modules/images/code-chunks.gif">
+<meta property="og:image" content="https://ds4all.rocks/modules/images/insert-chunk.png">
 <meta property="og:site_name" content="DATS 1001--Fall Schedule">
+<meta property="og:image:height" content="62">
+<meta property="og:image:width" content="112">
 <meta name="twitter:title" content="Module 1.2 – DATS 1001–Fall Schedule">
 <meta name="twitter:description" content="Meet ouR Tech Stack">
-<meta name="twitter:image" content="https://ds4all.rocks/modules/images/code-chunks.gif">
+<meta name="twitter:image" content="https://ds4all.rocks/modules/images/insert-chunk.png">
+<meta name="twitter:image-height" content="62">
+<meta name="twitter:image-width" content="112">
 <meta name="twitter:card" content="summary_large_image">
 </head>
 <body class="nav-sidebar docked">
@@ -376,6 +380,11 @@ Prework
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(cars)</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>There are also a couple of shortcuts you can use to create code chunks in RStudio. You can use the keyboard shortcut <code>Ctrl + Alt + I</code> (or <code>Cmd + Option + I</code> on Mac) to insert a code chunk, or you can go to the menu bar and select on this icon:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="images/insert-chunk.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
 </div>
 <p>You can also control how chunks behave using chunk options. Quarto supports a special <code>#|</code> syntax that lets you configure each chunk individually. For instance, you can use <code>#| echo:</code> to control whether the code is displayed along with the output, or <code>#| label:</code> to add a label to a code chunk (labels can be useful if you want to identify where an error is coming from or to reuse code from a chunk).</p>
 <div class="quarto-figure quarto-figure-center">
