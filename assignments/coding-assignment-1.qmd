@@ -110,11 +110,11 @@ Note that you will get some warnings about a few missing data points, so try set
 
 ```
 
-## Step 4: Interpretation (10 pts)
+## Step 5: Interpretation (10 pts)
 
 *Interpret your results from your visualizations, including the scatter plot, line chart and column chart. Is there an obvious relationship between development and democracy? Do the data generally support Lipset's theory?*
 
-## Step 5: Rendering (10 pts)
+## Step 6: Rendering (10 pts)
 
 *Press the render button to create your HTML document. If you get any errors go back and fix them and try again until the document renders.*
 
