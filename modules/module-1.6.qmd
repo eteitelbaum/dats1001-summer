@@ -75,7 +75,11 @@ ggplot(dem_waves_ctrs, aes(x = year, y = polyarchy, color = country)) +
 
 The last visualization we are going to cover is a scatter plot. In this example, we are going to illustrating modernization theory, which predicts a positive relationship between wealth and democracy, while also incorporating levels of women's representation into our analysis.  
 
-We are going to start with the [dem_women.csv](data/dem_women.csv) file we used in the last module. We will then group the data by country and calculate the mean for each variable. Note that in the `group_by()` call we also include `region` because we will want to keep it so that we can color our points by region. 
+We are going to start with the [dem_women.csv](data/dem_women.csv) file we used in the last module. We will then group the data by country and calculate the mean for each variable. In the `group_by()` call we also include `region` because we will want to keep it so that we can color our points by region.
+
+::: {.callout-note}
+Grouping and summarizing variables will be covered more in a future module, but here just know that we are doing this to get the average of each variable for each country. Another option could be to filter the data for one year, as we did for the histogram in the last module.
+:::
 
 ```{r}
 #| label: ctry_data

@@ -27,7 +27,6 @@ Start by running this code chunk to import all of the packages you will need for
 #| label: setup
 
 library(tidyverse)
-library(plotly)
 ```
 
 ## Step 1: Make a line chart showing country trends (20 pts)
@@ -46,7 +45,7 @@ library(plotly)
 
 *c) Now click on the data frame in the Environment tab or use `View()` to scroll through the data frame. What countries, years and variables are in the data frame? What are the measures of democracy?*
 
-*d) Now choose one of the democracy indicators and visualize it for the countries in the dataset with a line chart using `ggplot2`. Be sure to specify `x = `, `y = ` and `color =` in your aes() call and use `geom_line()` to create the chart.Add appropriate axis labels, a title and a caption. Now add a colorblind-friendly color map using `viridis` and a theme.* 
+*d) Now choose one of the democracy indicators and visualize it with a line chart using `ggplot2`. Be sure to specify `x = `, `y = ` and `color =` in your aes() call and use `geom_line()` to create the chart.Add appropriate axis labels, a title and a caption. Now add a colorblind-friendly color map using `viridis` and a theme.* 
 
 ```{r}
 
@@ -64,7 +63,7 @@ library(plotly)
 
 *b) View the data frame. Describe briefly what you see, e.g. number of rows, columns and how the countries rank in terms of one of the democracy scores.*
 
-*c) Use `ggplot()` and `geom_col()` to visualize one of the democracy measures with a column chart (you can use the same measure as in Step 1 or a different one). Use `fct_reorder()` to arrange the columns in order of the y-axis values. Make sure to add appropriate axis labels, a title and a caption. Change the fill color and add a theme to spruce it up a bit. Remember that these are averages over the same number of years as the line chart you made in Step 1* 
+*c) Use `ggplot()` and `geom_col()` to visualize one of the democracy measures with a column chart (you can use the same measure as in Step 1 or a different one). Use `reorder()` to arrange the columns in order of the y-axis values. Make sure to add appropriate axis labels, a title and a caption. Change the fill color and add a theme to spruce it up a bit. Remember that these are averages over the same number of years as the line chart you made in Step 1* 
 
 ```{r}
 
@@ -80,19 +79,23 @@ library(plotly)
 
 ```
 
-*b) Now build a scatter plot with `ggplot2` using these data. Put GDP on the x-axis and one of the measures of democracy on the y-axis and color the points by region. Stretch the x-axis on a log scale and use the `scales` package to add a prefix and suffix to the x-axis numbers to indicate that they are dollar figures. Add appropriate labels and a `viridis` color map and add your favorite theme. Note that you will get some warnings about a few missing data points, so try setting `warning: false` at the top of the code chunk with the hash pipe (#|) operator.* 
+*b) Now build a scatter plot with `ggplot2` using these data. Put GDP on the x-axis and one of the measures of democracy on the y-axis and color the points by region. Stretch the x-axis on a log scale and use the `scales` package to add a prefix and suffix to the x-axis numbers to indicate that they are dollar figures. Add appropriate labels and, optionally, a `viridis` color map and add your favorite theme.*
+
+::: {.callout-note}
+Note that you will get some warnings about a few missing data points, so try setting `warning: false` at the top of the code chunk with the hash pipe (#|) operator.
+:::
 
 ```{r}
 
 ```
 
-*c) Next add a trend line with `geom_smooth()` preferably with a linear model (method = "lm"). Note that you will get some warnings about missing data points and a message about the linear model. Try setting `warning: false` at the top of the code chunk with the hash pipe (#|) operator. Make sure that you have just ONE TREND LINE in your scatter plot (not one for each region).*  
+*c) Next add a trend line with `geom_smooth()` preferably with a linear model (method = "lm"). Note that you will get some warnings about missing data points and a message about the linear model. Try setting `warning: false` at the top of the code chunk with the hash pipe (#|) operator.*  
 
 ```{r}
 
 ```
 
-## Step 4: Additional Tasks (20 pts)
+## Step 4: Additional Steps (20 pts)
 
 *a) Facet wrap your scatter plot by region.*
 
@@ -107,29 +110,13 @@ library(plotly)
 
 ```
 
-*c) Remove the text labels and make your scatter plot interactive using `ggplotly()`. Make sure that your tooltip includes the information that you want to display to the user.*
-
-```{r}
-
-```
-
-## Step 5: Interpretation (10 pts)
+## Step 4: Interpretation (10 pts)
 
 *Interpret your results from your visualizations, including the scatter plot, line chart and column chart. Is there an obvious relationship between development and democracy? Do the data generally support Lipset's theory?*
 
-
-## Step 6: Rendering (10 pts)
+## Step 5: Rendering (10 pts)
 
 *Press the render button to create your HTML document. If you get any errors go back and fix them and try again until the document renders.*
-
-
-## Extra Credit (3 pts)
-
-*(a) Use a Quato theme to improve the look of the HTML output.*
-
-*(b) Use the `paletteer` package to a different theme to your scatter plot from Step 4.*
-
-*(c) Add annotation to your scatter plot from Step 4 using hline() or vline() to highlight a significant point in your data, like the mean or some other significant value. (Note: you will have to do some research to complete this step--we did not do it in class).*
 
 ## Submission
 
