@@ -373,15 +373,9 @@ Prework
 </section><section id="code-chunks-in-depth" class="level2"><h2 class="anchored" data-anchor-id="code-chunks-in-depth">Code Chunks in Depth</h2>
 <p>One of the key advantages of Quarto is the ability to weave together code and prose. You can insert a code chunk by typing three backticks and specifying the language, like this:</p>
 <div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code>     speed           dist       
- Min.   : 4.0   Min.   :  2.00  
- 1st Qu.:12.0   1st Qu.: 26.00  
- Median :15.0   Median : 36.00  
- Mean   :15.4   Mean   : 42.98  
- 3rd Qu.:19.0   3rd Qu.: 56.00  
- Max.   :25.0   Max.   :120.00  </code></pre>
-</div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(cars)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>You can also control how chunks behave using chunk options. Quarto supports a special <code>#|</code> syntax that lets you configure each chunk individually. For instance, you can use <code>#| echo:</code> to control whether the code is displayed along with the output, or <code>#| label:</code> to add a label to a code chunk (labels can be useful if you want to identify where an error is coming from or to reuse code from a chunk).</p>
 <div class="quarto-figure quarto-figure-center">

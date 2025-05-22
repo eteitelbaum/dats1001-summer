@@ -6,9 +6,8 @@ format:
     code-link: true
 highlight-style: atom-one
 execute: 
-  echo: true
-  message: false
-  warning: false
+  echo: fenced
+  eval: false
 ---
 
 ::: {.callout-tip}
@@ -59,8 +58,8 @@ You can also create numbered or unnumbered lists by just typing them directly, a
 
 One of the key advantages of Quarto is the ability to weave together code and prose. You can insert a code chunk by typing three backticks and specifying the language, like this:
 
+
 ```{r}
-#| echo: false
 summary(cars)
 ```
 
