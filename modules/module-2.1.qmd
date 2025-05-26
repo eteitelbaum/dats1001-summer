@@ -27,7 +27,7 @@ Before we can analyze or visualize data, we need to understand its structure and
 
 Data enters our workflow in many ways. Often, it is sent to us directly by a boss or a client, usually in the form of a spreadsheet or CSV file. Sometimes we collect it ourselves through surveys, or we might use data collected by someone else. Increasingly, data is also available online, either for download or through scraping techniques. In R, we often work with data that comes packaged in libraries, such as `unvotes` or `vdemlite`. Many datasets can also be accessed programmatically through application programming interfaces, or APIs. Regardless of the source, the structure and quality of the data are not guaranteed, which brings us to the question of what makes data usable in practice.
 
-::: {.callout-tip}
+::: {.callout-note}
 ## Did you know?
 Many packages ship with their own inbuilt datasets. For example, the `ggplot2` package includes the `mpg` dataset, which contains information about fuel economy for various car models. Similarly `dplyr` includes the `starwars` dataset, which contains information about characters from the Star Wars universe. 
 
