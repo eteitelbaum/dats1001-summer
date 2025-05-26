@@ -12,6 +12,7 @@ execute:
 ---
 
 ::: {.callout-tip}
+## Prework
 - Create a QMD file in your Module 2 project folder for this lesson.
 - Create a data subfolder in your Module 2 project folder to store any data files you download.
 - Load `readr` and `dplyr` packages for the exercises in this module.

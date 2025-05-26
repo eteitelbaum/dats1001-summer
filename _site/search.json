@@ -6006,7 +6006,7 @@
     "href": "modules/module-2.1.html",
     "title": "Module 2.1",
     "section": "",
-    "text": "Tip\n\n\n\n\nCreate a QMD file in your Module 2 project folder for this lesson.\nCreate a data subfolder in your Module 2 project folder to store any data files you download.\nLoad readr and dplyr packages for the exercises in this module."
+    "text": "Prework\n\n\n\n\nCreate a QMD file in your Module 2 project folder for this lesson.\nCreate a data subfolder in your Module 2 project folder to store any data files you download.\nLoad readr and dplyr packages for the exercises in this module."
   },
   {
     "objectID": "modules/module-2.1.html#overview",
