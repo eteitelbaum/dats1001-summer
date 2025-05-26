@@ -1,0 +1,66 @@
+---
+title: "Module 2.1"
+subtitle: "What is Tidy Data?"
+format: 
+  html:
+    code-link: true
+highlight-style: atom-one
+execute: 
+  echo: true
+  message: false
+  warning: false
+---
+
+## Overview
+
+Before we can analyze or visualize data, we need to understand its structure and quality. In this module, we explore where data comes from, how it is typically organized in R, and what it means for data to be tidy and clean. We introduce key concepts such as tabular data, variables, observations, and units of analysis, and we explain the principles of tidy data—a structure that makes data analysis more straightforward and consistent. We also discuss the importance of clean data, which ensures that values are well-formatted, column names are usable, and missing or duplicated entries are handled. By the end of the module, you will be able to assess the structure and quality of a dataset and begin transforming it into a form suitable for analysis.
+
+## Where Does Data Come From?
+
+Data enters our workflow in many ways. Often, it is sent to us directly by a boss or a client, usually in the form of a spreadsheet or CSV file. Sometimes we collect it ourselves through surveys, or we might use data collected by someone else. Increasingly, data is also available online, either for download or through scraping techniques. In R, we often work with data that comes packaged in libraries, such as the `unvotes` package. Many datasets can also be accessed programmatically through application programming interfaces, or APIs. Regardless of the source, the structure and quality of the data are not guaranteed, which brings us to the question of what makes data usable in practice.
+
+## Getting Started with Data
+
+Most of the data we encounter in applied work are tabular in nature. This means they are organized into rows and columns, and are sometimes referred to as **rectangular data**. In R, the standard way to represent this kind of data is with a **data frame**. Each column in the data frame corresponds to a **variable** or **attribute**, such as GDP per capita or life expectancy. Each row corresponds to a single **unit of observation**, such as a country, individual, or point in time.
+
+A data frame is built around a **unit of analysis**--the entity or level at which observations are recorded. In a cross-sectional dataset, the units might be countries, states, cities, or individuals at a specific moment. In a time-series dataset, the units are often repeated over time such as countries measured annually from 1990 to 2020. Understanding the unit of analysis is key to interpreting and analyzing data correctly.
+
+## The Concept of Tidy Data
+
+To work effectively with data, especially in the R ecosystem, it is helpful to adhere to a structure known as tidy data. In tidy data, each column is reserved for a single variable, each row contains exactly one observation, and each cell holds a single value. This format aligns with the expectations of many functions in the tidyverse, making the data easier to filter, transform, and visualize. Tidy data is not merely a stylistic preference--it is a convention that supports a consistent and predictable approach to analysis.
+
+{{< video https://www.youtube.com/watch?v=oQuupzfX9OQ title='Principles of Tidy Data' >}}
+
+### Tidy Data Example
+
+The structure of tidy data can be illustrated visually. The image below shows a dataset where each column is a variable, each row is a separate case, and each cell contains a single measurement:
+
+![Tidy Data](images/tidy_data.jpg)
+
+This clean organization contrasts sharply with the ad hoc formatting often encountered in real-world data files.
+
+### What are Clean Data?
+
+Where tidy data is about structure, clean data is about making sure that data are free of errors and inconsistencies that make analysis difficult or misleading. This includes ensuring that column names are not duplicated and are easy to reference in code. It also means that missing values have been addressed, either through imputation or removal. Clean data should not contain extra or blank rows or columns, and all values should be stored in the proper format—for example, dates should be stored as actual date objects rather than character strings. Clean data allow us to trust the integrity of our analysis and avoid downstream issues.
+
+### Messy Data Example
+
+To appreciate the importance of clean data, it helps to examine what happens when data are not clean or tidy. The image below shows an example of messy data—likely extracted from a real-world spreadsheet—where variable names may be repeated, values are spread across multiple columns inappropriately, and the structure does not conform to tidy principles:
+
+![Messy Data](images/messy_wb_data.jpg){width=70%}
+
+This kind of data requires significant wrangling before it can be used effectively in analysis.
+
+## How Do We Get Tidy and Clean Data?
+
+In practice, the tidiness and cleanliness of data vary by source. Files sent from clients or supervisors often require substantial cleanup before they can be used. Survey data can range in quality depending on how it was collected and structured. Data downloaded from the web or scraped from a site often arrive in a messy format. On the other hand, data included in curated packages, or accessed through well-designed APIs, are more likely to be tidy and clean by default. We will be working with a variety of data sources throughout this course, and we will learn how to transform messy data into tidy and clean formats.
+
+## Your Turn! 
+
+1. Go to kaggle.com and search for a dataset that interests you. Download it and save it in the `data` subfolder that you created for this module. 
+2. Read the data into R using the `read_csv()` function from the `readr` package.
+3. Use the `glimpse()` function to examine the structure of the data.
+4. Identify the unit of analysis for the dataset.
+5. Check if the data is tidy. If it is not, identify at least one way to make it tidy.
+6. Check if the data is clean. If it is not, identify at least one way to make it clean.
+7. Every dataset on Kaggle has a data usability score and a discussion section. Read through the discussion to see if others have identified issues with the data. If so, what are they? How would you address them? Does the usability score comport with what you are seeing? 
