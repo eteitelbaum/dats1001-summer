@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -300,6 +334,10 @@ ul.task-list li input[type="checkbox"] {
   </ul></li>
   <li><a href="#how-do-we-get-tidy-and-clean-data" id="toc-how-do-we-get-tidy-and-clean-data" class="nav-link" data-scroll-target="#how-do-we-get-tidy-and-clean-data">How Do We Get Tidy and Clean Data?</a></li>
   <li><a href="#your-turn" id="toc-your-turn" class="nav-link" data-scroll-target="#your-turn">Your Turn!</a></li>
+  <li><a href="#tibbles-a-modern-take-on-data-frames" id="toc-tibbles-a-modern-take-on-data-frames" class="nav-link" data-scroll-target="#tibbles-a-modern-take-on-data-frames">Tibbles: A Modern Take on Data Frames</a></li>
+  <li><a href="#common-data-types-in-tibbles" id="toc-common-data-types-in-tibbles" class="nav-link" data-scroll-target="#common-data-types-in-tibbles">Common Data Types in Tibbles</a></li>
+  <li><a href="#working-with-dates-and-times-using-lubridate" id="toc-working-with-dates-and-times-using-lubridate" class="nav-link" data-scroll-target="#working-with-dates-and-times-using-lubridate">Working with Dates and Times Using <code>lubridate</code></a></li>
+  <li><a href="#your-turn-1" id="toc-your-turn-1" class="nav-link" data-scroll-target="#your-turn-1">Your Turn!</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/dats1001-fall-2024/edit/main/modules/module-2.1.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/dats1001-fall-2024/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -350,7 +388,7 @@ Prework
 </section>
 <section id="where-does-data-come-from" class="level2">
 <h2 class="anchored" data-anchor-id="where-does-data-come-from">Where Does Data Come From?</h2>
-<p>Data enters our workflow in many ways. Often, it is sent to us directly by a boss or a client, usually in the form of a spreadsheet or CSV file. Sometimes we collect it ourselves through surveys, or we might use data collected by someone else. Increasingly, data is also available online, either for download or through scraping techniques. In R, we often work with data that comes packaged in libraries, such as the <code>unvotes</code> package. Many datasets can also be accessed programmatically through application programming interfaces, or APIs. Regardless of the source, the structure and quality of the data are not guaranteed, which brings us to the question of what makes data usable in practice.</p>
+<p>Data enters our workflow in many ways. Often, it is sent to us directly by a boss or a client, usually in the form of a spreadsheet or CSV file. Sometimes we collect it ourselves through surveys, or we might use data collected by someone else. Increasingly, data is also available online, either for download or through scraping techniques. In R, we often work with data that comes packaged in libraries, such as the <code>unvotes</code> package or the <code>vdemlite</code> package. Many datasets can also be accessed programmatically through application programming interfaces, or APIs. Regardless of the source, the structure and quality of the data are not guaranteed, which brings us to the question of what makes data usable in practice.</p>
 </section>
 <section id="getting-started-with-data" class="level2">
 <h2 class="anchored" data-anchor-id="getting-started-with-data">Getting Started with Data</h2>
@@ -381,7 +419,7 @@ Prework
 <p>To appreciate the importance of clean data, it helps to examine what happens when data are not clean or tidy. The image below shows an example of messy data—likely extracted from a real-world spreadsheet—where variable names may be repeated, values are spread across multiple columns inappropriately, and the structure does not conform to tidy principles:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/messy_wb_data.jpg" class="img-fluid figure-img" style="width:70.0%"></p>
+<p><img src="images/messy_wb_data.jpg" class="img-fluid figure-img"></p>
 <figcaption>Messy Data</figcaption>
 </figure>
 </div>
@@ -402,6 +440,113 @@ Prework
 <li>Check if the data is tidy. If it is not, identify at least one way to make it tidy.</li>
 <li>Check if the data is clean. If it is not, identify at least one way to make it clean.</li>
 <li>Every dataset on Kaggle has a data usability score and a discussion section. Read through the discussion to see if others have identified issues with the data. If so, what are they? How would you address them? Does the usability score comport with what you are seeing?</li>
+</ol>
+</section>
+<section id="tibbles-a-modern-take-on-data-frames" class="level2">
+<h2 class="anchored" data-anchor-id="tibbles-a-modern-take-on-data-frames">Tibbles: A Modern Take on Data Frames</h2>
+<p>We have been talking a lot about data frames as a standard way of storing tabular data in R, where each column represents a variable and each row is an observation. In this section, we introduce <em>tibbles</em>, which are modern reimaginings of data frames designed for use within the tidyverse. While tibbles behave much like data frames, they offer a number of important improvements that make them more predictable and user-friendly.</p>
+<p>Tibbles avoid some of the surprising behaviors of base R data frames. For example, they do not automatically convert character strings into factors. They also display data in a more readable way, showing only the first ten rows and as many columns as fit on screen. Column names are preserved exactly as written, even if they contain spaces or other special characters. In general, tibbles are slightly easier to work with than base R data frames when writing scripts or building reproducible workflows.</p>
+<p>Whenever you read data into R using a tidyverse package like <code>readr</code>, the result is automatically returned as a tibble. But you can also create your own tibble from scratch using the <code>tibble()</code> function from the <code>tibble</code> package. Here’s an example that constructs a small tibble containing names, ages, heights, and a logical variable indicating whether someone is a student:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tibble)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>my_tibble <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">name =</span> <span class="fu">c</span>(<span class="st">"Alice"</span>, <span class="st">"Bob"</span>, <span class="st">"Charlie"</span>),</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">age =</span> <span class="fu">c</span>(<span class="dv">25</span>, <span class="dv">30</span>, <span class="dv">35</span>),</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">height =</span> <span class="fu">c</span>(<span class="dv">160</span>, <span class="dv">170</span>, <span class="dv">180</span>),</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">is_student =</span> <span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">FALSE</span>)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>my_tibble</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This tibble contains several different types of data. Each column is stored using an appropriate data type, which R identifies using short labels that appear when printing the tibble. Understanding these types is important because they affect how R interprets and manipulates your data.</p>
+</section>
+<section id="common-data-types-in-tibbles" class="level2">
+<h2 class="anchored" data-anchor-id="common-data-types-in-tibbles">Common Data Types in Tibbles</h2>
+<p>Tibbles can store a variety of column types, each suited to a particular kind of data. For example, text is stored as character strings, numbers can be stored as integers or doubles, and categorical values are stored as factors. Tibbles also support more specialized types, including dates, date-times, and even lists. The table below summarizes the most common data types you are likely to encounter when working with tibbles in R:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 9%">
+<col style="width: 49%">
+<col style="width: 41%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Type</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>&lt;chr&gt;</code></td>
+<td>Stores text strings</td>
+<td><code>"hello"</code>, <code>"R programming"</code></td>
+</tr>
+<tr class="even">
+<td><code>&lt;dbl&gt;</code></td>
+<td>Stores decimal (floating-point) numbers</td>
+<td><code>3.14</code>, <code>-1.0</code></td>
+</tr>
+<tr class="odd">
+<td><code>&lt;int&gt;</code></td>
+<td>Stores whole numbers (integers)</td>
+<td><code>1</code>, <code>-100</code>, <code>42</code></td>
+</tr>
+<tr class="even">
+<td><code>&lt;lgl&gt;</code></td>
+<td>Stores boolean values</td>
+<td><code>TRUE</code>, <code>FALSE</code>, <code>NA</code></td>
+</tr>
+<tr class="odd">
+<td><code>&lt;fct&gt;</code></td>
+<td>Stores categorical variables with fixed levels</td>
+<td><code>factor(c("low", "medium", "high"))</code></td>
+</tr>
+<tr class="even">
+<td><code>&lt;date&gt;</code></td>
+<td>Stores calendar dates (class <code>Date</code>) in YYYY-MM-DD format</td>
+<td><code>as.Date("2024-09-05")</code></td>
+</tr>
+<tr class="odd">
+<td><code>&lt;dttm&gt;</code></td>
+<td>Stores date-time values (class <code>POSIXct</code>)</td>
+<td><code>as.POSIXct("2024-09-05 14:30:00")</code></td>
+</tr>
+<tr class="even">
+<td><code>&lt;time&gt;</code></td>
+<td>Stores time-of-day values (rarely used without a date)</td>
+<td><code>"14:30:00"</code></td>
+</tr>
+<tr class="odd">
+<td><code>&lt;list&gt;</code></td>
+<td>Stores lists, where each entry can be a complex object</td>
+<td><code>list(c(1, 2, 3), c("a", "b", "c"))</code></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="working-with-dates-and-times-using-lubridate" class="level2">
+<h2 class="anchored" data-anchor-id="working-with-dates-and-times-using-lubridate">Working with Dates and Times Using <code>lubridate</code></h2>
+<p>Handling dates and times in R can be tricky, especially when working with data from different sources that use inconsistent formats. The <code>lubridate</code> package simplifies this process by providing a consistent and readable set of functions for parsing, manipulating, and formatting dates and times. Unlike base R, which requires more manual effort to convert character strings into date objects and extract components like year or month, <code>lubridate</code> is designed to make these tasks intuitive.</p>
+<p>One of the key advantages of <code>lubridate</code> is that its functions are named according to the structure of the date format itself. For example, <code>ymd()</code> expects input in a year-month-day format, while <code>mdy()</code> expects month-day-year. This eliminates the need to specify format strings manually, reducing the chance of error and improving code readability.</p>
+<p>Here’s a quick example showing how to use <code>lubridate</code> to parse dates in multiple formats:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Parse dates in different formats</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>my_date <span class="ot">&lt;-</span> <span class="fu">ymd</span>(<span class="st">"2024-09-05"</span>)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>my_date2 <span class="ot">&lt;-</span> <span class="fu">mdy</span>(<span class="st">"09-05-2024"</span>)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>my_date3 <span class="ot">&lt;-</span> <span class="fu">dmy</span>(<span class="st">"05-09-2024"</span>)</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Print in long form</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="fu">format</span>(my_date, <span class="st">"%B %d, %Y"</span>)  <span class="co"># "September 05, 2024"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Once stored correctly as date objects, these values can be used in filtering, plotting, or date-based calculations without additional conversion steps.</p>
+</section>
+<section id="your-turn-1" class="level2">
+<h2 class="anchored" data-anchor-id="your-turn-1">Your Turn!</h2>
+<ol type="1">
+<li>Create your own tibble on a topic that interests you—this could be anything from meals you’ve cooked to books you’ve read or places you’ve visited.</li>
+<li>Try to include at least three different data types, such as character, numeric, and logical.</li>
+<li>Include a date or date-time column using lubridate to parse your date values.</li>
+<li>Use tibble() to create your tibble and print it to inspect the structure and data types.</li>
 </ol>
 
 
