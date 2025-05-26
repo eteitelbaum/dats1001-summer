@@ -1,0 +1,113 @@
+---
+title: "Module 2.2"
+subtitle: "Transforming Data"
+format: 
+  html:
+    code-link: true
+highlight-style: atom-one
+execute: 
+  echo: true
+  message: false
+  warning: false
+---
+
+::: {.callout-tip}
+## Prework
+- Start a new QMD file for this module in your Module 2 project folder.
+- Install the `nycflights13` package: `install.packages("nycflights13")`.
+- Familiarize yourself with the `dplyr` [package](https://dplyr.tidyverse.org/articles/dplyr.html).
+- Have a look at the `dplyr` [cheatsheet](https://rstudio.github.io/cheatsheets/data-transformation.pdf).
+:::
+
+## Overview
+
+Sometimes we want to do more than just explore a dataset in its raw form—we want to tailor it to answer specific questions. Whether we’re preparing data for a report, cleaning it for visualization, or building a model, it's often necessary to narrow down to the most relevant rows, select only the variables we care about, or generate new variables that express relationships or transformations more clearly. In this module, we’ll learn how to do just that using three foundational functions from the dplyr package: filter(), select(), and mutate().
+
+## Exploring the `nycflights13` Data
+
+Let's use the `flights` dataset from the `nycflights13` package to learn the grammar of data wrangling in R. This dataset contains detailed information on all flights departing from New York City airports in 2013. It includes a variety of variables, such as departure and arrival times, flight delays, air time, and more, making it an ideal dataset for practicing data wrangling techniques.
+
+```{r}
+library(nycflights13)
+library(dplyr)
+library(ggplot2)
+
+flights |> glimpse()
+```
+
+## Filtering Rows with `filter()`
+
+The `filter()` function allows us to extract rows from a data frame that meet specific conditions. This is useful when we want to zoom in on a particular subset of the data. For example, we might be interested in analyzing only the flights that departed on a certain day, or perhaps only the flights from a specific carrier or airport.
+
+Suppose we want to examine only the flights that departed on January 1st. We can use:
+
+```{r}
+flights |>
+  filter(month == 1, day == 1)
+```
+
+Filtering is essential when we are interested in targeted analyses, like studying seasonal trends, isolating outliers, or preparing training and test sets for modeling.
+
+## Selecting Columns with `select()`
+
+The `select()` function is used to choose a subset of columns from a data frame. This is helpful when we are only interested in a few variables and want to avoid cluttering our analysis with unnecessary information.
+
+For example, if we want to examine only the year, month, day, departure time, and flight number, we might write:
+
+```{r}
+flights |>
+  select(year, month, day, dep_time, arr_time, carrier, flight)
+```
+
+We can also rename variables while selecting them, which can be useful for clarity or consistency with other datasets:
+
+```{r}
+flights |>
+  select(date = time_hour, airline = carrier, flight)
+```
+
+Selecting variables makes our workflow cleaner, especially when preparing data for visualization or modeling.
+
+## Creating New Variables with `mutate()`
+
+The `mutate()` function allows us to add new columns to a data frame or transform existing ones. This is useful for deriving new insights from raw data. For example, we might want to calculate how much time was gained or lost during a flight:
+
+```{r}
+flights |>
+  mutate(time_gain = arr_delay - dep_delay) |>
+  select(flight, dep_delay, arr_delay, time_gain)
+```
+
+This calculation gives us a sense of whether flights tended to recover from delays during their journey. We can also use `mutate()` to convert units (e.g., minutes to hours), flag particular conditions, or apply mathematical transformations.
+
+## Combining `filter()`, `select()`, and `mutate()`
+
+These three functions are most powerful when used together. A typical workflow might involve narrowing down the dataset to a subset of interest, selecting relevant variables, and then creating new variables to aid analysis.
+
+Here’s an example:
+
+```{r}
+flights |>
+  filter(month == 6, day == 15) |>
+  select(flight, origin, dest, dep_delay, arr_delay) |>
+  mutate(total_delay = dep_delay + arr_delay)
+```
+
+In this example, we look at flights on June 15, keep only columns that describe the flight and its delays, and compute the total delay time. This kind of pipeline helps us build a tidy and interpretable dataset suited for visualization or statistical analysis.
+
+## Applying the Concepts to the V-Dem Dataset
+
+Now that we have a solid understanding of how to filter, select, and mutate data using dplyr, let's apply these concepts to a new dataset: the Varieties of Democracy (V-Dem) dataset. This dataset contains a wealth of information about democracy and governance across countries and over time.
+
+In this video walkthrough, we’ll revisit the `filter()`, `select()`, and `mutate()` functions in the context of real-world political data. We'll explore how to narrow our focus to particular years or countries, select the most relevant indicators of democracy, and construct new variables that help make sense of complex governance metrics.
+
+{{< video https://www.youtube.com/watch?v=ScQD47eJeAE title='Transforming Data with dplyr Verbs' >}}
+
+## Your Turn
+
+1. Using the nycflights dataset, filter the flights for February only.
+2. Select `carrier`, `origin`, `dest`, and `air_time`.
+3. Create a new variable that converts `air_time` from minutes to hours.
+4. Explore other interesting combinations using `filter()`, `select()`, and `mutate()`.
+5. Go to kaggle.com and find a dataset that interests you. Use the `dplyr` functions to filter, select, and mutate the data. Optional: `glimpse()` your data and share a screenshot of your results in the discussion forum.
+
