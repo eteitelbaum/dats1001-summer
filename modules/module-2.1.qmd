@@ -11,6 +11,12 @@ execute:
   warning: false
 ---
 
+::: {.callout-tip}
+- Create a QMD file in your Module 2 project folder for this lesson.
+- Create a data subfolder in your Module 2 project folder to store any data files you download.
+- Load `readr` and `dplyr` packages for the exercises in this module.
+:::
+
 ## Overview
 
 Before we can analyze or visualize data, we need to understand its structure and quality. In this module, we explore where data comes from, how it is typically organized in R, and what it means for data to be tidy and clean. We introduce key concepts such as tabular data, variables, observations, and units of analysis, and we explain the principles of tidy data—a structure that makes data analysis more straightforward and consistent. We also discuss the importance of clean data, which ensures that values are well-formatted, column names are usable, and missing or duplicated entries are handled. By the end of the module, you will be able to assess the structure and quality of a dataset and begin transforming it into a form suitable for analysis.
