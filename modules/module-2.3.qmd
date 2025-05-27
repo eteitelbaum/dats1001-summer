@@ -1,0 +1,167 @@
+---
+title: "Module 2.3"
+subtitle: "Summarizing Data"
+format: 
+  html:
+    code-link: true
+highlight-style: atom-one
+execute: 
+  echo: true
+  message: false
+  warning: false
+---
+
+::: {.callout-tip}
+## Prework
+- Start a QMD file for this module.
+- Review the concepts of `filter()`, `select()`, and `mutate()` from our previous lesson. 
+- Read about the [vdemlite](github.com/eteitelbaum/vdemlite) package.
+- `vdemlite` is not on CRAN, so you will need to install it from GitHub using the `pak` package.
+  + First install `pak` by typing `install.packages("pak")` in your console.
+  + Then, install the `vdemlite` package by typing `pak::pkg_install("eteitelbaum/vdemlite")` in your console.
+:::
+
+## Overview
+
+In this lesson, you'll learn how to summarize data by groups using the powerful `group_by()`, `summarize()`, and `arrange()` functions from the `dplyr` package. This sequence of operations is one of the most common and useful workflows in data science. We'll apply it to real-world data from the Varieties of Democracy (V-Dem) project, a rich dataset that measures democratic attributes across countries and years. You'll gain experience calculating summary statistics for different regions and time periods, and ranking countries or groups based on those statistics.
+
+## The V-Dem Dataset (and the `vdemlite` package)
+
+The V-Dem project stands for Varieties of Democracy. It provides detailed, expert-coded data on the quality of democracy across countries and years. The full dataset, accessible via the `vdemdata` package, includes over 4,000 variables dating back to the 18th century. But this dataset is quite large and complex, making it less practical for many applications. 
+
+For this class we are going to mainly rely on a package called `vdemlite`. This package includes several hundred widely used indicators from 1970 onward and is optimized for quick access and online teaching environments.
+
+The `vdemlite` package comes with several convenient functions. `searchdem()` is a convenience function that helps you look up specific indicators or find the underlying components of composite indices. 
+
+```{r}
+library(vdemlite)
+
+searchdem()
+```
+
+When you call `searchdem()` you get a searchable table of all the indicators in the `vdemlite` package that allows you to search by the indicator tab/label and descriptor. Try it out!
+
+Once you have identified a variable that you are interested in, you can call `summarizedem()`, which generates summary statistics for an indicator. Let's summarize the polyarchy score, a widely used measure of electoral democracy.
+
+```{r}
+summarizedem(indicator = "v2x_polyarchy")
+```
+
+Finally, you can use `fetchdem()` to retrieve a subset of the data filtered by indicators, countries, and years. 
+
+```{r}
+library(dplyr)
+
+dem_indicators <- fetchdem(
+  indicators = c("v2x_polyarchy", "v2xel_frefair"),                   
+  start_year = 2000, end_year = 2020,
+  countries = c("USA", "SWE")
+  )
+
+glimpse(dem_indicators)
+```
+
+Here, fetchdem includes filtering arguments for `indicators`, `countries`, and `years`. We could also have used the `dplyr` `select()` and `filter()` verbs to narrow down the data after fetching it, and this is actually what is going on "under the hood." These `fetchdem()` arguments just make it easier to work with the data without having to write a lot of code.
+
+## Your Turn!
+
+- Use `searchdem()` to find an indicator of interest.
+- Use `summarizedem()` to view its summary statistics.
+- Use `fetchdem()` to download that variable for a country or set of countries.
+
+## Grouping and Summarizing
+
+{{< video https://www.youtube.com/watch?v=mgBwVzMV-v8 title='Grouping and Summarizing Data with dplyr Verbs' >}}
+
+Let's use the V-Dem data to illustrate how to group and summarize data. One of the most common sequences in data wrangling involves `group_by()`, followed by `summarize()`, and then `arrange()` to sort the results.
+
+We can start by downloading some data for all of the countries. Let's download the polyarchy score (`v2x_polyarchy`), along with V-Dem's liberal democracy score (`v2x_libdem`), a women's political empowerment index (`v2x_gender`) and per capital gdp (`v2x_gdp_pc`). Let's also download the region of each country (`e_regionpol_6C`) so that we can have something to group and summarize by. 
+
+Let's then save those data in a data frame called `democracy` and let's then pipe the data into the rename function so that we can have more intuitive names for our variables. 
+
+```{r}
+democracy <- 
+  fetchdem(
+    indicators = c(
+      "v2x_polyarchy", 
+      "v2x_libdem", 
+      "v2x_gender", 
+      "e_gdppc", 
+      "e_regionpol_6C"
+      ) 
+    ) |>
+    rename(
+      polyarchy = v2x_polyarchy,
+      libdem = v2x_libdem,
+      womens_emp = v2x_gender,
+      gdp_pc = e_gdppc,
+      region = e_regionpol_6C
+    )
+
+glimpse(democracy)
+```
+
+Notice here that we are just downloading the data for these variables for all of the years and all of the countries. We are not using the `countries` or `years` arguments, so we get all of the data. 
+
+Also notice that the region variable is a series of region codes. This is going to make it hard to understand what the regions are, so we will need to do some additional work to make this more interpretable. Let's call `mutate()` along with `case_match()` to create a new variable that classifies countries into named regions based on the `e_regionpol_6C` variable. We will save the new data frame as `democracy` again, overwriting the previous version.
+
+```{r}
+democracy <- democracy |>
+  mutate(
+    region = case_match(region, # replace the values with country names
+                     1 ~ "Eastern Europe", 
+                     2 ~ "Latin America",  
+                     3 ~ "Middle East",   
+                     4 ~ "Africa", 
+                     5 ~ "The West", 
+                     6 ~ "Asia")
+  )
+
+glimpse(democracy)
+```
+
+Once we have the data ready, we can summarize these variables by region. Below we have an example of how to group the data by region, summarize the average `democracy` score, the median `libdem` score, the standard deviation of `womens_emp`, and the minimum value of `gdp_pc`. We then arrange the results in descending order of the average democracy score. 
+
+```{r}
+democracy |>
+  group_by(region) |>
+  summarize(
+    polyarchy_mean = mean(polyarchy, na.rm = TRUE),
+    libdem_median = median(libdem, na.rm = TRUE),
+    womens_emp_sd = sd(womens_emp, na.rm = TRUE),
+    gdp_pc_min = min(gdp_pc, na.rm = TRUE)
+  ) |>
+  arrange(desc(polyarchy_mean))
+```
+
+::: {.callout = "note"}
+Note how we add `na.rm = TRUE` to the `mean()`, `median()`, and `sd()` functions. This is important because it tells R to ignore any missing values (NAs) when calculating these statistics. If you don't include this argument, R will return NA for the entire summary if any of the values are missing.
+:::
+
+This pattern — group, summarize, arrange — is at the core of many descriptive analyses. You're grouping the data by a categorical variable (`region`), summarizing one or more numeric variables (e.g., `polyarchy`, `libdem`), and then sorting the results to highlight interesting patterns.
+
+What if we wanted to get the same summary statistics for multiple variables at once? To do this, we can use the `across()` function within `summarize()`. This allows us to apply the same function (like `mean()`, `median()`, etc.) to multiple columns without repeating code. 
+
+```{r}
+democracy |>
+  group_by(region) |>
+  summarize(
+    across(
+      c(polyarchy, libdem, womens_emp, gdp_pc),
+           mean,
+           na.rm = TRUE,
+           .names = "mean_{col}"
+      )
+  ) |>
+  arrange(desc(mean_polyarchy))
+```
+
+Here we are grouping the data by `region` and then summarizing the mean of several indicators: `polyarchy`, `libdem`, `women_rep`, and `flfp`. The `.names = "mean_{col}"` argument allows us to create new column names that include the original variable names, prefixed with "mean_".
+
+## Your Turn!
+
+- Find a few indicators of interest in `vdemlite` using `searchdem()`.
+- Use `summarizedem()` to view their summary statistics.
+- Use `fetchdem()` to download the data for those indicators and region codes that you can use to group the data, filtering for a subset of years if you like, but retaining all of the countries. Save those data in a data frame called `democracy` or something similar.
+- Use a `group_by()`, `summarize()`, and `arrange()` sequence to calculate some summary statistics for the data. Don't forget to include `na.rm = TRUE` in your summary functions to handle missing values.
+- Then, use `across()` to compute one statistic (i.e. mean or median) of several indicators.
