@@ -88,7 +88,8 @@ ggplot(dem_summary, aes(x = reorder(region, -polyarchy), y = polyarchy)) +
     )
 ```
 
-## Your Turn! 
+::: {.callout-warning icon=false}
+## Your Turn!! 
 
 1. `glimpse()` the data
 2. Find a new variable and a new to visualize
@@ -99,6 +100,7 @@ ggplot(dem_summary, aes(x = reorder(region, -polyarchy), y = polyarchy)) +
 7. Try adding a [theme](https://ggplot2.tidyverse.org/reference/ggtheme.html)
 8. Try saving your plot as an object
 9. Then change the labels and/or theme
+:::
 
 ## Histograms
 
@@ -112,8 +114,9 @@ For these data, we are going to have select one year to visualize because they f
 
 From there, we call `ggplot()`, specifying the polyarchy score on x-axis. But this time we change the geom to `geom_histogram()`. We also change the title and axis labels to reflect the fact that we are plotting the number of cases falling in each bin. 
 
-::: {.callout-note}
-Note that we leave the y-axis blank for the histogram because ggplot will automatically know to plot the number of units in each bin on the y-axis. 
+::: {.callout-important}
+## Code Detail: Blank y-axis
+Note that we leave the y-axis blank for the histogram because ggplot will automatically know to plot the number of units in each bin on the y-axis.
 :::
 
 ```{r}
@@ -131,7 +134,8 @@ ggplot(dem_women_2015, aes(x = polyarchy)) + # only specify x for histogram
     )
 ```
 
-## Your Turn! 
+::: {.callout-warning icon=false}
+## Your Turn!! 
 
 1. Pick a variable that you want to explore the distribution of^[Note that the data for GDP per capita spotty after 2015]
 2. Make a histogram
@@ -141,7 +145,6 @@ ggplot(dem_women_2015, aes(x = polyarchy)) + # only specify x for histogram
 4. Choose appropriate labels
 5. Change number of bins
 6. Change from count to density
-
-
+:::
 
 

@@ -314,9 +314,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#the-grammar-of-graphics" id="toc-the-grammar-of-graphics" class="nav-link" data-scroll-target="#the-grammar-of-graphics">The Grammar of Graphics</a></li>
   <li><a href="#which-visualization-do-i-use" id="toc-which-visualization-do-i-use" class="nav-link" data-scroll-target="#which-visualization-do-i-use">Which Visualization Do I Use?</a></li>
   <li><a href="#bar-charts" id="toc-bar-charts" class="nav-link" data-scroll-target="#bar-charts">Bar charts</a></li>
-  <li><a href="#your-turn" id="toc-your-turn" class="nav-link" data-scroll-target="#your-turn">Your Turn!</a></li>
   <li><a href="#histograms" id="toc-histograms" class="nav-link" data-scroll-target="#histograms">Histograms</a></li>
-  <li><a href="#your-turn-1" id="toc-your-turn-1" class="nav-link" data-scroll-target="#your-turn-1">Your Turn!</a></li>
   </ul><div class="toc-actions"><ul><li><a href="https://github.com/dats1001-fall-2024/edit/main/modules/module-1.5.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/dats1001-fall-2024/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
@@ -412,7 +410,16 @@ Prework
 </div>
 </div>
 </div>
-</section><section id="your-turn" class="level2"><h2 class="anchored" data-anchor-id="your-turn">Your Turn!</h2>
+<div class="callout callout-style-default callout-warning no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Your Turn!!
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <ol type="1">
 <li>
 <code><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse()</a></code> the data</li>
@@ -425,19 +432,22 @@ Prework
 </li>
 <li>Try saving your plot as an object</li>
 <li>Then change the labels and/or theme</li>
-</ol></section><section id="histograms" class="level2"><h2 class="anchored" data-anchor-id="histograms">Histograms</h2>
+</ol>
+</div>
+</div>
+</section><section id="histograms" class="level2"><h2 class="anchored" data-anchor-id="histograms">Histograms</h2>
 <div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/-1YhCql-gMo" title="Make a Histogram" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
 <p>Now let’s do another <code><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot()</a></code> call to make a histogram. We’ll start by reading in the <code>dem_women.csv</code> file from our previous lesson. Again, these should already be stored in the <code>data</code> subfolder for this module, but just in case:</p>
 <p><a href="data/dem_women.csv" download="">📥 Download dem_women.csv</a></p>
 <p>For these data, we are going to have select one year to visualize because they feature a time series. We will use the <code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code> function from <code>dplyr</code> to select the year 2015. We use the pipe operator (<code>|&gt;</code>) to pass the data frame to the <code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code> function. We are going to cover the <code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code> verb and the pipe operator in more detail in the next module, but for now just know that <code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code> selects a column and the pipe operator allows us to pass the data frame to the next function without having to re-specify it.</p>
 <p>From there, we call <code><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot()</a></code>, specifying the polyarchy score on x-axis. But this time we change the geom to <code><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram()</a></code>. We also change the title and axis labels to reflect the fact that we are plotting the number of cases falling in each bin.</p>
-<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Note
+Code Detail: Blank y-axis
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -463,7 +473,16 @@ Note
 </div>
 </div>
 </div>
-</section><section id="your-turn-1" class="level2"><h2 class="anchored" data-anchor-id="your-turn-1">Your Turn!</h2>
+<div class="callout callout-style-default callout-warning no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Your Turn!!
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <ol type="1">
 <li>Pick a variable that you want to explore the distribution of<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>
 </li>
@@ -480,6 +499,8 @@ Note
 <li>Change number of bins</li>
 <li>Change from count to density</li>
 </ol>
+</div>
+</div>
 
 
 </section><div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>

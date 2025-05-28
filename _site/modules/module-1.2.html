@@ -315,7 +315,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#yaml-front-matter-revisited" id="toc-yaml-front-matter-revisited" class="nav-link" data-scroll-target="#yaml-front-matter-revisited">YAML Front Matter Revisited</a></li>
   <li><a href="#authoring-with-markdown" id="toc-authoring-with-markdown" class="nav-link" data-scroll-target="#authoring-with-markdown">Authoring with Markdown</a></li>
   <li><a href="#code-chunks-in-depth" id="toc-code-chunks-in-depth" class="nav-link" data-scroll-target="#code-chunks-in-depth">Code Chunks in Depth</a></li>
-  <li><a href="#your-turn" id="toc-your-turn" class="nav-link" data-scroll-target="#your-turn">Your Turn!</a></li>
   <li><a href="#final-tips" id="toc-final-tips" class="nav-link" data-scroll-target="#final-tips">Final Tips</a></li>
   </ul><div class="toc-actions"><ul><li><a href="https://github.com/dats1001-fall-2024/edit/main/modules/module-1.2.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/dats1001-fall-2024/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -392,7 +391,16 @@ Prework
 </figure>
 </div>
 <p>In this example, we’ve given the chunk a label (<code>mtcars_plot</code>) and hidden the code from the final output using <code>echo: false</code>. Notice how in the rendered version the first chunk shows the code but the second and third do not. This is useful when you want to show the results—like a plot—without showing the code that generated it. You can also hide messages, warnings, and even outputs in a similar way.</p>
-</section><section id="your-turn" class="level2"><h2 class="anchored" data-anchor-id="your-turn">Your Turn!</h2>
+<div class="callout callout-style-default callout-warning no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Your Turn!!
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <p>Let’s put everything together in a small project. Start by creating a new folder and placing a new Quarto document inside it. Here is an illustration to remind you how to do that (for a fuller explanation, review the <a href="getting-started.qmd">Getting Started</a> module).</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure"><p><img src="images/intro_quarto.gif" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
@@ -400,6 +408,8 @@ Prework
 </div>
 <p>Write a few short paragraphs of narrative text and include a code chunk that generates a plot with <code>ggplot2</code>. If you have images or data files, place them in subfolders and link to them using relative paths.</p>
 <p>Once you’ve written your report, render the document to HTML. Open the result in your browser and make sure everything displays correctly. Along the way, try adjusting chunk options to control what appears in the final output. If you run into rendering errors, use the error messages to debug step-by-step—this is a valuable part of learning.</p>
+</div>
+</div>
 </section><section id="final-tips" class="level2"><h2 class="anchored" data-anchor-id="final-tips">Final Tips</h2>
 <p>As a rule of thumb, always use relative file paths inside your Quarto projects. This means referring to files based on their position in the folder structure, not their full computer location. It helps keep your project portable so that it runs smoothly on any machine, whether yours or a collaborator’s.</p>
 <p>When in doubt, label your chunks, write clearly, and remember that Quarto documents are meant to evolve. The more you write and render, the more confident you’ll become.</p>

@@ -130,7 +130,8 @@ And the `summary()` function to get a summary of the data frame, including the m
 summary(dem_summary)
 ```
 
-## Your Turn! 
+::: {.callout-warning icon=false}
+## Your Turn!! 
 
 - Make sure that you are able to do all of the above-mentioned steps in this lesson, e.g. download the [dem_summary.csv](data/dem_summary.csv) file, read it into R and store it in an object, view the data frame, use the `glimpse()` function to summarize it, and use the `head()`, `tail()`, and `summary()` functions.
 - Repeat the steps above using a different data frame. Download the [dem_women.csv](data/dem_women.csv) file and store it in an object called `dem_women` or some name that is reflective of its content.
@@ -140,7 +141,7 @@ summary(dem_summary)
   - What are the first few rows of the data frame? The last few rows?
   - What do the rows represent? How are these data different from the the data in the `dem_summary` data frame? (Hint: there are more rows in this data frame.)
   - Take one or two columns and describe the summary statistics. What do these summary statistics represent? (Hint: there is a temporal dimension to consider.)
-
+:::
 
 
 

@@ -90,12 +90,14 @@ my_vector <- c(1, 2, 3, 4, 5)
 my_vector
 ```
 
-## Your Turn!
+::: {.callout-warning icon=false}
+## Your Turn!!
 
 1. In your Quarto document, create a vector of numbers from 1 to 10 and assign it to an object called `my_vector`.
 2. Print out the object.
 3. Create a new object called `my_vector_squared` that is equal to `my_vector` squared and print it out.
 4. Create a new object with a string in it called `another_string` and print it out.
+:::
 
 ## Functions
 
@@ -135,13 +137,15 @@ square(2)
 
 Creating functions is somewhat of an advanced topic, but it is a very useful one. You can use functions for all sorts of things, including data wrangling and visualization. 
 
-## Your Turn!
+::: {.callout-warning icon=false}
+## Your Turn!!
 
 1. Create a vector of numbers from 1 to 20 and assign it to an object called `another_vector`.
 2. Print out the object.
 3. Now apply the `mean()` function to `another_vector` and print out the result.
 4. Next try some of the other functions listed earlier in the module on `another_vector` and print out the results.
 5. Finally, create a function that takes a number and returns its cube. Call it `cube()`. Use it to cube the number 3 and print out the result.
+:::
 
 ## Data Frames
 
@@ -180,8 +184,10 @@ my_data[, 1]
 
 We will learn a lot more about manipulating data frames in subsequent modules when we talk about the `dplyr` package. For now, just know that data frames are a powerful and flexible way to store and manipulate data in R.
 
-## Your Turn!
+::: {.callout-warning icon=false}
+## Your Turn!!
 
 - Create an original data frame with 5 rows and 3 columns. The first column should be a character vector, the second should be a numeric vector, and the third should be a logical vector. Call it `my_data_2` and print it out.
 - Use the `$` operator to access the second column of `my_data_2` and print it out.
 - Use indexing to access the third row of `my_data_2` and print it out.
+:::

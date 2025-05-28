@@ -72,7 +72,8 @@ You can also control how chunks behave using chunk options. Quarto supports a sp
 
 In this example, we’ve given the chunk a label (`mtcars_plot`) and hidden the code from the final output using `echo: false`. Notice how in the rendered version the first chunk shows the code but the second and third do not. This is useful when you want to show the results—like a plot—without showing the code that generated it. You can also hide messages, warnings, and even outputs in a similar way. 
 
-## Your Turn!
+::: {.callout-warning icon=false}
+## Your Turn!!
 
 Let’s put everything together in a small project. Start by creating a new folder and placing a new Quarto document inside it. Here is an illustration to remind you how to do that (for a fuller explanation, review the [Getting Started](getting-started.qmd) module).
 
@@ -81,6 +82,7 @@ Let’s put everything together in a small project. Start by creating a new fold
 Write a few short paragraphs of narrative text and include a code chunk that generates a plot with `ggplot2`. If you have images or data files, place them in subfolders and link to them using relative paths.
 
 Once you’ve written your report, render the document to HTML. Open the result in your browser and make sure everything displays correctly. Along the way, try adjusting chunk options to control what appears in the final output. If you run into rendering errors, use the error messages to debug step-by-step—this is a valuable part of learning.
+:::
 
 ## Final Tips
 

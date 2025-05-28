@@ -312,7 +312,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul>
 <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a></li>
   <li><a href="#line-charts" id="toc-line-charts" class="nav-link" data-scroll-target="#line-charts">Line charts</a></li>
-  <li><a href="#your-turn" id="toc-your-turn" class="nav-link" data-scroll-target="#your-turn">Your Turn!</a></li>
   <li>
 <a href="#scatter-plots" id="toc-scatter-plots" class="nav-link" data-scroll-target="#scatter-plots">Scatter plots</a>
   <ul class="collapse">
@@ -320,7 +319,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#facet-wrapping" id="toc-facet-wrapping" class="nav-link" data-scroll-target="#facet-wrapping">Facet wrapping</a></li>
   </ul>
 </li>
-  <li><a href="#your-turn-1" id="toc-your-turn-1" class="nav-link" data-scroll-target="#your-turn-1">Your Turn!</a></li>
   </ul><div class="toc-actions"><ul><li><a href="https://github.com/dats1001-fall-2024/edit/main/modules/module-1.6.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/dats1001-fall-2024/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
@@ -392,7 +390,16 @@ Tip
 </div>
 </div>
 </div>
-</section><section id="your-turn" class="level2"><h2 class="anchored" data-anchor-id="your-turn">Your Turn!</h2>
+<div class="callout callout-style-default callout-warning no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Your Turn!!
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <ul>
 <li>See table three of <a href="https://kurzman.unc.edu/wp-content/uploads/sites/1410/2011/06/Kurzman_Waves_of_Democratization.pdf">this article</a>
 </li>
@@ -400,7 +407,10 @@ Tip
 <li>Adjust setup code to filter data on those countries</li>
 <li>Visualize with <code><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line()</a></code>
 </li>
-</ul></section><section id="scatter-plots" class="level2"><h2 class="anchored" data-anchor-id="scatter-plots">Scatter plots</h2>
+</ul>
+</div>
+</div>
+</section><section id="scatter-plots" class="level2"><h2 class="anchored" data-anchor-id="scatter-plots">Scatter plots</h2>
 <div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/FiosjUVyfLM" title="Making Scatter Plots" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
 <p>The last visualization we are going to cover is a scatter plot. In this example, we are going to illustrating modernization theory, which predicts a positive relationship between wealth and democracy, while also incorporating levels of women’s representation into our analysis.</p>
 <p>We are going to start with the <a href="data/dem_women.csv">dem_women.csv</a> file we used in the last module. We will then group the data by country and calculate the mean for each variable. In the <code><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by()</a></code> call we also include <code>region</code> because we will want to keep it so that we can color our points by region.</p>
@@ -554,7 +564,16 @@ Note
 </div>
 </div>
 </div>
-</section></section><section id="your-turn-1" class="level2"><h2 class="anchored" data-anchor-id="your-turn-1">Your Turn!</h2>
+<div class="callout callout-style-default callout-warning no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Your Turn!!
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <ul>
 <li>There are four variables in <code>dem_summary_ctry</code>
 </li>
@@ -567,9 +586,11 @@ Note
 <li>Try filtering for a region of your choice</li>
 <li>Try facet wrapping by region</li>
 </ul>
+</div>
+</div>
 
 
-</section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+</section></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");
