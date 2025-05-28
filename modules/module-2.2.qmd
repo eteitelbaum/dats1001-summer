@@ -48,6 +48,22 @@ flights |>
 
 Filtering is essential when we are interested in targeted analyses, like studying seasonal trends, isolating outliers, or preparing training and test sets for modeling.
 
+::: {.callout-important}
+## == vs =
+In the above code chunk, we used `filter(month == 1, day == 1)` to filter for flights departing on January 1. The `==` operator is used for comparison, meaning "equal to." This is different from the `=` operator, which is used for assignment in R. When filtering data, we always use `==` to specify conditions we want to match (not `=`).
+:::
+
+The `filter()` function can handle multiple conditions using logical operators. Here we used `==` for "equal to." But we could also use `!=` (not equal to), `<` (less than), `>` (greater than), `&` (and), and `|` (or). We can also combine operators to create more complex conditions. For example, if we wanted to filter for flights that occurred in the month of June or earlier, we could write `filter(month <= 6)`. Similarly, to find flights that were delayed by more than 30 minutes, we could use `filter(dep_delay > 30)`. Try experimenting with these operators in the `filter()` function in the code above to see how they affect the results.
+
+::: {.callout-warning icon=false}
+## Your Turn!! 
+
+1. Use the `filter()` function to find all flights that departed from JFK airport.
+2. Filter the flights that arrived on or after June 1.
+3. Find flights that arrived before May 1 and were delayed by more than 60 minutes.
+4. Filter for flights that were operated by American Airlines (carrier code "AA") or Delta Airlines (carrier code "DL").
+:::
+
 ## Selecting Columns with `select()`
 
 The `select()` function is used to choose a subset of columns from a data frame. This is helpful when we are only interested in a few variables and want to avoid cluttering our analysis with unnecessary information.
@@ -68,6 +84,13 @@ flights |>
 
 Selecting variables makes our workflow cleaner, especially when preparing data for visualization or modeling.
 
+::: {.callout-warning icon=false}
+## Your Turn!!
+
+1. Use the `select()` function to keep only the `year`, `month`, `day`, `dep_time`, and `arr_time` columns.
+2. Select the `flight`, `origin`, `dest`, and `air_time` columns and rename them to `flight_number`, `departure_airport`, `arrival_airport`, and `flight_duration`.
+:::
+
 ## Creating New Variables with `mutate()`
 
 The `mutate()` function allows us to add new columns to a data frame or transform existing ones. This is useful for deriving new insights from raw data. For example, we might want to calculate how much time was gained or lost during a flight:
@@ -79,6 +102,16 @@ flights |>
 ```
 
 This calculation gives us a sense of whether flights tended to recover from delays during their journey. We can also use `mutate()` to convert units (e.g., minutes to hours), flag particular conditions, or apply mathematical transformations.
+
+We can use many different arithmetic operations within `mutate()`, such as addition (`+`), subtraction (`-`), multiplication (`*`), and division (`/`) or exponentiation (`^` or `**`). For example, if we wanted to convert `air_time` from minutes to hours, we could write `mutate(air_time_hours = air_time / 60)`. Or, if we wanted to square the `arr_delay` variable, we could write `mutate(arr_delay_squared = arr_delay^2)` or `mutate(arr_delay_squared = arr_delay ** 2)`. We will use arithmetic operators in the context of mutate a lot in the course, so it’s worth practicing with different operations to see how they work.
+
+::: {.callout-warning icon=false}
+## Your Turn!!
+
+1. Use the `mutate()` function to create a new variable called `total_delay` that sums `dep_delay` and `arr_delay`.
+2. Create a new variable called `air_time_hours` that converts `air_time` from minutes to hours.
+3. Add a new variable called `flight_speed` that calculates the average speed of the flight in miles per hour, assuming the distance is given in miles and after converting air time into hours.
+:::
 
 ## Combining `filter()`, `select()`, and `mutate()`
 
@@ -103,11 +136,12 @@ In this video walkthrough, we’ll revisit the `filter()`, `select()`, and `muta
 
 {{< video https://www.youtube.com/watch?v=ScQD47eJeAE title='Transforming Data with dplyr Verbs' >}}
 
-## Your Turn
+::: {.callout-warning icon=false}
+## Your Turn!!
 
 1. Using the nycflights dataset, filter the flights for February only.
 2. Select `carrier`, `origin`, `dest`, and `air_time`.
 3. Create a new variable that converts `air_time` from minutes to hours.
 4. Explore other interesting combinations using `filter()`, `select()`, and `mutate()`.
 5. Go to kaggle.com and find a dataset that interests you. Use the `dplyr` functions to filter, select, and mutate the data. Optional: `glimpse()` your data and share a screenshot of your results in the discussion forum.
-
+:::

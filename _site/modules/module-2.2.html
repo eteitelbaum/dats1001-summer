@@ -311,7 +311,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#creating-new-variables-with-mutate" id="toc-creating-new-variables-with-mutate" class="nav-link" data-scroll-target="#creating-new-variables-with-mutate">Creating New Variables with <code>mutate()</code></a></li>
   <li><a href="#combining-filter-select-and-mutate" id="toc-combining-filter-select-and-mutate" class="nav-link" data-scroll-target="#combining-filter-select-and-mutate">Combining <code>filter()</code>, <code>select()</code>, and <code>mutate()</code></a></li>
   <li><a href="#applying-the-concepts-to-the-v-dem-dataset" id="toc-applying-the-concepts-to-the-v-dem-dataset" class="nav-link" data-scroll-target="#applying-the-concepts-to-the-v-dem-dataset">Applying the Concepts to the V-Dem Dataset</a></li>
-  <li><a href="#your-turn" id="toc-your-turn" class="nav-link" data-scroll-target="#your-turn">Your Turn</a></li>
   </ul><div class="toc-actions"><ul><li><a href="https://github.com/dats1001-fall-2024/edit/main/modules/module-2.2.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/dats1001-fall-2024/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
@@ -411,6 +410,38 @@ $ time_hour      &lt;dttm&gt; 2013-01-01 05:00:00, 2013-01-01 05:00:00, 2013-01-
 </div>
 </div>
 <p>Filtering is essential when we are interested in targeted analyses, like studying seasonal trends, isolating outliers, or preparing training and test sets for modeling.</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+== vs =
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>In the above code chunk, we used <code>filter(month == 1, day == 1)</code> to filter for flights departing on January 1. The <code>==</code> operator is used for comparison, meaning “equal to.” This is different from the <code>=</code> operator, which is used for assignment in R. When filtering data, we always use <code>==</code> to specify conditions we want to match (not <code>=</code>).</p>
+</div>
+</div>
+<p>The <code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code> function can handle multiple conditions using logical operators. Here we used <code>==</code> for “equal to.” But we could also use <code>!=</code> (not equal to), <code>&lt;</code> (less than), <code>&gt;</code> (greater than), <code>&amp;</code> (and), and <code>|</code> (or). We can also combine operators to create more complex conditions. For example, if we wanted to filter for flights that occurred in the month of June or earlier, we could write <code>filter(month &lt;= 6)</code>. Similarly, to find flights that were delayed by more than 30 minutes, we could use <code>filter(dep_delay &gt; 30)</code>. Try experimenting with these operators in the <code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code> function in the code above to see how they affect the results.</p>
+<div class="callout callout-style-default callout-warning no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Your Turn!!
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li>Use the <code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code> function to find all flights that departed from JFK airport.</li>
+<li>Filter the flights that arrived on or after June 1.</li>
+<li>Find flights that arrived before May 1 and were delayed by more than 60 minutes.</li>
+<li>Filter for flights that were operated by American Airlines (carrier code “AA”) or Delta Airlines (carrier code “DL”).</li>
+</ol>
+</div>
+</div>
 </section><section id="selecting-columns-with-select" class="level2"><h2 class="anchored" data-anchor-id="selecting-columns-with-select">Selecting Columns with <code>select()</code>
 </h2>
 <p>The <code><a href="https://dplyr.tidyverse.org/reference/select.html">select()</a></code> function is used to choose a subset of columns from a data frame. This is helpful when we are only interested in a few variables and want to avoid cluttering our analysis with unnecessary information.</p>
@@ -457,6 +488,22 @@ $ time_hour      &lt;dttm&gt; 2013-01-01 05:00:00, 2013-01-01 05:00:00, 2013-01-
 </div>
 </div>
 <p>Selecting variables makes our workflow cleaner, especially when preparing data for visualization or modeling.</p>
+<div class="callout callout-style-default callout-warning no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Your Turn!!
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li>Use the <code><a href="https://dplyr.tidyverse.org/reference/select.html">select()</a></code> function to keep only the <code>year</code>, <code>month</code>, <code>day</code>, <code>dep_time</code>, and <code>arr_time</code> columns.</li>
+<li>Select the <code>flight</code>, <code>origin</code>, <code>dest</code>, and <code>air_time</code> columns and rename them to <code>flight_number</code>, <code>departure_airport</code>, <code>arrival_airport</code>, and <code>flight_duration</code>.</li>
+</ol>
+</div>
+</div>
 </section><section id="creating-new-variables-with-mutate" class="level2"><h2 class="anchored" data-anchor-id="creating-new-variables-with-mutate">Creating New Variables with <code>mutate()</code>
 </h2>
 <p>The <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code> function allows us to add new columns to a data frame or transform existing ones. This is useful for deriving new insights from raw data. For example, we might want to calculate how much time was gained or lost during a flight:</p>
@@ -482,6 +529,24 @@ $ time_hour      &lt;dttm&gt; 2013-01-01 05:00:00, 2013-01-01 05:00:00, 2013-01-
 </div>
 </div>
 <p>This calculation gives us a sense of whether flights tended to recover from delays during their journey. We can also use <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code> to convert units (e.g., minutes to hours), flag particular conditions, or apply mathematical transformations.</p>
+<p>We can use many different arithmetic operations within <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code>, such as addition (<code>+</code>), subtraction (<code>-</code>), multiplication (<code>*</code>), and division (<code>/</code>) or exponentiation (<code>^</code> or <code>**</code>). For example, if we wanted to convert <code>air_time</code> from minutes to hours, we could write <code>mutate(air_time_hours = air_time / 60)</code>. Or, if we wanted to square the <code>arr_delay</code> variable, we could write <code>mutate(arr_delay_squared = arr_delay^2)</code> or <code>mutate(arr_delay_squared = arr_delay ** 2)</code>. We will use arithmetic operators in the context of mutate a lot in the course, so it’s worth practicing with different operations to see how they work.</p>
+<div class="callout callout-style-default callout-warning no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Your Turn!!
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li>Use the <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code> function to create a new variable called <code>total_delay</code> that sums <code>dep_delay</code> and <code>arr_delay</code>.</li>
+<li>Create a new variable called <code>air_time_hours</code> that converts <code>air_time</code> from minutes to hours.</li>
+<li>Add a new variable called <code>flight_speed</code> that calculates the average speed of the flight in miles per hour, assuming the distance is given in miles and after converting air time into hours.</li>
+</ol>
+</div>
+</div>
 </section><section id="combining-filter-select-and-mutate" class="level2"><h2 class="anchored" data-anchor-id="combining-filter-select-and-mutate">Combining <code>filter()</code>, <code>select()</code>, and <code>mutate()</code>
 </h2>
 <p>These three functions are most powerful when used together. A typical workflow might involve narrowing down the dataset to a subset of interest, selecting relevant variables, and then creating new variables to aid analysis.</p>
@@ -513,7 +578,16 @@ $ time_hour      &lt;dttm&gt; 2013-01-01 05:00:00, 2013-01-01 05:00:00, 2013-01-
 <p>Now that we have a solid understanding of how to filter, select, and mutate data using dplyr, let’s apply these concepts to a new dataset: the Varieties of Democracy (V-Dem) dataset. This dataset contains a wealth of information about democracy and governance across countries and over time.</p>
 <p>In this video walkthrough, we’ll revisit the <code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code>, <code><a href="https://dplyr.tidyverse.org/reference/select.html">select()</a></code>, and <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code> functions in the context of real-world political data. We’ll explore how to narrow our focus to particular years or countries, select the most relevant indicators of democracy, and construct new variables that help make sense of complex governance metrics.</p>
 <div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/ScQD47eJeAE" title="Transforming Data with dplyr Verbs" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
-</section><section id="your-turn" class="level2"><h2 class="anchored" data-anchor-id="your-turn">Your Turn</h2>
+<div class="callout callout-style-default callout-warning no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Your Turn!!
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <ol type="1">
 <li>Using the nycflights dataset, filter the flights for February only.</li>
 <li>Select <code>carrier</code>, <code>origin</code>, <code>dest</code>, and <code>air_time</code>.</li>
@@ -521,6 +595,8 @@ $ time_hour      &lt;dttm&gt; 2013-01-01 05:00:00, 2013-01-01 05:00:00, 2013-01-
 <li>Explore other interesting combinations using <code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code>, <code><a href="https://dplyr.tidyverse.org/reference/select.html">select()</a></code>, and <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code>.</li>
 <li>Go to kaggle.com and find a dataset that interests you. Use the <code>dplyr</code> functions to filter, select, and mutate the data. Optional: <code><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse()</a></code> your data and share a screenshot of your results in the discussion forum.</li>
 </ol>
+</div>
+</div>
 
 
 </section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
