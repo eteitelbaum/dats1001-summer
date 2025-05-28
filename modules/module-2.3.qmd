@@ -63,11 +63,13 @@ glimpse(dem_indicators)
 
 Here, fetchdem includes filtering arguments for `indicators`, `countries`, and `years`. We could also have used the `dplyr` `select()` and `filter()` verbs to narrow down the data after fetching it, and this is actually what is going on "under the hood." These `fetchdem()` arguments just make it easier to work with the data without having to write a lot of code.
 
+::: {.callout-warning icon=false}
 ## Your Turn!
 
 - Use `searchdem()` to find an indicator of interest.
 - Use `summarizedem()` to view its summary statistics.
 - Use `fetchdem()` to download that variable for a country or set of countries.
+:::
 
 ## Grouping and Summarizing
 
@@ -134,7 +136,9 @@ democracy |>
   arrange(desc(polyarchy_mean))
 ```
 
-::: {.callout = "note"}
+::: {.callout-important}
+## Code Detail: na.rm = TRUE
+
 Note how we add `na.rm = TRUE` to the `mean()`, `median()`, and `sd()` functions. This is important because it tells R to ignore any missing values (NAs) when calculating these statistics. If you don't include this argument, R will return NA for the entire summary if any of the values are missing.
 :::
 
@@ -158,6 +162,7 @@ democracy |>
 
 Here we are grouping the data by `region` and then summarizing the mean of several indicators: `polyarchy`, `libdem`, `women_rep`, and `flfp`. The `.names = "mean_{col}"` argument allows us to create new column names that include the original variable names, prefixed with "mean_".
 
+::: {.callout-warning icon=false}
 ## Your Turn!
 
 - Find a few indicators of interest in `vdemlite` using `searchdem()`.
@@ -165,3 +170,4 @@ Here we are grouping the data by `region` and then summarizing the mean of sever
 - Use `fetchdem()` to download the data for those indicators and region codes that you can use to group the data, filtering for a subset of years if you like, but retaining all of the countries. Save those data in a data frame called `democracy` or something similar.
 - Use a `group_by()`, `summarize()`, and `arrange()` sequence to calculate some summary statistics for the data. Don't forget to include `na.rm = TRUE` in your summary functions to handle missing values.
 - Then, use `across()` to compute one statistic (i.e. mean or median) of several indicators.
+:::

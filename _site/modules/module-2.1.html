@@ -333,11 +333,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#messy-data-example" id="toc-messy-data-example" class="nav-link" data-scroll-target="#messy-data-example">Messy Data Example</a></li>
   </ul></li>
   <li><a href="#how-do-we-get-tidy-and-clean-data" id="toc-how-do-we-get-tidy-and-clean-data" class="nav-link" data-scroll-target="#how-do-we-get-tidy-and-clean-data">How Do We Get Tidy and Clean Data?</a></li>
-  <li><a href="#your-turn" id="toc-your-turn" class="nav-link" data-scroll-target="#your-turn">Your Turn!</a></li>
   <li><a href="#tibbles-a-modern-take-on-data-frames" id="toc-tibbles-a-modern-take-on-data-frames" class="nav-link" data-scroll-target="#tibbles-a-modern-take-on-data-frames">Tibbles: A Modern Take on Data Frames</a></li>
   <li><a href="#common-data-types-in-tibbles" id="toc-common-data-types-in-tibbles" class="nav-link" data-scroll-target="#common-data-types-in-tibbles">Common Data Types in Tibbles</a></li>
   <li><a href="#working-with-dates-and-times-using-lubridate" id="toc-working-with-dates-and-times-using-lubridate" class="nav-link" data-scroll-target="#working-with-dates-and-times-using-lubridate">Working with Dates and Times Using <code>lubridate</code></a></li>
-  <li><a href="#your-turn-1" id="toc-your-turn-1" class="nav-link" data-scroll-target="#your-turn-1">Your Turn!</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/dats1001-fall-2024/edit/main/modules/module-2.1.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/dats1001-fall-2024/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -443,9 +441,16 @@ Did you know?
 <section id="how-do-we-get-tidy-and-clean-data" class="level2">
 <h2 class="anchored" data-anchor-id="how-do-we-get-tidy-and-clean-data">How Do We Get Tidy and Clean Data?</h2>
 <p>In practice, the tidiness and cleanliness of data vary by source. Files sent from clients or supervisors often require substantial cleanup before they can be used. Survey data can range in quality depending on how it was collected and structured. Data downloaded from the web or scraped from a site often arrive in a messy format. On the other hand, data included in curated packages, or accessed through well-designed APIs, are more likely to be tidy and clean by default. We will be working with a variety of data sources throughout this course, and we will learn how to transform messy data into tidy and clean formats.</p>
-</section>
-<section id="your-turn" class="level2">
-<h2 class="anchored" data-anchor-id="your-turn">Your Turn!</h2>
+<div class="callout callout-style-default callout-warning no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Your Turn!!
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <ol type="1">
 <li>Go to kaggle.com and search for a dataset that interests you. Download it and save it in the <code>data</code> subfolder that you created for this module.</li>
 <li>Read the data into R using the <code>read_csv()</code> function from the <code>readr</code> package.</li>
@@ -455,6 +460,8 @@ Did you know?
 <li>Check if the data is clean. If it is not, identify at least one way to make it clean.</li>
 <li>Every dataset on Kaggle has a data usability score and a discussion section. Read through the discussion to see if others have identified issues with the data. If so, what are they? How would you address them? Does the usability score comport with what you are seeing?</li>
 </ol>
+</div>
+</div>
 </section>
 <section id="tibbles-a-modern-take-on-data-frames" class="level2">
 <h2 class="anchored" data-anchor-id="tibbles-a-modern-take-on-data-frames">Tibbles: A Modern Take on Data Frames</h2>
@@ -553,15 +560,24 @@ Did you know?
 <span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Print in long form</span></span>
 <span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="fu">format</span>(my_date, <span class="st">"%B %d, %Y"</span>)  <span class="co"># "September 05, 2024"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Once stored correctly as date objects, these values can be used in filtering, plotting, or date-based calculations without additional conversion steps.</p>
-</section>
-<section id="your-turn-1" class="level2">
-<h2 class="anchored" data-anchor-id="your-turn-1">Your Turn!</h2>
+<div class="callout callout-style-default callout-warning no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Your Turn!!
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <ol type="1">
 <li>Create your own tibble on a topic that interests you—this could be anything from meals you’ve cooked to books you’ve read or places you’ve visited.</li>
 <li>Try to include at least three different data types, such as character, numeric, and logical.</li>
 <li>Include a date or date-time column using lubridate to parse your date values.</li>
 <li>Use tibble() to create your tibble and print it to inspect the structure and data types.</li>
 </ol>
+</div>
+</div>
 
 
 </section>

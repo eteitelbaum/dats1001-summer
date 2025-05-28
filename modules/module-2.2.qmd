@@ -49,7 +49,7 @@ flights |>
 Filtering is essential when we are interested in targeted analyses, like studying seasonal trends, isolating outliers, or preparing training and test sets for modeling.
 
 ::: {.callout-important}
-## == vs =
+## Code Detail: == vs =
 In the above code chunk, we used `filter(month == 1, day == 1)` to filter for flights departing on January 1. The `==` operator is used for comparison, meaning "equal to." This is different from the `=` operator, which is used for assignment in R. When filtering data, we always use `==` to specify conditions we want to match (not `=`).
 :::
 

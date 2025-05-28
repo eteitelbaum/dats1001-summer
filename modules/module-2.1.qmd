@@ -70,7 +70,8 @@ This kind of data requires significant wrangling before it can be used effective
 
 In practice, the tidiness and cleanliness of data vary by source. Files sent from clients or supervisors often require substantial cleanup before they can be used. Survey data can range in quality depending on how it was collected and structured. Data downloaded from the web or scraped from a site often arrive in a messy format. On the other hand, data included in curated packages, or accessed through well-designed APIs, are more likely to be tidy and clean by default. We will be working with a variety of data sources throughout this course, and we will learn how to transform messy data into tidy and clean formats.
 
-## Your Turn! 
+::: {.callout-warning icon=false}
+## Your Turn!! 
 
 1. Go to kaggle.com and search for a dataset that interests you. Download it and save it in the `data` subfolder that you created for this module. 
 2. Read the data into R using the `read_csv()` function from the `readr` package.
@@ -79,6 +80,7 @@ In practice, the tidiness and cleanliness of data vary by source. Files sent fro
 5. Check if the data is tidy. If it is not, identify at least one way to make it tidy.
 6. Check if the data is clean. If it is not, identify at least one way to make it clean.
 7. Every dataset on Kaggle has a data usability score and a discussion section. Read through the discussion to see if others have identified issues with the data. If so, what are they? How would you address them? Does the usability score comport with what you are seeing? 
+:::
 
 ## Tibbles: A Modern Take on Data Frames
 
@@ -141,13 +143,13 @@ format(my_date, "%B %d, %Y")  # "September 05, 2024"
 
 Once stored correctly as date objects, these values can be used in filtering, plotting, or date-based calculations without additional conversion steps.
 
-## Your Turn!
-
+::: {.callout-warning icon=false}
+## Your Turn!!
 1. Create your own tibble on a topic that interests you—this could be anything from meals you’ve cooked to books you’ve read or places you’ve visited. 
 2. Try to include at least three different data types, such as character, numeric, and logical. 
 3. Include a date or date-time column using lubridate to parse your date values. 
 4. Use tibble() to create your tibble and print it to inspect the structure and data types.
-
+:::
 
 
 
