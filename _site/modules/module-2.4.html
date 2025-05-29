@@ -314,7 +314,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#packages-for-api-data" id="toc-packages-for-api-data" class="nav-link" data-scroll-target="#packages-for-api-data">Packages for API Data</a></li>
   <li><a href="#joining-datasets" id="toc-joining-datasets" class="nav-link" data-scroll-target="#joining-datasets">Joining Datasets</a></li>
   <li><a href="#common-keys-and-the-countrycode-package" id="toc-common-keys-and-the-countrycode-package" class="nav-link" data-scroll-target="#common-keys-and-the-countrycode-package">Common Keys (and the <code>countrycode</code> Package)</a></li>
-  <li><a href="#performing-the-join" id="toc-performing-the-join" class="nav-link" data-scroll-target="#performing-the-join">Performing the Join</a></li>
+  <li><a href="#performing-a-join" id="toc-performing-a-join" class="nav-link" data-scroll-target="#performing-a-join">Performing a Join</a></li>
   </ul><div class="toc-actions"><ul><li><a href="https://github.com/dats1001-fall-2024/edit/main/modules/module-2.4.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/dats1001-fall-2024/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
@@ -366,22 +366,30 @@ Prework
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">wbdata</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/WDI/man/WDI.html">WDI</a></span><span class="op">(</span></span>
-<span>  indicator <span class="op">=</span> <span class="st">"NY.GDP.MKTP.CD"</span>, <span class="co"># GDP in current US dollars</span></span>
+<span>  indicator <span class="op">=</span> <span class="st">"NY.GDP.PCAP.KD"</span>, <span class="co"># per capita GDP in constant US dollars</span></span>
 <span>  country <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"USA"</span>, <span class="st">"CAN"</span>, <span class="st">"MEX"</span><span class="op">)</span>, <span class="co"># Countries to include</span></span>
 <span>  start <span class="op">=</span> <span class="fl">2000</span>, <span class="co"># Start year</span></span>
 <span>  end <span class="op">=</span> <span class="fl">2020</span>, <span class="co"># End year</span></span>
-<span>  extra <span class="op">=</span> <span class="cn">FALSE</span> <span class="co"># Include extra metadata (default is FALSE)</span></span>
+<span>  extra <span class="op">=</span> <span class="cn">TRUE</span> <span class="co"># Include extra metadata (default is FALSE)</span></span>
 <span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">wbdata</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 63
-Columns: 5
+Columns: 13
 $ country        &lt;chr&gt; "Canada", "Canada", "Canada", "Canada", "Canada", "Cana…
 $ iso2c          &lt;chr&gt; "CA", "CA", "CA", "CA", "CA", "CA", "CA", "CA", "CA", "…
 $ iso3c          &lt;chr&gt; "CAN", "CAN", "CAN", "CAN", "CAN", "CAN", "CAN", "CAN",…
 $ year           &lt;int&gt; 2020, 2019, 2018, 2017, 2016, 2015, 2014, 2013, 2012, 2…
-$ NY.GDP.MKTP.CD &lt;dbl&gt; 1.655685e+12, 1.743725e+12, 1.725329e+12, 1.649266e+12,…</code></pre>
+$ NY.GDP.PCAP.KD &lt;dbl&gt; 42366.129, 45100.291, 44907.344, 44339.389, 43551.343, …
+$ status         &lt;chr&gt; "", "", "", "", "", "", "", "", "", "", "", "", "", "",…
+$ lastupdated    &lt;chr&gt; "2025-04-15", "2025-04-15", "2025-04-15", "2025-04-15",…
+$ region         &lt;chr&gt; "North America", "North America", "North America", "Nor…
+$ capital        &lt;chr&gt; "Ottawa", "Ottawa", "Ottawa", "Ottawa", "Ottawa", "Otta…
+$ longitude      &lt;chr&gt; "-75.6919", "-75.6919", "-75.6919", "-75.6919", "-75.69…
+$ latitude       &lt;chr&gt; "45.4215", "45.4215", "45.4215", "45.4215", "45.4215", …
+$ income         &lt;chr&gt; "High income", "High income", "High income", "High inco…
+$ lending        &lt;chr&gt; "Not classified", "Not classified", "Not classified", "…</code></pre>
 </div>
 </div>
 <div class="callout callout-style-default callout-important callout-titled">
@@ -399,7 +407,7 @@ ISO Country Codes
 </div>
 <p>If you want to download multiple indicators at once, you can pass a vector of indicator codes to the <code>indicator</code> parameter. You can also rename variables as you select them. For example:</p>
 <div class="cell">
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">indicators</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span>gdp <span class="op">=</span> <span class="st">"NY.GDP.MKTP.CD"</span>, population <span class="op">=</span> <span class="st">"SP.POP.TOTL"</span><span class="op">)</span> </span>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">indicators</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span>gdp_pc <span class="op">=</span> <span class="st">"NY.GDP.PCAP.KD"</span>, population <span class="op">=</span> <span class="st">"SP.POP.TOTL"</span><span class="op">)</span> </span>
 <span></span>
 <span><span class="va">wbdata2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/WDI/man/WDI.html">WDI</a></span><span class="op">(</span></span>
 <span>  indicator <span class="op">=</span> <span class="va">indicators</span>, <span class="co"># GDP and total pop</span></span>
@@ -416,7 +424,7 @@ $ country    &lt;chr&gt; "Canada", "Canada", "Canada", "Canada", "Canada", "Cana
 $ iso2c      &lt;chr&gt; "CA", "CA", "CA", "CA", "CA", "CA", "CA", "CA", "CA", "CA",…
 $ iso3c      &lt;chr&gt; "CAN", "CAN", "CAN", "CAN", "CAN", "CAN", "CAN", "CAN", "CA…
 $ year       &lt;int&gt; 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009,…
-$ gdp        &lt;dbl&gt; 7.447734e+11, 7.389818e+11, 7.606493e+11, 8.955406e+11, 1.0…
+$ gdp_pc     &lt;dbl&gt; 37906.860, 38200.456, 38921.667, 39270.023, 40108.759, 4100…
 $ population &lt;dbl&gt; 30685730, 31020855, 31359199, 31642461, 31938807, 32242732,…</code></pre>
 </div>
 </div>
@@ -495,7 +503,7 @@ Your Turn!!
 </div>
 </div>
 </section><section id="joining-datasets" class="level2"><h2 class="anchored" data-anchor-id="joining-datasets">Joining Datasets</h2>
-<p>Now let’s say that we have downloaded some data from the World Bank with <code>WDI</code> and now we want to merge it with another dataset. For example, we might want to analyze the relationship between some economic indicators like GDP and population, and some political indicators like democracy scores from the V-Dem dataset. To do this, we need to join the two datasets together based on a <strong>common key</strong>, which in this case is the country code.</p>
+<p>Now let’s say that we want to download some data from the World Bank with <code>WDI</code> and now we want to merge it with another dataset. For example, we might want to analyze the relationship between some economic indicators like GDP and population, and some political indicators like democracy scores from the V-Dem dataset. To do this, we need to join the two datasets together based on a <strong>common key</strong>, which in this case is the country code.</p>
 <p>When we talk about a join in data wrangling, we are usually referring to a horizontal merge—that is, combining two data frames side by side by matching rows based on shared values in one or more columns (like country and year). This is common when we have data from two different sources, such as World Bank and V-Dem, and we want to analyze them together.</p>
 <p>In dplyr, the most common joins fall into two categories: mutating joins and filtering joins. Mutating joins are the ones you’ll use most often when combining datasets. There are four main types.</p>
 <p>An <strong>inner join</strong> keeps only the rows that match in both datasets. If a country-year pair is missing in either dataset, it will be dropped from the result.</p>
@@ -530,7 +538,7 @@ Your Turn!!
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://vincentarelbundock.github.io/countrycode/">countrycode</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Convert World Bank ISO alpha-2 codes to V-Dem alpha-3 codes</span></span>
-<span><span class="va">wbdata_with_vdem_codes</span> <span class="op">&lt;-</span> <span class="va">wbdata</span> <span class="op">|&gt;</span> </span>
+<span><span class="va">wbdata_with_vdem_codes</span> <span class="op">&lt;-</span> <span class="va">wbdata2</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>vdem_country_code <span class="op">=</span> <span class="fu"><a href="https://vincentarelbundock.github.io/countrycode/reference/countrycode.html">countrycode</a></span><span class="op">(</span></span>
 <span>    sourcevar <span class="op">=</span> <span class="va">iso3c</span>, </span>
 <span>    origin <span class="op">=</span> <span class="st">"wb"</span>, </span>
@@ -541,66 +549,150 @@ Your Turn!!
 <span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">wbdata_with_vdem_codes</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 63
-Columns: 6
+Columns: 7
 $ country           &lt;chr&gt; "Canada", "Canada", "Canada", "Canada", "Canada", "C…
 $ iso2c             &lt;chr&gt; "CA", "CA", "CA", "CA", "CA", "CA", "CA", "CA", "CA"…
 $ iso3c             &lt;chr&gt; "CAN", "CAN", "CAN", "CAN", "CAN", "CAN", "CAN", "CA…
 $ vdem_country_code &lt;dbl&gt; 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, …
-$ year              &lt;int&gt; 2020, 2019, 2018, 2017, 2016, 2015, 2014, 2013, 2012…
-$ NY.GDP.MKTP.CD    &lt;dbl&gt; 1.655685e+12, 1.743725e+12, 1.725329e+12, 1.649266e+…</code></pre>
+$ year              &lt;int&gt; 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008…
+$ gdp_pc            &lt;dbl&gt; 37906.860, 38200.456, 38921.667, 39270.023, 40108.75…
+$ population        &lt;dbl&gt; 30685730, 31020855, 31359199, 31642461, 31938807, 32…</code></pre>
 </div>
 </div>
 <p>Here we are adding a new column to our <code>wbdata</code> dataset called <code>vdem_country_code</code>, which contains the V-Dem alpha-3 codes corresponding to the ISO alpha-2 codes in the <code>iso2c</code> column. The first argument in the <code><a href="https://vincentarelbundock.github.io/countrycode/reference/countrycode.html">countrycode()</a></code> function is the vector of country codes that we want to convert, the second is the source code type (in this case, World Bank style iso3c codes or “wb”), and the third is the target code type (in this case, “vdem”). We also use the <code>dplyr</code> <code><a href="https://dplyr.tidyverse.org/reference/relocate.html">relocate()</a></code> verb to move the new <code>vdem_country_code</code> column right after the original <code>iso3c</code> column for better organization.</p>
-</section><section id="performing-the-join" class="level2"><h2 class="anchored" data-anchor-id="performing-the-join">Performing the Join</h2>
+</section><section id="performing-a-join" class="level2"><h2 class="anchored" data-anchor-id="performing-a-join">Performing a Join</h2>
 <div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/wNF3ZPneHWw?si=TyiXrsAxgbdrztD4" title="Merge Two Data Frames with left_join()" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
-<p>Now that we have our <code>wbdata</code> dataset with the V-Dem country codes, we can perform a left join with the V-Dem data. Let’s go ahead and use our skills from the last lesson to download the V-Dem data for the same countries and years as our World Bank data. We will use the <code><a href="https://eteitelbaum.github.io/vdemlite/reference/fetchdem.html">fetchdem()</a></code> function to get the democracy scores for the same countries and years as our World Bank data.</p>
+<p>Now let’s put it all together and use our join skills to explore the relationship between democracy and development. First we will grab the GDP per capita and population for all of the countries for the years 2000 to 2020 from the World Bank using the <code><a href="https://rdrr.io/pkg/WDI/man/WDI.html">WDI()</a></code> function. Then we will summarize the data across this period by taking the mean GDP per capita and population for each country. And finally we will use the <code>countrycode</code> package to convert the World Bank country codes to V-Dem country codes so we can join it with the V-Dem democracy data (which we will download next).</p>
 <div class="cell">
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://creativecommons.org/licenses/by-sa/4.0/">vdemlite</a></span><span class="op">)</span></span>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">indicators</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span></span>
+<span>  gdp_pc <span class="op">=</span> <span class="st">"NY.GDP.PCAP.KD"</span>, </span>
+<span>  population <span class="op">=</span> <span class="st">"SP.POP.TOTL"</span> </span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">wbdata_all_countries</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/WDI/man/WDI.html">WDI</a></span><span class="op">(</span></span>
+<span>  indicator <span class="op">=</span> <span class="va">indicators</span>, </span>
+<span>  country <span class="op">=</span> <span class="st">"all"</span>, <span class="co"># get data for all countries</span></span>
+<span>  start <span class="op">=</span> <span class="fl">2000</span>,</span>
+<span>  end <span class="op">=</span> <span class="fl">2020</span>,</span>
+<span>  extra <span class="op">=</span> <span class="cn">TRUE</span> <span class="co"># Include extra metadata</span></span>
+<span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">region</span> <span class="op">!=</span> <span class="st">"Aggregates"</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="co"># Exclude aggregate regions</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">iso3c</span>, <span class="va">region</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="co"># Group by country</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span></span>
+<span>    gdp_pc <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">gdp_pc</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>, </span>
+<span>    population <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">population</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span>  <span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">ungroup</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="co"># Ungroup to remove grouping structure</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>vdem_country_code <span class="op">=</span> <span class="fu"><a href="https://vincentarelbundock.github.io/countrycode/reference/countrycode.html">countrycode</a></span><span class="op">(</span></span>
+<span>    sourcevar <span class="op">=</span> <span class="va">iso3c</span>, </span>
+<span>    origin <span class="op">=</span> <span class="st">"wb"</span>, </span>
+<span>    destination <span class="op">=</span> <span class="st">"vdem"</span><span class="op">)</span></span>
+<span>  <span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/relocate.html">relocate</a></span><span class="op">(</span><span class="va">vdem_country_code</span>, .after <span class="op">=</span> <span class="va">iso3c</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">wbdata_all_countries</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 215
+Columns: 5
+$ iso3c             &lt;chr&gt; "ABW", "AFG", "AGO", "ALB", "AND", "ARE", "ARG", "AR…
+$ vdem_country_code &lt;dbl&gt; NA, 36, 104, 12, NA, 207, 37, 105, NA, NA, 67, 144, …
+$ region            &lt;chr&gt; "Latin America &amp; Caribbean", "South Asia", "Sub-Saha…
+$ gdp_pc            &lt;dbl&gt; 29293.9856, 465.7585, 2761.2866, 3374.7261, 38048.31…
+$ population        &lt;dbl&gt; 101674.52, 28965247.52, 23886139.33, 2943197.10, 752…</code></pre>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Why <code><a href="https://dplyr.tidyverse.org/reference/group_by.html">ungroup()</a></code>?
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>After summarizing by country and year, we use <code><a href="https://dplyr.tidyverse.org/reference/group_by.html">ungroup()</a></code> to remove the grouping structure. This ensures that any subsequent operations—like <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code> or joins—aren’t accidentally performed within each group. It helps avoid unexpected behavior and keeps the data frame’s state clean for downstream analysis.</p>
+</div>
+</div>
+<p>Note that when performing the merge we used a <code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code> to exclude aggregate regions like “World” or regional aggregates from the World Bank data. But even after doing this we will see that there are still some countries that do not have V-Dem codes. This is fine. It just meansthat V-Dem does not cover all countries, especially smaller ones or those with limited data availability. When we perform our left join, these will drop out. We could also load <code>tidyr</code> and use the <code>drop_na()</code> function to remove these rows, but we will leave them in for now.</p>
+<p>Now let’s go ahead and fetch the V-Dem democracy scores for the same countries and years. We will use the <code><a href="https://eteitelbaum.github.io/vdemlite/reference/fetchdem.html">fetchdem()</a></code> function from the <code>vdemlite</code> package to get the V-Dem democracy scores, specifically the polyarchy score (<code>v2x_polyarchy</code>) and the fair elections score (<code>v2xel_frefair</code>). We will then rename these columns to make them more intuitive and then group and summarize the data so that we have one set of democracy scores per country.</p>
+<div class="cell">
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://creativecommons.org/licenses/by-sa/4.0/">vdemlite</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Fetch democracy scores for the same countries and years as wbdata</span></span>
 <span><span class="va">democracy_scores</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://eteitelbaum.github.io/vdemlite/reference/fetchdem.html">fetchdem</a></span><span class="op">(</span></span>
 <span>  indicators <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"v2x_polyarchy"</span>, <span class="st">"v2xel_frefair"</span><span class="op">)</span>,</span>
 <span>  start_year <span class="op">=</span> <span class="fl">2000</span>, end_year <span class="op">=</span> <span class="fl">2020</span></span>
-<span><span class="op">)</span></span>
+<span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/rename.html">rename</a></span><span class="op">(</span></span>
+<span>    polyarchy <span class="op">=</span> <span class="va">v2x_polyarchy</span>,</span>
+<span>    fair_elections <span class="op">=</span> <span class="va">v2xel_frefair</span></span>
+<span>  <span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">country_id</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span></span>
+<span>    polyarchy <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">polyarchy</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
+<span>    fair_elections <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">fair_elections</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span>  <span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">democracy_scores</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Rows: 3,741
-Columns: 6
-$ country_name    &lt;chr&gt; "Mexico", "Mexico", "Mexico", "Mexico", "Mexico", "Mex…
-$ country_text_id &lt;chr&gt; "MEX", "MEX", "MEX", "MEX", "MEX", "MEX", "MEX", "MEX"…
-$ country_id      &lt;dbl&gt; 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, …
-$ year            &lt;dbl&gt; 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, …
-$ v2x_polyarchy   &lt;dbl&gt; 0.671, 0.682, 0.691, 0.699, 0.707, 0.707, 0.670, 0.642…
-$ v2xel_frefair   &lt;dbl&gt; 0.819, 0.826, 0.826, 0.847, 0.869, 0.869, 0.788, 0.718…</code></pre>
+<pre><code>Rows: 179
+Columns: 3
+$ country_id     &lt;dbl&gt; 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 17, 19, 20…
+$ polyarchy      &lt;dbl&gt; 0.6599524, 0.7645238, 0.9137143, 0.8975238, 0.7366667, …
+$ fair_elections &lt;dbl&gt; 0.7781429, 0.8423810, 0.9628571, 0.9379524, 0.7590000, …</code></pre>
 </div>
 </div>
-<p>Now we can perform a left join to combine the two datasets based on the V-Dem country codes and the year. We will use the <code><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join()</a></code> function from <code>dplyr</code> to do this:</p>
+<p>Now we can perform a left join to combine the two datasets based on the V-Dem country codes and the year. We will use the <code><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join()</a></code> function from <code>dplyr</code> to do this. Let’s be sure to put the V-Dem data set as our left dataset, since we want to keep all of the V-Dem data and only add the World Bank data where it matches.</p>
 <div class="cell">
-<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Perform a left join to combine the datasets</span></span>
-<span><span class="va">wb_democracy_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span><span class="op">(</span></span>
-<span>  <span class="va">wbdata_with_vdem_codes</span>, </span>
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Perform a left join to combine the datasets</span></span>
+<span><span class="va">wb_democracy_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span><span class="op">(</span> </span>
 <span>  <span class="va">democracy_scores</span>, </span>
-<span>  by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"vdem_country_code"</span> <span class="op">=</span> <span class="st">"country_id"</span>, <span class="st">"year"</span> <span class="op">=</span> <span class="st">"year"</span><span class="op">)</span></span>
+<span>  <span class="va">wbdata_all_countries</span>,</span>
+<span>  by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"country_id"</span> <span class="op">=</span> <span class="st">"vdem_country_code"</span><span class="op">)</span></span>
 <span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">wb_democracy_data</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Rows: 63
-Columns: 10
-$ country           &lt;chr&gt; "Canada", "Canada", "Canada", "Canada", "Canada", "C…
-$ iso2c             &lt;chr&gt; "CA", "CA", "CA", "CA", "CA", "CA", "CA", "CA", "CA"…
-$ iso3c             &lt;chr&gt; "CAN", "CAN", "CAN", "CAN", "CAN", "CAN", "CAN", "CA…
-$ vdem_country_code &lt;dbl&gt; 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, …
-$ year              &lt;dbl&gt; 2020, 2019, 2018, 2017, 2016, 2015, 2014, 2013, 2012…
-$ NY.GDP.MKTP.CD    &lt;dbl&gt; 1.655685e+12, 1.743725e+12, 1.725329e+12, 1.649266e+…
-$ country_name      &lt;chr&gt; "Canada", "Canada", "Canada", "Canada", "Canada", "C…
-$ country_text_id   &lt;chr&gt; "CAN", "CAN", "CAN", "CAN", "CAN", "CAN", "CAN", "CA…
-$ v2x_polyarchy     &lt;dbl&gt; 0.858, 0.863, 0.847, 0.847, 0.843, 0.816, 0.813, 0.8…
-$ v2xel_frefair     &lt;dbl&gt; 0.957, 0.950, 0.947, 0.947, 0.947, 0.898, 0.888, 0.8…</code></pre>
+<pre><code>Rows: 179
+Columns: 7
+$ country_id     &lt;dbl&gt; 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 17, 19, 20…
+$ polyarchy      &lt;dbl&gt; 0.6599524, 0.7645238, 0.9137143, 0.8975238, 0.7366667, …
+$ fair_elections &lt;dbl&gt; 0.7781429, 0.8423810, 0.9628571, 0.9379524, 0.7590000, …
+$ iso3c          &lt;chr&gt; "MEX", "SUR", "SWE", "CHE", "GHA", "ZAF", "JPN", "MMR",…
+$ region         &lt;chr&gt; "Latin America &amp; Caribbean", "Latin America &amp; Caribbean…
+$ gdp_pc         &lt;dbl&gt; 9681.1700, 7938.9413, 48091.5799, 80543.6345, 1457.1354…
+$ population     &lt;dbl&gt; 113311064.9, 549054.4, 9459610.6, 7863746.1, 25596248.3…</code></pre>
 </div>
 </div>
-<p>Notice here that while we had a common key for the country codes, the columns had different names. Therefore, we specified the <code>by</code> argument as a named vector, where we matched the <code>vdem_country_code</code> from the World Bank data to the <code>country_code</code> in the V-Dem data. Note that we also had to specify the year as a second key for the join. This is because both datasets have a <code>year</code> column that we want to match on as well.</p>
+<p>Notice here that while we had a common key for the country codes, the columns had different names. Therefore, we specified the <code>by</code> argument as a named vector, where we matched the <code>vdem_country_code</code> from the World Bank data to the <code>country_code</code> in the V-Dem data.</p>
+<p>Now let’s have a little bit of fun and try a visualizing the relationship between GDP per capita and the V-Dem polyarchy score using <code>ggplot2</code>:</p>
+<div class="cell">
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">wb_democracy_data</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">gdp_pc</span>, y <span class="op">=</span> <span class="va">polyarchy</span>, size <span class="op">=</span> <span class="va">population</span>, color <span class="op">=</span> <span class="va">region</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span>alpha <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_x_log10</a></span><span class="op">(</span>labels <span class="op">=</span> <span class="fu">scales</span><span class="fu">::</span><span class="fu"><a href="https://scales.r-lib.org/reference/label_number.html">label_number</a></span><span class="op">(</span>prefix <span class="op">=</span> <span class="st">"$"</span>, suffix <span class="op">=</span> <span class="st">"k"</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_size.html">scale_size_continuous</a></span><span class="op">(</span> <span class="co"># options for customizing population legend</span></span>
+<span>    name <span class="op">=</span> <span class="st">"Population"</span>,</span>
+<span>    breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1e6</span>, <span class="fl">1e7</span>, <span class="fl">5e7</span>, <span class="fl">1e8</span>, <span class="fl">5e8</span>, <span class="fl">1e9</span><span class="op">)</span>,  </span>
+<span>    labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"1M"</span>, <span class="st">"10M"</span>, <span class="st">"50M"</span>, <span class="st">"100M"</span>, <span class="st">"500M"</span>, <span class="st">"1B"</span><span class="op">)</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span></span>
+<span>    title <span class="op">=</span> <span class="st">"Wealth and Democracy, 2000 - 2020"</span>,</span>
+<span>    x <span class="op">=</span> <span class="st">"GDP per Capita"</span>,</span>
+<span>    y <span class="op">=</span> <span class="st">"V-Dem Polyarchy Score"</span>,</span>
+<span>    color <span class="op">=</span> <span class="st">"Region"</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_viridis.html">scale_colour_viridis_d</a></span><span class="op">(</span>option <span class="op">=</span> <span class="st">"plasma"</span>, end <span class="op">=</span> <span class="fl">0.9</span><span class="op">)</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="module-2.4_files/figure-html/plot-democracy-gdp-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
 <div class="callout callout-style-default callout-warning no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -616,6 +708,7 @@ Your Turn!!
 <li>Use the <code>countrycode</code> package to convert the country codes in your World Bank data to V-Dem codes.</li>
 <li>Use the <code><a href="https://eteitelbaum.github.io/vdemlite/reference/fetchdem.html">fetchdem()</a></code> function to download V-Dem democracy scores for the same countries and years as your World Bank data.</li>
 <li>Use <code><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join()</a></code> to merge the two datasets based on the V-Dem country codes and year.</li>
+<li>Visualize the relationship between one of your economic indicators and a V-Dem democracy score using <code>ggplot2</code>.</li>
 </ul>
 </div>
 </div>

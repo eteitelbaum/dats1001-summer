@@ -1,0 +1,186 @@
+---
+title: "Module 2.5"
+subtitle: "Tidying Data"
+format: 
+  html:
+    code-link: true
+highlight-style: atom-one
+execute: 
+  echo: true
+  message: false
+  warning: false
+---
+
+::: {.callout-tip}
+## Prework
+
+- Start a QMD file for this module.
+- Review the concepts of tidy data and read through the [tidyr](https://tidyr.tidyverse.org/) documentation.
+- Have a quick look at the `tidyr` [cheatsheet](https://github.com/rstudio/cheatsheets/blob/main/tidyr.pdf) to explore the capabilities of the package.
+:::
+
+## Overview
+
+Earlier in the course, we introduced the idea of *tidy data*—a consistent way of structuring datasets that makes them easier to work with in R. In a tidy dataset, each variable forms a column, each observation forms a row, and each cell contains a single value. This structure is especially powerful when paired with the `tidyverse` tools you've already seen, like `ggplot2` and `dplyr`.
+
+In this module, we’ll focus on how to *reshape* or *pivot* messy data into tidy format using functions from the `tidyr` package. We'll start by examining example datasets included in the package, then work with real-world data from the World Bank. Along the way, you'll learn to convert data between wide and long formats using `pivot_longer()` and `pivot_wider()`, and you'll practice fixing common issues like inconsistent variable names and incorrect data types.
+
+## Are These Data Tidy?
+
+Let’s start by loading the `tidyr` package and examining a few of its built-in datasets. One of the datasets is called `smiths`. You can access this dataset by calling:
+
+```{r}
+library(tidyr)
+
+smiths
+```
+
+Are these data tidy? The answer is "yes." These data are tidy because each variable is in its own column, each observation is in its own row, and each cell contains a single value. It might not look like a typical dataset, because it is small (only two rows) and because it has missing values, but it meets the tidy data principles.
+
+Here is another example of tidy data from the `tidyr` package, called `table1`.
+
+```{r}
+table1
+```
+
+What about these data? Are they tidy? Again the answer is "yes." There are four columns, each of which represents a variable: `country`, `year`, `cases`, and `population`. Each row represents a single observation, and each cell contains a single value.
+
+OK let's try one more. This one is called `table2`. 
+
+```{r}
+table2
+```
+
+This one is a little tricky because, on the one hand we could say that it is tidy data in "long form" if we treat `type` as a single variable. But if I told you that "cases" here refers to the number of case of tuberculosis and "population" refers to the population of the country, then we would say that this is not tidy data. The reason is that the `type` variable is not a variable in its own right but rather a label for the two variables `cases` and `population` and, in that case, `cases` and `population` should be in separate columns (as in `table1`). 
+
+::: {.callout-important}
+## Long vs. Wide Format
+
+A dataset is in **long format** when each row represents a single observation, and multiple categories or types that could be defined as separate variables are stacked into one column—often paired with a corresponding value column. It’s in **wide format** when different categories have their own columns.
+
+Which format is better? It depends on how you define your variables.
+
+Sometimes, long format is clearly appropriate. For example, if you’re comparing regions or species, it makes sense to keep those as a single column so you can facet or color by them in a `ggplot` plot. 
+
+But when you want to compare values across categories, or analyze how the values of the categories relate to a third variable, wide format is more appropriate.
+:::
+
+Now let's look at another rendition of these same data. 
+
+```{r}
+table3
+```
+
+Can you tell what is going on here? Are these data tidy? No. In this case, the rate variable is not the actual rate of infection but rather two values (cases and population) separated by a slash. So here we have two values in one cell, which violates the tidy data principle that each cell should contain a single value. 
+
+Finally, let's look at one more example. Here is`table4a` from the `tidyr` package.
+
+```{r}
+table4a
+```
+
+What is the issue here? In this case, the data are not tidy because the `year` variable is spread across multiple columns (`1999` and `2000`). The years represent observations and should therefore be in their own rows in the context of a single column, not in separate columns.
+
+::: {.callout-warning icon=false}
+## Your Turn!! 
+Explore more datasets in the `tidyr` package, type `data(package = "tidyr")` in your console or in a R codechunk in your notebook. Then, view the data frames and ask yourself whether the data in each dataset are tidy or not. Many of these datasets are used as examples in [Chapter 5](https://r4ds.hadley.nz/data-tidy.html#sec-tidy-data) of Hadley Wickham's *R for Data Science* book, which was assigned for this module. 
+:::
+
+## Tidying Data
+
+Let's now talk about how we can use `tidyr` to tidy our data. The `tidyr` package provides several functions to help you reshape data into tidy format. The most commonly used functions are `pivot_longer()` and `pivot_wider()`. But we can also make use of `separate()` when we need to split a single column into multiple columns.
+
+`pivot_longer()` is helpful when we have a situation like we saw in `table4a`, where we have multiple columns representing different observations of the same variable. It allows us to "pivot" those columns into a single column with an additional column indicating the observation type (e.g., year). 
+
+`pivot_longer()` takes three main arguments: `cols` to identify which columns you want to pivot; `names_to` to identify the name of the column where the old column names are going to (the identifier), and `values_to`, the name of the column where the values are going to. Let's give it a try with `table4a`:
+
+```{r}
+table4a_pivot <- table4a |>
+  pivot_longer(cols = c(`1999`, `2000`), 
+               names_to = "year", 
+               values_to = "cases")
+
+table4a_pivot
+```
+
+This reshapes the data so that we have a single `year` column and a single `cases` column, with the observations (country-years) in the rows.
+
+Now let's take the case of `table2`, which is in long format but not tidy because the `type` variable is not a separate variable. We can use `pivot_wider()` to reshape it into a tidy format. 
+
+`pivot_wider()` takes three main arguments: `names_from` to identify the column whose values will become new column names, `values_from` to identify the column containing the values that will fill the new columns, and `values_fill`, an optional argument that specifies what to use for missing values (e.g., `NA`, `0`). 
+
+Let's try reshaping `table2` into a tidy format using `pivot_wider()`:
+
+```{r}
+table2_tidy <- table2 |>
+  pivot_wider(names_from = type, 
+              values_from = count)
+
+table2_tidy
+```
+
+Finally, let's look at how to use `separate()` to split a single column into multiple columns. This is useful when you have a column that contains multiple pieces of information, like the `rate` column in `table3`.
+
+```{r}
+table3_separated <- table3 |>
+  separate(rate, into = c("cases", "population"), sep = "/")
+
+table3_separated
+```
+
+::: {.callout-warning icon=false}
+## Your Turn!!
+Try using `pivot_longer()`, `pivot_wider()`, and `separate()` on the `tidyr` datasets you explored earlier. If you really want to challenge yourself, try some of the worked examples in Chapter 5 of *R for Data Science*.
+:::
+
+## World Bank Worked Example
+
+In this video, I show you how to tidy some real-world data from the World Bank using `tidyr`.
+
+{{< video  https://youtu.be/u4AXi8A1Bqo?si=OVnjerTuxm6bYIKb title='Reshaping Data in R' >}}
+
+We can also use the `tidyr` `world_bank_pop` dataset, which simulates a typical structure you might get from downloading World Bank data manually. Let’s take a closer look at the `world_bank_pop` dataset. You can view it using:
+
+```{r}
+world_bank_pop
+```
+
+At first glance, this dataset appears to be in a wide format. Each row represents a country and indicator (such as "SP.POP.TOTL" for total population), and each year from 2000 to 2017 is stored in its own column. While this might seem convenient, it violates the tidy data principle that each variable should form its own column. Here, the years are actually values of a single variable called "year"—but they are spread across multiple columns.
+
+To tidy this data, our first step is to convert it from wide format to long format using the `pivot_longer()` function from the `tidyr` package. Specifically, we want to pivot all the year columns into a single "year" column, with a corresponding "pop" column for the population values.
+
+Here’s how we do it:
+
+```{r}
+long_pop_data <- world_bank_pop |>
+  pivot_longer(
+    cols = `2000`:`2017`,   # The year columns to pivot
+    names_to = "year",      # New column for year values
+    values_to = "pop"       # New column for population values
+  )
+
+long_pop_data
+```
+
+This transformation makes the dataset much more flexible. Now, each row corresponds to a single observation: a country-indicator-year combination with a single value for population. This structure is ideal for most types of analysis and visualization. However, it’s worth asking—are we fully done tidying?
+
+Not quite. The current dataset is in long format, and that's great in many situations. But in this case, each country-year may have data for multiple indicators (e.g., total population, urban population), and in most cases we would prefer to have each indicator in its own column. 
+
+To do that, we can use `pivot_wider()` to reshape the dataset so that the indicator codes become column names and each row represents a country-year combination.
+
+```{r}
+tidy_pop_data <- long_pop_data |>
+  pivot_wider(
+    names_from = indicator, 
+    values_from = pop
+  )
+
+tidy_pop_data
+```
+
+Now, the dataset is both tidy and wide: one row per country and year, with separate columns for each indicator. This makes it easy to perform operations like plotting urban versus total population or calculating the share of the population that is urban.
+
+This kind of workflow—going from wide to long and back to wide—is common when working with real-world datasets. You might start with a messy spreadsheet or export, use `pivot_longer()` to get it into a form that’s easier to work with, and then use `pivot_wider()` to tailor the structure to your specific analysis needs.
+
+
+

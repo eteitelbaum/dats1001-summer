@@ -37,15 +37,17 @@ In this module, we will use the `WDI` package by Vincent Arel-Bundock to access 
 The basic syntax for using the `WDI` package is as follows:
 
 ```{r}
+#| label: wdi-basic-syntax  
+
 library(WDI)
 library(dplyr)
 
 wbdata <- WDI(
-  indicator = "NY.GDP.MKTP.CD", # GDP in current US dollars
+  indicator = "NY.GDP.PCAP.KD", # per capita GDP in constant US dollars
   country = c("USA", "CAN", "MEX"), # Countries to include
   start = 2000, # Start year
   end = 2020, # End year
-  extra = FALSE # Include extra metadata (default is FALSE)
+  extra = TRUE # Include extra metadata (default is FALSE)
 )
 
 glimpse(wbdata)
@@ -60,7 +62,9 @@ The `country` parameter takes either ISO aplha 2 or 3 codes which you can find [
 If you want to download multiple indicators at once, you can pass a vector of indicator codes to the `indicator` parameter. You can also rename variables as you select them. For example:
 
 ```{r}
-indicators <- c(gdp = "NY.GDP.MKTP.CD", population = "SP.POP.TOTL") 
+#| label: wdi-multiple-indicators
+
+indicators <- c(gdp_pc = "NY.GDP.PCAP.KD", population = "SP.POP.TOTL") 
 
 wbdata2 <- WDI(
   indicator = indicators, # GDP and total pop
@@ -75,6 +79,8 @@ glimpse(wbdata2)
 There are two ways to find indicators to download with `WDI`. One is to use the built-in `WDIsearch()` function to search for indicators by keyword, like this: 
 
 ```{r}
+#| label: wdi-search-keyword
+
 WDIsearch('labor force participation') |> 
   as_tibble() |> # Convert to tibble for easier viewing
   slice(1:10) # Show first 10 results
@@ -83,6 +89,8 @@ WDIsearch('labor force participation') |>
 Or with regular expressions like this:
 
 ```{r}
+#| label: wdi-search-regex
+
 WDIsearch('labor.*participation.*female') |>
     as_tibble() |> 
     slice(1:10) 
@@ -106,7 +114,7 @@ The other way you can hunt for indicators is to browse the World Bank's [World D
 
 ## Joining Datasets
 
-Now let's say that we have downloaded some data from the World Bank with `WDI` and now we want to merge it with another dataset. For example, we might want to analyze the relationship between some economic indicators like GDP and population, and some political indicators like democracy scores from the V-Dem dataset. To do this, we need to join the two datasets together based on a **common key**, which in this case is the country code.
+Now let's say that we want to download some data from the World Bank with `WDI` and now we want to merge it with another dataset. For example, we might want to analyze the relationship between some economic indicators like GDP and population, and some political indicators like democracy scores from the V-Dem dataset. To do this, we need to join the two datasets together based on a **common key**, which in this case is the country code.
 
 When we talk about a join in data wrangling, we are usually referring to a horizontal merge—that is, combining two data frames side by side by matching rows based on shared values in one or more columns (like country and year). This is common when we have data from two different sources, such as World Bank and V-Dem, and we want to analyze them together.
 
@@ -131,6 +139,7 @@ A **right join** is like a left join, but it keeps all rows from the right datas
 Most of the time, we will use a left join because we want to keep the structure of one main dataset and supplement it with additional information. The syntax for a left join in dplyr is straightforward:
 
 ```{r}
+#| label: left-join-example
 #| eval: false
 
 left_join(data1, data2, by = "common_column")
@@ -145,10 +154,12 @@ In the context of cross-country analysis, the `countrycode` package (also author
 To convert country codes using the `countrycode` package, you can use `mutate()` along with the `countrycode()` function. Let's try it with the `wbdata` dataset we created earlier:
 
 ```{r}
+#| label: convert-country-codes
+
 library(countrycode)
 
 # Convert World Bank ISO alpha-2 codes to V-Dem alpha-3 codes
-wbdata_with_vdem_codes <- wbdata |> 
+wbdata_with_vdem_codes <- wbdata2 |> 
   mutate(vdem_country_code = countrycode(
     sourcevar = iso3c, 
     origin = "wb", 
@@ -161,38 +172,119 @@ glimpse(wbdata_with_vdem_codes)
 
 Here we are adding a new column to our `wbdata` dataset called `vdem_country_code`, which contains the V-Dem alpha-3 codes corresponding to the ISO alpha-2 codes in the `iso2c` column. The first argument in the `countrycode()` function is the vector of country codes that we want to convert, the second is the source code type (in this case, World Bank style iso3c codes or "wb"), and the third is the target code type (in this case, "vdem"). We also use the `dplyr` `relocate()` verb to move the new `vdem_country_code` column right after the original `iso3c` column for better organization.
 
-## Performing the Join
+## Performing a Join
 
 {{< video https://youtu.be/wNF3ZPneHWw?si=TyiXrsAxgbdrztD4 title='Merge Two Data Frames with left_join()' >}}
 
-Now that we have our `wbdata` dataset with the V-Dem country codes, we can perform a left join with the V-Dem data. Let’s go ahead and use our skills from the last lesson to download the V-Dem data for the same countries and years as our World Bank data. We will use the `fetchdem()` function to get the democracy scores for the same countries and years as our World Bank data.
+Now let's put it all together and use our join skills to explore the relationship between democracy and development. First we will grab the GDP per capita and population for all of the countries for the years 2000 to 2020 from the World Bank using the `WDI()` function. Then we will summarize the data across this period by taking the mean GDP per capita and population for each country. And finally we will use the `countrycode` package to convert the World Bank country codes to V-Dem country codes so we can join it with the V-Dem democracy data (which we will download next).
 
 ```{r}
+#| label: fetch-wbdata-all-countries
+
+indicators <- c(
+  gdp_pc = "NY.GDP.PCAP.KD", 
+  population = "SP.POP.TOTL" 
+)
+
+wbdata_all_countries <- WDI(
+  indicator = indicators, 
+  country = "all", # get data for all countries
+  start = 2000,
+  end = 2020,
+  extra = TRUE # Include extra metadata
+) |>
+  filter(region != "Aggregates") |> # Exclude aggregate regions
+  group_by(iso3c, region) |> # Group by country
+  summarize(
+    gdp_pc = mean(gdp_pc, na.rm = TRUE), 
+    population = mean(population, na.rm = TRUE)
+  ) |> 
+  ungroup() |> # Ungroup to remove grouping structure
+  mutate(vdem_country_code = countrycode(
+    sourcevar = iso3c, 
+    origin = "wb", 
+    destination = "vdem")
+  ) |>
+  relocate(vdem_country_code, .after = iso3c)
+
+glimpse(wbdata_all_countries)
+```
+
+::: {.callout-note}
+## Why `ungroup()`?
+
+After summarizing by country and year, we use `ungroup()` to remove the grouping structure. This ensures that any subsequent operations—like `mutate()` or joins—aren't accidentally performed within each group. It helps avoid unexpected behavior and keeps the data frame's state clean for downstream analysis.
+:::
+
+Note that when performing the merge we used a `filter()` to exclude aggregate regions like "World" or regional aggregates from the World Bank data. But even after doing this we will see that there are still some countries that do not have V-Dem codes. This is fine. It just meansthat V-Dem does not cover all countries, especially smaller ones or those with limited data availability. When we perform our left join, these will drop out. We could also load `tidyr` and use the `drop_na()` function to remove these rows, but we will leave them in for now.
+
+Now let's go ahead and fetch the V-Dem democracy scores for the same countries and years. We will use the `fetchdem()` function from the `vdemlite` package to get the V-Dem democracy scores, specifically the polyarchy score (`v2x_polyarchy`) and the fair elections score (`v2xel_frefair`). We will then rename these columns to make them more intuitive and then group and summarize the data so that we have one set of democracy scores per country.
+
+```{r}
+#| label: fetch-democracy-data
+
 library(vdemlite)
 
 # Fetch democracy scores for the same countries and years as wbdata
 democracy_scores <- fetchdem(
   indicators = c("v2x_polyarchy", "v2xel_frefair"),
   start_year = 2000, end_year = 2020
-)
+) |>
+  rename(
+    polyarchy = v2x_polyarchy,
+    fair_elections = v2xel_frefair
+  ) |>
+  group_by(country_id) |> 
+  summarize(
+    polyarchy = mean(polyarchy, na.rm = TRUE),
+    fair_elections = mean(fair_elections, na.rm = TRUE)
+  )
 
 glimpse(democracy_scores)
 ```
 
-Now we can perform a left join to combine the two datasets based on the V-Dem country codes and the year. We will use the `left_join()` function from `dplyr` to do this:
+Now we can perform a left join to combine the two datasets based on the V-Dem country codes and the year. We will use the `left_join()` function from `dplyr` to do this. Let's be sure to put the V-Dem data set as our left dataset, since we want to keep all of the V-Dem data and only add the World Bank data where it matches.
 
 ```{r}
+#| label: join-democracy-data
+
 # Perform a left join to combine the datasets
-wb_democracy_data <- left_join(
-  wbdata_with_vdem_codes, 
+wb_democracy_data <- left_join( 
   democracy_scores, 
-  by = c("vdem_country_code" = "country_id", "year" = "year")
+  wbdata_all_countries,
+  by = c("country_id" = "vdem_country_code")
 )
 
 glimpse(wb_democracy_data)
 ```
 
-Notice here that while we had a common key for the country codes, the columns had different names. Therefore, we specified the `by` argument as a named vector, where we matched the `vdem_country_code` from the World Bank data to the `country_code` in the V-Dem data. Note that we also had to specify the year as a second key for the join. This is because both datasets have a `year` column that we want to match on as well.
+Notice here that while we had a common key for the country codes, the columns had different names. Therefore, we specified the `by` argument as a named vector, where we matched the `vdem_country_code` from the World Bank data to the `country_code` in the V-Dem data. 
+
+Now let's have a little bit of fun and try a visualizing the relationship between GDP per capita and the V-Dem polyarchy score using `ggplot2`:
+
+```{r}
+#| label: plot-democracy-gdp
+
+library(ggplot2)
+
+ggplot(wb_democracy_data, aes(x = gdp_pc, y = polyarchy, size = population, color = region)) +
+  geom_point(alpha = 0.5) +
+  scale_x_log10(labels = scales::label_number(prefix = "$", suffix = "k")) +
+  scale_size_continuous( # options for customizing population legend
+    name = "Population",
+    breaks = c(1e6, 1e7, 5e7, 1e8, 5e8, 1e9),  
+    labels = c("1M", "10M", "50M", "100M", "500M", "1B")
+  ) +
+  labs(
+    title = "Wealth and Democracy, 2000 - 2020",
+    x = "GDP per Capita",
+    y = "V-Dem Polyarchy Score",
+    color = "Region"
+  ) +
+  theme_minimal() +
+  scale_colour_viridis_d(option = "plasma", end = 0.9) 
+```
+
 
 ::: {.callout-warning icon=false}
 ## Your Turn!!
@@ -200,5 +292,6 @@ Notice here that while we had a common key for the country codes, the columns ha
 - Use the `countrycode` package to convert the country codes in your World Bank data to V-Dem codes.
 - Use the `fetchdem()` function to download V-Dem democracy scores for the same countries and years as your World Bank data.
 - Use `left_join()` to merge the two datasets based on the V-Dem country codes and year.
+- Visualize the relationship between one of your economic indicators and a V-Dem democracy score using `ggplot2`.
 :::
 
