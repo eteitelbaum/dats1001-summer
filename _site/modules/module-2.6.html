@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.7.11">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<title>Module 2.5 – DATS 1001–Fall Schedule</title>
+<title>Module 2.6 – DATS 1001–Fall Schedule</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -98,11 +98,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
-<meta property="og:title" content="Module 2.5 – DATS 1001–Fall Schedule">
-<meta property="og:description" content="Tidying Data">
+<meta property="og:title" content="Module 2.6 – DATS 1001–Fall Schedule">
+<meta property="og:description" content="Cleaning Data">
 <meta property="og:site_name" content="DATS 1001--Fall Schedule">
-<meta name="twitter:title" content="Module 2.5 – DATS 1001–Fall Schedule">
-<meta name="twitter:description" content="Tidying Data">
+<meta name="twitter:title" content="Module 2.6 – DATS 1001–Fall Schedule">
+<meta name="twitter:description" content="Cleaning Data">
 <meta name="twitter:card" content="summary">
 </head>
 <body class="nav-sidebar docked">
@@ -112,7 +112,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Module 2.5</li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Module 2.6</li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -305,15 +305,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
 <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a></li>
-  <li><a href="#are-these-data-tidy" id="toc-are-these-data-tidy" class="nav-link" data-scroll-target="#are-these-data-tidy">Are These Data Tidy?</a></li>
-  <li><a href="#tidying-data" id="toc-tidying-data" class="nav-link" data-scroll-target="#tidying-data">Tidying Data</a></li>
-  <li><a href="#world-bank-worked-example" id="toc-world-bank-worked-example" class="nav-link" data-scroll-target="#world-bank-worked-example">World Bank Worked Example</a></li>
-  </ul><div class="toc-actions"><ul><li><a href="https://github.com/dats1001-fall-2024/edit/main/modules/module-2.5.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/dats1001-fall-2024/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+  <li><a href="#downloading-and-reading-in-the-data" id="toc-downloading-and-reading-in-the-data" class="nav-link" data-scroll-target="#downloading-and-reading-in-the-data">Downloading and Reading in the Data</a></li>
+  <li><a href="#reshaping-the-data" id="toc-reshaping-the-data" class="nav-link" data-scroll-target="#reshaping-the-data">Reshaping the Data</a></li>
+  <li><a href="#cleaning-up-our-data" id="toc-cleaning-up-our-data" class="nav-link" data-scroll-target="#cleaning-up-our-data">Cleaning up Our Data</a></li>
+  </ul><div class="toc-actions"><ul><li><a href="https://github.com/dats1001-fall-2024/edit/main/modules/module-2.6.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/dats1001-fall-2024/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
-<h1 class="title">Module 2.5</h1>
-<p class="subtitle lead">Tidying Data</p>
+<h1 class="title">Module 2.6</h1>
+<p class="subtitle lead">Cleaning Data</p>
 </div>
 
 
@@ -338,187 +338,97 @@ Prework
 </div>
 <div class="callout-body-container callout-body">
 <ul>
-<li>Start a QMD file for this module.</li>
-<li>Review the concepts of tidy data and read through the <a href="https://tidyr.tidyverse.org/">tidyr</a> documentation.</li>
-<li>Have a quick look at the <code>tidyr</code> <a href="https://github.com/rstudio/cheatsheets/blob/main/tidyr.pdf">cheatsheet</a> to explore the capabilities of the package.</li>
+<li>Start a QMD file for this module. (At this point, I assume you know how to create a QMD file in a project and set the YAML header. So this will be the last time I mention it.)</li>
+<li>Install the <a href="https://sfirke.github.io/janitor/articles/janitor.html">janitor</a> package and have a look at the documentation.</li>
 </ul>
 </div>
 </div>
 <section id="overview" class="level2"><h2 class="anchored" data-anchor-id="overview">Overview</h2>
-<p>Earlier in the course, we introduced the idea of <em>tidy data</em>—a consistent way of structuring datasets that makes them easier to work with in R. In a tidy dataset, each variable forms a column, each observation forms a row, and each cell contains a single value. This structure is especially powerful when paired with the <code>tidyverse</code> tools you’ve already seen, like <code>ggplot2</code> and <code>dplyr</code>.</p>
-<p>In this module, we’ll focus on how to <em>reshape</em> or <em>pivot</em> messy data into tidy format using functions from the <code>tidyr</code> package. We’ll start by examining example datasets included in the package, then work with real-world data from the World Bank. Along the way, you’ll learn to convert data between wide and long formats using <code><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer()</a></code> and <code><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html">pivot_wider()</a></code>, and you’ll practice fixing common issues like inconsistent variable names and incorrect data types.</p>
-</section><section id="are-these-data-tidy" class="level2"><h2 class="anchored" data-anchor-id="are-these-data-tidy">Are These Data Tidy?</h2>
-<p>Let’s start by loading the <code>tidyr</code> package and examining a few of its built-in datasets. One of the datasets is called <code>smiths</code>. You can access this dataset by calling:</p>
-<div class="cell">
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyr.tidyverse.org">tidyr</a></span><span class="op">)</span></span>
-<span></span>
-<span><span class="va">smiths</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 2 × 5
-  subject     time   age weight height
-  &lt;chr&gt;      &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;
-1 John Smith     1    33     90   1.87
-2 Mary Smith     1    NA     NA   1.54</code></pre>
-</div>
-</div>
-<p>Are these data tidy? The answer is “yes.” These data are tidy because each variable is in its own column, each observation is in its own row, and each cell contains a single value. It might not look like a typical dataset, because it is small (only two rows) and because it has missing values, but it meets the tidy data principles.</p>
-<p>Here is another example of tidy data from the <code>tidyr</code> package, called <code>table1</code>.</p>
-<div class="cell">
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">table1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 6 × 4
-  country      year  cases population
-  &lt;chr&gt;       &lt;dbl&gt;  &lt;dbl&gt;      &lt;dbl&gt;
-1 Afghanistan  1999    745   19987071
-2 Afghanistan  2000   2666   20595360
-3 Brazil       1999  37737  172006362
-4 Brazil       2000  80488  174504898
-5 China        1999 212258 1272915272
-6 China        2000 213766 1280428583</code></pre>
-</div>
-</div>
-<p>What about these data? Are they tidy? Again the answer is “yes.” There are four columns, each of which represents a variable: <code>country</code>, <code>year</code>, <code>cases</code>, and <code>population</code>. Each row represents a single observation, and each cell contains a single value.</p>
-<p>OK let’s try one more. This one is called <code>table2</code>.</p>
-<div class="cell">
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">table2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 12 × 4
-   country      year type            count
-   &lt;chr&gt;       &lt;dbl&gt; &lt;chr&gt;           &lt;dbl&gt;
- 1 Afghanistan  1999 cases             745
- 2 Afghanistan  1999 population   19987071
- 3 Afghanistan  2000 cases            2666
- 4 Afghanistan  2000 population   20595360
- 5 Brazil       1999 cases           37737
- 6 Brazil       1999 population  172006362
- 7 Brazil       2000 cases           80488
- 8 Brazil       2000 population  174504898
- 9 China        1999 cases          212258
-10 China        1999 population 1272915272
-11 China        2000 cases          213766
-12 China        2000 population 1280428583</code></pre>
-</div>
-</div>
-<p>This one is a little tricky because, on the one hand we could say that it is tidy data in “long form” if we treat <code>type</code> as a single variable. But if I told you that “cases” here refers to the number of case of tuberculosis and “population” refers to the population of the country, then we would say that this is not tidy data. The reason is that the <code>type</code> variable is not a variable in its own right but rather a label for the two variables <code>cases</code> and <code>population</code> and, in that case, <code>cases</code> and <code>population</code> should be in separate columns (as in <code>table1</code>).</p>
-<div class="callout callout-style-default callout-important callout-titled">
+<p>In this module we are going to focus on how to clean up messy real world data. We are going to do this using data downloaded from the <a href="https://databank.worldbank.org/source/world-development-indicators">World Development Indicators</a>. This will be our third iteration of working with World Bank data, so if you are a budding economist you are in luck! The first time we encountered World Bank data was through the <code>WDI</code> package where the data were tidy just by virtue of being accessed through the API. In the last module, we left off with a worked example where we used the <code>tidyr</code> version of some untidy World Bank’s World Development Indicators (WDI) dataset and transposed it to make it into a tidy dataset. In this lesson, we are going to download data directly from the WDI interface that is not only untidy but also contains some other issues that we will need to address.</p>
+</section><section id="downloading-and-reading-in-the-data" class="level2"><h2 class="anchored" data-anchor-id="downloading-and-reading-in-the-data">Downloading and Reading in the Data</h2>
+<div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/ZwJsSjJRuMU" title="Reading Data into R" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
+<p>Go to the World Development Indicators <a href="https://databank.worldbank.org/source/world-development-indicators">portal</a> at the World Bank’s Data Bank.</p>
+<p>Under Countries, select the Countries tab and then select the little check mark ☑️ to select all of the countries. Be sure to select the Countries tab first, though, or you will also be downloading aggregate data for regions and groups of countries.</p>
+<p>Next, under Series, search for “labor force participation” and find labor force participation rates for women ages 15-64 (ILO modeled estimates). Check that series.</p>
+<p>Now go to Time and select the years from the last 50 years. Click Apply Changes, go to Download Options and download as a .csv file. Place the .csv file in the data directory that you created for this module. Save it as “messy_wb_data.csv” or something like that.</p>
+<p>Now we are going to read this messy World Bank data into R using the <code><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv()</a></code> function from the <code>readr</code> package.After we have read the data into R, we are going to have a look at it with <code><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse()</a></code>.</p>
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Long vs.&nbsp;Wide Format
+Did You Know?
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>A dataset is in <strong>long format</strong> when each row represents a single observation, and multiple categories or types that could be defined as separate variables are stacked into one column—often paired with a corresponding value column. It’s in <strong>wide format</strong> when different categories have their own columns.</p>
-<p>Which format is better? It depends on how you define your variables.</p>
-<p>Sometimes, long format is clearly appropriate. For example, if you’re comparing regions or species, it makes sense to keep those as a single column so you can facet or color by them in a <code>ggplot</code> plot.</p>
-<p>But when you want to compare values across categories, or analyze how the values of the categories relate to a third variable, wide format is more appropriate.</p>
+<p>While comma delimited files are the most common kind of flat file, <code>readr</code> includes functions for parsing files with a wide range of delimiters including tabs (<code><a href="https://readr.tidyverse.org/reference/read_delim.html">read_tsv()</a></code>), semicolons (<code><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv2()</a></code>) and white spaces (<code><a href="https://readr.tidyverse.org/reference/read_table.html">read_table()</a></code>). There is also a Tidyverse package for reading in Excel files called <a href="https://readxl.tidyverse.org/">readxl</a>.</p>
 </div>
 </div>
-<p>Now let’s look at another rendition of these same data.</p>
 <div class="cell">
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">table3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 6 × 3
-  country      year rate             
-  &lt;chr&gt;       &lt;dbl&gt; &lt;chr&gt;            
-1 Afghanistan  1999 745/19987071     
-2 Afghanistan  2000 2666/20595360    
-3 Brazil       1999 37737/172006362  
-4 Brazil       2000 80488/174504898  
-5 China        1999 212258/1272915272
-6 China        2000 213766/1280428583</code></pre>
-</div>
-</div>
-<p>Can you tell what is going on here? Are these data tidy? No.&nbsp;In this case, the rate variable is not the actual rate of infection but rather two values (cases and population) separated by a slash. So here we have two values in one cell, which violates the tidy data principle that each cell should contain a single value.</p>
-<p>Finally, let’s look at one more example. Here is<code>table4a</code> from the <code>tidyr</code> package.</p>
-<div class="cell">
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">table4a</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 3 × 3
-  country     `1999` `2000`
-  &lt;chr&gt;        &lt;dbl&gt;  &lt;dbl&gt;
-1 Afghanistan    745   2666
-2 Brazil       37737  80488
-3 China       212258 213766</code></pre>
-</div>
-</div>
-<p>What is the issue here? In this case, the data are not tidy because the <code>year</code> variable is spread across multiple columns (<code>1999</code> and <code>2000</code>). The years represent observations and should therefore be in their own rows in the context of a single column, not in separate columns.</p>
-<div class="callout callout-style-default callout-warning no-icon callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Your Turn!!
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Explore more datasets in the <code>tidyr</code> package, type <code>data(package = "tidyr")</code> in your console or in a R codechunk in your notebook. Then, view the data frames and ask yourself whether the data in each dataset are tidy or not. Many of these datasets are used as examples in <a href="https://r4ds.hadley.nz/data-tidy.html#sec-tidy-data">Chapter 5</a> of Hadley Wickham’s <em>R for Data Science</em> book, which was assigned for this module.</p>
-</div>
-</div>
-</section><section id="tidying-data" class="level2"><h2 class="anchored" data-anchor-id="tidying-data">Tidying Data</h2>
-<p>Let’s now talk about how we can use <code>tidyr</code> to tidy our data. The <code>tidyr</code> package provides several functions to help you reshape data into tidy format. The most commonly used functions are <code><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer()</a></code> and <code><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html">pivot_wider()</a></code>. But we can also make use of <code><a href="https://tidyr.tidyverse.org/reference/separate.html">separate()</a></code> when we need to split a single column into multiple columns.</p>
-<p><code><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer()</a></code> is helpful when we have a situation like we saw in <code>table4a</code>, where we have multiple columns representing different observations of the same variable. It allows us to “pivot” those columns into a single column with an additional column indicating the observation type (e.g., year).</p>
-<p><code><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer()</a></code> takes three main arguments: <code>cols</code> to identify which columns you want to pivot; <code>names_to</code> to identify the name of the column where the old column names are going to (the identifier), and <code>values_to</code>, the name of the column where the values are going to. Let’s give it a try with <code>table4a</code>:</p>
-<div class="cell">
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">table4a_pivot</span> <span class="op">&lt;-</span> <span class="va">table4a</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer</a></span><span class="op">(</span>cols <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">`1999`</span>, <span class="va">`2000`</span><span class="op">)</span>, </span>
-<span>               names_to <span class="op">=</span> <span class="st">"year"</span>, </span>
-<span>               values_to <span class="op">=</span> <span class="st">"cases"</span><span class="op">)</span></span>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://readr.tidyverse.org">readr</a></span><span class="op">)</span> </span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span> </span>
 <span></span>
-<span><span class="va">table4a_pivot</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 6 × 3
-  country     year   cases
-  &lt;chr&gt;       &lt;chr&gt;  &lt;dbl&gt;
-1 Afghanistan 1999     745
-2 Afghanistan 2000    2666
-3 Brazil      1999   37737
-4 Brazil      2000   80488
-5 China       1999  212258
-6 China       2000  213766</code></pre>
-</div>
-</div>
-<p>This reshapes the data so that we have a single <code>year</code> column and a single <code>cases</code> column, with the observations (country-years) in the rows.</p>
-<p>Now let’s take the case of <code>table2</code>, which is in long format but not tidy because the <code>type</code> variable is not a separate variable. We can use <code><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html">pivot_wider()</a></code> to reshape it into a tidy format.</p>
-<p><code><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html">pivot_wider()</a></code> takes three main arguments: <code>names_from</code> to identify the column whose values will become new column names, <code>values_from</code> to identify the column containing the values that will fill the new columns, and <code>values_fill</code>, an optional argument that specifies what to use for missing values (e.g., <code>NA</code>, <code>0</code>).</p>
-<p>Let’s try reshaping <code>table2</code> into a tidy format using <code><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html">pivot_wider()</a></code>:</p>
-<div class="cell">
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">table2_tidy</span> <span class="op">&lt;-</span> <span class="va">table2</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html">pivot_wider</a></span><span class="op">(</span>names_from <span class="op">=</span> <span class="va">type</span>, </span>
-<span>              values_from <span class="op">=</span> <span class="va">count</span><span class="op">)</span></span>
+<span><span class="va">wb_data_messy</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="st">"data/messy_wb_data.csv"</span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">table2_tidy</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">wb_data_messy</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 6 × 4
-  country      year  cases population
-  &lt;chr&gt;       &lt;dbl&gt;  &lt;dbl&gt;      &lt;dbl&gt;
-1 Afghanistan  1999    745   19987071
-2 Afghanistan  2000   2666   20595360
-3 Brazil       1999  37737  172006362
-4 Brazil       2000  80488  174504898
-5 China        1999 212258 1272915272
-6 China        2000 213766 1280428583</code></pre>
-</div>
-</div>
-<p>Finally, let’s look at how to use <code><a href="https://tidyr.tidyverse.org/reference/separate.html">separate()</a></code> to split a single column into multiple columns. This is useful when you have a column that contains multiple pieces of information, like the <code>rate</code> column in <code>table3</code>.</p>
-<div class="cell">
-<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">table3_separated</span> <span class="op">&lt;-</span> <span class="va">table3</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/separate.html">separate</a></span><span class="op">(</span><span class="va">rate</span>, into <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"cases"</span>, <span class="st">"population"</span><span class="op">)</span>, sep <span class="op">=</span> <span class="st">"/"</span><span class="op">)</span></span>
-<span></span>
-<span><span class="va">table3_separated</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 6 × 4
-  country      year cases  population
-  &lt;chr&gt;       &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;     
-1 Afghanistan  1999 745    19987071  
-2 Afghanistan  2000 2666   20595360  
-3 Brazil       1999 37737  172006362 
-4 Brazil       2000 80488  174504898 
-5 China        1999 212258 1272915272
-6 China        2000 213766 1280428583</code></pre>
+<pre><code>Rows: 222
+Columns: 54
+$ `Country Name`  &lt;chr&gt; "Afghanistan", "Albania", "Algeria", "American Samoa",…
+$ `Country Code`  &lt;chr&gt; "AFG", "ALB", "DZA", "ASM", "AND", "AGO", "ATG", "ARG"…
+$ `Series Name`   &lt;chr&gt; "Labor force participation rate, female (% of female p…
+$ `Series Code`   &lt;chr&gt; "SL.TLF.ACTI.FE.ZS", "SL.TLF.ACTI.FE.ZS", "SL.TLF.ACTI…
+$ `1972 [YR1972]` &lt;chr&gt; "..", "..", "..", "..", "..", "..", "..", "..", "..", …
+$ `1973 [YR1973]` &lt;chr&gt; "..", "..", "..", "..", "..", "..", "..", "..", "..", …
+$ `1974 [YR1974]` &lt;chr&gt; "..", "..", "..", "..", "..", "..", "..", "..", "..", …
+$ `1975 [YR1975]` &lt;chr&gt; "..", "..", "..", "..", "..", "..", "..", "..", "..", …
+$ `1976 [YR1976]` &lt;chr&gt; "..", "..", "..", "..", "..", "..", "..", "..", "..", …
+$ `1977 [YR1977]` &lt;chr&gt; "..", "..", "..", "..", "..", "..", "..", "..", "..", …
+$ `1978 [YR1978]` &lt;chr&gt; "..", "..", "..", "..", "..", "..", "..", "..", "..", …
+$ `1979 [YR1979]` &lt;chr&gt; "..", "..", "..", "..", "..", "..", "..", "..", "..", …
+$ `1980 [YR1980]` &lt;chr&gt; "..", "..", "..", "..", "..", "..", "..", "..", "..", …
+$ `1981 [YR1981]` &lt;chr&gt; "..", "..", "..", "..", "..", "..", "..", "..", "..", …
+$ `1982 [YR1982]` &lt;chr&gt; "..", "..", "..", "..", "..", "..", "..", "..", "..", …
+$ `1983 [YR1983]` &lt;chr&gt; "..", "..", "..", "..", "..", "..", "..", "..", "..", …
+$ `1984 [YR1984]` &lt;chr&gt; "..", "..", "..", "..", "..", "..", "..", "..", "..", …
+$ `1985 [YR1985]` &lt;chr&gt; "..", "..", "..", "..", "..", "..", "..", "..", "..", …
+$ `1986 [YR1986]` &lt;chr&gt; "..", "..", "..", "..", "..", "..", "..", "..", "..", …
+$ `1987 [YR1987]` &lt;chr&gt; "..", "..", "..", "..", "..", "..", "..", "..", "..", …
+$ `1988 [YR1988]` &lt;chr&gt; "..", "..", "..", "..", "..", "..", "..", "..", "..", …
+$ `1989 [YR1989]` &lt;chr&gt; "..", "..", "..", "..", "..", "..", "..", "..", "..", …
+$ `1990 [YR1990]` &lt;chr&gt; "15.83", "60.63", "12.31", "..", "..", "76.73", "..", …
+$ `1991 [YR1991]` &lt;chr&gt; "15.89", "65.54", "12.33", "..", "..", "76.69", "..", …
+$ `1992 [YR1992]` &lt;chr&gt; "15.92", "66.56", "12.37", "..", "..", "76.66", "..", …
+$ `1993 [YR1993]` &lt;chr&gt; "15.91", "65.01", "12.41", "..", "..", "76.68", "..", …
+$ `1994 [YR1994]` &lt;chr&gt; "15.88", "63.64", "12.47", "..", "..", "76.64", "..", …
+$ `1995 [YR1995]` &lt;chr&gt; "15.92", "61.59", "12.56", "..", "..", "76.57", "..", …
+$ `1996 [YR1996]` &lt;chr&gt; "15.75", "60.28", "12.64", "..", "..", "76.55", "..", …
+$ `1997 [YR1997]` &lt;chr&gt; "15.59", "61.91", "12.59", "..", "..", "76.53", "..", …
+$ `1998 [YR1998]` &lt;chr&gt; "15.47", "60.62", "12.59", "..", "..", "76.53", "..", …
+$ `1999 [YR1999]` &lt;chr&gt; "15.4", "58.87", "12.63", "..", "..", "76.51", "..", "…
+$ `2000 [YR2000]` &lt;chr&gt; "15.35", "57.89", "12.71", "..", "..", "76.49", "..", …
+$ `2001 [YR2001]` &lt;chr&gt; "15.5", "56.71", "12.85", "..", "..", "76.48", "..", "…
+$ `2002 [YR2002]` &lt;chr&gt; "15.7", "56.06", "13.02", "..", "..", "76.44", "..", "…
+$ `2003 [YR2003]` &lt;chr&gt; "15.92", "55.3", "13.24", "..", "..", "76.41", "..", "…
+$ `2004 [YR2004]` &lt;chr&gt; "16.13", "54.57", "13.5", "..", "..", "76.38", "..", "…
+$ `2005 [YR2005]` &lt;chr&gt; "16.33", "53.88", "13.79", "..", "..", "76.36", "..", …
+$ `2006 [YR2006]` &lt;chr&gt; "16.12", "53.43", "14.12", "..", "..", "76.39", "..", …
+$ `2007 [YR2007]` &lt;chr&gt; "15.91", "53.07", "14.47", "..", "..", "76.42", "..", …
+$ `2008 [YR2008]` &lt;chr&gt; "15.74", "52.78", "14.87", "..", "..", "76.46", "..", …
+$ `2009 [YR2009]` &lt;chr&gt; "15.65", "51.57", "15.31", "..", "..", "76.53", "..", …
+$ `2010 [YR2010]` &lt;chr&gt; "15.65", "52.75", "15.49", "..", "..", "76.59", "..", …
+$ `2011 [YR2011]` &lt;chr&gt; "16", "60.59", "16.45", "..", "..", "76.67", "..", "55…
+$ `2012 [YR2012]` &lt;chr&gt; "16.44", "55.1", "17.48", "..", "..", "76.73", "..", "…
+$ `2013 [YR2013]` &lt;chr&gt; "17.42", "50.58", "18.29", "..", "..", "76.79", "..", …
+$ `2014 [YR2014]` &lt;chr&gt; "18.46", "50.18", "16.68", "..", "..", "76.83", "..", …
+$ `2015 [YR2015]` &lt;chr&gt; "19.55", "54.05", "17.5", "..", "..", "76.87", "..", "…
+$ `2016 [YR2016]` &lt;chr&gt; "20.7", "56.4", "18.33", "..", "..", "76.9", "..", "56…
+$ `2017 [YR2017]` &lt;chr&gt; "21.91", "55.54", "19.19", "..", "..", "76.91", "..", …
+$ `2018 [YR2018]` &lt;chr&gt; "22.32", "59.12", "18.95", "..", "..", "76.9", "..", "…
+$ `2019 [YR2019]` &lt;chr&gt; "22.74", "61.46", "18.7", "..", "..", "76.88", "..", "…
+$ `2020 [YR2020]` &lt;chr&gt; "..", "..", "..", "..", "..", "..", "..", "..", "..", …
+$ `2021 [YR2021]` &lt;chr&gt; "..", "..", "..", "..", "..", "..", "..", "..", "..", …</code></pre>
 </div>
 </div>
 <div class="callout callout-style-default callout-warning no-icon callout-titled">
@@ -531,92 +441,124 @@ Your Turn!!
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Try using <code><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer()</a></code>, <code><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html">pivot_wider()</a></code>, and <code><a href="https://tidyr.tidyverse.org/reference/separate.html">separate()</a></code> on the <code>tidyr</code> datasets you explored earlier. If you really want to challenge yourself, try some of the worked examples in Chapter 5 of <em>R for Data Science</em>.</p>
+<p>Follow along with the video and the steps described avove to download the data and read it into R.</p>
 </div>
 </div>
-</section><section id="world-bank-worked-example" class="level2"><h2 class="anchored" data-anchor-id="world-bank-worked-example">World Bank Worked Example</h2>
-<p>As a worked example, let’s look at the <code>tidyr</code> <code>world_bank_pop</code> dataset, which simulates a typical structure you might get from downloading World Bank data manually. Let’s take a closer look at the <code>world_bank_pop</code> dataset. You can view it using:</p>
+</section><section id="reshaping-the-data" class="level2"><h2 class="anchored" data-anchor-id="reshaping-the-data">Reshaping the Data</h2>
+<div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/u4AXi8A1Bqo" title="Reshaping Data With `pivot_longer()`" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
+<p>Recall from the last module that in order for the data to be tidy, we want each column to represent a variable and each row to represent an observation.</p>
+<p>But here again we see that the World Bank data are in <em>wide form</em>, meaning that each column represents a year and each row represents a country. This entails that each row represents <em>multiple</em> observations, violating tidy principles.</p>
+<p>To rectify this, we need to <em>reshape</em> the data from wide form to <em>long form</em> using <code><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer()</a></code>](https://tidyr.tidyverse.org/reference/pivot_longer.html) function from the <a href="https://tidyr.tidyverse.org/index.html">tidyr</a> package<code>. Recall that the</code>pivot_longer()` function takes three basic arguments:</p>
+<ul>
+<li>
+<strong>cols</strong> - which columns you want to pivot</li>
+<li>
+<strong>names_to</strong> - the name of the column where the old column names are going to</li>
+<li>
+<strong>values_to</strong> - the name of the column where the values are going to</li>
+</ul>
+<p>In our case, we want to reshape all of the year columns and have the years represented in the rows. We want the newly created column to be called “year” and the values are going to represent the data on female labor force participation we downloaded (female labor force participation rates).</p>
 <div class="cell">
-<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">world_bank_pop</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 1,064 × 20
-   country indicator      `2000`  `2001`  `2002`  `2003`  `2004`  `2005`  `2006`
-   &lt;chr&gt;   &lt;chr&gt;           &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
- 1 ABW     SP.URB.TOTL    4.16e4 4.20e+4 4.22e+4 4.23e+4 4.23e+4 4.24e+4 4.26e+4
- 2 ABW     SP.URB.GROW    1.66e0 9.56e-1 4.01e-1 1.97e-1 9.46e-2 1.94e-1 3.67e-1
- 3 ABW     SP.POP.TOTL    8.91e4 9.07e+4 9.18e+4 9.27e+4 9.35e+4 9.45e+4 9.56e+4
- 4 ABW     SP.POP.GROW    2.54e0 1.77e+0 1.19e+0 9.97e-1 9.01e-1 1.00e+0 1.18e+0
- 5 AFE     SP.URB.TOTL    1.16e8 1.20e+8 1.24e+8 1.29e+8 1.34e+8 1.39e+8 1.44e+8
- 6 AFE     SP.URB.GROW    3.60e0 3.66e+0 3.72e+0 3.71e+0 3.74e+0 3.81e+0 3.81e+0
- 7 AFE     SP.POP.TOTL    4.02e8 4.12e+8 4.23e+8 4.34e+8 4.45e+8 4.57e+8 4.70e+8
- 8 AFE     SP.POP.GROW    2.58e0 2.59e+0 2.61e+0 2.62e+0 2.64e+0 2.67e+0 2.70e+0
- 9 AFG     SP.URB.TOTL    4.31e6 4.36e+6 4.67e+6 5.06e+6 5.30e+6 5.54e+6 5.83e+6
-10 AFG     SP.URB.GROW    1.86e0 1.15e+0 6.86e+0 7.95e+0 4.59e+0 4.47e+0 5.03e+0
-# ℹ 1,054 more rows
-# ℹ 11 more variables: `2007` &lt;dbl&gt;, `2008` &lt;dbl&gt;, `2009` &lt;dbl&gt;, `2010` &lt;dbl&gt;,
-#   `2011` &lt;dbl&gt;, `2012` &lt;dbl&gt;, `2013` &lt;dbl&gt;, `2014` &lt;dbl&gt;, `2015` &lt;dbl&gt;,
-#   `2016` &lt;dbl&gt;, `2017` &lt;dbl&gt;</code></pre>
-</div>
-</div>
-<p>At first glance, this dataset appears to be in a wide format. Each row represents a country and indicator (such as “SP.POP.TOTL” for total population), and each year from 2000 to 2017 is stored in its own column. While this might seem convenient, it violates the tidy data principle that each variable should form its own column. Here, the years are actually values of a single variable called “year”—but they are spread across multiple columns.</p>
-<p>To tidy this data, our first step is to convert it from wide format to long format using the <code><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer()</a></code> function from the <code>tidyr</code> package. Specifically, we want to pivot all the year columns into a single “year” column, with a corresponding “pop” column for the population values.</p>
-<p>Here’s how we do it:</p>
-<div class="cell">
-<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">long_pop_data</span> <span class="op">&lt;-</span> <span class="va">world_bank_pop</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer</a></span><span class="op">(</span></span>
-<span>    cols <span class="op">=</span> <span class="va">`2000`</span><span class="op">:</span><span class="va">`2017`</span>,   <span class="co"># The year columns to pivot</span></span>
-<span>    names_to <span class="op">=</span> <span class="st">"year"</span>,      <span class="co"># New column for year values</span></span>
-<span>    values_to <span class="op">=</span> <span class="st">"pop"</span>       <span class="co"># New column for population values</span></span>
-<span>  <span class="op">)</span></span>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Load tidyr</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyr.tidyverse.org">tidyr</a></span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">long_pop_data</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 19,152 × 4
-   country indicator   year    pop
-   &lt;chr&gt;   &lt;chr&gt;       &lt;chr&gt; &lt;dbl&gt;
- 1 ABW     SP.URB.TOTL 2000  41625
- 2 ABW     SP.URB.TOTL 2001  42025
- 3 ABW     SP.URB.TOTL 2002  42194
- 4 ABW     SP.URB.TOTL 2003  42277
- 5 ABW     SP.URB.TOTL 2004  42317
- 6 ABW     SP.URB.TOTL 2005  42399
- 7 ABW     SP.URB.TOTL 2006  42555
- 8 ABW     SP.URB.TOTL 2007  42729
- 9 ABW     SP.URB.TOTL 2008  42906
-10 ABW     SP.URB.TOTL 2009  43079
-# ℹ 19,142 more rows</code></pre>
-</div>
-</div>
-<p>This transformation makes the dataset much more flexible. Now, each row corresponds to a single observation: a country-indicator-year combination with a single value for population. This structure is ideal for most types of analysis and visualization. However, it’s worth asking—are we fully done tidying?</p>
-<p>Not quite. The current dataset is in long format, and that’s great in many situations. But in this case, each country-year may have data for multiple indicators (e.g., total population, urban population), and in most cases we would prefer to have each indicator in its own column.</p>
-<p>To do that, we can use <code><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html">pivot_wider()</a></code> to reshape the dataset so that the indicator codes become column names and each row represents a country-year combination.</p>
-<div class="cell">
-<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">tidy_pop_data</span> <span class="op">&lt;-</span> <span class="va">long_pop_data</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html">pivot_wider</a></span><span class="op">(</span></span>
-<span>    names_from <span class="op">=</span> <span class="va">indicator</span>, </span>
-<span>    values_from <span class="op">=</span> <span class="va">pop</span></span>
-<span>  <span class="op">)</span></span>
+<span><span class="va">wb_data</span> <span class="op">&lt;-</span> <span class="va">wb_data_messy</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer</a></span><span class="op">(</span>         </span>
+<span>    cols <span class="op">=</span> <span class="va">`1972 [YR1972]`</span><span class="op">:</span> <span class="va">`2021 [YR2021]`</span>,</span>
+<span>    names_to <span class="op">=</span> <span class="st">"year"</span>, </span>
+<span>    values_to <span class="op">=</span> <span class="st">"flfp"</span> </span>
+<span>  <span class="op">)</span> </span>
 <span></span>
-<span><span class="va">tidy_pop_data</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">wb_data</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 4,788 × 6
-   country year  SP.URB.TOTL SP.URB.GROW SP.POP.TOTL SP.POP.GROW
-   &lt;chr&gt;   &lt;chr&gt;       &lt;dbl&gt;       &lt;dbl&gt;       &lt;dbl&gt;       &lt;dbl&gt;
- 1 ABW     2000        41625      1.66         89101       2.54 
- 2 ABW     2001        42025      0.956        90691       1.77 
- 3 ABW     2002        42194      0.401        91781       1.19 
- 4 ABW     2003        42277      0.197        92701       0.997
- 5 ABW     2004        42317      0.0946       93540       0.901
- 6 ABW     2005        42399      0.194        94483       1.00 
- 7 ABW     2006        42555      0.367        95606       1.18 
- 8 ABW     2007        42729      0.408        96787       1.23 
- 9 ABW     2008        42906      0.413        97996       1.24 
-10 ABW     2009        43079      0.402        99212       1.23 
-# ℹ 4,778 more rows</code></pre>
+<pre><code>Rows: 11,100
+Columns: 6
+$ `Country Name` &lt;chr&gt; "Afghanistan", "Afghanistan", "Afghanistan", "Afghanist…
+$ `Country Code` &lt;chr&gt; "AFG", "AFG", "AFG", "AFG", "AFG", "AFG", "AFG", "AFG",…
+$ `Series Name`  &lt;chr&gt; "Labor force participation rate, female (% of female po…
+$ `Series Code`  &lt;chr&gt; "SL.TLF.ACTI.FE.ZS", "SL.TLF.ACTI.FE.ZS", "SL.TLF.ACTI.…
+$ year           &lt;chr&gt; "1972 [YR1972]", "1973 [YR1973]", "1974 [YR1974]", "197…
+$ flfp           &lt;chr&gt; "..", "..", "..", "..", "..", "..", "..", "..", "..", "…</code></pre>
 </div>
 </div>
-<p>Now, the dataset is both tidy and wide: one row per country and year, with separate columns for each indicator. This makes it easy to perform operations like plotting urban versus total population or calculating the share of the population that is urban.</p>
-<p>This kind of workflow—going from wide to long and back to wide—is common when working with real-world datasets. You might start with a messy spreadsheet or export, use <code><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer()</a></code> to get it into a form that’s easier to work with, and then use <code><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html">pivot_wider()</a></code> to tailor the structure to your specific analysis needs.</p>
+<p>Notice that when we specify the years in our <code><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer()</a></code> call we encapsulate them in backticks (``). This is because the years, as they were imported from the WDI dataset, have spaces in them. Typically we want to avoid this scenario by writing our variable names in <a href="https://en.wikipedia.org/wiki/Snake_case"><em>snake_case</em></a>.</p>
+<div class="callout callout-style-default callout-warning no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Your Turn!!
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Follow along with the video and the steps described above to reshape the data. Make sure to note and use backticks when specifying the years in the <code><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer()</a></code> call.</p>
+</div>
+</div>
+</section><section id="cleaning-up-our-data" class="level2"><h2 class="anchored" data-anchor-id="cleaning-up-our-data">Cleaning up Our Data</h2>
+<div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/xa0tYCfHHTI" title="Cleaning Data in R" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
+<p>Now that our data are transposed, we can start to clean up a few remaining issues. For example, the <code>year</code> variable is stored as a character string that includes both the year and a redundant label in brackets—e.g., <code>"1972 [YR1972]"</code>. In addition, the variable <code>flfp</code> (female labor force participation) is stored as a character when it should be numeric.</p>
+<p>To fix these issues, we’ll use the <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code> function from <code>dplyr</code>. First, we call <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code> along with <code><a href="https://rdrr.io/r/base/substr.html">substring()</a></code> to extract just the first four characters from the <code>year</code> column. Then, we use the <code><a href="https://dplyr.tidyverse.org/reference/across.html">across()</a></code> function inside <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code> to convert both <code>year</code> and <code>flfp</code> to numeric.</p>
+<div class="cell">
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">wb_data</span> <span class="op">&lt;-</span> <span class="va">wb_data</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>year <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/substr.html">substring</a></span><span class="op">(</span><span class="va">year</span>, <span class="fl">1</span>, <span class="fl">4</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span>  </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/across.html">across</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"year"</span>, <span class="st">"flfp"</span><span class="op">)</span>, <span class="va">as.numeric</span><span class="op">)</span><span class="op">)</span>  </span>
+<span></span>
+<span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">wb_data</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 11,100
+Columns: 6
+$ `Country Name` &lt;chr&gt; "Afghanistan", "Afghanistan", "Afghanistan", "Afghanist…
+$ `Country Code` &lt;chr&gt; "AFG", "AFG", "AFG", "AFG", "AFG", "AFG", "AFG", "AFG",…
+$ `Series Name`  &lt;chr&gt; "Labor force participation rate, female (% of female po…
+$ `Series Code`  &lt;chr&gt; "SL.TLF.ACTI.FE.ZS", "SL.TLF.ACTI.FE.ZS", "SL.TLF.ACTI.…
+$ year           &lt;dbl&gt; 1972, 1973, 1974, 1975, 1976, 1977, 1978, 1979, 1980, 1…
+$ flfp           &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…</code></pre>
+</div>
+</div>
+<p>The last thing we are going to do is to fix the variable names. Specifically, we want to remove the spaces from the remaining variables and conver them from title case to snake case. To do this, we will use the <code><a href="https://sfirke.github.io/janitor/reference/clean_names.html">clean_names()</a></code> function from the <code>janitor</code> package.</p>
+<p>As a final step, we can export our clean data to a new .csv file with the <code><a href="https://rdrr.io/r/utils/write.table.html">write.csv()</a></code> function from <code>readr</code>.</p>
+<div class="cell">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Load janitor</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/sfirke/janitor">janitor</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">wb_data_clean</span> <span class="op">&lt;-</span> <span class="va">wb_data</span> <span class="op">|&gt;</span>  </span>
+<span>  <span class="fu"><a href="https://sfirke.github.io/janitor/reference/clean_names.html">clean_names</a></span><span class="op">(</span><span class="op">)</span> </span>
+<span></span>
+<span><span class="fu"><a href="https://readr.tidyverse.org/reference/write_delim.html">write_csv</a></span><span class="op">(</span><span class="va">wb_data_clean</span>, <span class="st">"data/wb_data_clean.csv"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">wb_data_clean</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 11,100
+Columns: 6
+$ country_name &lt;chr&gt; "Afghanistan", "Afghanistan", "Afghanistan", "Afghanistan…
+$ country_code &lt;chr&gt; "AFG", "AFG", "AFG", "AFG", "AFG", "AFG", "AFG", "AFG", "…
+$ series_name  &lt;chr&gt; "Labor force participation rate, female (% of female popu…
+$ series_code  &lt;chr&gt; "SL.TLF.ACTI.FE.ZS", "SL.TLF.ACTI.FE.ZS", "SL.TLF.ACTI.FE…
+$ year         &lt;dbl&gt; 1972, 1973, 1974, 1975, 1976, 1977, 1978, 1979, 1980, 198…
+$ flfp         &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…</code></pre>
+</div>
+</div>
+<div class="callout callout-style-default callout-warning no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Your Turn!!
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Follow along with the video and the steps described above to clean up the data. Use <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code> and <code><a href="https://dplyr.tidyverse.org/reference/across.html">across()</a></code> to:</p>
+<ul>
+<li>Truncate the <code>year</code> variable so that it only includes the four-digit year,</li>
+<li>Convert <code>year</code> and <code>flfp</code> to numeric using <code><a href="https://dplyr.tidyverse.org/reference/across.html">across()</a></code> inside <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code>.</li>
+</ul>
+<p>Then, use <code><a href="https://sfirke.github.io/janitor/reference/clean_names.html">clean_names()</a></code> from the <code>janitor</code> package to clean up the variable names—removing spaces and converting to snake_case. Finally, export your cleaned dataset to a new <code>.csv</code> file using <code><a href="https://readr.tidyverse.org/reference/write_delim.html">write_csv()</a></code> from the <code>readr</code> package.</p>
+<p>💡 <strong>Challenge yourself!</strong><br>
+Download a new dataset from the World Bank with more than one variable. Use <code><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer()</a></code> and <code><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html">pivot_wider()</a></code> to reshape the data, then follow the steps above to clean and prepare it for analysis.</p>
+</div>
+</div>
 
 
 </section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
@@ -1192,7 +1134,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/dats1001-fall-2024/edit/main/modules/module-2.5.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/dats1001-fall-2024/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/dats1001-fall-2024/edit/main/modules/module-2.6.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/dats1001-fall-2024/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>This page is built with <a href="https://quarto.org/">Quarto</a>. 👷🛠️</p>
 </div>

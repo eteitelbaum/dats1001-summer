@@ -135,11 +135,7 @@ Try using `pivot_longer()`, `pivot_wider()`, and `separate()` on the `tidyr` dat
 
 ## World Bank Worked Example
 
-In this video, I show you how to tidy some real-world data from the World Bank using `tidyr`.
-
-{{< video  https://youtu.be/u4AXi8A1Bqo?si=OVnjerTuxm6bYIKb title='Reshaping Data in R' >}}
-
-We can also use the `tidyr` `world_bank_pop` dataset, which simulates a typical structure you might get from downloading World Bank data manually. Let’s take a closer look at the `world_bank_pop` dataset. You can view it using:
+As a worked example, let's look at the `tidyr` `world_bank_pop` dataset, which simulates a typical structure you might get from downloading World Bank data manually. Let’s take a closer look at the `world_bank_pop` dataset. You can view it using:
 
 ```{r}
 world_bank_pop

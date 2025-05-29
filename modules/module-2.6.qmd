@@ -1,0 +1,154 @@
+---
+title: "Module 2.6"
+subtitle: "Cleaning Data"
+format: 
+  html:
+    code-link: true
+highlight-style: atom-one
+execute: 
+  echo: true
+  message: false
+  warning: false
+---
+
+::: {.callout-tip}
+## Prework
+
+- Start a QMD file for this module. (At this point, I assume you know how to create a QMD file in a project and set the YAML header. So this will be the last time I mention it.)
+- Install the [janitor](https://sfirke.github.io/janitor/articles/janitor.html) package and have a look at the documentation.
+:::
+
+## Overview
+
+In this module we are going to focus on how to clean up messy real world data. We are going to do this using data downloaded from the [World Development Indicators](https://databank.worldbank.org/source/world-development-indicators). This will be our third iteration of working with World Bank data, so if you are a budding economist you are in luck! The first time we encountered World Bank data was through the `WDI` package where the data were tidy just by virtue of being accessed through the API. In the last module, we left off with a worked example where we used the `tidyr` version of some untidy World Bank's World Development Indicators (WDI) dataset and transposed it to make it into a tidy dataset. In this lesson, we are going to download data directly from the WDI interface that is not only untidy but also contains some other issues that we will need to address.
+
+## Downloading and Reading in the Data
+
+{{< video https://youtu.be/ZwJsSjJRuMU title="Reading Data into R" >}}
+
+Go to the World Development Indicators [portal](https://databank.worldbank.org/source/world-development-indicators) at the World Bank's Data Bank.
+
+Under Countries, select the Countries tab and then select the little check mark ☑️ to select all of the countries. Be sure to select the Countries tab first, though, or you will also be downloading aggregate data for regions and groups of countries.
+
+Next, under Series, search for "labor force participation" and find labor force participation rates for women ages 15-64 (ILO modeled estimates). Check that series. 
+
+Now go to Time and select the years from the last 50 years. Click Apply Changes, go to Download Options and download as a .csv file. Place the .csv file in the data directory that you created for this module. Save it as "messy_wb_data.csv" or something like that. 
+
+Now we are going to read this messy World Bank data into R using the `read_csv()` function from the `readr` package.After we have read the data  into R, we are going to have a look at it with `glimpse()`.
+
+::: {.callout-note}
+## Did You Know?
+While comma delimited files are the most common kind of flat file, `readr` includes functions for parsing files with a wide range of delimiters including tabs (`read_tsv()`), semicolons (`read_csv2()`) and white spaces (`read_table()`). There is also a Tidyverse package for reading in Excel files called [readxl](https://readxl.tidyverse.org/).
+:::
+
+```{r}
+#| label: step2
+
+library(readr) 
+library(dplyr) 
+
+wb_data_messy <- read_csv("data/messy_wb_data.csv")
+
+glimpse(wb_data_messy)
+```
+
+::: {.callout-warning icon=false}
+## Your Turn!! 
+
+Follow along with the video and the steps described avove to download the data and read it into R.
+:::
+
+## Reshaping the Data
+
+{{< video https://youtu.be/u4AXi8A1Bqo title='Reshaping Data With `pivot_longer()`' >}}
+
+Recall from the last module that in order for the data to be tidy, we want each column to represent a variable and each row to represent an observation. 
+
+But here again we see that the World Bank data are in *wide form*, meaning that each column represents a year and each row represents a country. This entails that each row represents *multiple* observations, violating tidy principles. 
+
+To rectify this, we need to *reshape* the data from wide form to *long form* using `pivot_longer()`](https://tidyr.tidyverse.org/reference/pivot_longer.html) function from the [tidyr](https://tidyr.tidyverse.org/index.html) package`. Recall that the `pivot_longer()` function takes three basic arguments: 
+
+- **cols** - which columns you want to pivot
+- **names_to** - the name of the column where the old column names are going to
+- **values_to** - the name of the column where the values are going to 
+
+In our case, we want to reshape all of the year columns and have the years represented in the rows. We want the newly created column to be called "year" and the values are going to represent the data on female labor force participation we downloaded (female labor force participation rates).
+
+```{r}
+#| label: step3
+
+# Load tidyr
+library(tidyr)
+
+wb_data <- wb_data_messy |> 
+  pivot_longer(         
+    cols = `1972 [YR1972]`: `2021 [YR2021]`,
+    names_to = "year", 
+    values_to = "flfp" 
+  ) 
+
+glimpse(wb_data)
+```
+
+Notice that when we specify the years in our `pivot_longer()` call we encapsulate them in backticks (``). This is because the years, as they were imported from the WDI dataset, have spaces in them. Typically we want to avoid this scenario by writing our variable names in [*snake_case*](https://en.wikipedia.org/wiki/Snake_case). 
+
+::: {.callout-warning icon=false}
+## Your Turn!! 
+
+Follow along with the video and the steps described above to reshape the data. Make sure to note and use backticks 
+when specifying the years in the `pivot_longer()` call.
+:::
+
+## Cleaning up Our Data
+
+{{< video https://youtu.be/xa0tYCfHHTI title='Cleaning Data in R' >}}
+
+Now that our data are transposed, we can start to clean up a few remaining issues. For example, the `year` variable is stored as a character string that includes both the year and a redundant label in brackets—e.g., `"1972 [YR1972]"`. In addition, the variable `flfp` (female labor force participation) is stored as a character when it should be numeric.
+
+To fix these issues, we’ll use the `mutate()` function from `dplyr`. First, we call `mutate()` along with `substring()` to extract just the first four characters from the `year` column. Then, we use the `across()` function inside `mutate()` to convert both `year` and `flfp` to numeric.
+
+```{r}
+#| label: step4
+
+wb_data <- wb_data |> 
+  mutate(year = substring(year, 1, 4)) |>  
+  mutate(across(c("year", "flfp"), as.numeric))  
+
+glimpse(wb_data)
+```
+
+The last thing we are going to do is to fix the variable names. Specifically, we want to remove the spaces from the remaining variables and conver them from title case to snake case. To do this, we will use the `clean_names()` function from the `janitor` package. 
+
+As a final step, we can export our clean data to a new .csv file with the `write.csv()` function from `readr`. 
+
+```{r}
+#| label: step5
+
+# Load janitor
+library(janitor)
+
+wb_data_clean <- wb_data |>  
+  clean_names() 
+
+write_csv(wb_data_clean, "data/wb_data_clean.csv")
+
+glimpse(wb_data_clean)
+```
+
+::: {.callout-warning icon=false}
+## Your Turn!!
+
+Follow along with the video and the steps described above to clean up the data. Use `mutate()` and `across()` to:
+
+- Truncate the `year` variable so that it only includes the four-digit year,
+- Convert `year` and `flfp` to numeric using `across()` inside `mutate()`.
+
+Then, use `clean_names()` from the `janitor` package to clean up the variable names—removing spaces and converting to snake_case. Finally, export your cleaned dataset to a new `.csv` file using `write_csv()` from the `readr` package.
+
+💡 **Challenge yourself!**  
+Download a new dataset from the World Bank with more than one variable. Use `pivot_longer()` and `pivot_wider()` to reshape the data, then follow the steps above to clean and prepare it for analysis.
+:::
+
+
+
+
