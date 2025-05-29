@@ -13,6 +13,7 @@ execute:
 
 ::: {.callout-tip}
 ## Prework
+
 - Start a QMD file for this module.
 - Review the concepts of `filter()`, `select()`, and `mutate()` from our previous lesson. 
 - Read about the [vdemlite](github.com/eteitelbaum/vdemlite) package.
