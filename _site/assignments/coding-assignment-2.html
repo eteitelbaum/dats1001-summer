@@ -331,9 +331,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#step-4-merge-the-data-20-pts" id="toc-step-4-merge-the-data-20-pts" class="nav-link" data-scroll-target="#step-4-merge-the-data-20-pts">Step 4: Merge the data (20 pts)</a></li>
   <li><a href="#step-5-summarize-your-combined-data-set-20-pts" id="toc-step-5-summarize-your-combined-data-set-20-pts" class="nav-link" data-scroll-target="#step-5-summarize-your-combined-data-set-20-pts">Step 5: Summarize your combined data set (20 pts)</a></li>
   <li><a href="#step-6-visualize-and-interpret-your-data-20-pts" id="toc-step-6-visualize-and-interpret-your-data-20-pts" class="nav-link" data-scroll-target="#step-6-visualize-and-interpret-your-data-20-pts">Step 6: Visualize and interpret your data (20 pts)</a></li>
-  <li><a href="#extra-credit-3-pts." id="toc-extra-credit-3-pts." class="nav-link" data-scroll-target="#extra-credit-3-pts.">Extra Credit (3 pts.)</a></li>
   <li><a href="#submission" id="toc-submission" class="nav-link" data-scroll-target="#submission">Submission</a></li>
-  <li><a href="#deadline-extension" id="toc-deadline-extension" class="nav-link" data-scroll-target="#deadline-extension">Deadline Extension</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/dats1001-fall-2024/edit/main/assignments/coding-assignment-2.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/dats1001-fall-2024/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -389,7 +387,7 @@ Warning
 </section>
 <section id="step-2-download-data-from-the-world-bank-10-pts" class="level2">
 <h2 class="anchored" data-anchor-id="step-2-download-data-from-the-world-bank-10-pts">Step 2: Download data from the World Bank (10 pts)</h2>
-<p><em>Next, download the variable on women’s representation that we used in Module 1.2 (“SG.GEN.PARL.ZS”), at least one additional measure related to women’s empowerment and a measure of wealth (GDP per capita). Go to the <a href="https://databank.worldbank.org/source/world-development-indicators">WDI</a> site the wb_search() function to identify relevant variables. Download data for the same time period as you did for the V-Dem data for all countries. Ensure that at least one of the variables you select is different from the ones we explored in class.</em></p>
+<p><em>Next, using the <code>WDI</code> package, download the variable on women’s representation in parliament (“SG.GEN.PARL.ZS”), at least one additional measure related to women’s empowerment and a measure of wealth (GDP per capita). Go to the <a href="https://databank.worldbank.org/source/world-development-indicators">WDI</a> site the WDIsearch() function to identify relevant variables. Download data for the same time period as you did for the V-Dem data for all countries. Ensure that at least one of the variables you select is different from the ones we explored in class.</em></p>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -443,7 +441,7 @@ Warning
 </section>
 <section id="step-6-visualize-and-interpret-your-data-20-pts" class="level2">
 <h2 class="anchored" data-anchor-id="step-6-visualize-and-interpret-your-data-20-pts">Step 6: Visualize and interpret your data (20 pts)</h2>
-<p><em>Using the data from step 5, create an appropriate visualization that either shows differences in levels of women’s empowerment across countries or regions or demonstrates the relationship between women’s empowerment and a potential explanatory variable like welath or democracy. Then write a few lines about the patterns that your visualization uncovers. (Note that you will need to store the summary that you created in Step 5 as an object in order to do this.)</em></p>
+<p><em>Using the data from step 5, create an appropriate visualization that either shows differences in levels of women’s empowerment across countries or regions or demonstrates the relationship between women’s empowerment and a potential explanatory variable like welath or democracy. Then write a few lines about the patterns that your visualization uncovers.</em></p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -454,25 +452,16 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>You can relate your analysis to the assigned Norris reading that explores reasons for variations in women’s empowerment but this is not required.</p>
+<p>You may relate your analysis to the assigned Norris reading that explores reasons for variations in women’s empowerment but this is not strictly required.</p>
 </div>
 </div>
-</section>
-<section id="extra-credit-3-pts." class="level2">
-<h2 class="anchored" data-anchor-id="extra-credit-3-pts.">Extra Credit (3 pts.)</h2>
-<p><em>Sometimes our data does not come in the format that we need to have it in for our analysis. Demonstrate that you know how to pivot data from wide to long form using the <code>world_bank_pop</code> data frame that comes with the <code>tidyr</code> package. Then pivot again (wider this time) to get the data into tidy format.</em></p>
-<p><strong>Now render the document to make sure everything runs and to produce a final HTML document!</strong></p>
 </section>
 <section id="submission" class="level2">
 <h2 class="anchored" data-anchor-id="submission">Submission</h2>
 <p><em>After rendering your document, export your project folder and submit it on Blackboard. You will find the link to the Coding Assignment one submission portal under the Assignments link. There is a screen capture video in the Discord server that will help you understand how to do this.</em></p>
-</section>
-<section id="deadline-extension" class="level1 {callout-important}">
-<h1>Deadline Extension</h1>
-<p>I am going to be moving this weekend and may not be able to respond to questions right away (I may not even have an internet connection). Therefore I am extending the deadline to Tuesday, March 4 at 11:59 PM.</p>
-</section>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

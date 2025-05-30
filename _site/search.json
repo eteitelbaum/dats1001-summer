@@ -5422,7 +5422,7 @@
     "href": "assignments/coding-assignment-2.html#step-2-download-data-from-the-world-bank-10-pts",
     "title": "Coding Assignment 2",
     "section": "Step 2: Download data from the World Bank (10 pts)",
-    "text": "Step 2: Download data from the World Bank (10 pts)\nNext, download the variable on women’s representation that we used in Module 1.2 (“SG.GEN.PARL.ZS”), at least one additional measure related to women’s empowerment and a measure of wealth (GDP per capita). Go to the WDI site the wb_search() function to identify relevant variables. Download data for the same time period as you did for the V-Dem data for all countries. Ensure that at least one of the variables you select is different from the ones we explored in class.\n\n\n\n\n\n\nImportant\n\n\n\nTry to make sure you download indicators with enough data to conduct your analysis. You won’t get great results if there are too many NAs.",
+    "text": "Step 2: Download data from the World Bank (10 pts)\nNext, using the WDI package, download the variable on women’s representation in parliament (“SG.GEN.PARL.ZS”), at least one additional measure related to women’s empowerment and a measure of wealth (GDP per capita). Go to the WDI site the WDIsearch() function to identify relevant variables. Download data for the same time period as you did for the V-Dem data for all countries. Ensure that at least one of the variables you select is different from the ones we explored in class.\n\n\n\n\n\n\nImportant\n\n\n\nTry to make sure you download indicators with enough data to conduct your analysis. You won’t get great results if there are too many NAs.",
     "crumbs": [
       "Coding Asignments",
       "Assignment 2"
@@ -5466,7 +5466,7 @@
     "href": "assignments/coding-assignment-2.html#step-6-visualize-and-interpret-your-data-20-pts",
     "title": "Coding Assignment 2",
     "section": "Step 6: Visualize and interpret your data (20 pts)",
-    "text": "Step 6: Visualize and interpret your data (20 pts)\nUsing the data from step 5, create an appropriate visualization that either shows differences in levels of women’s empowerment across countries or regions or demonstrates the relationship between women’s empowerment and a potential explanatory variable like welath or democracy. Then write a few lines about the patterns that your visualization uncovers. (Note that you will need to store the summary that you created in Step 5 as an object in order to do this.)\n\n\n\n\n\n\nNote\n\n\n\nYou can relate your analysis to the assigned Norris reading that explores reasons for variations in women’s empowerment but this is not required.",
+    "text": "Step 6: Visualize and interpret your data (20 pts)\nUsing the data from step 5, create an appropriate visualization that either shows differences in levels of women’s empowerment across countries or regions or demonstrates the relationship between women’s empowerment and a potential explanatory variable like welath or democracy. Then write a few lines about the patterns that your visualization uncovers.\n\n\n\n\n\n\nNote\n\n\n\nYou may relate your analysis to the assigned Norris reading that explores reasons for variations in women’s empowerment but this is not strictly required.",
     "crumbs": [
       "Coding Asignments",
       "Assignment 2"

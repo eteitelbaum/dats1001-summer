@@ -27,7 +27,7 @@ Please refrain from *installing* any packages in your code chunks because this w
 
 ## Step 2: Download data from the World Bank (10 pts)
 
-*Next, download the variable on women's representation that we used in Module 1.2 ("SG.GEN.PARL.ZS"), at least one additional measure related to women's empowerment and a measure of wealth (GDP per capita). Go to the [WDI](https://databank.worldbank.org/source/world-development-indicators) site the wb_search() function to identify relevant variables. Download data for the same time period as you did for the V-Dem data for all countries. Ensure that at least one of the variables you select is different from the ones we explored in class.* 
+*Next, using the `WDI` package, download the variable on women's representation in parliament ("SG.GEN.PARL.ZS"), at least one additional measure related to women's empowerment and a measure of wealth (GDP per capita). Go to the [WDI](https://databank.worldbank.org/source/world-development-indicators) site the WDIsearch() function to identify relevant variables. Download data for the same time period as you did for the V-Dem data for all countries. Ensure that at least one of the variables you select is different from the ones we explored in class.* 
 
 ::: {.callout-important}
 Try to make sure you download indicators with enough data to conduct your analysis. You won't get great results if there are too many NAs. 
@@ -79,27 +79,17 @@ Don't write your paragraphs or any interpretation or analysis in a code chunk. U
 
 ## Step 6: Visualize and interpret your data (20 pts)
 
-*Using the data from step 5, create an appropriate visualization that either shows differences in levels of women's empowerment across countries or regions or demonstrates the relationship between women's empowerment and a potential explanatory variable like welath or democracy. Then write a few lines about the patterns that your visualization uncovers. (Note that you will need to store the summary that you created in Step 5 as an object in order to do this.)*
+*Using the data from step 5, create an appropriate visualization that either shows differences in levels of women's empowerment across countries or regions or demonstrates the relationship between women's empowerment and a potential explanatory variable like welath or democracy. Then write a few lines about the patterns that your visualization uncovers.*
 
 ```{r}
 
 ```
 
 ::: {.callout-note}
-You can relate your analysis to the assigned Norris reading that explores reasons for variations in women's empowerment but this is not required.
+You may relate your analysis to the assigned Norris reading that explores reasons for variations in women's empowerment but this is not strictly required.
 :::
-
-## Extra Credit (3 pts.)
-
-*Sometimes our data does not come in the format that we need to have it in for our analysis. Demonstrate that you know how to pivot data from wide to long form using the `world_bank_pop` data frame that comes with the `tidyr` package. Then pivot again (wider this time) to get the data into tidy format.*
-
-**Now render the document to make sure everything runs and to produce a final HTML document!**
 
 ## Submission
 
 *After rendering your document, export your project folder and submit it on Blackboard. You will find the link to the Coding Assignment one submission portal under the Assignments link. There is a screen capture video in the Discord server that will help you understand how to do this.*
 
-::: {callout-important}
-# Deadline Extension
-I am going to be moving this weekend and may not be able to respond to questions right away (I may not even have an internet connection). Therefore I am extending the deadline to Tuesday, March 4 at 11:59 PM.
-:::
