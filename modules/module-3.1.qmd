@@ -11,6 +11,54 @@ execute:
   warning: false
 ---
 
+::: {.callout-tip}
+## Prework
+
+Click on `Code` toggle below to unfold the setup code chunk. Then, copy and run the code in your Quarto notebook to load the necessary packages and create the data frame for this lesson.
+
+```{r}
+#| label: setup
+#| code-fold: true
+
+library(tidyverse)
+library(vdemlite)
+
+vdem2022 <- fetchdem(indicators = c(
+    "v2x_polyarchy",
+    "v2x_gender",
+    "v2cacamps",
+    "v2x_regime",
+    "e_regionpol_6C"
+    ),
+    start_year = 2022, 
+    end_year = 2022) |>
+  rename(
+    country = country_name, 
+    polyarchy = v2x_polyarchy, 
+    women_empowerment = v2x_gender,
+    polarization = v2cacamps,
+    regime = v2x_regime, 
+    region = e_regionpol_6C
+    ) |>
+  mutate(
+    region = case_match(region, 
+                     1 ~ "Eastern Europe", 
+                     2 ~ "Latin America",  
+                     3 ~ "Middle East",   
+                     4 ~ "Africa", 
+                     5 ~ "The West", 
+                     6 ~ "Asia"),
+    regime = case_match(regime,
+                    0 ~ "Closed Autocracy",
+                    1 ~ "Electoral Autocracy",
+                    2 ~ "Electoral Democracy",
+                    3 ~ "Liberal Democracy")
+  )
+
+#glimpse(vdem2022)
+```
+:::
+
 ## Overview
 
 In this module, we explore how to work with categorical data, focusing on how to classify, summarize, and visualize it effectively. We begin by discussing the different types of data—categorical vs. numerical, discrete vs. continuous, and so on—and why it matters to distinguish among them. Then, using democracy indicators from the V-Dem dataset, we learn how to visualize distributions of categorical variables with `geom_bar()`. Finally, we take our analysis further by examining how regime types vary by world region, introducing the distinction between nominal and ordinal categorical variables and learning how to create comparative bar plots using proportions. Along the way, you’ll have opportunities to apply what you’ve learned through hands-on coding and interpretation.
@@ -63,34 +111,9 @@ Let’s now take a closer look at categorical variables by examining a real-worl
 
 These categories are mutually exclusive and ordered from least to most democratic, making this an **ordinal categorical** variable.
 
-We’ll use the `vdemlite` R package to load the 2022 values of this classification along with regional groupings. First, we load the necessary packages and retrieve the data.
+Let's use the data from the prework section of this module to explore the distribution of these regime types across the world in 2022. We can start by just glimpsing the data to see what we have:
 
 ```{r}
-library(tidyverse)
-library(vdemlite)
-
-vdem2022 <- fetchdem(indicators = c("v2x_regime", "e_regionpol_6C"), 
-                     start_year = 2022, end_year = 2022) |>
-  rename(
-    country = country_name, 
-    regime = v2x_regime, 
-    region = e_regionpol_6C
-    ) |>
-  mutate(
-    region = case_match(region, 
-                     1 ~ "Eastern Europe", 
-                     2 ~ "Latin America",  
-                     3 ~ "Middle East",   
-                     4 ~ "Africa", 
-                     5 ~ "The West", 
-                     6 ~ "Asia"),
-    regime = case_match(regime,
-                    0 ~ "Closed Autocracy",
-                    1 ~ "Electoral Autocracy",
-                    2 ~ "Electoral Democracy",
-                    3 ~ "Liberal Democracy")
-  )
-
 glimpse(vdem2022)
 ```
 
@@ -186,7 +209,7 @@ Now we can better compare regime distributions across regions, without having to
 
 Explore the distribution of regimes by region for a different year:
 
-- Preprocess your data to include only the year you are interested in
+- Use `fetchdem` to load data on regimes for a year that you are interested
 - Visualize the distribution of regimes using `geom_bar()` and `position = "fill"`
 - Use the `labs()` function to change the plot title
 - What’s different about the year you chose compared to 2022?
