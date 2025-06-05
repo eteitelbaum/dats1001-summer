@@ -85,9 +85,19 @@ Standard errors depend on both the sample size and the variability in the data. 
 
 Understanding this variability is key to making smart inferences. Next, we’ll learn how to use this idea to construct **confidence intervals**—a powerful way to express uncertainty in our estimates.
 
-## Estimating Uncertainty with Confidence Intervals (Math-Based)
+## Estimating Uncertainty with Confidence Intervals 
 
 A **confidence interval** gives us a range of values within which we believe the true population parameter likely falls. It’s based on the idea of the sampling distribution and its standard error.
+
+{{< video https://www.youtube.com/watch?v=5q2ac412hv4 title = "The Right and Wrong Way to Interpret a Confidence Interval">}}
+
+When we interpret a confidence interval we say that we are "X% confident" that the true parameter lies within the interval. For example, if we say we are 95% confident that the true proportion of M&Ms that are blue is between 0.2 and 0.3, it means that if we repeated our sampling many times, about 95% of those intervals would contain the true proportion.
+
+There are two distinct ways to calculate confidence intervals: using mathematical formulas or through computational methods like bootstrapping. Most of our focus in this course is going to be on the computational approach, or bootstrapping, but it’s important to understand the math behind confidence intervals as well.
+
+## Math-Based Confidence Intervals
+
+Confidence intervals can be calculated using formulas based on the sampling distribution of the statistic. The most common type is the **normal approximation** method, which assumes that the sampling distribution of the sample proportion is approximately normal when the sample size is large enough.
 
 Here’s the basic formula for a confidence interval:
 

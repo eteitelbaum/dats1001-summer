@@ -1,0 +1,15 @@
+---
+title: "Module 3.5"
+subtitle: "Single Proportion Tests"
+format: 
+  html:
+    code-link: true
+filters:
+  - webr
+highlight-style: atom-one
+execute: 
+  echo: true
+  message: false
+  warning: false
+---
+
