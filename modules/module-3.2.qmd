@@ -65,7 +65,9 @@ In our last module, we explored tools available for examining categorical data�
 
 Continuous variables are numeric measurements that can take on an infinite range of values within a given interval. Think of indicators like GDP per capita, population size, or life expectancy—these are variables that allow us to compare magnitude, observe variation, and investigate relationships between quantities.
 
-In this lesson, we will learn how to explore continuous variables. We will begin by learning how to summarize a single continuous variable using statistics like the mean and standard deviation, and visualizations like histograms and density plots. Then....
+In this lesson, we will learn how to explore continuous variables. We will look at different types of distributions and learn how to visualize a single continuous variable with histograms and density plots. Then we will look at how to compare distributions across groups using ridge plots. 
+
+{{< video https://www.youtube.com/watch?v=Xm0PPtci3JE title = 'Summarizing and Graphing Numerical Data' >}}
 
 ## What Does the Distribution Look Like?
 
@@ -148,7 +150,7 @@ ggplot(df, aes(x)) +
     )
 ```
 
-#### Uniform
+### Uniform
 
 A **uniform** distribution has no peaks or valleys — all values are equally likely. This is relatively rare in real-world data but can occur in random sampling or when measuring something that has been evenly distributed across a range.
 
