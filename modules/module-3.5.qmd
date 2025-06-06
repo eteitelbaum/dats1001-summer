@@ -81,7 +81,7 @@ library(tidymodels)
 null_dist <- jobs_program |>
   specify(response = outcome, success = "unemployed") |>
   hypothesize(null = "point", p = c("unemployed" = 0.30, "employed" = 0.70)) |>
-  generate(reps = 5000, type = "draw") |>
+  generate(reps = 10000, type = "draw") |>
   calculate(stat = "prop")
 
 null_dist |>
