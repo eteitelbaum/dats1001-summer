@@ -13,6 +13,200 @@ execute:
   warning: false
 ---
 
+## Prework
 
+::: {.callout-tip}
+## Prework
+
+- Install the `openintro` package: `install.packages("openintro")`
+- Basic understanding of descriptive statistics and confidence intervals
+- Familiarity with the bootstrap method from previous modules
+:::
+
+## Overview
+
+In this module, you'll learn how to test whether relationships exist between two variables using permutation tests. We'll explore this through a case study examining potential racial discrimination in hiring practices, using data from résumés sent to employers with randomly assigned names. Here is a video that introduces the concept of using bootstrapping methods to evaluate discrimination but through the lense of gender:  
 
 {{< video https://www.youtube.com/watch?v=2pHhjx9hyM4 title = "Using Randomization to Analyze Gender Discrimination">}}
+
+## Understanding Hypotheses for Group Comparisons
+
+When we want to determine whether a treatment or grouping variable has a real effect on an outcome, we need to set up two competing hypotheses. The **null hypothesis** states that there is no relationship between treatment and outcome, meaning any difference we observe is due to chance. The **alternative hypothesis** proposes that there is a genuine relationship, and the difference is not due to chance alone.
+
+The key insight behind our approach is that under the null hypothesis, treatment has no impact on the outcome variable. This means that if we were to change the values of the treatment variable, the values on the outcome would stay the same. We can use this logic to simulate what we would expect to see if there truly was no effect.
+
+Our strategy involves reshuffling the treatment variable, calculating the treatment effect, and repeating this process many times. This allows us to ask a fundamental question: how likely would we be to observe the treatment effect in our data if there really is no effect of the treatment?
+
+## The Résumé Experiment
+
+To illustrate these concepts, we'll examine a study by Bertrand and Mullainathan that investigated racial discrimination in responses to job applications in Chicago and Boston. The researchers sent 4,870 résumés to potential employers, randomly assigning names associated with different racial groups to otherwise identical résumés.
+
+```{r}
+library(openintro)
+library(tidyverse)
+library(tidymodels)
+
+myDat <- resume 
+```
+
+## Analyzing Callback Rates by Race
+
+Since race of applicant was randomly assigned in this experiment, any systematic differences in callback rates can be attributed to the racial associations of the names. Let's examine the callback rates for each group:
+
+```{r}
+mns <- myDat |>
+  group_by(race) |> 
+  summarize(calls = mean(received_callback))
+mns
+```
+
+We can save these means for easier access and then calculate the treatment effect, which is simply the difference in means between the two groups:
+
+```{r}
+mean_white = mns$calls[2]
+mean_black = mns$calls[1]
+
+teffect <- mean_white - mean_black
+teffect
+```
+
+## Examining the Data with Confidence Intervals
+
+Before conducting formal hypothesis tests, it's valuable to examine both the point estimates and their confidence intervals. This gives us a sense of the precision of our estimates and whether the observed differences might be meaningful.
+
+Let's create bootstrap confidence intervals for the white applicants first:
+
+```{r}
+boot_df_white <- myDat |>
+  filter(race == "white") |> 
+  specify(response = received_callback) |>  
+  generate(reps = 15000, type = "bootstrap") |> 
+  calculate(stat = "mean")
+lower_bound_white <- boot_df_white |> summarize(lower_bound_white = quantile(stat, 0.025)) |> pull() 
+upper_bound_white <- boot_df_white |> summarize(upper_bound_white = quantile(stat, 0.975)) |> pull() 
+```
+
+Now we'll create the same confidence intervals for black applicants:
+
+```{r}
+boot_df_black <- myDat |>
+  filter(race == "black") |> 
+  specify(response = received_callback) |>  
+  generate(reps = 15000, type = "bootstrap") |> 
+  calculate(stat = "mean")
+lower_bound_black <- boot_df_black |> summarize(lower_bound_black = quantile(stat, 0.025)) |> pull() 
+upper_bound_black <- boot_df_black |> summarize(upper_bound_black = quantile(stat, 0.975)) |> pull() 
+```
+
+To visualize these results effectively, we need to organize our data in a tidy format:
+
+```{r}
+plotData <- tibble(
+  race = c("Black", "White"),
+  meanCalls = c(mean_black, mean_white),
+  lower95 = c(lower_bound_black, lower_bound_white),
+  upper95 = c(upper_bound_black, upper_bound_white)
+)
+plotData
+```
+
+Now we can create a visualization that shows both the callback rates and their uncertainty:
+
+```{r}
+ggplot(plotData, aes(y = meanCalls, x = race, ymin = lower95, ymax = upper95)) +
+  geom_col(fill = "steelblue4") +
+  geom_errorbar(width = .05) +
+  theme_bw()  +
+ ylim(0, .15) +
+  labs(x = "Race of Applicant",
+       y = "Call Back Rate")
+```
+
+Looking at this plot, we can see clear differences between the groups and non-overlapping confidence intervals, which suggests there may be evidence of racial discrimination. But how can we formally test the null hypothesis to decide whether to reject it?
+
+## The Logic of Permutation Testing
+
+To conduct a formal hypothesis test, we need to simulate what would happen under the null hypothesis. Our approach involves calculating the difference in means between white and black applicants, then shuffling the race variable and calculating the difference in means for the shuffled data. By repeating this process many times, we can simulate the null distribution of differences in callbacks.
+
+## Understanding the Permutation Process
+
+Let's walk through this process using a simplified hypothetical example with just six applicants:
+
+### Hypothetical Original Data 
+
+| Applicant | Race  | Callback |
+|-----------|-------|----------|
+| A         | Black | Yes      |
+| B         | Black | No       |
+| C         | Black | No       |
+| D         | White | Yes      |
+| E         | White | No       |
+| F         | White | No       |
+
+The first step is to calculate the original difference in callback rates. This establishes our baseline understanding of the initial association between race and callback rates.
+
+The second step involves shuffling or permuting the race variable. We randomly reassign race labels while keeping the callback outcomes exactly the same. This simulation reflects what we would expect to see if race truly had no effect on callbacks.
+
+### Hypothetical Shuffled Data
+
+| Applicant | Race (Shuffled) | Callback |
+|-----------|-----------------|----------|
+| A         | White           | Yes      |
+| B         | Black           | No       |
+| C         | White           | No       |
+| D         | White           | Yes      |
+| E         | Black           | No       |
+| F         | Black           | No       |
+
+After shuffling, we calculate the difference in callback rates again between the Black and White groups. This tells us what kind of difference we might observe purely due to chance.
+
+We repeat this shuffling process thousands of times to generate a distribution of differences that could occur by chance alone. If our observed difference is extreme compared to this null distribution (meaning the p-value is low), we have strong evidence to reject the null hypothesis.
+
+## Implementing the Permutation Test
+
+In practice, we use the `tidymodels` package to handle the computational details of this simulation. The `infer` package provides a clean workflow for permutation testing:
+
+```{r}
+null_dist <- myDat |>
+  specify(response = received_callback, explanatory = race) |>
+  hypothesize(null = "independence") |>
+  generate(5000, type = "permute") |>
+  calculate(stat = "diff in means", 
+            order = c("white", "black"))
+```
+
+Once we have our null distribution, we can calculate the p-value using the `get_pvalue` function from the `infer` package:
+
+```{r}
+get_p_value(null_dist, obs_stat = teffect, direction = "greater")
+```
+
+## Visualizing the Results
+
+We can visualize our null distribution along with our observed statistic to better understand our results:
+
+```{r}
+visualize(null_dist) +
+  shade_p_value(obs_stat = teffect, direction = "greater") +
+  labs(
+    x = "Estimated Difference under the Null",
+    y = "Count"
+  ) + 
+  theme_bw()
+```
+
+## Drawing Conclusions
+
+The p-value we obtained is very small, well below the conventional 0.05 threshold. This means that if there were truly no racial discrimination, we would almost never observe a difference as large as what we found in the data. Therefore, we reject the null hypothesis and conclude that the racial gap is extremely unlikely to have occurred due to chance alone. This provides statistical evidence of racial discrimination in hiring.
+
+## Your Turn!
+
+Now apply these same methods to investigate a different question using the same dataset:
+
+- Use the **gender** variable in the `resume` data to assess whether there is gender discrimination in call backs
+- Plot means and 95% confidence intervals for the call back rate for men and women
+- Write the null and alternative hypotheses
+- Simulate the null distribution
+- Visualize the null distribution and the gender gap
+- Calculate the p-value
+- What do you conclude from your test?

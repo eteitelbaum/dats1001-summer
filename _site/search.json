@@ -6461,7 +6461,7 @@
     "href": "modules/module-3.4.html",
     "title": "Module 3.4",
     "section": "",
-    "text": "Prework\n\n\n\nComplete the following before diving into this module:\n\nInstall the tidymodels package in R. This includes the infer and rsample packages, which we will use to simulate sampling and construct confidence intervals.\nReview the documentation for the infer package and the rsample package.\nThink about sampling. What does the word “sample” mean to you? What is a sample you have encountered in your own life? What larger group was that sample meant to represent?"
+    "text": "Prework\n\n\n\nComplete the following before diving into this module:\n\nInstall the tidymodels package. This includes the infer and rsample packages, which we will use to simulate sampling and construct confidence intervals.\n\ninstall.packages(\"tidymodels\")\n\n\nInstall the openintro package, which contains the dataset we will use in this module: install.packages(\"openintro\")\n\nReview the documentation for the infer package and the rsample package.\nThink about sampling. What does the word “sample” mean to you? What is a sample you have encountered in your own life? What larger group was that sample meant to represent?"
   },
   {
     "objectID": "modules/module-3.4.html#overview",
