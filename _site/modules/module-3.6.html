@@ -601,7 +601,7 @@ Understanding the Code
 <pre><code># A tibble: 2 × 4
   race  mean_calls lower_95 upper_95
   &lt;chr&gt;      &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;
-1 black     0.0645   0.0546   0.0743
+1 black     0.0645   0.0550   0.0743
 2 white     0.0965   0.0850   0.108 </code></pre>
 </div>
 </div>
@@ -641,7 +641,7 @@ Understanding the Code
 </div>
 <p>Looking at this plot, we can see clear differences between the groups and non-overlapping confidence intervals, which suggests there may be evidence of racial discrimination. But how can we formally test the null hypothesis to decide whether to reject it?</p>
 </section><section id="the-logic-of-permutation-testing" class="level2"><h2 class="anchored" data-anchor-id="the-logic-of-permutation-testing">The Logic of Permutation Testing</h2>
-<p>To conduct a formal hypothesis test, we need to simulate what would happen under the null hypothesis. Our approach involves calculating the difference in means between white and black applicants, then shuffling the race variable and calculating the difference in means for the shuffled data. By repeating this process many times, we can simulate the null distribution of differences in callbacks.</p>
+<p>To conduct a formal hypothesis test, we need to simulate what would happen under the null hypothesis. Our approach involves calculating the difference in means between white and black applicants, then shuffling the race variable and calculating the difference in means for the shuffled data. By repeating this process many times, we can simulate the null distribution of differences in callbacks. This is a called a <strong>permutation test</strong>—a method where we simulate the null distribution by shuffling group labels (e.g., race) to see what differences in means we would expect if the treatment had no effect.</p>
 </section><section id="understanding-the-permutation-process" class="level2"><h2 class="anchored" data-anchor-id="understanding-the-permutation-process">Understanding the Permutation Process</h2>
 <p>Let’s walk through this process using a simplified hypothetical example with just six applicants:</p>
 <section id="hypothetical-original-data" class="level3"><h3 class="anchored" data-anchor-id="hypothetical-original-data">Hypothetical Original Data</h3>

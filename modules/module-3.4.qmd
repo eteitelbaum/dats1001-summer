@@ -140,7 +140,7 @@ In the next section, we’ll explore a more flexible approach: **bootstrapping**
 
 ## Estimating Uncertainty with Bootstrapping
 
-Bootstrapping is a computational method—and an example of a **nonparametric** approach to inference. *Nonparametric* means that we don't assume a specific shape or distribution for the population (like normality). Instead of relying on formulas, we use the data we have to approximate what repeated sampling might look like.
+**Bootstrapping** is a resampling technique that involves repeatedly drawing samples, with replacement, from the observed data to estimate the sampling distribution of a statistic. Bootstrapping is an example of a **nonparametric** approach to inference. Nonparametric means that we do not assume a specific shape or distribution for the population (like normality). Instead of relying on formulas, we use the data we have to approximate what repeated sampling might look like.
 
 {{< video https://www.youtube.com/watch?v=Xz0x-8-cgaQ title = 'Bootstrapping Main Ideas' >}}
 

@@ -132,7 +132,7 @@ Looking at this plot, we can see clear differences between the groups and non-ov
 
 ## The Logic of Permutation Testing
 
-To conduct a formal hypothesis test, we need to simulate what would happen under the null hypothesis. Our approach involves calculating the difference in means between white and black applicants, then shuffling the race variable and calculating the difference in means for the shuffled data. By repeating this process many times, we can simulate the null distribution of differences in callbacks.
+To conduct a formal hypothesis test, we need to simulate what would happen under the null hypothesis. Our approach involves calculating the difference in means between white and black applicants, then shuffling the race variable and calculating the difference in means for the shuffled data. By repeating this process many times, we can simulate the null distribution of differences in callbacks. This is a called a **permutation test**—a method where we simulate the null distribution by shuffling group labels (e.g., race) to see what differences in means we would expect if the treatment had no effect.
 
 ## Understanding the Permutation Process
 
