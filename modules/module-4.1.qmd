@@ -23,7 +23,9 @@ By the end of this module, you will be able to calculate correlations, fit simpl
 
 ## Understanding Relationships Between Variables
 
-When we build statistical models, we need to distinguish between different types of variables. The **response variable** (also called the dependent variable, outcome variable, or Y variable) is what we are trying to understand or predict. The **explanatory variables** (also called independent variables, predictors, or X variables) are what we use to explain variation in the response.
+When we build statistical models, we need to distinguish between different types of variables. The **response variable** (also called the dependent variable, outcome variable, target, or Y variable) is what we are trying to understand or predict. The **explanatory variables** (also called independent variables, predictors, features, or X variables) are what we use to explain variation in the response.
+
+{{< video https://www.youtube.com/watch?v=dLc-lfEEYss  title='Linear Regression with One Variable, Part 1' >}}'>}}
 
 For example, if we want to understand what factors influence a country's level of democracy, democracy would be our response variable. Potential explanatory variables might include GDP per capita, education levels, natural resource wealth, or historical factors.
 
@@ -125,6 +127,8 @@ Calculate the correlation between democracy and the polarization variable. How d
 
 ## Linear Models as Functions
 
+{{< video https://www.youtube.com/watch?v=KWULpBYzIYk  title='Linear Regression with One Variable, Part 2' >}}'>}}
+
 We can represent the relationship between variables using mathematical functions. A function describes the relationship between an output and one or more inputs - plug in the inputs and receive back the output.
 
 For a simple linear model with one explanatory variable, we write:
@@ -133,7 +137,7 @@ $$Y = a + bX$$
 
 Where:
 
-- $Y$ is the response variable (outcome)
+- $Y$ is the response variable (outcome, target)
 - $X$ is the explanatory variable (predictor)  
 - $a$ is the intercept (predicted value of Y when X = 0)
 - $b$ is the slope (change in Y for a one-unit change in X)
