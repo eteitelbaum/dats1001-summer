@@ -5,7 +5,7 @@ website:
   title: "DATS 1001--Fall Schedule"
   description: "Homepage for DATS 1001 - Data Science for All, George Washington University."
   site-url: "https://ds4all.rocks"
-  repo-url: "https://github.com/dats1001-fall-2024"
+  repo-url: "https://github.com/dats1001"
   repo-actions: [edit, issue]
   open-graph: true
   favicon: "images/ds4all-logo.png"
