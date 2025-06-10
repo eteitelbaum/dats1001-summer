@@ -66,19 +66,41 @@ window.document.addEventListener("DOMContentLoaded", function (_event) {
     }
   };
 
-  // fire slideEnter for bootstrap tab activations (for htmlwidget resize behavior)
-  function fireSlideEnter(e) {
+  // dispatch for htmlwidgets
+  // they use slideenter event to trigger resize
+  function fireSlideEnter() {
     const event = window.document.createEvent("Event");
     event.initEvent("slideenter", true, true);
     window.document.dispatchEvent(event);
   }
+
   const tabs = window.document.querySelectorAll('a[data-bs-toggle="tab"]');
   tabs.forEach((tab) => {
     tab.addEventListener("shown.bs.tab", fireSlideEnter);
   });
 
-  // fire slideEnter for tabby tab activations (for htmlwidget resize behavior)
-  document.addEventListener("tabby", fireSlideEnter, false);
+  // dispatch for shiny
+  // they use BS shown and hidden events to trigger rendering
+  function distpatchShinyEvents(previous, current) {
+    if (window.jQuery) {
+      if (previous) {
+        window.jQuery(previous).trigger("hidden");
+      }
+      if (current) {
+        window.jQuery(current).trigger("shown");
+      }
+    }
+  }
+
+  // tabby.js listener: Trigger event for htmlwidget and shiny
+  document.addEventListener(
+    "tabby",
+    function (event) {
+      fireSlideEnter();
+      distpatchShinyEvents(event.detail.previousTab, event.detail.tab);
+    },
+    false
+  );
 
   // Track scrolling and mark TOC links as active
   // get table of contents and sidebar (bail if we don't have at least one)
@@ -238,9 +260,10 @@ window.document.addEventListener("DOMContentLoaded", function (_event) {
         for (const listingPath of listingPaths) {
           const pathWithoutLeadingSlash = listingPath.listing.substring(1);
           for (const item of listingPath.items) {
+            const encodedItem = encodeURI(item);
             if (
-              item === currentPagePath ||
-              item === currentPagePath + "index.html"
+              encodedItem === currentPagePath ||
+              encodedItem === currentPagePath + "index.html"
             ) {
               // Resolve this path against the offset to be sure
               // we already are using the correct path to the listing
