@@ -4,8 +4,6 @@ subtitle: "Single Proportion Tests"
 format: 
   html:
     code-link: true
-filters:
-  - webr
 highlight-style: atom-one
 execute: 
   echo: true

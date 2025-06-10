@@ -4,8 +4,6 @@ subtitle: "Fitting a Line to Data"
 format: 
   html:
     code-link: true
-filters:
-  - webr
 highlight-style: atom-one
 execute: 
   echo: true
@@ -41,8 +39,6 @@ We'll use data from the Varieties of Democracy (V-Dem) project, which provides c
 
 library(tidyverse)
 library(vdemlite)
-
-set.seed(1234)
 
 # Load V-Dem data for 2019
 model_data <- fetchdem(indicators = c("v2x_libdem", "e_gdppc", "v2cacamps"),

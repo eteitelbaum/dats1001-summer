@@ -1,0 +1,113 @@
+---
+title: "Untitled"
+format:
+  html:
+    embed-resources: false
+    resources:
+      - shinylive-sw.js
+filters:
+  - shinylive
+---
+
+## ShinyLive App
+
+```{shinylive-r}
+#| standalone: true
+#| viewerHeight: 500
+
+library(shiny)
+library(ggplot2)
+library(gridExtra)
+
+# Simple data points
+data_points <- data.frame(x = c(1, 2, 3), y = c(1, 2, 3))
+
+# Define UI
+ui <- fluidPage(
+  titlePanel("Interactive Cost Function Explorer"),
+  
+  sidebarLayout(
+    sidebarPanel(
+      sliderInput("slope", 
+                  "Slope Parameter:", 
+                  min = -2, max = 4, value = 1, step = 0.1),
+      br(),
+      h4("Current Values:"),
+      textOutput("current_slope"),
+      textOutput("current_ssr"),
+      br(),
+      p("Move the slider to see how the slope affects:"),
+      tags$ul(
+        tags$li("The regression line (left plot)"),
+        tags$li("Your position on the cost function (right plot)"),
+        tags$li("The sum of squared residuals")
+      )
+    ),
+    
+    mainPanel(
+      plotOutput("combined_plot", height = "400px")
+    )
+  )
+)
+
+# Define server logic
+server <- function(input, output) {
+  
+  # Calculate SSR for current slope
+  current_ssr <- reactive({
+    predictions <- 0 + input$slope * data_points$x
+    residuals <- data_points$y - predictions
+    sum(residuals^2)
+  })
+  
+  # Create cost function data
+  cost_data <- reactive({
+    slopes <- seq(-2, 4, by = 0.1)
+    ssr_values <- sapply(slopes, function(b) {
+      predictions <- 0 + b * data_points$x
+      residuals <- data_points$y - predictions
+      sum(residuals^2)
+    })
+    data.frame(slope = slopes, ssr = ssr_values)
+  })
+  
+  output$current_slope <- renderText({
+    paste("Slope:", round(input$slope, 2))
+  })
+  
+  output$current_ssr <- renderText({
+    paste("Sum of Squared Residuals:", round(current_ssr(), 2))
+  })
+  
+  output$combined_plot <- renderPlot({
+    # Left plot: Data points and regression line
+    p1 <- ggplot(data_points, aes(x = x, y = y)) +
+      geom_point(size = 4, color = "darkblue") +
+      geom_abline(intercept = 0, slope = input$slope, color = "red", linewidth = 1.2) +
+      xlim(0, 4) + ylim(-2, 6) +
+      labs(title = "Regression Line", x = "x", y = "y") +
+      theme_minimal() +
+      theme(plot.title = element_text(hjust = 0.5))
+    
+    # Right plot: Cost function
+    cost_df <- cost_data()
+    current_point <- data.frame(slope = input$slope, ssr = current_ssr())
+    
+    p2 <- ggplot(cost_df, aes(x = slope, y = ssr)) +
+      geom_line(color = "darkred", linewidth = 1.2) +
+      geom_point(data = current_point, aes(x = slope, y = ssr), 
+                 color = "red", size = 4) +
+      labs(title = "Cost Function", 
+           x = "Slope Parameter", 
+           y = "Sum of Squared Residuals") +
+      theme_minimal() +
+      theme(plot.title = element_text(hjust = 0.5))
+    
+    # Combine plots
+    grid.arrange(p1, p2, ncol = 2)
+  })
+}
+
+# Run the application
+shinyApp(ui = ui, server = server)
+```

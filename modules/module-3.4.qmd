@@ -4,8 +4,6 @@ subtitle: "Sampling and Uncertainty"
 format: 
   html:
     code-link: true
-filters:
-  - webr
 highlight-style: atom-one
 execute: 
   echo: true

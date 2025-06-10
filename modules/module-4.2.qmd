@@ -1,0 +1,426 @@
+---
+title: "Module 4.2"
+subtitle: "Least Squares Regression"
+format: 
+  html:
+    code-link: true
+filters:
+  - shinylive
+  - webr
+highlight-style: atom-one
+execute: 
+  echo: true
+  message: false
+  warning: false
+---
+
+::: {.callout-tip}
+## Prework
+
+Run this code chunk to load the necessary packages and data for this module:
+
+```{r}
+#| label: setup
+#| echo: false
+#| message: false
+
+library(tidyverse)
+library(tidymodels)
+library(vdemlite)
+
+# Load V-Dem data for 2019
+model_data <- fetchdem(
+  indicators = c(
+  "v2x_libdem", 
+  "e_gdppc", 
+  "v2cacamps"),
+  start_year = 2019, 
+  end_year = 2019
+  ) |>
+  rename(
+    country = country_name, 
+    lib_dem = v2x_libdem, 
+    wealth = e_gdppc,
+    polarization = v2cacamps
+    ) |>
+  filter(!is.na(lib_dem), !is.na(wealth))
+```
+:::
+
+## Overview
+
+In Module 4.1, you learned how to fit regression lines and interpret them. But how does R actually find the "best" line among all possible lines? This module dives into the mathematical optimization behind least squares regression. You'll understand why it's called "least squares" and develop intuition for the cost function that R minimizes when fitting your models.
+
+By the end of this module, you'll be able to:
+- Explain why we minimize the sum of squared residuals
+- Calculate and interpret a cost function
+- Understand the optimization process behind `lm()`
+- Connect mathematical theory to practical regression output
+
+## The Optimization Problem
+
+When we fit a regression line in Module 4.1, we used R's `lm()` function and got specific values for our intercept and slope. But think about it - there are infinitely many possible lines we could draw through any set of points. How does the computer choose which one is "best"?
+
+Let's return to our democracy and GDP example from Module 4.1. We found that the relationship between log GDP per capita and democracy scores could be modeled as:
+
+$$\widehat{Democracy}_i = 0.13 + 0.12 \times \log(GDP)_i$$
+
+But why these specific numbers? Why not $\widehat{Democracy}_i = 0.10 + 0.15 \times \log(GDP)_i$ or any other combination?
+
+```{r}
+#| label: multiple-lines
+#| echo: false
+
+ggplot(model_data, aes(x = log(wealth), y = lib_dem)) +
+  geom_point() +
+  geom_abline(intercept = 0.13, slope = 0.12, color = "#E48957", linewidth = 1, alpha = 0.6) +
+  geom_abline(intercept = 0.10, slope = 0.2, color = "blue", linewidth = 1, alpha = 0.6) +
+  geom_abline(intercept = 0.20, slope = 0.05, color = "red", linewidth = 1, alpha = 0.6) +
+  labs(x = "Log GDP per capita", y = "Liberal Democracy Index",
+       title = "Which Line Should We 'Choose'?") +
+  theme_bw()
+```
+
+The answer lies in a mathematical optimization problem. We want to find the line that makes the "best" predictions - the line that minimizes our prediction errors across all the data points.
+
+## Understanding the Cost Function
+
+To understand how we measure "best," let's watch Andrew Ng explain the intuition behind the cost function:
+
+{{< video "https://www.youtube.com/embed/CFN5zHzEuGY" title = 'Cost Function Intuition' >}}
+
+As Andrew explains, we need a way to measure how well our line fits the data. Remember from Module 4.1 that a **residual** is the difference between an actual value and our predicted value:
+
+$$\text{residual}_i = y_i - \hat{y}_i$$
+
+The **cost function** (also called the **loss function**) measures the total error across all our predictions. For least squares regression, we use the **sum of squared residuals** (SSR):
+
+$$\text{Cost} = \sum_{i=1}^{n} (y_i - \hat{y}_i)^2$$
+
+But why do we *square* the residuals instead of just adding them up? There are several good reasons.First, squaring the residuals ensures that the cost function is always positive, which is important for optimization. Squaring ensures that a prediction that's too high (+2) is penalized the same as a prediction that's too low (-2). Second, larger errors get bigger penalties. An error of 4 contributes 16 to the cost, while an error of 2 contributes only 4. Finally, for mathematical convenience. Squared functions have nice mathematical properties that make optimization easier.
+
+::: {.callout-note}
+Some definitions of the cost function divide the SSR by the number of observations $n$ (or two times the number of observations $2n$), yielding the mean squared error (MSE). This doesn't change which line is best—it just rescales the cost. 
+:::
+
+The line that minimizes this cost function is our "best" line - the least squares regression line.
+
+Let's build intuition with a very simple example. Consider these three data points:
+- (1, 1)
+- (2, 2) 
+- (3, 3)
+
+What line would you draw through these points? Let's test different lines and see which has the lowest cost.
+
+```{r}
+#| label: simple-data
+
+# Create our simple dataset
+simple_data <- tibble(
+  x = c(1, 2, 3),
+  y = c(1, 2, 3)
+)
+
+simple_data
+```
+
+```{r}
+#| label: best-line1
+#| echo: false
+
+ggplot(simple_data, aes(x = x, y = y)) +
+  geom_point(size = 4, color = "darkblue") +
+  xlim(0, 4) + ylim(0, 4) +
+  labs(title = "Three simple data points") +
+  theme_bw()
+```
+
+**Test Line 1**: $\hat{y} = 0 + 1 \times x$ (intercept = 0, slope = 1)
+
+For each point, let's calculate the predicted value and residual:
+- Point (1,1): $\hat{y} = 0 + 1(1) = 1$, residual = $1 - 1 = 0$
+- Point (2,2): $\hat{y} = 0 + 1(2) = 2$, residual = $2 - 2 = 0$  
+- Point (3,3): $\hat{y} = 0 + 1(3) = 3$, residual = $3 - 3 = 0$
+
+Sum of squared residuals = $0^2 + 0^2 + 0^2 = 0$
+
+Perfect! This line goes exactly through all points.
+
+```{r}
+#| label: best-line2
+#| echo: false
+
+# create data
+ ggplot(simple_data, aes(y=y, x=x)) +
+  geom_point(size=3, color="darkblue") +
+  xlim(0, 4) + ylim(0,8) +
+  geom_segment(x=0, y=0, xend=4, yend=8, color="black") +
+  theme_bw()
+```
+
+**Test Line 2**: $\hat{y} = 0 + 2 \times x$ (intercept = 0, slope = 2)
+
+This is a steeper line with a slope of 2. Let's calculate the residuals:
+
+- Point (1,1): $\hat{y} = 0 + 0(1) = 0$, residual = $1 - 2 = -1$
+- Point (2,2): $\hat{y} = 0 + 0(2) = 0$, residual = $2 - 4 = -2$
+- Point (3,3): $\hat{y} = 0 + 0(3) = 0$, residual = $3 - 6 = -3$
+
+Sum of squared residuals = $-1^2 + -2^2 + -3^2 = 1 + 4 + 9 = 14$
+
+Much worse!
+
+::: {.callout-warning icon=false}
+## Your Turn!!
+Assuming the same data points as in the above example, calculate the sum of squared residuals for the following lines:
+
+- $\hat{y} = 0 + 3 \times x$ (intercept = 0, slope = 3)
+- $\hat{y} = 0 + 0 \times x$ (intercept = 0, slope = 0)
+- $\hat{y} = 0 - 1 \times x$ (intercept = 0, slope = -1)
+
+Change the values in this interactive code chunk to perform your calculations:
+
+```{webr}
+ssr <- (1-1)^2 + (2-2)^2 + (3-3)^2
+
+ssr
+```
+
+Check your answers below when you are finished:
+
+```{r}
+#| code-fold: true
+
+# Calculate the sum of squared residuals for the line ŷ = 0 + 3x
+#ssr1 <- (1-3)^2 + (2-6)^2 + (3-9)^2
+#ssr1
+# Answer: 56
+
+# Calculate the sum of squared residuals for the line ŷ = 0 + 0x
+#ssr2 <- (1-0)^2 + (2-0)^2 + (3-0)^2
+#ssr2
+# Answer: 14
+
+# Calculate the sum of squared residuals for the line ŷ = 0 -1x
+#ssr3 <- (1+1)^2 + (2+2)^2 + (3+3)^2
+#ssr3
+# Answer: 56
+```
+:::
+
+## Visualizing the Optimization
+
+Let's see how the cost function behaves as we change the slope parameter. Andrew Ng provides excellent visualization of this concept:
+
+{{< video "https://www.youtube.com/embed/peNRqkfukYY" title='Cost Function Visualization'>}}
+
+For our simple three-point example, let's use this Shiny app to plot the cost function for different slope values (keeping intercept = 0). Move the slide to choose a different slope. See how this changes the fit of the line relative to the points on the left, and how it affects the cost function on the right. 
+
+```{shinylive-r}
+#| standalone: true
+#| viewerHeight: 500
+
+library(shiny)
+
+data_points <- data.frame(x = c(1, 2, 3), y = c(1, 2, 3))
+
+ui <- fluidPage(
+  titlePanel("Interactive Cost Function Explorer"),
+  
+  sidebarLayout(
+    sidebarPanel(
+      sliderInput("slope", 
+                  "Slope Parameter:", 
+                  min = -2, max = 4, value = 1, step = 0.1),
+      br(),
+      h4("Current Values:"),
+      textOutput("current_slope"),
+      textOutput("current_equation"),
+      textOutput("current_ssr"),
+      br(),
+      p("Move the slider to see how the slope affects:"),
+      tags$ul(
+        tags$li("The regression line (left plot)"),
+        tags$li("Your position on the cost function (right plot)")
+      )
+    ),
+    
+    mainPanel(
+      plotOutput("combined_plot", height = "400px")
+    )
+  )
+)
+
+server <- function(input, output) {
+  
+  # Fixed: Calculate predictions and residuals properly
+  current_calculations <- reactive({
+    predictions <- input$slope * data_points$x
+    residuals <- data_points$y - predictions
+    ssr <- sum(residuals^2)
+    list(predictions = predictions, residuals = residuals, ssr = ssr)
+  })
+  
+  cost_data <- reactive({
+    slopes <- seq(-2, 4, by = 0.1)
+    ssr_values <- sapply(slopes, function(b) {
+      preds <- b * data_points$x
+      resids <- data_points$y - preds
+      sum(resids^2)
+    })
+    list(slopes = slopes, ssr = ssr_values)
+  })
+  
+  output$current_slope <- renderText({
+    paste("Slope:", round(input$slope, 2))
+  })
+  
+  output$current_equation <- renderText({
+    paste0("Equation: Ŷ = 0 + ", round(input$slope, 2), " * X")
+  })
+  
+  # Fixed: Use the corrected reactive calculations
+  output$current_ssr <- renderText({
+    calc <- current_calculations()
+    ssr_terms <- paste0("(", data_points$y, " - ", round(calc$predictions, 2), ")^2", collapse = " + ")
+    ssr_value <- round(calc$ssr, 2)
+    paste0("SSR: ", ssr_terms, " = ", ssr_value)
+  })
+  
+  output$combined_plot <- renderPlot({
+    par(mfrow = c(1, 2), mar = c(4, 4, 2, 1))
+    
+    # Left: Regression plot
+    plot(data_points$x, data_points$y, pch = 19, col = "blue",
+         xlim = c(0, 4), ylim = c(-2, 6),
+         xlab = "x", ylab = "y", main = "Regression Line")
+    abline(0, input$slope, col = "red", lwd = 2)
+    
+    # Add residual lines for visualization
+    calc <- current_calculations()
+    segments(data_points$x, data_points$y, data_points$x, calc$predictions, 
+             col = "gray", lty = 2)
+    
+    # Right: Cost function
+    cost <- cost_data()
+    plot(cost$slopes, cost$ssr, type = "l", col = "darkred", lwd = 2,
+         xlab = "Slope Parameter", ylab = "Sum of Squared Residuals",
+         main = "Cost Function")
+    points(input$slope, calc$ssr, col = "red", pch = 19, cex = 1.5)
+  })
+}
+
+shinyApp(ui = ui, server = server)
+```
+
+Notice that the cost function forms a parabola with its minimum at slope = 1. This is exactly where we found SSR = 0! The optimization problem is to find the slope (and intercept) that minimizes this cost function.
+
+## Worked Example: Democracy and GDP
+
+Let's apply this same thinking to our democracy and GDP data. We'll manually test a few different potential regression lines and calculate their costs.
+
+First, let's fit the actual least squares line to remind ourselves what R found:
+
+```{r}
+#| label: actual-model
+
+# Fit the model
+democracy_model <- lm(lib_dem ~ log(wealth), data = model_data)
+
+# Show the summary
+summary(democracy_model)
+```
+
+The least squares solution is approximately: $\widehat{Democracy} = 0.13 + 0.12 \times \log(GDP)$
+
+Let's test some alternative lines and see how they compare:
+
+```{r}
+#| label: visualize-alternatives
+#| echo: false
+
+# Different lines parameters
+test_lines <- tibble(
+  intercept = c(0.13, 0.13, 0.13, 0.00),
+  slope = c(0.12, 0.15, 0.08, 0.12),
+  description = c("Least squares", "Steeper slope)", "Gentler slope", "Different intercept")
+)
+
+# Visualize
+ggplot(model_data, aes(x = log(wealth), y = lib_dem)) +
+  geom_point(alpha = 0.6) +
+  geom_abline(aes(intercept = intercept, slope = slope, color = description), 
+              data = test_lines, size = 1) +
+  labs(x = "Log GDP per capita", y = "Liberal Democracy Index",
+       title = "Comparing different possible regression lines",
+       color = "Line type") +
+  theme_bw()
+```
+
+Now let's calculate the sum of squared residuals (SSR) for each of these lines to see which one has the lowest cost:
+
+```{r}
+#| label: test-alternatives
+#| include: false
+
+# Function to calculate sum of squared residuals
+calculate_ssr <- function(data, intercept, slope) {
+  predictions <- intercept + slope * log(data$wealth)
+  residuals <- data$lib_dem - predictions
+  sum(residuals^2, na.rm = TRUE)
+}
+
+# Calculate SSR for each line
+test_lines$ssr <- map2_dbl(test_lines$intercept, test_lines$slope, 
+                          ~calculate_ssr(model_data, .x, .y))
+
+test_lines
+```
+
+- **Least squares line** (intercept = 0.13, slope = 0.12): SSR = `r round(test_lines$ssr[1], 2)`
+- **Steeper slope line** (intercept = 0.13, slope = 0.15): SSR = `r round(test_lines$ssr[2], 2)`
+- **Gentler slope line** (intercept = 0.13, slope = 0.08): SSR = `r round(test_lines$ssr[3], 2)`
+- **Different intercept line** (intercept = 0.00, slope = 0.12): SSR = `r round(test_lines$ssr[4], 2)`
+
+Notice how the least squares line has the lowest SSR! Any other combination of intercept and slope results in a higher cost, confirming that our optimization algorithm found the truly optimal solution.
+
+Notice how the least squares line has the lowest SSR! Any other combination of intercept and slope will result in a higher cost.
+
+
+## From Math to R Output
+
+When you run `lm()` in R, the computer is solving this optimization problem automatically. It searches through all possible combinations of intercept and slope values to find the ones that minimize the sum of squared residuals.
+
+For simple linear regression, there's actually a mathematical formula to find the optimal parameters directly (no searching required). But the key insight is that R is giving you the parameter values that make your predictions as accurate as possible, on average, across all your data points.
+
+This is why we can trust the output from `lm()` - it's not arbitrary, it's the result of a principled mathematical optimization.
+
+```{r}
+#| label: model-summary-revisited
+
+# Our model from before
+summary(democracy_model)
+
+# The SSR for this model
+actual_ssr <- sum(residuals(democracy_model)^2)
+cat("Sum of squared residuals for least squares line:", round(actual_ssr, 3))
+```
+
+::: {.callout-important}
+## Understanding the Code
+
+In the last line of this code chunk we apply the `cat()` function to print the sum of squared residuals (SSR) for the least squares line. The `cat()` function is used to concatenate and print text and variables together in a single output. The `round()` function is applied to format the SSR value to three decimal places for better readability.
+:::
+
+::: {.callout-warning icon=false}
+## Your Turn!
+- Try running a regression with the `polarization` variable as the predictor of liberal democracy instead of `wealth`.
+- Calculate the sum of squared residuals (SSR) for this new model.
+:::
+
+## Summary
+
+The "least squares" in least squares regression refers to the optimization principle: find the line that minimizes the sum of squared residuals. This mathematical framework ensures that: 1) your predictions are as accurate as possible on average across all data points; 2) the solution is unique in that there  only one best line for any dataset; the method is principled (not arbitrary) because it is based on mathematical optimization; and 4) R's output is trustworthy because `lm()` is finding the genuinely best-fitting line.
+
+Understanding this optimization principle helps you appreciate why regression works and gives you confidence in interpreting the results. When you see regression coefficients, you now know they represent the solution to a well-defined mathematical problem: finding the line that makes the best predictions for your data.
+
