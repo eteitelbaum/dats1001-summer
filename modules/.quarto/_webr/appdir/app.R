@@ -19,8 +19,7 @@ ui <- fluidPage(
       p("Move the slider to see how the slope affects:"),
       tags$ul(
         tags$li("The regression line (left plot)"),
-        tags$li("Your position on the cost function (right plot)"),
-        tags$li("The sum of squared residuals")
+        tags$li("Your position on the cost function (right plot)")
       )
     ),
     

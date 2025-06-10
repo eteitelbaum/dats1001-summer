@@ -21,11 +21,9 @@ Run this code chunk to load the necessary packages and data for this module:
 
 ```{r}
 #| label: setup
-#| echo: false
-#| message: false
+#| code-fold: true
 
 library(tidyverse)
-library(tidymodels)
 library(vdemlite)
 
 # Load V-Dem data for 2019

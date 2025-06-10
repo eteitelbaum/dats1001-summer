@@ -2058,7 +2058,7 @@ window.Quarto = {
   <li><a href="#worked-example-democracy-and-gdp" id="toc-worked-example-democracy-and-gdp" class="nav-link" data-scroll-target="#worked-example-democracy-and-gdp">Worked Example: Democracy and GDP</a></li>
   <li><a href="#from-math-to-r-output" id="toc-from-math-to-r-output" class="nav-link" data-scroll-target="#from-math-to-r-output">From Math to R Output</a></li>
   <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
-  </ul><div class="toc-actions"><ul><li><a href="https://github.com/dats1001-fall-2024/edit/main/modules/module-4.2.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/dats1001-fall-2024/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+  </ul><div class="toc-actions"><ul><li><a href="https://github.com/eteitelbaum/dats1001-summer/edit/main/modules/module-4.2.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/eteitelbaum/dats1001-summer/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content"><script src="https://cdn.jsdelivr.net/npm/monaco-editor@0.47.0/min/vs/loader.js"></script><script type="module" id="qwebr-monaco-editor-init">
@@ -2368,6 +2368,28 @@ Prework
 </div>
 <div class="callout-body-container callout-body">
 <p>Run this code chunk to load the necessary packages and data for this module:</p>
+<div class="cell">
+<details class="code-fold"><summary>Code</summary><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://creativecommons.org/licenses/by-sa/4.0/">vdemlite</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Load V-Dem data for 2019</span></span>
+<span><span class="va">model_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://eteitelbaum.github.io/vdemlite/reference/fetchdem.html">fetchdem</a></span><span class="op">(</span></span>
+<span>  indicators <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span></span>
+<span>  <span class="st">"v2x_libdem"</span>, </span>
+<span>  <span class="st">"e_gdppc"</span>, </span>
+<span>  <span class="st">"v2cacamps"</span><span class="op">)</span>,</span>
+<span>  start_year <span class="op">=</span> <span class="fl">2019</span>, </span>
+<span>  end_year <span class="op">=</span> <span class="fl">2019</span></span>
+<span>  <span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/rename.html">rename</a></span><span class="op">(</span></span>
+<span>    country <span class="op">=</span> <span class="va">country_name</span>, </span>
+<span>    lib_dem <span class="op">=</span> <span class="va">v2x_libdem</span>, </span>
+<span>    wealth <span class="op">=</span> <span class="va">e_gdppc</span>,</span>
+<span>    polarization <span class="op">=</span> <span class="va">v2cacamps</span></span>
+<span>    <span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">lib_dem</span><span class="op">)</span>, <span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">wealth</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
 </div>
 </div>
 <section id="overview" class="level2"><h2 class="anchored" data-anchor-id="overview">Overview</h2>
@@ -2412,8 +2434,8 @@ Note
 <p>Let’s build intuition with a very simple example. Consider these three data points: - (1, 1) - (2, 2) - (3, 3)</p>
 <p>What line would you draw through these points? Let’s test different lines and see which has the lowest cost.</p>
 <div class="cell">
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Create our simple dataset</span></span>
-<span><span class="va">simple_data</span> <span class="op">&lt;-</span> <span class="fu">tibble</span><span class="op">(</span></span>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Create our simple dataset</span></span>
+<span><span class="va">simple_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span></span>
 <span>  x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span><span class="op">)</span>,</span>
 <span>  y <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span><span class="op">)</span></span>
 <span><span class="op">)</span></span>
@@ -2487,7 +2509,7 @@ Your Turn!!
 </div>
 <p>Check your answers below when you are finished:</p>
 <div class="cell">
-<details class="code-fold"><summary>Code</summary><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Calculate the sum of squared residuals for the line ŷ = 0 + 3x</span></span>
+<details class="code-fold"><summary>Code</summary><div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Calculate the sum of squared residuals for the line ŷ = 0 + 3x</span></span>
 <span><span class="co">#ssr1 &lt;- (1-3)^2 + (2-6)^2 + (3-9)^2</span></span>
 <span><span class="co">#ssr1</span></span>
 <span><span class="co"># Answer: 56</span></span>
@@ -2611,7 +2633,7 @@ shinyApp(ui = ui, server = server)</a></code></pre>
 <p>Let’s apply this same thinking to our democracy and GDP data. We’ll manually test a few different potential regression lines and calculate their costs.</p>
 <p>First, let’s fit the actual least squares line to remind ourselves what R found:</p>
 <div class="cell">
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Fit the model</span></span>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Fit the model</span></span>
 <span><span class="va">democracy_model</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">lib_dem</span> <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span><span class="op">(</span><span class="va">wealth</span><span class="op">)</span>, data <span class="op">=</span> <span class="va">model_data</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Show the summary</span></span>
@@ -2665,7 +2687,7 @@ F-statistic: 67.04 on 1 and 172 DF,  p-value: 5.754e-14</code></pre>
 <p>For simple linear regression, there’s actually a mathematical formula to find the optimal parameters directly (no searching required). But the key insight is that R is giving you the parameter values that make your predictions as accurate as possible, on average, across all your data points.</p>
 <p>This is why we can trust the output from <code><a href="https://rdrr.io/r/stats/lm.html">lm()</a></code> - it’s not arbitrary, it’s the result of a principled mathematical optimization.</p>
 <div class="cell">
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Our model from before</span></span>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Our model from before</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">democracy_model</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
@@ -2687,7 +2709,7 @@ Residual standard error: 0.2233 on 172 degrees of freedom
 Multiple R-squared:  0.2805,    Adjusted R-squared:  0.2763 
 F-statistic: 67.04 on 1 and 172 DF,  p-value: 5.754e-14</code></pre>
 </div>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># The SSR for this model</span></span>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># The SSR for this model</span></span>
 <span><span class="va">actual_ssr</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/residuals.html">residuals</a></span><span class="op">(</span><span class="va">democracy_model</span><span class="op">)</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"Sum of squared residuals for least squares line:"</span>, <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="va">actual_ssr</span>, <span class="fl">3</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -3152,7 +3174,7 @@ Your Turn!
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/dats1001-fall-2024/edit/main/modules/module-4.2.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/dats1001-fall-2024/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/eteitelbaum/dats1001-summer/edit/main/modules/module-4.2.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/eteitelbaum/dats1001-summer/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>This page is built with <a href="https://quarto.org/">Quarto</a>. 👷🛠️</p>
 </div>

@@ -6904,7 +6904,7 @@
     "href": "modules/module-4.2.html",
     "title": "Module 4.2",
     "section": "",
-    "text": "Prework\n\n\n\nRun this code chunk to load the necessary packages and data for this module:"
+    "text": "Prework\n\n\n\nRun this code chunk to load the necessary packages and data for this module:\n\nCodelibrary(tidyverse)\nlibrary(vdemlite)\n\n# Load V-Dem data for 2019\nmodel_data &lt;- fetchdem(\n  indicators = c(\n  \"v2x_libdem\", \n  \"e_gdppc\", \n  \"v2cacamps\"),\n  start_year = 2019, \n  end_year = 2019\n  ) |&gt;\n  rename(\n    country = country_name, \n    lib_dem = v2x_libdem, \n    wealth = e_gdppc,\n    polarization = v2cacamps\n    ) |&gt;\n  filter(!is.na(lib_dem), !is.na(wealth))"
   },
   {
     "objectID": "modules/module-4.2.html#overview",
