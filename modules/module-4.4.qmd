@@ -1,0 +1,332 @@
+---
+title: "Module 4.4"
+subtitle: "Multiple Linear Regression"
+format: 
+  html:
+    code-link: true
+highlight-style: atom-one
+execute: 
+  echo: true
+  message: false
+  warning: false
+---
+
+::: {.callout-tip}
+## Prework
+
+- Install the `vdemdata` package (`install.packages("vdemdata")`). Note that this is different from the `vdemlite` package that we have been using this semester. `vdemdata` is comprised of one function, `vdem`, which loads the entire V-Dem dataset into R. We are using `vdemdata` instead of `vdemlite` because it has some indicators that are not yet available in `vdemlite`.
+- Restart your R session by going to Session > Restart R in RStudio. The reason is that packages we used in the last model may result in conflicts in this one. 
+- Run the following code chunk to set up the data and packages required for this module. Then take a look to explore what is in the data frame.
+
+```{r}
+#| label: setup
+#| code-fold: true
+
+library(tidyverse)
+library(vdemdata)
+
+model_data <- vdem |>
+  filter(year == 2006) |> 
+  select(
+    country = country_name, 
+    lib_dem = v2x_libdem, 
+    wealth = e_gdppc, 
+    oil_rents = e_total_oil_income_pc,
+    polarization = v2cacamps, 
+    corruption = v2x_corr, 
+    judicial_review = v2jureview_ord, 
+    region = e_regionpol_6C, 
+    regime = v2x_regime) 
+
+#glimpse(model_data)
+```
+
+:::
+
+## Overview
+
+In our previous work with linear regression, we explored relationships between two continuous variables like the relationship between a country's wealth and its level of democracy. But the real world is more complex than simple two-variable relationships. Countries differ not just in wealth, but also in their political institutions, regional contexts, historical experiences, and cultural factors. How do we account for these multiple influences simultaneously?
+
+**Multiple linear regression** allows us to model these complex relationships by including multiple predictor variables in a single model. This powerful technique helps us understand not just whether variables are related, but how they relate to each other while controlling for other factors.
+
+Before we dive into the technical details, let's hear from Andrew Ng, one of the leading experts in machine learning and statistical modeling, as he explains the fundamentals of multiple linear regression:
+
+{{< video https://www.youtube.com/embed/jXg0vU0y1ak?si=3jwN_dGqSxb1kg5w title='Linear Regression with Multiple Variables'>}}
+
+By the end of this module, you'll be able to use categorical variables as predictors in linear regression models, interpret dummy variables and understand reference categories, build and interpret multiple regression models with both categorical and continuous predictors, understand the concept of "controlling for" other variables, and make informed decisions about which variables to include in your models.
+
+## Categorical Predictors in Regression
+
+So far, we have worked with continuous predictors like GDP per capita and democracy scores. But many important variables in political science are **categorical**, representing distinct groups or categories rather than numerical measurements. In our democracy research, examples include regime type (democratic, autocratic, hybrid), world region (Europe, Asia, Americas, Africa), institutional features such as the presence or absence of judicial review, and historical experiences like colonial history or a communist past.
+
+As we learned in a previous module, categorical variables can take different forms. **Nominal** variables have categories with no natural order, like world region. **Ordinal** variables have categories with a meaningful order, like education levels from primary through tertiary. **Binary** variables have just two categories, like the presence or absence of an institution.
+
+Let's have a quick look at our data for this module to see whether we can spot our categorical variables:
+
+```{r}
+#| label: data-explore
+
+glimpse(model_data)
+```
+
+Hopefully you can see that we have several categorical variables in our dataset: `judicial_review`, `region` and `regime`. `judicial_review` is a binary indicator (or "dummy") variable indicating whether a country has judicial review, `region` is a nominal variable representing the world region, and `regime` is an ordinal variable representing different types of political regimes. 
+
+### Factors in R
+
+When we include categorical variables in regression models, we need to convert them into a format that the model can understand. In R, this is done using **factors**. Factors are a special data type that tells R to treat the variable as categorical, even if the categories are represented by numbers.
+
+Right now, if we look at our data types, we can see that `judicial_review`, `region`, and `regime` are in the `dbl` (double) format, which means they are treated as continuous numeric variables. To use them as categorical predictors, we need to convert them to factors.
+
+Let's start with converting our binary `judicial_review` variable into a factor:
+
+```{r}
+#| label: convert-judicial-review
+
+model_data <- model_data |> 
+  mutate(judicial_review = factor(judicial_review, 
+                                   labels = c("No", "Yes")))
+
+glimpse(model_data)
+```
+
+Now `judicial_review` is a factor with two levels: "No" and "Yes". This tells R to treat it as a categorical variable in our regression models.
+
+### Linear Regression with a Categorical Predictor
+
+Now that we have our categorical variable set up, we can include it in a linear regression model. Our judicial review variable is based on the following question:
+
+>Do high courts (Supreme Court, Constitutional Court, etc) have the power to rule on whether laws or policies are constitutional/legal? (Yes or No)
+
+We can use this variable to explore whether countries with judicial review tend to have higher levels of democracy. Let's start by visualizing the relationship between judicial review and democracy levels. 
+
+```{r}
+#| label: judicial-review-plot
+#| code-fold: true
+
+ggplot(model_data, aes(x = wealth, y = lib_dem, 
+                       color=judicial_review)) +
+  geom_point() +
+  geom_smooth(method = "lm", se = FALSE) +
+  labs(x = "GPD per capita", y = "Liberal Democracy Index") +
+  theme_bw() +
+  scale_x_log10(labels = scales::dollar_format(suffix = "k")) +
+  scale_color_manual(name = "Judicial Review", 
+                     values = c("steelblue3", "coral"), 
+                     labels = c("No", "Yes")) 
+```
+
+Here we can see that at every level of wealth, countries with judicial review (in coral) tend to have higher democracy levels than those without (in blue). 
+
+We can more precisely quantify this relationship between judical review and democracy using a linear regression model. Let's fit a model predicting democracy (`lib_dem`) with judicial review (`judicial_review`):
+
+```{r}
+#| label: model-judicial-review
+
+judicial_model <- lm(lib_dem ~ judicial_review, data = model_data)
+
+summary(judicial_model)
+```
+The output shows us the coefficients for the model. The intercept represents the average democracy level for countries without judicial review (the **reference category**), and the coefficient for `judicial_reviewYes` represents the difference in average democracy level between countries with judicial review and those without.
+
+::: {.callout-important}
+## Understanding Reference Categories
+
+When we include a categorical variable in a regression model, R automatically creates dummy variables for each category except one. The category that does not get its own dummy variable is called the **reference category** or **baseline category**. In this example, the reference category is "No" for judicial review.
+
+When we interpret a coefficient for a categorical variable, we are comparing that category to the reference category. So the coefficient for `judicial_reviewYes` tells us how much higher the average democracy level is for countries with judicial review compared to those without.
+:::
+
+To better understand the model, let's have a look at the model equation:
+
+$$ \widehat{Democracy_{i}} = 0.18 + 0.27*JudicialReview(yes) $$
+
+Here the **slope** of the coefficient for $JudicialReview(yes)$ indicates that. countries with judicial review are expected, on average, to be 0.27 units more democratic on the liberal democracy index. The **intercept** of 0.18 represents the average democracy score for countries without judicial review.
+
+## Multiple Categories and Reference Groups
+
+Binary categorical variables are straightforward because they create a single dummy variable. But what happens when we have categorical variables with more than two categories, like world regions or regime types?
+
+When a categorical variable has multiple levels, R creates multiple dummy variables, specifically one for each category except for the reference category. For example, if we have a region variable with 6 categories, R will create 5 dummy variables: one for Latin America (1 if Latin America, 0 otherwise), one for MENA (1 if MENA, 0 otherwise), one for Sub-Saharan Africa (1 if SSA, 0 otherwise), one for Western Europe & North America (1 if WENA, 0 otherwise), and one for Asia & Pacific (1 if Asia, 0 otherwise). There is no dummy variable for Eastern Europe, which becomes our reference category.
+
+The reference category is crucial because all other categories are interpreted relative to this baseline. Without it, we'd have perfect **multicollinearity** where the dummy variables would be perfectly correlated with each other and the intercept, making the model impossible to estimate.
+
+Let's see this in action with world regions and democracy. Let's start by converting the region variable into a factor with labels for each region:
+
+```{r}
+#| label: convert-region
+
+model_data <- model_data |> 
+  mutate(region = factor(region, 
+                         labels = c("Eastern Europe", 
+                                    "Latin America", 
+                                    "MENA", 
+                                    "Sub-Saharan Africa", 
+                                    "Western Europe & North America", 
+                                    "Asia & Pacific")))
+
+glimpse(model_data)
+```
+
+Now our `region` variable is a factor with six levels, and Eastern Europe will be our reference category. We can check this by using the base R `levels()` function:
+
+```{r}
+# Check the levels of our region variable
+levels(model_data$region)
+```
+
+When we fit a regression model with this region variable, R will create dummy variables for each region except Eastern Europe:
+
+```{r}
+#| label: model-region
+
+region_model <- lm(lib_dem ~ region, data = model_data)
+
+summary(region_model)
+```
+
+The equation for this model looks like this:
+
+$$\hat{Democracy} = \beta_0 + \beta_1 \cdot LatinAmerica + \beta_2 \cdot MENA + \beta_3 \cdot SSAfrica + \beta_4 \cdot TheWest + \beta_5 \cdot Asia$$
+
+In this equation, $\beta_0$ (the intercept) represents the average democracy level in Eastern Europe (the reference category). Each of the other coefficients represents the difference in average democracy between that region and Eastern Europe. So $\beta_1$ is the difference in average democracy between Latin America and Eastern Europe, $\beta_2$ is the difference between MENA and Eastern Europe, and so on.
+
+Sometimes you may want a different reference category. The `relevel()` function allows you to change which category serves as the baseline. Let's change the reference category for our analysis to Sub-Saharan Africa (SSA):
+
+```{r}
+# Make Sub-Saharan Africa the reference category
+model_data <- model_data |> 
+  mutate(region_ssa_ref = relevel(region, ref = "Sub-Saharan Africa"))
+
+levels(model_data$region_ssa_ref)
+```
+
+Now when we fit the model again, Sub-Saharan Africa will be the reference category:
+
+```{r}
+#| label: model-region-ssa
+
+region_model_ssa <- lm(lib_dem ~ region_ssa_ref, data = model_data)
+
+summary(region_model_ssa)
+```
+
+::: {.callout-warning icon=false}
+## Your Turn!!
+
+ **Which regimes have more corruption?**
+ 
+- There is one more categorical variable in our dataset: `regime`, which represents different types of political regimes. Convert this variable into a factor.
+- Check the levels of the `regime` variable and identify which category will be the reference category (you can tell because it is the first level). It should be "Closed Autocracy." 
+- Now visualize the differences in corruption levels across regime types using a bar plot. Use `ggplot()` to create a bar plot with `regime` on the x-axis and average corruption (`corruption`) on the y-axis. 
+- Now fit a regression model predicting corruption (`corruption`) from regime type (`regime`). What does the model tell you about the relationship between regime type and corruption levels? How would you interpret the coefficients for each regime type (relative to the baseline category)?
+- Finally, siwtch the reference category to "Electoral Democracy" and refit the model. How do the coefficients change? 
+:::
+
+## Multiple Predictors
+
+Now we are ready to discuss models with multiple predictors. This is an important step because this is where the real power of multiple regression lies because it allows us to control for confounding variables, isolate the effect of specific predictors, build more accurate predictions, and test complex theories.
+
+The fundamental logic of multiple regression centers on asking: "What is the relationship between each predictor and the outcome, **holding all other predictors constant**?" Or sometimes you will hear this idea of holding everything else constant phrased as *ceteris paribus* which is Latin for "all things being equal."  
+
+### Adding Continuous Predictors
+
+Let's start by adding a second predictor (`polarization`) to the wealth and democracy model that we worked with in the last module. We've seen that polarization is negatively related to democracy. But what happens when we also include wealth? We can compare a model with just polarization to a model with both polarization and wealth:
+
+```{r}
+#| label: model-polarization-wealth
+
+m1_polarization_democracy <- lm(lib_dem ~ polarization + log(wealth), data = model_data)
+
+summary(m1_polarization_democracy)
+```
+
+The model equation with multiple predictors becomes:
+
+$$\hat{Democracy} = \beta_0 + \beta_1 \cdot Polarization + \beta_2 \cdot \log(Wealth)$$
+
+In this equation, $\beta_0$ represents the predicted democracy level when both polarization and log(wealth) equal zero. $\beta_1$ represents the change in democracy for a 1-unit increase in polarization, **holding wealth constant**. $\beta_2$ represents the change in democracy for a 1-unit increase in log(wealth), **holding polarization constant**. The key phrase is "holding other variables constant." 
+
+In this case, we see that polarization is associated with a .058 unit *deacrease* in the democracy score, while log(wealth) is associated with a .098 unit *increase* in the democracy score. We can tell the direction of the relationship (positive or negative) based on the sign of the coefficient. For polarization the sign is negative and for wealth it is positive.
+
+We can continue adding predictors to build even more complex models. Let's try adding oil rents per capita (`oil_rents`) to our model. Oil rents are the income a country receives from oil extraction and, as we have already noticed in our scatter plots, they can have significant effects on democracy.
+
+```{r}
+#| label: model-three-predictors
+
+m2_three_predictors  <- lm(lib_dem ~ polarization + log(wealth) + oil_rents, data = model_data)
+
+summary(m2_three_predictors)
+```
+
+The model equation now becomes:
+
+$$ \hat{Y_i} = a + b_1*Polarization + b_2*GDPpc + b_3*OilRents $$ 
+
+Where $Y_i$ is the predicted democracy level for country $i$, $a$ is the intercept, and $b_1$, $b_2$, and $b_3$ are the coefficients for polarization, log(wealth), and oil rents, respectively. Now, the coefficient for $OilRents$ tells us the predicted change in democracy for a 1-unit increase in oil rents, **holding polarization and log(wealth) constant**. Similarly, the coefficients for polarization and log(wealth) tell us the predicted change in democracy for a 1-unit increase in those variables, while controlling for the other two predictors. 
+
+::: {.callout-note}
+Notice how the coefficients might change when we add predictors. This happens for two main reasons. First, **confounding** occurs when our predictors are correlated with each other. If polarization and wealth are correlated, the simple regression coefficient for polarization includes both the direct effect of polarization and the indirect effect through its correlation with wealth. Second, when we **control for** other variables, the multiple regression coefficient for polarization shows only the direct effect, after removing the part that's explained by wealth.
+:::
+
+### Combining Variable Types
+
+It is also entirely possible to combine different types of predictors. We can include both categorical variables (like region or regime type) and continuous variables (like wealth or polarization) in the same model.
+
+When we build mixed models that include both types of predictors, the interpretation becomes even richer. Consider a model that includes all of the predictors we have discussed so far: polarization, wealth, oil rents and world regions:
+
+```{r}
+#| label: model-mixed
+
+m3_mixed_model <- lm(lib_dem ~ polarization + log(wealth) + oil_rents + region, data = model_data)
+
+summary(m3_mixed_model)
+```
+
+
+This model allows us to explore how democracy varies by region while controlling for wealth, polarization, and oil rents.The regional coefficients now represent regional differences in democracy among countries with the same wealth level, polarization and oil rents. This is a much more precise comparison than simply comparing regional averages, because it accounts for the fact that regions differ systematically in their wealth levels.
+
+### Making Predictions
+
+Once we have estimated a multiple regression model, we can use it to make predictions for new cases.  To see how this works, let’s return to our model that includes polarization, log-transformed wealth, oil rents, and region as predictors. Suppose we want to predict the level of democracy for a hypothetical country that has a polarization score of 0.5, a GDP per capita of $8.1k (which corresponds to a log wealth of 2.09), oil rents of 2, and is located in Latin America.
+
+The regression model gives us an equation that looks like this:
+
+$$
+\hat{Democracy} = a + b_1 \cdot Polarization + b_2 \cdot \log(Wealth) + b_3 \cdot OilRents + b_4 \cdot Region
+$$
+
+Each coefficient—$b_1$, $b_2$, $b_3$, and so on—represents the effect of a one-unit change in that variable, holding the others constant. To make a prediction, we simply plug in the values: 0.5 for polarization, 9 for log(wealth), 2 for oil rents, and the appropriate regional adjustment for Latin America. The result is the model’s best guess for the democracy score of a country with those characteristics.
+
+To do this, we can use R’s `predict()` function. This function takes a fitted model and a new set of predictor values and returns the predicted outcome:
+
+```{r}
+new_data <- tibble(
+  polarization = 0.5,
+  wealth = 8.1,  
+  oil_rents = 2,
+  region = "Latin America"
+)
+
+predict(m3_mixed_model, newdata = new_data)
+```
+
+So in other words, with these inputs, the model predicts a democracy score of approximately 0.46 for this hypothetical country. This prediction reflects what the model expects, given the relationships it has learned from the original data. It doesn’t guarantee what will happen in the real world, but it gives us a principled estimate based on the variables we think matter.
+
+::: {callout-note}
+If you're curious about uncertainty, `predict()` can also provide a confidence interval for the prediction by adding the argument `interval = "confidence"`.
+:::
+ 
+::: {.callout-warning icon=false}
+## Your Turn!!
+
+- Try running a multiple linear regression with corruption as the dependent variable. 
+- Think about what variables you would want to include as predictors. Use a mix of continuous and categorical variables, such as wealth, oil rents, region, and regime type.
+- Fit the model and interpret the coefficients. What do they tell you about the relationship between these predictors and corruption levels?
+- Now try making some predictions with your model. Create a new data frame with hypothetical values for each predictor (e.g., a country with a wealth of $10k, oil rents of 3, and located in Asia). Use the `predict()` function to estimate the corruption level for this hypothetical country.
+:::
+ 
+## Conclusion
+
+Multiple linear regression allows us to model complex relationships while controlling for multiple factors at once. In this module, you learned how to include both continuous and categorical predictors, interpret coefficients while holding other variables constant, and use regression to make informed predictions. You also saw how adding variables can change the interpretation of coefficients and why reference categories matter when working with categorical predictors.
+
+Key lessons include the importance of controlling for confounders, the role of theory in guiding model building, and the need for careful interpretation. More variables don’t always mean a better model—clarity and purpose matter more. In the next modules, we’ll explore interaction effects, check model assumptions, and distinguish between models built for explanation versus those built for prediction.

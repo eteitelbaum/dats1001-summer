@@ -1,0 +1,48 @@
+---
+title: "module-4.5"
+format: html
+---
+
+## Model Building and Selection
+
+With multiple predictors available, how do we decide which variables to include in our model? This is one of the most important questions in applied regression analysis.
+
+When building models, we face a fundamental tradeoff known as the **bias-variance tradeoff**. More predictors can reduce bias by including important variables, but they can also increase variance by overfitting to the specific sample we're using. Conversely, fewer predictors can reduce variance but increase bias by omitting important variables that truly affect the outcome.
+
+Several strategies can guide variable selection. Theory-driven selection involves including variables based on theoretical understanding of the phenomenon we're studying. Statistical criteria use measures like AIC, BIC, or adjusted R-squared to balance model fit with complexity. Cross-validation tests model performance on held-out data to assess how well the model generalizes. Domain expertise involves consulting with subject matter experts who understand the substantive area.
+
+When building multiple regression models, we must also consider several important issues. **Multicollinearity** occurs when predictors are highly correlated with each other, making it difficult to separate their individual effects. **Overfitting** happens when the model fits the training data too closely and doesn't generalize well to new data. More complex models are also harder to interpret, and more predictors require larger sample sizes to provide reliable estimates.
+
+### Your Turn! Build Your Own Model
+
+For this final exercise, you'll design and test your own theory about what drives democracy, corruption, or another outcome of interest using the V-Dem data.
+
+**Your tasks:**
+
+1. **Choose your research question:** What would you like to understand about democracy, governance, or political outcomes? Some ideas include what predicts corruption levels, what drives human rights protection, what factors explain economic inequality, or what predicts civil society strength.
+
+2. **Develop your theory:** What variables do you think are important? Why? Write a brief paragraph explaining your theoretical expectations.
+
+3. **Select your variables:** Choose 3-5 predictor variables from the V-Dem dataset. Include a mix of at least one categorical variable, at least one continuous variable, and variables that test your theory.
+
+4. **Explore your data:** Create visualizations showing the relationships between your predictors and outcome.
+
+5. **Build your model:** Fit a multiple regression model testing your theory.
+
+6. **Interpret your results:** Which predictors are significant? Do the results match your expectations? What do the coefficients tell you substantively?
+
+7. **Assess model quality:** What's the R-squared? Are there any concerning patterns in the residuals? How confident are you in your conclusions?
+
+8. **Refine your model:** Based on your initial results, would you add or remove any variables? Try fitting an alternative specification.
+
+Available variables in the V-Dem dataset include corruption index (`v2x_corr`), freedom of expression (`v2x_freexp`), rule of law (`v2xcl_rol`), civil liberties (`v2x_civlib`), GDP per capita (`e_migdppc`), population (`e_pop`), party ban (`v2psbars`), opposition autonomy (`v2psoppaut`), and many more.
+
+```r
+# Explore available variables
+glimpse(vdem)
+
+# Your model building code here
+# Start by exploring the data and developing your theory
+```
+
+**Take 25 minutes to develop, test, and refine your own model. This is your chance to be the researcher!**
