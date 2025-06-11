@@ -195,9 +195,9 @@ Sometimes you may want a different reference category. The `relevel()` function 
 ```{r}
 # Make Sub-Saharan Africa the reference category
 model_data <- model_data |> 
-  mutate(region_ssa_ref = relevel(region, ref = "Sub-Saharan Africa"))
+  mutate(region2 = relevel(region, ref = "Sub-Saharan Africa"))
 
-levels(model_data$region_ssa_ref)
+levels(model_data$region2)
 ```
 
 Now when we fit the model again, Sub-Saharan Africa will be the reference category:
@@ -205,7 +205,7 @@ Now when we fit the model again, Sub-Saharan Africa will be the reference catego
 ```{r}
 #| label: model-region-ssa
 
-region_model_ssa <- lm(lib_dem ~ region_ssa_ref, data = model_data)
+region_model_ssa <- lm(lib_dem ~ region2, data = model_data)
 
 summary(region_model_ssa)
 ```
