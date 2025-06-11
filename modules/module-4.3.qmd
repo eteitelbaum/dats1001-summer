@@ -14,7 +14,9 @@ execute:
 ::: {.callout-tip}
 ## Prework
 
-Run this code chunk to load the necessary packages and data for this module:
+- Look over the documentation for the [broom](https://broom.tidyverse.org/) package, which we will use to compute regression diagnostics.
+- Look over the documentation for the [datawizard](https://easystats.github.io/datawizard/) package, which we will use to winsorize our data).
+- Run this code chunk to load the necessary packages and data for this module:
 
 ```{r}
 #| label: setup
@@ -55,6 +57,9 @@ We will explore a number of key strategies for dealing with outliers once identi
 Let's start by revisiting our democracy and GDP analysis from Module 4.1. Remember this plot?
 
 ```{r}
+#| label: scatter-plot
+#| echo: false
+
 library(plotly)
 
 # Create custom tooltip
