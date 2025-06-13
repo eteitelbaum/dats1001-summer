@@ -123,7 +123,13 @@ These advanced techniques are important to be aware of even though they exceed t
 
 ## Automated Stepwise Selection
 
-Automated selection procedures can systematically implement variable selection strategies. This section demonstrates these approaches using data from the Varieties of Democracy (V-Dem) project to predict liberal democracy scores across countries.
+Automated selection procedures can systematically implement variable selection strategies. This section demonstrates these approaches using data from the Varieties of Democracy (V-Dem) project to predict liberal democracy scores across countries. We will use the `olsrr` package, which provides a suite of functions for stepwise regression and variable selection.
+
+::: {.callout-note}
+For stepwise selection to work, you must have no missing data in your dataset; the `olsrr` package will not work with missing data. If you look back at the setup code chunk, you will noticed that we have removed any rows with missing values in the `model_data` dataset using the `drop_na()` function from the `tidyr` package in the last line of the code.
+
+Also, `olssr` cannot handle transformed variables, so we have to manually log-transform the `wealth` variable in the setup code chunk. 
+:::
 
 The analysis begins with estimation of a full model incorporating all available predictors:
 

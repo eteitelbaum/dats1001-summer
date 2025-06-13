@@ -639,7 +639,21 @@ Modern Approaches to Model Selection
 </div>
 </div>
 </section></section><section id="automated-stepwise-selection" class="level2"><h2 class="anchored" data-anchor-id="automated-stepwise-selection">Automated Stepwise Selection</h2>
-<p>Automated selection procedures can systematically implement variable selection strategies. This section demonstrates these approaches using data from the Varieties of Democracy (V-Dem) project to predict liberal democracy scores across countries.</p>
+<p>Automated selection procedures can systematically implement variable selection strategies. This section demonstrates these approaches using data from the Varieties of Democracy (V-Dem) project to predict liberal democracy scores across countries. We will use the <code>olsrr</code> package, which provides a suite of functions for stepwise regression and variable selection.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>For stepwise selection to work, you must have no missing data in your dataset; the <code>olsrr</code> package will not work with missing data. If you look back at the setup code chunk, you will noticed that we have removed any rows with missing values in the <code>model_data</code> dataset using the <code><a href="https://tidyr.tidyverse.org/reference/drop_na.html">drop_na()</a></code> function from the <code>tidyr</code> package in the last line of the code.</p>
+<p>Also, <code>olssr</code> cannot handle transformed variables, so we have to manually log-transform the <code>wealth</code> variable in the setup code chunk.</p>
+</div>
+</div>
 <p>The analysis begins with estimation of a full model incorporating all available predictors:</p>
 <div class="cell">
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">full_model</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">lib_dem</span> <span class="op">~</span> <span class="va">log_wealth</span> <span class="op">+</span> <span class="va">polarization</span> <span class="op">+</span> <span class="va">women_empowerment</span> <span class="op">+</span> </span>
@@ -950,7 +964,7 @@ Your Turn!!
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -959,7 +973,7 @@ Solution
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="cell">
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Bidirectional selection using AIC</span></span>
