@@ -15,7 +15,7 @@ execute:
 ## Prework
 
 - Install the `performance` package: `install.packages("performance")` and read the [documentation](https://easystats.github.io/performance/)
-- Install the `GGally` package: `install.packages("GGall")` and read the [documentation](https://ggobi.github.io/ggally/index.html)
+- Install the `GGally` package: `install.packages("GGally")` and read the [documentation](https://ggobi.github.io/ggally/index.html)
 - Run the following code to get set up for this module:
 
 ```{r}
@@ -67,7 +67,7 @@ You've learned to fit linear regression models, interpret coefficients, handle o
 
 The key insight is that we should examine our data before fitting models and then validate our assumptions after fitting them. This two-stage approach—exploratory data analysis (EDA) followed by residual diagnostics—helps ensure our models are both appropriate and reliable. Think of EDA as reconnaissance before battle and residual diagnostics as quality control after production.
 
-In this module, we'll explore comprehensive EDA techniques using the `GGally` package, then learn to check the four key assumptions underlying linear regression. These assumptions are often remembered by the acronym LINE, which we'll explore in detail. We'll continue using the democracy and development data from previous modules to illustrate these diagnostic techniques and remedial strategies.
+In this module, we'll explore comprehensive EDA techniques using the `performance` and `GGally` packages, then learn to check the four key assumptions underlying linear regression. These assumptions are often remembered by the acronym LINE, which we'll explore in detail. We'll continue using the democracy and development data from previous modules to illustrate these diagnostic techniques and remedial strategies.
 
 By the end of this module, you'll understand how to conduct thorough exploratory data analysis to spot potential modeling issues before they become problems. You'll master the four key assumptions of linear regression and know how to check them systematically. Most importantly, you'll develop the judgment to know when assumption violations are serious enough to require action and when they can be acknowledged but not necessarily fixed.
 
