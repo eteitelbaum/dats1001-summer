@@ -249,7 +249,7 @@ The **scale-location plot** helps us assess whether the variance of residuals re
 
 ```{r}
 #| label: scale-location-plot
-#| echo: false
+#| code-fold: true
 
 # Scale-location plot
 scale_location_plot <- model_data_diag |>
