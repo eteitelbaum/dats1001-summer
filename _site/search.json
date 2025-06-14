@@ -6381,7 +6381,7 @@
     "href": "modules/module-4.6.html",
     "title": "Module 4.6",
     "section": "",
-    "text": "Prework\n\n\n\n\nInstall the performance package: install.packages(\"performance\") and read the documentation\n\nInstall the GGally package: install.packages(\"GGally\") and read the documentation\n\nRun the following code to get set up for this module:\n\n\nCodelibrary(tidyverse)\nlibrary(vdemlite)\n\n# Load V-Dem data for 2019\nmodel_data &lt;- fetchdem(\n  indicators = c(\n  \"v2x_libdem\", \n  \"e_gdppc\", \n  \"v2cacamps\",\n  \"v2x_gender\",\n  \"v2x_corr\",\n  \"e_regionpol_6C\"),\n  start_year = 2006, \n  end_year = 2006\n  ) |&gt;\n  rename(\n    country = country_name, \n    lib_dem = v2x_libdem, \n    wealth = e_gdppc,\n    polarization = v2cacamps,\n    women_empowerment = v2x_gender,\n    corruption = v2x_corr,\n    region = e_regionpol_6C\n    ) |&gt;\n  mutate(\n    region = factor(\n    region,\n    labels = c(\n      \"Eastern Europe\", \n      \"Latin America\", \n      \"MENA\", \n      \"SS Africa\", \n      \"The West\", \n      \"Asia & Pacific\"))\n    ) \n\n#glimpse(model_data)\nThis single command creates a rich matrix of information. The diagonal shows the distribution of each variable, helping us assess whether variables are normally distributed, skewed, or have unusual patterns. The upper triangle displays correlation coefficients, giving us a quick sense of which variables are most strongly related. The lower triangle presents scatterplots showing the actual relationships between variables, where we can spot non-linear patterns, outliers, or changes in variance.\nWhen examining the ggpairs() output, we’re looking for several key patterns. Linearity is crucial since linear regression assumes straight-line relationships, so we watch for curves or bends in the scatterplots. Outliers appear as points far from the main pattern and can dramatically influence our regression results. Skewness in the diagonal plots might suggest the need for transformations. Heteroscedasticity refers to changing variance across the range of predictors, which often manifests as a funnel shape in scatterplots. Finally, strong correlations between predictors might signal multicollinearity problems we’ll need to address.\nThe correlation coefficients in the upper triangle deserve special attention. Values close to +1 or -1 indicate strong linear relationships, while values near 0 suggest weak relationships. As a rule of thumb, we are on the lookout for correlations that are stronger than 0.7 or weaker than -0.7, as these suggest potentially important relationships that we should explore further. Note, however, correlation coefficients can be misleading if relationships are non-linear, which is why we also examine the scatterplots below the diagonal."
+    "text": "Prework\n\n\n\n\nInstall the performance package: install.packages(\"performance\") and read the documentation\n\nInstall the GGally package: install.packages(\"GGally\") and read the documentation\n\nRun the following code to get set up for this module:\n\n\nCodelibrary(tidyverse)\nlibrary(vdemlite)\n\n# Load V-Dem data for 2019\nmodel_data &lt;- fetchdem(\n  indicators = c(\n  \"v2x_libdem\", \n  \"e_gdppc\", \n  \"v2cacamps\",\n  \"v2x_gender\",\n  \"v2x_corr\",\n  \"e_regionpol_6C\"),\n  start_year = 2006, \n  end_year = 2006\n  ) |&gt;\n  rename(\n    country = country_name, \n    lib_dem = v2x_libdem, \n    wealth = e_gdppc,\n    polarization = v2cacamps,\n    women_empowerment = v2x_gender,\n    corruption = v2x_corr,\n    region = e_regionpol_6C\n    ) |&gt;\n  mutate(\n    region = factor(\n    region,\n    labels = c(\n      \"Eastern Europe\", \n      \"Latin America\", \n      \"MENA\", \n      \"SS Africa\", \n      \"The West\", \n      \"Asia & Pacific\"))\n    ) \n\n#glimpse(model_data)"
   },
   {
     "objectID": "modules/module-4.6.html#overview",
@@ -6395,7 +6395,7 @@
     "href": "modules/module-4.6.html#exploratory-data-analysis-eda",
     "title": "Module 4.6",
     "section": "Exploratory Data Analysis (EDA)",
-    "text": "Exploratory Data Analysis (EDA)\nBefore fitting any regression model, we should thoroughly explore our data. This exploratory phase can reveal potential problems and guide our modeling strategy. The GGally package provides powerful tools for comprehensive exploratory data analysis (EDA) that integrate seamlessly with our tidyverse workflow, allowing us to examine multiple relationships simultaneously rather than creating dozens of individual plots.\nThe ggpairs() function creates a matrix of plots showing relationships between all pairs of variables. This gives us a comprehensive overview in a single visualization, something that would otherwise require creating many individual plots. The beauty of this approach is that it reveals patterns we might miss when examining variables one at a time.\n\nlibrary(GGally)\n\nmodel_data |&gt;\n  select(lib_dem:corruption) |&gt; \n  ggpairs()"
+    "text": "Exploratory Data Analysis (EDA)\nBefore fitting any regression model, we should thoroughly explore our data. This exploratory phase can reveal potential problems and guide our modeling strategy. The GGally package provides powerful tools for comprehensive exploratory data analysis (EDA) that integrate seamlessly with our tidyverse workflow, allowing us to examine multiple relationships simultaneously rather than creating dozens of individual plots.\nThe ggpairs() function creates a matrix of plots showing relationships between all pairs of variables. This gives us a comprehensive overview in a single visualization, something that would otherwise require creating many individual plots. The beauty of this approach is that it reveals patterns we might miss when examining variables one at a time.\n\nlibrary(GGally)\n\nmodel_data |&gt;\n  select(lib_dem:corruption) |&gt; \n  ggpairs()\n\n\n\n\n\n\n\n\n\n\n\n\n\nUnderstanding the Code\n\n\n\nggpairs() fits right into our Tidyverse workflow. Here we are selecting the continuous variables we want to examine from our model_data (dataset, which includes )lib_dem, wealth, polarization, corruption, and region) with the : operator and then piping those variables into ggpairs().\n\n\nThis single command creates a rich matrix of information. The diagonal shows the distribution of each variable, helping us assess whether variables are normally distributed, skewed, or have unusual patterns. The upper triangle displays correlation coefficients, giving us a quick sense of which variables are most strongly related. The lower triangle presents scatterplots showing the actual relationships between variables, where we can spot non-linear patterns, outliers, or changes in variance.\nWhen examining the ggpairs() output, we’re looking for several key patterns. Linearity is crucial since linear regression assumes straight-line relationships, so we watch for curves or bends in the scatterplots. Outliers appear as points far from the main pattern and can dramatically influence our regression results. Skewness in the diagonal plots might suggest the need for transformations. Heteroscedasticity refers to changing variance across the range of predictors, which often manifests as a funnel shape in scatterplots. Finally, strong correlations between predictors might signal multicollinearity problems we’ll need to address.\nThe correlation coefficients in the upper triangle deserve special attention. Values close to +1 or -1 indicate strong linear relationships, while values near 0 suggest weak relationships. As a rule of thumb, we are on the lookout for correlations that are stronger than 0.7 or weaker than -0.7, as these suggest potentially important relationships that we should explore further. Note, however, correlation coefficients can be misleading if relationships are non-linear, which is why we also examine the scatterplots below the diagonal."
   },
   {
     "objectID": "modules/module-4.6.html#understanding-the-code",
@@ -6480,5 +6480,126 @@
     "title": "Module 4.6",
     "section": "Automated Diagnostics",
     "text": "Automated Diagnostics\nNow that we know what the basic residual plots are and how to interpret them, we can lighten our load a little bit by using a package that automates the diagnostic process. The performance package provides a convenient check_model() function that generates a comprehensive set of diagnostic plots and statistics for our fitted model. This function produces the same types of plots we created manually and also includes additional diagnostics like multicollinearity checks (VIF values) and checks for influential observations.\nLet’s try running check_model() on our democracy model to see what it tells us about our assumptions:\n\nlibrary(performance)\n\ncheck_model(democracy_model)\n\n\n\n\n\n\n\nHere we we see the same issues highlighted in terms of linearity, normality, and equal variance that we identified manually. The residuals versus fitted plot shows a clear non-linear pattern, the Q-Q plot indicates slight deviations from normality, and the scale-location plot suggests heteroscedasticity. The VIF values indicate that multicollinearity is not a concern in this model, as all values are below the common threshold of 5 and there are no influential observations.\nVariable-level Diagnostics with GGally\nNow that we know we have these issues, we can use the GGally package to create variable-level diagnostic plots that help us understand how each predictor contributes to these patterns. The ggnostic() function provides a comprehensive set of diagnostic plots for each predictor in our model, allowing us to see how they relate to the residuals and fitted values.\n\nggnostic(democracy_model)\n\n\n\n\n\n\n\nThe ggnostic() output helps us identify the specific source of the issues that the check_model() diagnostics revealed concerning patterns of non-linearity and heteroscedasticity in our overall model. Examining the first two rows of the ggnostic() plots, we can see that the women empowerment variable stands out with a distinctly wiggly blue line in the residuals plot and changing variance patterns in the scale-location plot, while other predictors show relatively flat, well-behaved relationships. This suggests that women empowerment is contributing to the assumption violations we observed in the overall model diagnostics."
+  },
+  {
+    "objectID": "assignments/coding-assignment-4.html",
+    "href": "assignments/coding-assignment-4.html",
+    "title": "Homework 4",
+    "section": "",
+    "text": "In this homework assignment, we are once again going to be exploring the correlates of democracy with V-Dem. But this time we are going to do so in the context of regression analysis.",
+    "crumbs": [
+      "Coding Asignments",
+      "Assignment 4"
+    ]
+  },
+  {
+    "objectID": "assignments/coding-assignment-4.html#step-1-load-the-data-10-pts.",
+    "href": "assignments/coding-assignment-4.html#step-1-load-the-data-10-pts.",
+    "title": "Homework 4",
+    "section": "Step 1: Load the data (10 pts.)",
+    "text": "Step 1: Load the data (10 pts.)\nUsing fetchdem from vdemlite, select a continuous measure of democracy like v2x_polyarchy, and at least three variables that you believe correlate with democracy for all countries and one year of your choosing. Try to select at least one predictor that is different from the ones that we used in the modules.",
+    "crumbs": [
+      "Coding Asignments",
+      "Assignment 4"
+    ]
+  },
+  {
+    "objectID": "assignments/coding-assignment-4.html#step-2-hypotheses-10-pts.",
+    "href": "assignments/coding-assignment-4.html#step-2-hypotheses-10-pts.",
+    "title": "Homework 4",
+    "section": "Step 2: Hypotheses (10 pts.)",
+    "text": "Step 2: Hypotheses (10 pts.)\nTalk about why you chose the indicators you did and why you think your predictors should be related to democracy.",
+    "crumbs": [
+      "Coding Asignments",
+      "Assignment 4"
+    ]
+  },
+  {
+    "objectID": "assignments/coding-assignment-4.html#step-3-perform-exploratory-data-analysis-eda-10-pts.",
+    "href": "assignments/coding-assignment-4.html#step-3-perform-exploratory-data-analysis-eda-10-pts.",
+    "title": "Homework 4",
+    "section": "Step 3: Perform Exploratory Data Analysis (EDA) (10 pts.)",
+    "text": "Step 3: Perform Exploratory Data Analysis (EDA) (10 pts.)\nUse the ggpairs() function from GGally to create a pairwise scatterplot matrix of your selected continuous measure of democracy and your predictors. Do the plots alert you to any potential issues with the analysis like skewness, outliers, multicollinearity or potential violations of regression assumptions?",
+    "crumbs": [
+      "Coding Asignments",
+      "Assignment 4"
+    ]
+  },
+  {
+    "objectID": "assignments/coding-assignment-4.html#step-4-run-a-bivariate-linear-regression-model-10-pts.",
+    "href": "assignments/coding-assignment-4.html#step-4-run-a-bivariate-linear-regression-model-10-pts.",
+    "title": "Homework 4",
+    "section": "Step 4: Run a bivariate linear regression model (10 pts.)",
+    "text": "Step 4: Run a bivariate linear regression model (10 pts.)\nRun a bivariate linear regression model with your selected continuous measure of democracy as the dependent variable and one of your selected predictors as the independent variable. Use the lm() function to run the model and the summary() function to view the results.",
+    "crumbs": [
+      "Coding Asignments",
+      "Assignment 4"
+    ]
+  },
+  {
+    "objectID": "assignments/coding-assignment-4.html#step-5-interpret-the-results-10-pts.",
+    "href": "assignments/coding-assignment-4.html#step-5-interpret-the-results-10-pts.",
+    "title": "Homework 4",
+    "section": "Step 5: Interpret the results (10 pts.)",
+    "text": "Step 5: Interpret the results (10 pts.)\nInterpret the results of the regression model. What is the coefficient on the predictor variable? What does this coefficient tell you about the relationship between the predictor and democracy? Is the relationship stastically significant? How about the constant (intercept term)?",
+    "crumbs": [
+      "Coding Asignments",
+      "Assignment 4"
+    ]
+  },
+  {
+    "objectID": "assignments/coding-assignment-4.html#step-6-run-a-multiple-linear-regression-model-10-pts.",
+    "href": "assignments/coding-assignment-4.html#step-6-run-a-multiple-linear-regression-model-10-pts.",
+    "title": "Homework 4",
+    "section": "Step 6: Run a Multiple Linear Regression Model (10 pts.)",
+    "text": "Step 6: Run a Multiple Linear Regression Model (10 pts.)\nRun a multiple linear regression model with your selected continous measure of democracy as the dependent variable and at least three predictors as the independent variables. Use the lm() function to run the model and the summary() function to view the results.",
+    "crumbs": [
+      "Coding Asignments",
+      "Assignment 4"
+    ]
+  },
+  {
+    "objectID": "assignments/coding-assignment-4.html#step-7-interpret-the-results-of-your-multiple-regression-10-pts.",
+    "href": "assignments/coding-assignment-4.html#step-7-interpret-the-results-of-your-multiple-regression-10-pts.",
+    "title": "Homework 4",
+    "section": "Step 7: Interpret the Results of Your Multiple Regression (10 pts.)",
+    "text": "Step 7: Interpret the Results of Your Multiple Regression (10 pts.)\nInterpret the results of the multiple regression model. What is the coefficient on each of the predictor variables? What does this coefficient tell you about the relationship between the predictors and democracy? Are the relationships statistically significant? How would you interpret the constant (intercept term)?",
+    "crumbs": [
+      "Coding Asignments",
+      "Assignment 4"
+    ]
+  },
+  {
+    "objectID": "assignments/coding-assignment-4.html#step-8-check-your-model-assumptions-10-pts.",
+    "href": "assignments/coding-assignment-4.html#step-8-check-your-model-assumptions-10-pts.",
+    "title": "Homework 4",
+    "section": "Step 8: Check Your Model Assumptions (10 pts.)",
+    "text": "Step 8: Check Your Model Assumptions (10 pts.)\nUse the check_model() function from the performance package to check the assumptions of your regression model. Are there any violations of the assumptions that become apparent with this analysis? If so, how might you address them?",
+    "crumbs": [
+      "Coding Asignments",
+      "Assignment 4"
+    ]
+  },
+  {
+    "objectID": "assignments/coding-assignment-4.html#step-9-10-pts.",
+    "href": "assignments/coding-assignment-4.html#step-9-10-pts.",
+    "title": "Homework 4",
+    "section": "Step 9: (10 pts.)",
+    "text": "Step 9: (10 pts.)\nConduct any necessary transformations to your data to address any violations of the assumptions you identified in Step 8. This could include transforming variables, removing outliers, or addressing multicollinearity.",
+    "crumbs": [
+      "Coding Asignments",
+      "Assignment 4"
+    ]
+  },
+  {
+    "objectID": "assignments/coding-assignment-4.html#step-10-10-pts.",
+    "href": "assignments/coding-assignment-4.html#step-10-10-pts.",
+    "title": "Homework 4",
+    "section": "Step 10: (10 pts.)",
+    "text": "Step 10: (10 pts.)\nUse the the olsrr package to conduct a stepwise regression analysis to arrive at your final model of democracy. You are free to choose which methods you want to employ, including whether you want to use adjusted R-squared or AIC and whether you prefer forward, backward, or both stepwise regression.\n\n\n\n\n\n\nSubmission Instructions\n\n\n\nAfter rendering your document, export your project folder and submit it on Blackboard. You will find the link to the Coding Assignment one submission portal under the Assignments link. There is a screen capture video in the Discord server that will help you understand how to do this.",
+    "crumbs": [
+      "Coding Asignments",
+      "Assignment 4"
+    ]
   }
 ]

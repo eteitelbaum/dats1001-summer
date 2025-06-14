@@ -1,0 +1,63 @@
+---
+title: "Homework 4"
+subtitle: "Analyzing Democracy"
+author: "Your Name"
+format: html
+---
+
+In this homework assignment, we are once again going to be exploring the correlates of democracy with V-Dem. But this time we are going to do so in the context of regression analysis. 
+
+## Step 1: Load the data (10 pts.)
+
+Using `fetchdem` from `vdemlite`, select a continuous measure of democracy like `v2x_polyarchy`, and at least three variables that you believe correlate with democracy for all countries and one year of your choosing. Try to select at least one predictor that is different from the ones that we used in the modules. 
+
+## Step 2: Hypotheses (10 pts.)
+
+Talk about why you chose the indicators you did and why you think your predictors should be related to democracy. 
+
+## Step 3: Perform Exploratory Data Analysis (EDA) (10 pts.)
+
+Use the `ggpairs()` function from `GGally` to create a pairwise scatterplot matrix of your selected continuous measure of democracy and your predictors. Do the plots alert you to any potential issues with the analysis like skewness, outliers, multicollinearity or potential violations of regression assumptions?
+
+## Step 4: Run a bivariate linear regression model (10 pts.)
+
+Run a bivariate linear regression model with your selected continuous measure of democracy as the dependent variable and one of your selected predictors as the independent variable. Use the `lm()` function to run the model and the `summary()` function to view the results. 
+
+```{r}
+
+```
+
+## Step 5: Interpret the results (10 pts.)
+
+Interpret the results of the regression model. What is the coefficient on the predictor variable? What does this coefficient tell you about the relationship between the predictor and democracy? Is the relationship stastically significant? How about the constant (intercept term)?
+
+## Step 6: Run a Multiple Linear Regression Model (10 pts.)
+
+Run a multiple linear regression model with your selected continous measure of democracy as the dependent variable and at least three predictors as the independent variables. Use the `lm()` function to run the model and the `summary()` function to view the results. 
+
+```{r}
+
+```
+
+## Step 7: Interpret the Results of Your Multiple Regression (10 pts.)
+
+Interpret the results of the multiple regression model. What is the coefficient on each of the predictor variables? What does this coefficient tell you about the relationship between the predictors and democracy? Are the relationships statistically significant? How would you interpret the constant (intercept term)?
+
+## Step 8: Check Your Model Assumptions (10 pts.)
+
+Use the `check_model()` function from the `performance` package to check the assumptions of your regression model. Are there any violations of the assumptions that become apparent with this analysis? If so, how might you address them?
+
+## Step 9:  (10 pts.)
+
+Conduct any necessary transformations to your data to address any violations of the assumptions you identified in Step 8. This could include transforming variables, removing outliers, or addressing multicollinearity.
+
+## Step 10:  (10 pts.)
+
+Use the the `olsrr` package to conduct a stepwise regression analysis to arrive at your final model of democracy. You are free to choose which methods you want to employ, including whether you want to use adjusted R-squared or AIC and whether you prefer forward, backward, or both stepwise regression.
+
+::: {.callout-important}
+## Submission Instructions
+
+After rendering your document, export your project folder and submit it on Blackboard. You will find the link to the Coding Assignment one submission portal under the Assignments link. There is a screen capture video in the Discord server that will help you understand how to do this.
+:::
+

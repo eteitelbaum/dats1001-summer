@@ -89,7 +89,7 @@ model_data |>
   ggpairs()
 ```
 
-::: {callout-important}
+::: {.callout-important}
 ## Understanding the Code
 
 `ggpairs()` fits right into our Tidyverse workflow. Here we are selecting the continuous variables we want to examine from our `model_data` (dataset, which includes )`lib_dem`, `wealth`, `polarization`, `corruption`, and `region`) with the `:` operator and then piping those variables into `ggpairs()`.
