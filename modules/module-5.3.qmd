@@ -1,0 +1,175 @@
+---
+title: "Module 5.3"
+subtitle: "Interpreting Results"
+format: 
+  html:
+    code-link: true
+highlight-style: atom-one
+execute: 
+  echo: true
+  message: false
+  warning: false
+---
+
+::: {.callout-tip}
+## Prework
+
+- Install the `marginaleffects` package if you haven't already (`install.packages("marginaleffects")`) and revew the [documentation](https://marginaleffects.com/)
+- Install the `tidymodels` package if you haven't already (`install.packages("tidymodels")`)
+- Familiarize yourself with the [broom package](https://broom.tidymodels.org/) for cleaning up model output
+:::
+
+## Overview
+
+Building on the mathematical foundations we established in Module 5.2, this module focuses on the practical interpretation of logistic regression results. While we now understand how the logit function and sigmoid transformation work mathematically, the real challenge lies in translating model output into meaningful insights about our research questions.
+
+In this module, we will explore three complementary approaches to interpreting bivariate logistic regression results. We will learn to move beyond the raw log-odds coefficients to understand odds ratios, which provide more intuitive measures of effect size. We will discover how to calculate predicted probabilities both manually and using specialized R packages, enabling us to make concrete predictions about specific scenarios. Finally, we will synthesize these approaches to conduct complete analyses that effectively communicate our findings.
+
+By the end of this module, you will be able to interpret odds ratios and explain their practical meaning, calculate predicted probabilities for specific cases both by hand and using R tools, and integrate multiple interpretation approaches to tell a complete analytical story. We will continue using our conflict onset example to maintain continuity with previous modules, focusing exclusively on bivariate relationships to solidify these foundational interpretation skills before moving to more complex models.
+
+## What Do the Logistic Regression Coefficients Mean?
+
+When we run a logistic regression model, the coefficients we obtain are expressed on the log-odds scale. This mathematical necessity allows us to model probabilities using linear relationships, but it creates a significant challenge for interpretation. Consider a coefficient of -0.33 for log GDP per capita in predicting conflict onset. While we can determine that this negative coefficient suggests that higher GDP per capita is associated with lower probability of conflict onset, the magnitude of -0.33 is difficult to interpret in practical terms.
+
+This interpretive challenge arises because most of us do not think naturally in terms of log-odds. When we want to understand the relationship between economic development and conflict risk, we are more interested in questions like "How much does doubling GDP per capita change the odds of conflict?" or "What is the predicted probability of conflict for a country with $8,000 GDP per capita?" These are the types of questions that policymakers, researchers, and citizens actually care about, yet they require us to transform our model results into more intuitive metrics.
+
+Let's begin with the bivariate logistic regression model from Module 5.2 that examines the relationship between GDP per capita and conflict onset. This model provides our foundation for exploring different interpretation approaches:
+
+```{r}
+#| label: setup_model
+
+library(peacesciencer)
+library(dplyr)
+library(broom)
+
+# Recreate the conflict dataset from Module 5.2
+conflict_df <- create_stateyears(system = 'gw') |>
+  filter(year %in% c(1946:1999)) |>
+  add_ucdp_acd(type=c("intrastate"), only_wars = FALSE) |>
+  add_democracy() |>
+  add_creg_fractionalization() |>
+  add_sdp_gdp() |>
+  add_rugged_terrain()
+
+# Fit the bivariate logistic regression model
+conflict_model <- glm(ucdponset ~ wbgdppc2011est,
+                      data = conflict_df,
+                      family = "binomial")
+
+# Display the model summary
+summary(conflict_model)
+```
+
+::: {.callout-note}
+Be sure to read the documentation for `create_stateyears()` in `peacesciencer` before interpreting your results. The GDP variables in this dataset are in constant 2011 US dollars, and the model uses the natural logarithm of GDP per capita. 
+:::
+
+The model equation can be written as:
+
+$$\log\left(\frac{p}{1-p}\right) = -1.16 - 0.33 \times \text{log GDP per capita}$$
+
+While the negative coefficient tells us the direction of the relationship, we need additional tools to understand the practical magnitude and significance of this effect.
+
+## Understanding and Interpreting Odds Ratios
+
+{{< video https://youtu.be/oIR8YOSXudM?si=aEALe2ifW71lsJJG title='Understanding Odds Ratios' >}}
+
+One common approach to making logistic regression coefficients more interpretable involves converting them to odds ratios. An odds ratio provides a standardized way to express how much the odds of an outcome change with a one-unit increase in a predictor variable. 
+
+To convert logistic regression coefficients to odds ratios, we simply exponentiate them. This mathematical transformation takes advantage of the logarithmic properties that underlie the logit function. When we exponentiate a log-odds coefficient, we obtain the multiplicative factor by which the odds change for each one-unit increase in the predictor variable.
+
+For our conflict model, we can calculate the odds ratio for GDP per capita:
+
+```{r}
+#| label: odds_ratios
+
+# Extract coefficients and convert to odds ratios
+coefficients <- coef(conflict_model)
+odds_ratios <- exp(coefficients)
+
+# Display both coefficients and odds ratios
+results_table <- data.frame(
+  Variable = names(coefficients),
+  Coefficient = round(coefficients, 3),
+  Odds_Ratio = round(odds_ratios, 3)
+)
+
+results_table
+```
+
+The odds ratio for log GDP per capita is approximately 0.718. This means that for each one-unit increase in log GDP per capita, the odds of conflict onset are multiplied by 0.718. Since this value is less than 1, it indicates that higher GDP per capita is associated with decreased odds of conflict onset.
+
+To interpret this more intuitively, we can say that the odds of conflict onset decrease by approximately 28.2% (calculated as (1 - 0.718) × 100%) for each one-unit increase in log GDP per capita. This interpretation is much more meaningful than simply stating that the log-odds decrease by 0.33 units.
+
+Odds ratios follow consistent interpretation rules that make them particularly useful for communication. When the odds ratio equals 1, there is no association between the predictor and outcome. When the odds ratio is greater than 1, increases in the predictor are associated with increased odds of the outcome occurring. When the odds ratio is less than 1, increases in the predictor are associated with decreased odds of the outcome occurring. The further the odds ratio is from 1 in either direction, the stronger the association.
+
+::: {.callout-warning icon=false}
+## Your Turn!
+
+Now it's your turn to practice interpreting odds ratios with a different predictor variable. Using the `conflict_df` dataset, run a bivariate logistic regression model with `ucdponset` as the outcome variable and choose a different predictor from the dataset. Some options include:
+
+- `v2x_polyarchy` (the V-Dem measure of democracy)
+- `ethfrac` (ethnic fractionalization)
+- `relfrac` (religious fractionalization)
+- `wbpopest` (population estimate)
+
+After fitting your model, calculate the odds ratio for your chosen predictor and interpret the results. What does the odds ratio tell you about the relationship between your predictor and conflict onset? How would you explain this relationship to someone unfamiliar with statistical analysis?
+:::
+
+## Calculating Predicted Probabilities and Synthesis
+
+While odds ratios help us understand relative effects, predicted probabilities allow us to make concrete predictions about specific scenarios. Let's work through calculating predicted probabilities manually, then use automated tools to examine multiple scenarios and synthesize our complete understanding.
+
+For a country with log GDP per capita of 9 (which corresponds to approximately $8,100 in actual GDP per capita, since e^9 ≈ 8,103), we can calculate the predicted probability step by step. Starting with our model equation:
+
+$\log\left(\frac{p}{1-p}\right) = -1.16 - 0.33 \times 9 = -4.13$
+
+Converting to probability using the sigmoid function:
+
+```{r}
+#| label: manual_calculation
+
+linear_predictor <- -1.16 + (-0.33 * 9)
+probability <- 1 / (1 + exp(-linear_predictor))
+print(paste("Probability for log GDP = 9:", round(probability, 4)))
+```
+
+This manual approach becomes cumbersome for multiple scenarios, so we can use `marginaleffects` to examine how conflict probability changes across different GDP levels:
+
+```{r}
+#| label: marginaleffects_synthesis
+
+library(marginaleffects)
+
+# Calculate predictions for different log GDP levels
+prediction_data <- data.frame(wbgdppc2011est = c(6, 7, 8, 9, 10))
+predictions <- predictions(conflict_model, newdata = prediction_data)
+
+# Display results
+tidy(predictions) |>
+  select(wbgdppc2011est, estimate, conf.low, conf.high) |>
+  mutate(
+    Log_GDP = wbgdppc2011est,
+    GDP_Level = paste("~$", round(exp(wbgdppc2011est)), sep = ""),
+    Probability = round(estimate, 4)
+  ) |>
+  select(Log_GDP, GDP_Level, Probability)
+```
+
+These results powerfully complement our odds ratio interpretation. The odds ratio of 0.718 told us that when log GDP per capita increases one unit, the odds of conflict decrease by 28.2%. The predicted probabilities show us the practical impact across different economic development levels: conflict probability is much higher for countries with lower log GDP values and decreases substantially as economic development increases. Together, these interpretations provide both standardized effect measures and concrete insights about how economic development relates to political stability.
+
+::: {.callout-warning icon=false}
+## Your Turn!
+
+Using the model you fitted in the previous exercise, calculate predicted probabilities for three different levels of your chosen predictor variable. You can work through the manual calculation or use `marginaleffects`. 
+
+Consider how your predicted probabilities complement your odds ratio interpretation. What story do they tell together about the relationship between your predictor and conflict onset?
+:::
+
+## Summary and Looking Ahead
+
+This module has equipped you with essential tools for interpreting logistic regression results through three complementary approaches. We learned to convert log-odds coefficients to odds ratios, providing intuitive measures of relative effects that can be easily communicated to diverse audiences. We mastered the calculation of predicted probabilities both manually and using automated tools, enabling concrete predictions about specific scenarios. Most importantly, we discovered how to integrate these approaches into comprehensive analyses that effectively communicate our findings.
+
+The bivariate focus of this module has allowed us to develop these interpretation skills thoroughly using clear, unambiguous examples. The conflict onset case study demonstrates how economic development relates to political stability, but the interpretation techniques apply broadly across disciplines and research questions.
+
+In our next module, we will extend these interpretation skills to multiple predictor models, where we will encounter additional complexities such as controlling for confounding variables and modeling interaction effects. We will also explore how the presence of multiple predictors affects our interpretation of individual effects and learn to construct more nuanced analytical narratives. The solid foundation in bivariate interpretation that we have built here will prove invaluable as we tackle these more sophisticated modeling challenges.

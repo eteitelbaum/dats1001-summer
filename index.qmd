@@ -56,11 +56,11 @@ will go live as the semester progresses.
 |  | `r advdate(fri,3)` | Model selection | [📖](https://openintro-ims.netlify.app/model-mlr#sec-model-selection "IMS, chap. 8.4") | [📺](https://youtu.be/4pgaVtVBVjk?si=Wq93tjXuVj42s4Yf "Principles of Model Selection") | [📒](modules/module-4.5.qmd "Model Selection") |  |  |
 |  | `r advdate(sat,3)` | Checking model assumptions | [📖](https://openintro-ims.netlify.app/explore-numerical#sec-transforming-data "IMS, chap. 5.7") [📖](https://openintro-ims.netlify.app/inf-model-slr#sec-tech-cond-linmod "IMS, chap. 24.6") | [📺](video%20https://youtu.be/iMdtTCX2Q70?si=5qhftnJZ0jYRhmdB "Checking Model Assumptions with Residual Plots") | [📒](modules/module-4.6.qmd "Checking Model Assumptions") | 📘 [🧮](assignments/coding-assignment4.qmd "Coding Assignment 4") | `r advdate(sun,4)` |
 | 5 | `r advdate(mon,4)` | Why logistic regression? |  | [📺](https://youtu.be/p-ltr1C7u2o?si=TLb3y75pSaJ067ue "Classification: Motivation") | [📒](modules/module-5.1.qmd "Why Logistic Regression?") |  |  |
-|  | `r advdate(tues,4)` | The logistic regression model | [📖](https://openintro-ims.netlify.app/model-logistic "IMS, chap. 9") | [📺](https://youtu.be/xuTiAW0OR40?si=sUoIr5pzHwHEpazO) | [📒](modules/module-5.2.qmd "The Logistic Regression Model") |  |  |
-|  | `r advdate(wed,4)` | Interpreting results |  | 📺 | 📒 | 📘 | `r advdate(wed,4)` |
-|  | `r advdate(thur,4)` | Prediction and overfitting |  |  | 📒 |  |  |
-|  | `r advdate(fri,4)` | Model evaluation, feature engineering |  |  | 📒 |  |  |
-|  | `r advdate(sat,4)` | Multiple predictors, interactions and diagnostics | 📖 |  | 📒 | 📘 🧮 | `r advdate(sun,5)` |
+|  | `r advdate(tues,4)` | The logistic regression model | [📖](https://openintro-ims.netlify.app/model-logistic "IMS, chap. 9.1 and 9.2") | [📺](https://youtu.be/xuTiAW0OR40?si=sUoIr5pzHwHEpazO) | [📒](modules/module-5.2.qmd "The Logistic Regression Model") |  |  |
+|  | `r advdate(wed,4)` | Interpreting results |  | [📺](https://youtu.be/oIR8YOSXudM?si=aEALe2ifW71lsJJG "Odds Ratios in Logistic Regression") | [📒](modules/module-5.3.qmd "Interpreting Results") | 📘 | `r advdate(wed,4)` |
+|  | `r advdate(thur,4)` | Multiple predictors & interactions | [📖](https://openintro-ims.netlify.app/model-logistic#logistic-model-with-many-variables "IMS, chap. 9.3 and 9.4") |  | 📒 |  |  |
+|  | `r advdate(fri,4)` | Precition, overfitting and cross-validation |  |  | 📒 |  |  |
+|  | `r advdate(sat,4)` | Model evaluation & feature engineering |  |  | 📒 | 📘 🧮 | `r advdate(sun,5)` |
 | 6 | `r advdate(mon,5)` | Final Project |  |  | 📒 | [✍️](project/project-assignment-1.qmd "Project assignment 1") | `r advdate(mon,5)` |
 |  | `r advdate(tues,5)` | Final Project |  |  | 📒 |  |  |
 |  | `r advdate(wed,5)` | Final Project |  |  |  | [✍️](project/project-assignment-2.qmd "Project assignment 2") | `r advdate(wed,5)` |
