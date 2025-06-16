@@ -1,0 +1,6 @@
+---
+title: "module-5.2"
+format: html
+---
+
+{{< video https://youtu.be/xuTiAW0OR40?si=EAX9wQ6OsZL6wMwn title = 'Logistic Regression'>}}

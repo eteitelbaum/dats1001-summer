@@ -1,0 +1,130 @@
+---
+title: "Module 5.1"
+subtitle: "Why Logistic Regression?"
+format: 
+  html:
+    code-link: true
+highlight-style: atom-one
+execute: 
+  echo: true
+  message: false
+  warning: false
+bibliography: references.bib
+---
+
+## Overview
+
+So far in our data science journey, we've focused on modeling continuous numerical outcomes like income, temperature, or test scores. But many of the most interesting questions in research involve outcomes that are binary: yes or no, success or failure, presence or absence.
+
+In this module, we will explore why we need a different modeling approach when our outcome variable is binary rather than continuous. We will use the compelling example of civil war onset to understand the conceptual foundations that motivate logistic regression, setting the stage for the technical details that we will cover in upcoming modules. By the end of this module, you'll be able to distinguish between continuous and binary outcome variables, understand why linear regression is inappropriate for binary outcomes, grasp the concept of Bernoulli trials in the context of real research, appreciate why probabilities must be constrained between 0 and 1, and recognize when a different modeling approach is needed.
+
+{{< video https://youtu.be/p-ltr1C7u2o?si=TLb3y75pSaJ067ue title='Classificaton: Motivation' >}}
+
+## From Continuous to Binary Outcomes
+
+Throughout our exploration of linear regression, we've been working with continuous numerical outcomes. These are variables that can theoretically take on any value within a range, like someone's height (5.8 feet, 5.83 feet, 5.834 feet), annual income ($45,000, $45,231, $45,231.67), or a test score that could be anywhere from 0 to 100.
+
+But many research questions center on outcomes that are fundamentally different: **binary outcomes**. These variables have exactly two possible values, often coded as yes/no, success/failure, present/absent, or simply 1/0. Consider research questions like whether a patient recovers from treatment, whether a voter turns out for an election, whether an email gets classified as spam, or whether a student graduates within four years. Each of these involves a binary outcome where there are only two possibilities for each observation.
+
+Let's examine an example from political science research that perfectly illustrates why we need different modeling approaches for binary outcomes. The research question is straightforward: did a civil war begin in a given country in a given year?
+
+This question was central to groundbreaking research by @fearon2003, who wanted to understand what factors make civil war more or less likely to begin. For any country in any year, there are only two possibilities: either a civil war began (coded as 1, or "success" in statistical terms) or no civil war began (coded as 0, or "failure"). Note that calling conflict onset a "success" might feel strange since we're certainly not celebrating war! In statistics, "success" simply refers to the outcome we're modeling, regardless of whether it's socially desirable.
+
+Researchers hypothesized that various factors might influence the probability of conflict onset, including economic wealth (GDP per capita), level of democracy, mountainous terrain (which might facilitate insurgency), ethnic diversity, population size, and previous conflict history. The key insight is that we want to model how these factors influence the *probability* that conflict will begin, not predict an exact numerical outcome.
+
+::: {.callout-warning icon=false}
+## Your Turn!!
+
+Think about research questions in your field of interest. For each scenario below, identify whether the outcome variable is continuous or binary:
+
+1. Predicting a student's final exam score based on study hours
+2. Determining whether a loan application will be approved
+3. Forecasting tomorrow's temperature
+4. Classifying whether a tumor is malignant or benign
+5. Estimating household spending on groceries
+6. Predicting whether a new product launch will be successful
+7. Modeling changes in unemployment rate over time
+
+After categorizing each one, think about:
+- What makes binary outcomes fundamentally different from continuous ones?
+- Can you think of examples from your own research interests or career field?
+:::
+
+## The Problem with Linear Regression for Binary Data
+
+Now comes the crucial question: why can't we just use regular linear regression for binary outcomes?
+
+Think about what linear regression does. It creates a straight line that predicts numerical values based on our predictors. For our conflict example, a linear model might look like:
+
+$$\text{Conflict Onset} = \beta_0 + \beta_1(\text{GDP per capita}) + \beta_2(\text{Democracy level}) + \beta_3(\text{Terrain roughness}) + \ldots$$
+
+But there is a fundamental problem here. Linear regression can predict any value along a continuous range. It might predict that a country has a "-0.3" probability of conflict onset, or a "1.7" probability. 
+
+What does it mean for something to have a 170% chance of happening? Or a negative probability? These predictions are mathematically nonsensical because probabilities must be constrained between 0 and 1 (or 0% and 100%).
+
+Another problem with applying linear regression to a binary outcome is that it can shift the decision boundary in unstable ways. Linear regression implicitly uses the point where the predicted value crosses 0.5 as the cutoff for classifying an observation as “success” or “failure.” 
+
+Let's assume one predictor has an extreme value — for example, Nepal’s very mountainous terrain — this can pull the fitted line up or down, shifting the decision boundary along the predictor axis. As a result, cases that should be classified as high risk for conflict might now be on the wrong side of the boundary and be misclassified as low risk. Logistic regression addresses this problem by directly modeling the probability and keeping the decision boundary consistent and interpretable.
+
+## Bernoulli Trials and Probability Modeling
+
+To properly model binary outcomes, we should think about each observation as a **Bernoulli trial**. A Bernoulli trial is a random experiment with exactly two possible outcomes (success and failure), where the probability of success remains constant for that specific trial. A classic example is a fair coin flip: heads (success) or tails (failure), with a fixed 50% chance of success.
+
+In our conflict onset example, each country-year combination represents a separate Bernoulli trial:
+
+- Afghanistan in 2001: One trial with its own probability of conflict onset
+- Switzerland in 2001: A different trial with its own (likely much lower) probability  
+- Afghanistan in 2002: Yet another trial with its own probability
+
+The key insight is that while each trial has only two possible outcomes, the probability of "success" can vary between trials based on the specific circumstances (the predictor variables) of that country in that year.
+
+Mathematically, we can express this as:
+
+$$y_i \sim \text{Bernoulli}(p_i)$$
+
+This notation means that each outcome $y_i$ follows a Bernoulli distribution with its own probability $p_i$.
+
+::: {.callout-warning icon=false}
+## Your Turn!!
+
+Let's deepen our understanding of how the conflict onset example works as Bernoulli trials:
+
+**Part A: Different Trials**
+
+Consider these three scenarios:
+1. Afghanistan in 2000 (before major international intervention)
+2. Afghanistan in 2010 (during NATO presence)  
+3. Denmark in 2010
+
+Why might each of these represent different Bernoulli trials with different probabilities of conflict onset? What factors might make the probability higher or lower in each case?
+
+**Part B: Same Trial, Different Factors**
+
+For a single country-year (say, Syria in 2010), brainstorm factors that might influence the probability of conflict onset. How might these factors work together to increase or decrease the overall probability?
+:::
+
+## Generalized Linear Models
+
+Our exploration reveals that we need a modeling framework that can handle binary outcome variables appropriately, ensure predicted probabilities stay between 0 and 1, allow different observations to have different success probabilities, and incorporate multiple predictor variables in a systematic way.
+
+This is where **Generalized Linear Models (GLMs)** come in. GLMs provide a suitable framework for extending regression concepts beyond continuous outcomes. Rather than forcing binary data into an inappropriate linear framework, GLMs use mathematical transformations that naturally respect the constraints of probability.
+
+All GLMs share three key characteristics:
+
+1. **A probability distribution** that describes how the outcome variable is generated (for binary outcomes, this is the Bernoulli distribution)
+
+2. **A linear model** that combines predictor variables:
+   
+   $$\eta = \beta_0 + \beta_1 X_1 + \beta_2 X_2 + \ldots + \beta_k X_k$$
+
+3. **A link function** that connects the linear model to the parameter of the outcome distribution (ensuring probabilities stay between 0 and 1)
+
+A link function is a mathematical function that connects the linear model (which can range from −∞−∞ to +∞+∞) to the parameter of the outcome distribution (such as the probability of success) in a way that respects its natural constraints. For binary outcomes, the link function ensures that the linear combination of predictors maps to a probability between 0 and 1.
+
+Logistic regression is one of the most common and useful examples of a GLM. It uses a special mathematical transformation (the logistic function) that takes any real number from the linear model and converts it to a probability between 0 and 1.
+
+## Summary and Looking Ahead
+
+In this module, we have explored why binary outcomes require a different modeling approach than continuous variables. We saw that many important research questions involve binary rather than continuous outcomes, and that linear regression fails for binary data because it can produce impossible probability predictions. We learned to think of each observation as a Bernoulli trial with its own success probability and to recognize that we need a modeling framework that respects probability constraints while incorporating multiple predictors.
+
+Logistic regression, as part of the GLM family, provides exactly this framework. It allows us to model how various factors influence the probability of binary outcomes while ensuring our predictions remain mathematically sensible. In our next modules, we will dive into the mathematical details of how logistic regression works, learn to fit and interpret these models, and practice making predictions with real data. 
