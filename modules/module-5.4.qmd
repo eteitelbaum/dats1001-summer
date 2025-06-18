@@ -144,7 +144,7 @@ conditional_effects_terrain <- slopes(terrain_interaction_model,
     conf.low:odds.ratio
   )
 
-glimpse(conditional_effects_terrain)
+conditional_effects_terrain
 ```
 
 ::: {.callout-important}

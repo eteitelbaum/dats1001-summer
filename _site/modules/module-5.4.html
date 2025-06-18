@@ -720,17 +720,13 @@ Number of Fisher Scoring iterations: 7</code></pre>
 <span>    <span class="va">conf.low</span><span class="op">:</span><span class="va">odds.ratio</span></span>
 <span>  <span class="op">)</span></span>
 <span></span>
-<span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">conditional_effects_terrain</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="va">conditional_effects_terrain</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Rows: 2
-Columns: 7
-$ term       &lt;chr&gt; "newlmtnest", "newlmtnest"
-$ democracy  &lt;dbl&gt; 0, 1
-$ estimate   &lt;dbl&gt; 0.1865150, -0.2284954
-$ std.error  &lt;dbl&gt; 0.0790891, 0.1887842
-$ conf.low   &lt;dbl&gt; 0.03150321, -0.59850561
-$ conf.high  &lt;dbl&gt; 0.3415268, 0.1415149
-$ odds.ratio &lt;dbl&gt; 1.205043, 0.795730</code></pre>
+<pre><code># A tibble: 2 × 7
+  term       democracy estimate std.error conf.low conf.high odds.ratio
+  &lt;chr&gt;          &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;      &lt;dbl&gt;
+1 newlmtnest         0    0.187    0.0791   0.0315     0.342      1.21 
+2 newlmtnest         1   -0.228    0.189   -0.599      0.142      0.796</code></pre>
 </div>
 </div>
 <div class="callout callout-style-default callout-important callout-titled">
