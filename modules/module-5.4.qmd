@@ -227,7 +227,7 @@ terrain_plot <- plot_slopes(terrain_interaction_model,
                            variables = "newlmtnest", 
                            condition = "democracy") +
   labs(title = "Effect of Terrain on Conflict Risk by Democracy Level",
-       subtitle = "Terrain increases conflict risk more in non-democratic countries",
+       subtitle = "Terrain increases conflict only in non-democratic countries",
        x = "Democracy Level", 
        y = "Marginal Effect of Terrain") +
   theme_minimal()
@@ -235,7 +235,7 @@ terrain_plot <- plot_slopes(terrain_interaction_model,
 terrain_plot
 ```
 
-Here we see how the marginal effect (the increase in conflict risk per unit increase in terrain) varies by democracy level. The plot clearly shows that mountainous terrain increases conflict risk in non-democratic countries more than in democratic ones. The confidence intervals also illustrate the uncertainty around these estimates, which is important when considering the reliability of our results.
+Here we see how the marginal effect (the increase in conflict risk per unit increase in terrain) varies by democracy level. The plot clearly shows that mountainous terrain increases conflict risk in non-democratic countries but decrease the risk of conflict onset in democratic ones. The confidence intervals also illustrate the uncertainty around these estimates, which is important when considering the reliability of our results.
 
 Now let's visualize the wealth interaction:
 

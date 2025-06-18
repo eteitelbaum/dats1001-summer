@@ -839,7 +839,7 @@ Number of Fisher Scoring iterations: 8</code></pre>
 <span>                           variables <span class="op">=</span> <span class="st">"newlmtnest"</span>, </span>
 <span>                           condition <span class="op">=</span> <span class="st">"democracy"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Effect of Terrain on Conflict Risk by Democracy Level"</span>,</span>
-<span>       subtitle <span class="op">=</span> <span class="st">"Terrain increases conflict risk more in non-democratic countries"</span>,</span>
+<span>       subtitle <span class="op">=</span> <span class="st">"Terrain increases conflict only in non-democratic countries"</span>,</span>
 <span>       x <span class="op">=</span> <span class="st">"Democracy Level"</span>, </span>
 <span>       y <span class="op">=</span> <span class="st">"Marginal Effect of Terrain"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span><span class="op">)</span></span>
@@ -852,7 +852,7 @@ Number of Fisher Scoring iterations: 8</code></pre>
 </div>
 </div>
 </div>
-<p>Here we see how the marginal effect (the increase in conflict risk per unit increase in terrain) varies by democracy level. The plot clearly shows that mountainous terrain increases conflict risk in non-democratic countries more than in democratic ones. The confidence intervals also illustrate the uncertainty around these estimates, which is important when considering the reliability of our results.</p>
+<p>Here we see how the marginal effect (the increase in conflict risk per unit increase in terrain) varies by democracy level. The plot clearly shows that mountainous terrain increases conflict risk in non-democratic countries but decrease the risk of conflict onset in democratic ones. The confidence intervals also illustrate the uncertainty around these estimates, which is important when considering the reliability of our results.</p>
 <p>Now let’s visualize the wealth interaction:</p>
 <div class="cell">
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">wealth_plot</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://marginaleffects.com/man/r/plot_slopes.html">plot_slopes</a></span><span class="op">(</span><span class="va">wealth_interaction_model</span>,</span>
