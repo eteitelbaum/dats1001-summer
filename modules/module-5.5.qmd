@@ -223,9 +223,14 @@ interaction_predictions <- plot_predictions(
     subtitle = "Predicted probabilities by terrain roughness and political system",
     x = "Mountainous Terrain",
     y = "Predicted Probability of Conflict Onset",
-    color = "Political System"
+    color = "Political System",
+    fill = "Democracy"
   ) +
   scale_color_manual(
+    values = c("0" = "red", "1" = "blue"),
+    labels = c("0" = "Non-Democratic", "1" = "Democratic")
+  ) +
+  scale_fill_manual(
     values = c("0" = "red", "1" = "blue"),
     labels = c("0" = "Non-Democratic", "1" = "Democratic")
   ) +
