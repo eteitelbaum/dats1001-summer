@@ -6972,5 +6972,75 @@
     "title": "Module 5.6",
     "section": "Summary",
     "text": "Summary\nTwenty years after Fearon and Laitin’s influential study, we would approach the same research question with greater appreciation for the complexities of panel data and causal identification. While their core insights about the importance of state capacity, terrain, and economic development remain influential, modern methods reveal greater uncertainty around specific estimates and highlight the challenges of making causal claims from observational data.\nThis evolution reflects the broader maturation of empirical social science. As our methods become more sophisticated, we become more humble about what we can conclude from correlational evidence—but also more creative about finding ways to identify causal relationships in complex social phenomena."
+  },
+  {
+    "objectID": "assignments/coding-assignment-5.html",
+    "href": "assignments/coding-assignment-5.html",
+    "title": "Homework 5",
+    "section": "",
+    "text": "In this homework assignment, we are going to be exploring the hugely influential article by Fearon and Laitin (2003) on civil war onset. Click here to view the original article and see Table 1 for the model that we will be replicating. See the file named fl_data_model1.csv in the assignment folder for the data we will be using for this exercise."
+  },
+  {
+    "objectID": "assignments/coding-assignment-5.html#load-the-data",
+    "href": "assignments/coding-assignment-5.html#load-the-data",
+    "title": "Homework 5",
+    "section": "Load the Data",
+    "text": "Load the Data\nLoad the data which is included in the “fl_data_model1.csv” file in the assignment folder.\nThe unit of analysis is the country-year.\n\nOutcome Variable\n\nonset - Whether a country-year experienced civil war onset (1 = yes, 0 = no)\n\n\n\nMain Predictors\n\nwarl- Whether had a war ongoing in the previous year\ngdpenl - GDP per capita (not logged)\nlpopl1 - The log of population lagged by one year\nlmtnest - The log of the percentage of country that has mountainous terrain\nncontig - An indicator for noncontiguous state\nOil - An indicator for whether the country is an oil exporter\nnwstate - An indicator for whether a country was created in the last two years\ninstab - An indicator for whether the Polity score changes by 3 or more in a given year\npolity2l - The Polity2 democracy score\nethfrac - Ethno-linguistic fractionalization index\nrelfrac - Religious fractionalization index"
+  },
+  {
+    "objectID": "assignments/coding-assignment-5.html#replicate-model-1-from-fearon-and-laitin-20",
+    "href": "assignments/coding-assignment-5.html#replicate-model-1-from-fearon-and-laitin-20",
+    "title": "Homework 5",
+    "section": "Replicate Model 1 from Fearon and Laitin (20%)",
+    "text": "Replicate Model 1 from Fearon and Laitin (20%)\nRun the first model (Model 1) from Table 1 of the Fearon and Laitin article. Use summary() to view the results. Interpret the coefficient on the Oil exporter variable. How much does being an oil exporter increase the risk of conflict onset?"
+  },
+  {
+    "objectID": "assignments/coding-assignment-5.html#display-the-results-as-a-coefficient-plot-20",
+    "href": "assignments/coding-assignment-5.html#display-the-results-as-a-coefficient-plot-20",
+    "title": "Homework 5",
+    "section": "Display the Results as a Coefficient Plot (20%)",
+    "text": "Display the Results as a Coefficient Plot (20%)\nNow use the modelplot() function from the modelsummary package to display the results as a coefficient plot.\nWhen making your coefficient plot, start with the coefficient map. You might want to write it in the order that you’d like to see the coefficients displayed and then reverse it so that you can use the same map for your regression table below.\nBe sure to load the modelsummary and ggplot2 packages before you get started with the rest of your code.\nInterpret the results. Which predictor has largest positive effect on the probability of conflict onset? Which one has the strongest negative effect?"
+  },
+  {
+    "objectID": "assignments/coding-assignment-5.html#create-a-regression-table-20",
+    "href": "assignments/coding-assignment-5.html#create-a-regression-table-20",
+    "title": "Homework 5",
+    "section": "Create a Regression Table (20%)",
+    "text": "Create a Regression Table (20%)\nDo stepwise regressions with different categories of regressors based on the same model to see how things change as you put different sets of variables into the model. Show the results of your models in separate columns in a regression table.\nStep one: Run your glm() models and store them as objects. Here you might want to summarize them with summary() or tidy() from the broom package as you go along.\nStep two: Save your models as a list and set up your caption and reference note.\nStep three: Call modelsummary to display the table as a gt object.\nStep four: Briefly interpret your results. What changes as you add different categories of variables to the model? Do any results become significant that were not significant before?"
+  },
+  {
+    "objectID": "assignments/coding-assignment-5.html#show-odds-ratios-and-interpret-20",
+    "href": "assignments/coding-assignment-5.html#show-odds-ratios-and-interpret-20",
+    "title": "Homework 5",
+    "section": "Show Odds Ratios and Interpret (20%)",
+    "text": "Show Odds Ratios and Interpret (20%)\nNow make the table display odds ratios instead of coefficients and interpret one or two of the coefficients that you find interesting. (Note: you have already talked about Oil, so choose a different one for this part.)"
+  },
+  {
+    "objectID": "assignments/coding-assignment-5.html#display-predicted-probabilities-20",
+    "href": "assignments/coding-assignment-5.html#display-predicted-probabilities-20",
+    "title": "Homework 5",
+    "section": "Display Predicted Probabilities (20%)",
+    "text": "Display Predicted Probabilities (20%)\nNow display predicted probabilities for a handful of country-years. Filter the data for a particular year and the country cases that you are interested in. Find the predicted probabilities using the precitions() function from the marginaleffects package. Interpret the results. Why do some of the countries you chose have a higher probability of conflict onset than the others?"
+  },
+  {
+    "objectID": "assignments/coding-assignment-5.html#extra-credit-4-pts",
+    "href": "assignments/coding-assignment-5.html#extra-credit-4-pts",
+    "title": "Homework 5",
+    "section": "Extra Credit (4 pts)",
+    "text": "Extra Credit (4 pts)\nFor some extra credit, try testing and interpreting an interaction effect. This can be between any two of the predictors in your model where you believe that one predictor might condition or influence the effect of another predictor on the outcome variable. For example, perhaps whether a country is an oil exporter could condition the effect of GDP or democracy.\n\n\n\n\n\n\nSubmission Instructions\n\n\n\nAfter rendering your document, export your project folder and submit it on Blackboard. You will find the link to the Coding Assignment one submission portal under the Assignments link. There is a screen capture video in the Discord server that will help you understand how to do this."
+  },
+  {
+    "objectID": "assignments/coding-assignment-5.html#extra-credit-1-2-pts",
+    "href": "assignments/coding-assignment-5.html#extra-credit-1-2-pts",
+    "title": "Homework 5",
+    "section": "Extra Credit 1 (2 pts)",
+    "text": "Extra Credit 1 (2 pts)\nTry testing and interpreting an interaction effect. This can be between any two of the predictors in your model where you believe that one predictor might condition or influence the effect of another predictor on the outcome variable. For example, perhaps whether a country is an oil exporter could condition the effect of GDP or democracy."
+  },
+  {
+    "objectID": "assignments/coding-assignment-5.html#extra-credit-2-2-pts",
+    "href": "assignments/coding-assignment-5.html#extra-credit-2-2-pts",
+    "title": "Homework 5",
+    "section": "Extra Credit 2 (2 pts)",
+    "text": "Extra Credit 2 (2 pts)\nApply one of the advanced regression techniques that we learned about in the last model to modernize the F&L model like clustering standard errors, using random effects, introducing an appropriate “treatment” variable, or implementing a robustness check. What is the justification for the technique you chose? How does it change the results of the model?\n\n\n\n\n\n\nSubmission Instructions\n\n\n\nAfter rendering your document, export your project folder and submit it on Blackboard. You will find the link to the Coding Assignment one submission portal under the Assignments link. There is a screen capture video in the Discord server that will help you understand how to do this."
   }
 ]
