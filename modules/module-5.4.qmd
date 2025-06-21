@@ -115,17 +115,22 @@ $$\text{logit}(p) = \beta_0 + \beta_1(\text{democracy}) + \beta_2(\text{terrain}
 
 This gives us two different equations depending on the democracy level:
 
-**For non-democratic countries** (democracy = 0):
+**For non-democratic countries** (democracy = 0) the democracy coefficient gets zeroed out, the interaction term drops out and the model simplifies to:
+
 $$\text{logit}(p) = \beta_0 + \beta_2(\text{terrain}) + \text{other controls}$$
 
-The effect of terrain is simply $\beta_2 = 0.187$.
+In other words, the effect of terrain is simply the value of the terrain coefficient $\beta_2 = 0.187$.
 
-**For democratic countries** (democracy = 1):
+**For democratic countries** (democracy = 1) we include the democracy coefficient and the interaction term (1 + terrain):
+
+$$\text{logit}(p) = \beta_0 + \beta_1(1) + \beta_2(\text{terrain}) + \beta_3(\text{democracy} \times \text{terrain}) + \text{other controls}$$
+This simplifies to:
+
 $$\text{logit}(p) = \beta_0 + \beta_1 + (\beta_2 + \beta_3)(\text{terrain}) + \text{other controls}$$
 
-The effect of terrain is $\beta_2 + \beta_3 = 0.187 + (-0.415) = -0.228$.
+So then the marginal effect of terrain is $\beta_2 + \beta_3 = 0.187 + (-0.415) = -0.228$.
 
-Here is how it would look if we did that with R code. We can also 
+Here is how it would look if we did that with R code. 
 
 ```{r}
 #| label: basic_conditional_effects
