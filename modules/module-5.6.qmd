@@ -16,7 +16,7 @@ execute:
 
 - Install the `fixest` package (`install.packages("fixest")`) and review the [documentation](https://lrberge.github.io/fixest/)
 - Install the `lme4` package (`install.packages("lme4")`) for mixed effects models
-- Review the `sandwich` package documentation for robust standard errors
+- Install the `sandwich` package documentation for robust standard errors (`install.packages("sandwich")`)
 :::
 
 ## Overview

@@ -1,49 +1,111 @@
 ---
 title: "Project Assignment 2"
-subtitle: "Analysis Plan and Data Preparation"
+subtitle: "Data Preparation and Merging"
 ---
 
 ## Overview
 
-In this assignment, you will take the next step in your project by planning the type of analysis you will perform. You will scope out the specific analytical approach, write regression equations relevant to your question, and prepare your data for analysis. This assignment builds directly on the work you did in Project Assignment 1, where you identified your research question, hypotheses, and potential data sources.
+In this assignment, you will prepare your data for analysis by merging your datasets and creating a clean, rectangular dataset ready for analysis. This is a hands-on assignment where the main deliverable is your **cleaned, merged dataset** along with brief documentation of your process.
 
-## Analytical Approach
+Building on Project Assignment 1, you will now implement your data merging plan and prepare the specific variables you will use to test your hypotheses.
 
-Start by briefly describing the type of analysis you plan to use to answer your question. This could include exploratory data analysis (EDA) techniques, descriptive statistics, or regression analysis. Focus on why these methods are appropriate for testing your hypotheses and addressing your research question. Consider the following:
+**Main Deliverable**: A cleaned, merged dataset saved as a CSV file that is ready for analysis in your final presentation.
 
-- **Type of Analysis**: Will you conduct a linear regression, logistic regression, or perhaps time-series analysis?
-- **Justification**: Why is this approach suitable for answering your research question?
-- **Expected Outcomes**: What will this analysis allow you to determine or predict?
+## Data Merging and Preparation
 
-**Example**: *“For the question of which emerging markets are best suited for expansion, we will perform multiple regression analysis, testing how factors like political stability, GDP growth, and trade openness predict market profitability.”*
+### Step 1: Load and Examine Your Datasets
 
-In your discussion, elaborate as much as possible on the type of analysis you plan to conduct. This will help you clarify your thinking and prepare for the next steps in your project.
+Start by loading your datasets and examining their structure:
 
-## Regression Equations
+```r
+# Load your primary dataset (from class)
+# Load your secondary dataset(s)
+# Examine structure and key variables
+```
 
-Next, translate your hypotheses into regression equations. Each equation should represent a specific relationship that you are testing in your data.
+**Briefly describe what you found:**
+- Primary dataset: [Name, number of observations, time coverage]
+- Secondary dataset: [Name, number of observations, time coverage]
+- Key challenges identified:
 
-- **Define Your Variables**: Identify the dependent and independent variables in your analysis.
-- **Write the Equations**: Formulate the equations that correspond to each hypothesis.
-  
-For example, if you hypothesized that political stability (measured as a stability index) positively influences foreign direct investment (FDI), your regression equation might look like:
+### Step 2: Merge Your Datasets
 
-$$
-\text{FDI} = \beta_0 + \beta_1 \cdot \text{StabilityIndex} + \beta_2 \cdot \text{GDPGrowth} + \epsilon
-$$
+Implement your merging strategy. Remember: you must successfully merge at least two datasets, with one being from our class datasets.
 
-Provide 2-3 equations if your research question has multiple hypotheses. This will help clarify your analytical plan. The discuss the euqations and what hypotheses they are supposed to test.
+```r
+# Your merging code here
+# Include any data cleaning needed for successful merge
+```
 
-## Data Preparation
+**Document your merging process:**
+- Common identifier used:
+- Type of join performed:
+- Observations in final merged dataset:
+- Any data lost in merging:
 
-In this section, prepare your data for analysis. List the specific steps you will take to get the data ready, including cleaning, transforming, and merging datasets if necessary. Consider the following:
+### Step 3: Create Your Analysis Variables
 
-- **Data Cleaning**: Describe any initial steps to handle missing values, outliers, or inconsistent data.
-- **Variable Transformation**: Indicate if any variables need to be transformed (e.g., logged, scaled) for regression analysis.
-- **Data Merging**: Describe any steps needed to combine multiple datasets, if applicable.
-  
-Write a list of tasks below that you expect to complete to prepare your data for analysis. Make it as comprehensive as possible.
+Select and prepare the specific variables you will use to test your hypotheses:
+
+**Your final variables (list the exact column names in your dataset):**
+
+*Dependent variable:*
+- Variable name:
+- Description:
+- Source dataset:
+
+*Independent variables:*
+- Variable 1 name:
+- Description:
+- Source dataset:
+
+- Variable 2 name:
+- Description:
+- Source dataset:
+
+- Variable 3 name (if applicable):
+- Description:
+- Source dataset:
+
+*Control variables (if any):*
+- Variable name(s):
+- Description:
+
+### Step 4: Data Cleaning
+
+Clean your dataset to prepare it for analysis:
+
+```r
+# Handle missing values
+# Address any outliers
+# Create derived variables if needed
+# Filter to your analysis sample
+```
+
+**Cleaning decisions made:**
+- How you handled missing values:
+- Time period of final dataset:
+- Final sample size:
+- Any transformations applied:
+
+## Final Dataset Validation
+
+Before submitting, validate that your dataset is analysis-ready:
+
+- [ ] Dataset merges successfully with no errors
+- [ ] All analysis variables are present and correctly named
+- [ ] Missing values are appropriately handled
+- [ ] Dataset is saved as a CSV file
+- [ ] You can successfully run a basic regression with your variables
+
+**Basic descriptive statistics:**
+Provide summary statistics for your key variables (mean, median, min, max, missing values):
+
+```r
+# summary(your_data)
+# Or use your preferred summary function
+```
 
 ## Submission
 
-Please post a document outlining your analytical approach, regression equations, and data preparation steps to your team's workspace. Make sure that Prof. T is added as an admin to the workspace. Then, export this document and submit it via Blackboard by the due date. Each group member should submit a copy for grading purposes.
+Please export your cleaned dataset as a CSV file and this completed QMD document, then submit both files via Blackboard by the due date. If your dataset is large, put both files in a zipped folder and submit the zip file. Each group member should submit the files so that we have something in Blackboard to grade.

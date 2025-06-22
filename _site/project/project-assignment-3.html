@@ -74,12 +74,41 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <meta property="og:title" content="Project Assignment 3 – DATS 1001–Fall Schedule">
-<meta property="og:description" content="Final Presentation and Report">
+<meta property="og:description" content="Final RevealJS Presentation">
 <meta property="og:site_name" content="DATS 1001--Fall Schedule">
 <meta name="twitter:title" content="Project Assignment 3 – DATS 1001–Fall Schedule">
-<meta name="twitter:description" content="Final Presentation and Report">
+<meta name="twitter:description" content="Final RevealJS Presentation">
 <meta name="twitter:card" content="summary">
 </head>
 
@@ -367,7 +396,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../assignments/coding-assignment-4.qmd" class="sidebar-item-text sidebar-link">
+  <a href="../assignments/coding-assignment-4.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Assignment 4</span></a>
   </div>
 </li>
@@ -454,8 +483,18 @@ ul.task-list li input[type="checkbox"] {
    
   <ul>
   <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a></li>
-  <li><a href="#component-1-revealjs-presentation-due-may-2nd" id="toc-component-1-revealjs-presentation-due-may-2nd" class="nav-link" data-scroll-target="#component-1-revealjs-presentation-due-may-2nd">Component 1: RevealJS Presentation (due May 2nd)</a></li>
-  <li><a href="#component-2-final-written-report-due-may-9th" id="toc-component-2-final-written-report-due-may-9th" class="nav-link" data-scroll-target="#component-2-final-written-report-due-may-9th">Component 2: Final Written Report (due May 9th)</a></li>
+  <li><a href="#regression-modeling-requirements" id="toc-regression-modeling-requirements" class="nav-link" data-scroll-target="#regression-modeling-requirements">Regression Modeling Requirements</a>
+  <ul class="collapse">
+  <li><a href="#model-selection-and-specification" id="toc-model-selection-and-specification" class="nav-link" data-scroll-target="#model-selection-and-specification">Model Selection and Specification</a></li>
+  <li><a href="#required-analysis-components" id="toc-required-analysis-components" class="nav-link" data-scroll-target="#required-analysis-components">Required Analysis Components</a></li>
+  </ul></li>
+  <li><a href="#presentation-structure-and-requirements" id="toc-presentation-structure-and-requirements" class="nav-link" data-scroll-target="#presentation-structure-and-requirements">Presentation Structure and Requirements</a>
+  <ul class="collapse">
+  <li><a href="#minimum-required-slides" id="toc-minimum-required-slides" class="nav-link" data-scroll-target="#minimum-required-slides">Minimum Required Slides:</a></li>
+  <li><a href="#presentation-guidelines" id="toc-presentation-guidelines" class="nav-link" data-scroll-target="#presentation-guidelines">Presentation Guidelines</a></li>
+  </ul></li>
+  <li><a href="#technical-checklist" id="toc-technical-checklist" class="nav-link" data-scroll-target="#technical-checklist">Technical Checklist</a></li>
+  <li><a href="#submission" id="toc-submission" class="nav-link" data-scroll-target="#submission">Submission</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/eteitelbaum/dats1001-summer/edit/main/project/project-assignment-3.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/eteitelbaum/dats1001-summer/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -466,7 +505,7 @@ ul.task-list li input[type="checkbox"] {
 <header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../project/project-assignment-1.html">Project</a></li><li class="breadcrumb-item"><a href="../project/project-assignment-3.html">Assignment 3</a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title">Project Assignment 3</h1>
-<p class="subtitle lead">Final Presentation and Report</p>
+<p class="subtitle lead">Final RevealJS Presentation</p>
 </div>
 
 
@@ -483,98 +522,113 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<div class="callout callout-style-default callout-important callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Due dates
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Note that the submission instructions and due date for this assignment have changed.</p>
-<p>Instead of giving a lightning talk, you are going to submit recorded presentations of 5–7 minutes in length.</p>
-<p>The due date for this is the same as the original due date for the assignment (<strong>May 2nd at 11:59 p.m.</strong>).</p>
-<p>The due date for the report is now the day of the scheduled final exam for this course (<strong>May 9th at 11:59 p.m.</strong>).</p>
-</div>
-</div>
 <section id="overview" class="level2">
 <h2 class="anchored" data-anchor-id="overview">Overview</h2>
-<p>For this final assignment, you will synthesize the work completed in Parts 1 and 2 into a polished deliverable that communicates your findings effectively. This assignment has <strong>two components</strong>:</p>
-<ol type="1">
-<li><strong>A Quarto RevealJS Presentation</strong>: A lightning talk summarizing your project, findings, and policy implications.</li>
-<li><strong>A Final Written Report</strong>: A detailed document that provides a comprehensive overview of your analysis, results, and recommendations.</li>
-</ol>
-<p>Together, these components should demonstrate your ability to apply data analysis skills to answer a question relevant to decision-making in a real-world context.</p>
+<p>For this final assignment, you will synthesize all your work into a polished RevealJS presentation that demonstrates your data analysis skills and communicates your findings effectively. Your presentation should tell a complete story from research question to policy implications, showcasing rigorous statistical analysis using your merged datasets.</p>
+<p>This assignment builds on your research question and hypotheses (Assignment 1) and your cleaned, merged dataset (Assignment 2) to create a comprehensive analytical presentation.</p>
+<p><strong>Deliverable</strong>: A 7-10 minute RevealJS presentation that includes exploratory data analysis, statistical modeling, and policy recommendations.</p>
 </section>
-<section id="component-1-revealjs-presentation-due-may-2nd" class="level2">
-<h2 class="anchored" data-anchor-id="component-1-revealjs-presentation-due-may-2nd">Component 1: RevealJS Presentation (due May 2nd)</h2>
-<p>You will create a <strong>5-minute presentation</strong> using Quarto’s RevealJS slide deck format. The goal is to provide a concise and engaging summary of your project.</p>
-<p><strong>Rough outline for your presentation:</strong></p>
-<ul>
-<li><strong>Slide 1</strong>: Title slide with project title, group member names, and date.</li>
-<li><strong>Slide 2</strong>: Introduction of your research question and its importance.</li>
-<li><strong>Slide 3</strong>: Overview of your data, including the source and key variables.</li>
-<li><strong>Slides 4–5</strong>: Key results, supported by 1–2 visuals (e.g., plots or tables).</li>
-<li><strong>Slide 6</strong>: Summary of findings and policy implications.</li>
-</ul>
-<p><strong>Tips:</strong></p>
-<ul>
-<li>Use visuals to make your presentation engaging and accessible.</li>
-<li>Keep text minimal—focus on high-level points and key insights.</li>
-<li>Practice your timing to stay within the 5-minute limit.</li>
-<li>You can add a few more slides if needed, but only if it still allows you to stay within the time limit.</li>
-</ul>
-<p><strong>Submission Instructions:</strong></p>
-<ul>
-<li>On <strong>May 2nd</strong>, upload your RevealJS presentation to <a href="https://quartopub.com/">Quarto Pub</a> and share the link on Discord.</li>
-<li>Also by <strong>May 2nd</strong>, record your presentation using a screen recording tool (e.g., Zoom, Vimeo) and post the link to the recording to Discord or, if you decided to do the writeup/reflection, post that to Discord instead.</li>
-<li>Submit the QMD file for the presentation to Blackboard <strong>on May 9</strong>, along with your full project folder.</li>
-</ul>
+<section id="regression-modeling-requirements" class="level2">
+<h2 class="anchored" data-anchor-id="regression-modeling-requirements">Regression Modeling Requirements</h2>
+<p>Before creating your presentation, you must complete a full regression analysis using your cleaned dataset. This forms the analytical backbone of your presentation.</p>
+<section id="model-selection-and-specification" class="level3">
+<h3 class="anchored" data-anchor-id="model-selection-and-specification">Model Selection and Specification</h3>
+<p><strong>Choose your regression approach:</strong> - <strong>Linear regression (OLS)</strong>: If your dependent variable is continuous - <strong>Logistic regression</strong>: If your dependent variable is binary/categorical - <strong>Other</strong>: Justify if a different approach is more appropriate</p>
+<p><strong>Write your regression equations using your actual variable names:</strong></p>
+<p><strong>Main Model:</strong> <span class="math display">\[
+\text{[dependent\_variable]} = \beta_0 + \beta_1 \cdot \text{[independent\_var1]} + \beta_2 \cdot \text{[independent\_var2]} + \beta_3 \cdot \text{[control\_var]} + \epsilon
+\]</span></p>
+<p><strong>Alternative Models (you must fit at least 2-3 models):</strong> <span class="math display">\[
+\text{[Simpler or alternative specifications]}
+\]</span></p>
 </section>
-<section id="component-2-final-written-report-due-may-9th" class="level2">
-<h2 class="anchored" data-anchor-id="component-2-final-written-report-due-may-9th">Component 2: Final Written Report (due May 9th)</h2>
-<p>The final report should be a <strong>3–5 page policy memo</strong> or technical report that provides a detailed narrative of your project. It should build upon Parts 1 and 2, integrating your research question, hypotheses, analysis, and conclusions.</p>
-<p><strong>Your report should include:</strong></p>
+<section id="required-analysis-components" class="level3">
+<h3 class="anchored" data-anchor-id="required-analysis-components">Required Analysis Components</h3>
+<p>Your analysis must include all of the following elements, which will be presented in your slides:</p>
 <ol type="1">
-<li><strong>Introduction</strong>
+<li><strong>Exploratory Data Analysis (EDA)</strong>
 <ul>
-<li>Clearly state your research question and why it is important.</li>
-<li>Provide background context, citing relevant literature or examples.</li>
+<li>Distribution of key variables (histograms, boxplots)</li>
+<li>Correlation matrix or scatterplot matrix</li>
+<li>Identification of outliers or unusual patterns</li>
 </ul></li>
-<li><strong>Data and Methodology</strong>
+<li><strong>Data Transformations</strong>
 <ul>
-<li>Describe your data sources and key variables (outcome and explanatory).</li>
-<li>Justify your analytical approach, including the methods used (e.g., regression, hypothesis testing).</li>
+<li>Document any variable transformations (log, standardization, etc.)</li>
+<li>Justify why transformations were necessary</li>
+<li>Show before/after distributions if relevant</li>
 </ul></li>
-<li><strong>Analysis and Results</strong>
+<li><strong>Model Fitting and Selection</strong>
 <ul>
-<li>Present your findings, supported by tables, plots, or statistical results.</li>
-<li>Include at least one visualization (e.g., regression plot, histogram).</li>
+<li>Fit multiple model specifications</li>
+<li>Compare models using appropriate criteria (R², AIC, etc.)</li>
+<li>Explain your final model selection process</li>
 </ul></li>
-<li><strong>Discussion</strong>
+<li><strong>Regression Assumptions (if using OLS)</strong>
 <ul>
-<li>Interpret your results in context of your research question and hypotheses.</li>
-<li>Discuss the statistical significance and implications of your findings.</li>
+<li>Check linearity assumptions</li>
+<li>Examine residuals for heteroskedasticity</li>
+<li>Test for normality of residuals</li>
+<li>Address any assumption violations</li>
 </ul></li>
-<li><strong>Policy Implications</strong>
+<li><strong>Results Visualization</strong>
 <ul>
-<li>Summarize how your findings inform policy or decision-making.</li>
-<li>Propose actionable recommendations based on your analysis.</li>
+<li>Create a professional regression table</li>
+<li>Generate coefficient plot with confidence intervals</li>
+<li>Include at least one substantive interpretation plot</li>
 </ul></li>
-<li><strong>Conclusion</strong>
+<li><strong>Predictions and Scenarios</strong>
 <ul>
-<li>Provide a clear answer to your research question.</li>
-<li>Reflect briefly on limitations and next steps.</li>
+<li>Use your model to make predictions for specific cases</li>
+<li>Show how changes in key variables affect outcomes</li>
+<li>Demonstrate practical application of your findings</li>
 </ul></li>
 </ol>
-<p><strong>Submission Instructions:</strong></p>
-<ul>
-<li>Render your report in <strong>HTML</strong> format and upload it to Quarto Pub.</li>
-<li>Submit the link on Discord.</li>
-<li>Upload your group’s zipped project folder (QMD file and data) to Blackboard.</li>
+</section>
+</section>
+<section id="presentation-structure-and-requirements" class="level2">
+<h2 class="anchored" data-anchor-id="presentation-structure-and-requirements">Presentation Structure and Requirements</h2>
+<p>Your RevealJS presentation should include the following slides, integrating your statistical analysis throughout:</p>
+<section id="minimum-required-slides" class="level3">
+<h3 class="anchored" data-anchor-id="minimum-required-slides">Minimum Required Slides:</h3>
+<p>Your presentation should include <strong>at least</strong> the following slides, but you may add additional slides as needed to tell your story effectively:</p>
+<p><strong>Slide 1: Title Slide</strong> - Project title, group member names, date</p>
+<p><strong>Slide 2: Research Question &amp; Motivation</strong> - Clear statement of your research question - Why this question matters for policy/decision-making - Brief preview of your main finding</p>
+<p><strong>Slide 3: Data Overview</strong> - Description of your merged datasets - Key variables and their sources - Sample size and time coverage</p>
+<p><strong>Slides 4-5: Exploratory Data Analysis</strong> - Distribution of your dependent variable - Key relationships in the data (correlations, scatterplots) - Any interesting patterns or outliers discovered</p>
+<p><strong>Slide 6: Analytical Approach</strong> - Regression model type chosen (OLS/logistic) and why - Your main regression equation - Brief overview of model selection process</p>
+<p><strong>Slide 7: Model Selection &amp; Assumptions</strong> - Comparison of alternative models - Key assumption checks (if OLS) - Justification for final model choice</p>
+<p><strong>Slide 8: Main Results</strong> - Professional regression table or coefficient plot - Highlight statistically significant findings - Effect sizes and practical significance</p>
+<p><strong>Slide 9: Model Application</strong> - Specific predictions or scenarios - “What if” analysis showing policy implications - Confidence intervals around predictions</p>
+<p><strong>Slide 10: Policy Implications &amp; Conclusions</strong> - Direct answer to your research question - Actionable recommendations based on findings - Limitations and future directions</p>
+<p>You may include additional slides if needed to adequately cover your analysis, but aim to keep your presentation focused and within the 7-10 minute time limit.</p>
+</section>
+<section id="presentation-guidelines" class="level3">
+<h3 class="anchored" data-anchor-id="presentation-guidelines">Presentation Guidelines</h3>
+<p><strong>Technical Requirements:</strong> - Use RevealJS format (<code>.qmd</code> file with <code>format: revealjs</code>) - Include well-designed visualizations (ggplot2 recommended) - Ensure all plots are readable and professional - Include proper statistical notation where appropriate</p>
+<p><strong>Content Guidelines:</strong> - Focus on clear interpretation of statistical results - Emphasize practical significance, not just statistical significance - Connect findings back to your original hypotheses - Maintain focus on policy/decision-making applications</p>
+<p><strong>Presentation Tips:</strong> - Keep slide text minimal - let visuals tell the story - Practice timing to stay within 7-10 minutes - Prepare to explain your statistical choices if asked - Focus on insights, not just methods</p>
+</section>
+</section>
+<section id="technical-checklist" class="level2">
+<h2 class="anchored" data-anchor-id="technical-checklist">Technical Checklist</h2>
+<p>Before submitting, ensure your analysis includes:</p>
+<ul class="task-list">
+<li><label><input type="checkbox">Complete EDA with appropriate visualizations</label></li>
+<li><label><input type="checkbox">At least 2-3 different model specifications tested</label></li>
+<li><label><input type="checkbox">Proper regression assumption checking (if applicable)</label></li>
+<li><label><input type="checkbox">Professional regression results table</label></li>
+<li><label><input type="checkbox">Coefficient plot with confidence intervals</label></li>
+<li><label><input type="checkbox">At least one prediction/scenario analysis</label></li>
+<li><label><input type="checkbox">Clear interpretation of all statistical results</label></li>
+<li><label><input type="checkbox">Policy recommendations based on findings</label></li>
 </ul>
+</section>
+<section id="submission" class="level2">
+<h2 class="anchored" data-anchor-id="submission">Submission</h2>
+<p><em>Please export your RevealJS presentation as a QMD file and submit it via Blackboard by the due date. Each group member should submit a copy so that we have something in Blackboard to grade. Your presentation should be self-contained and ready to present.</em></p>
+<p><em>In addition to submitting your QMD file, you must also record your presentation using Zoom, Vimeo, or a similar screen recording tool. Your recording should be 7-10 minutes in length and should walk through your slides as if you were presenting to a live audience. Practice your presentation beforehand to ensure smooth delivery and proper timing.</em></p>
+<p><em>Once you have recorded your presentation, upload it to a platform that allows sharing (such as Vimeo, YouTube, or Zoom cloud) and post the link to your recorded presentation in the Discord server. This will allow your classmates and instructor to view your presentations and provide feedback.</em></p>
 
 
 </section>

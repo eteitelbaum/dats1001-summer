@@ -623,7 +623,7 @@
     "href": "project/project-assignment-2.html",
     "title": "Project Assignment 2",
     "section": "",
-    "text": "In this assignment, you will take the next step in your project by planning the type of analysis you will perform. You will scope out the specific analytical approach, write regression equations relevant to your question, and prepare your data for analysis. This assignment builds directly on the work you did in Project Assignment 1, where you identified your research question, hypotheses, and potential data sources.",
+    "text": "In this assignment, you will prepare your data for analysis by merging your datasets and creating a clean, rectangular dataset ready for analysis. This is a hands-on assignment where the main deliverable is your cleaned, merged dataset along with brief documentation of your process.\nBuilding on Project Assignment 1, you will now implement your data merging plan and prepare the specific variables you will use to test your hypotheses.\nMain Deliverable: A cleaned, merged dataset saved as a CSV file that is ready for analysis in your final presentation.",
     "crumbs": [
       "Project",
       "Assignment 2"
@@ -634,7 +634,7 @@
     "href": "project/project-assignment-2.html#overview",
     "title": "Project Assignment 2",
     "section": "",
-    "text": "In this assignment, you will take the next step in your project by planning the type of analysis you will perform. You will scope out the specific analytical approach, write regression equations relevant to your question, and prepare your data for analysis. This assignment builds directly on the work you did in Project Assignment 1, where you identified your research question, hypotheses, and potential data sources.",
+    "text": "In this assignment, you will prepare your data for analysis by merging your datasets and creating a clean, rectangular dataset ready for analysis. This is a hands-on assignment where the main deliverable is your cleaned, merged dataset along with brief documentation of your process.\nBuilding on Project Assignment 1, you will now implement your data merging plan and prepare the specific variables you will use to test your hypotheses.\nMain Deliverable: A cleaned, merged dataset saved as a CSV file that is ready for analysis in your final presentation.",
     "crumbs": [
       "Project",
       "Assignment 2"
@@ -678,7 +678,7 @@
     "href": "project/project-assignment-2.html#submission",
     "title": "Project Assignment 2",
     "section": "Submission",
-    "text": "Submission\nPlease post a document outlining your analytical approach, regression equations, and data preparation steps to your team’s workspace. Make sure that Prof. T is added as an admin to the workspace. Then, export this document and submit it via Blackboard by the due date. Each group member should submit a copy for grading purposes.",
+    "text": "Submission\nPlease export your cleaned dataset as a CSV file and this completed QMD document, then submit both files via Blackboard by the due date. If your dataset is large, put both files in a zipped folder and submit the zip file. Each group member should submit the files so that we have something in Blackboard to grade.",
     "crumbs": [
       "Project",
       "Assignment 2"
@@ -5604,7 +5604,7 @@
     "href": "project/project-assignment-3.html",
     "title": "Project Assignment 3",
     "section": "",
-    "text": "Due dates\n\n\n\nNote that the submission instructions and due date for this assignment have changed.\nInstead of giving a lightning talk, you are going to submit recorded presentations of 5–7 minutes in length.\nThe due date for this is the same as the original due date for the assignment (May 2nd at 11:59 p.m.).\nThe due date for the report is now the day of the scheduled final exam for this course (May 9th at 11:59 p.m.).",
+    "text": "For this final assignment, you will synthesize all your work into a polished RevealJS presentation that demonstrates your data analysis skills and communicates your findings effectively. Your presentation should tell a complete story from research question to policy implications, showcasing rigorous statistical analysis using your merged datasets.\nThis assignment builds on your research question and hypotheses (Assignment 1) and your cleaned, merged dataset (Assignment 2) to create a comprehensive analytical presentation.\nDeliverable: A 7-10 minute RevealJS presentation that includes exploratory data analysis, statistical modeling, and policy recommendations.",
     "crumbs": [
       "Project",
       "Assignment 3"
@@ -5614,8 +5614,8 @@
     "objectID": "project/project-assignment-3.html#overview",
     "href": "project/project-assignment-3.html#overview",
     "title": "Project Assignment 3",
-    "section": "Overview",
-    "text": "Overview\nFor this final assignment, you will synthesize the work completed in Parts 1 and 2 into a polished deliverable that communicates your findings effectively. This assignment has two components:\n\nA Quarto RevealJS Presentation: A lightning talk summarizing your project, findings, and policy implications.\nA Final Written Report: A detailed document that provides a comprehensive overview of your analysis, results, and recommendations.\n\nTogether, these components should demonstrate your ability to apply data analysis skills to answer a question relevant to decision-making in a real-world context.",
+    "section": "",
+    "text": "For this final assignment, you will synthesize all your work into a polished RevealJS presentation that demonstrates your data analysis skills and communicates your findings effectively. Your presentation should tell a complete story from research question to policy implications, showcasing rigorous statistical analysis using your merged datasets.\nThis assignment builds on your research question and hypotheses (Assignment 1) and your cleaned, merged dataset (Assignment 2) to create a comprehensive analytical presentation.\nDeliverable: A 7-10 minute RevealJS presentation that includes exploratory data analysis, statistical modeling, and policy recommendations.",
     "crumbs": [
       "Project",
       "Assignment 3"
@@ -5648,7 +5648,7 @@
     "href": "project/project-assignment-1.html",
     "title": "Project Assignment 1",
     "section": "",
-    "text": "For this project you will work in groups to use data to answer a question. This is your chance to use the skills you are developing in this class to help guide decision-making in a real-world context.\nCrucially, your data analysis should be question-driven. Part of the challenge is to identify the most appropriate data and analysis to answer your question. You will need to think about how to do this and the answer will not always be obvious–a level of creativity is involved.\nFor this first project assignment, you are to form groups of 3-4 students. You will select a question to work on, do some preliminary research on the type of data that might help you to answer the question, and discuss how you will use the data to provide an answer.",
+    "text": "For this project you will work in groups to use data to answer a question using datasets we have explored in class. This is your chance to apply the skills you are developing to guide decision-making in a real-world context using familiar data sources but exploring new variables and relationships.\nCrucially, your data analysis should be question-driven. You will identify the most appropriate variables and analysis to answer your question using data we have already worked with, combined with additional datasets as needed. Since this is a summer course with limited time, you will focus on creating a compelling RevealJS presentation rather than a written report.\nKey Requirements: - Use at least one dataset we have used in class (V-Dem, World Bank, peacesciencer). - Merge at least one additional dataset to the first dataset (can be class datasets or include new national-level data). Some options for additional datasets can be found here. - Choose different variables than what we have already analyzed in class. - Final deliverable will be a RevealJS presentation only (more info on RevealJS presentations will be provided later).",
     "crumbs": [
       "Project",
       "Assignment 1"
@@ -5659,7 +5659,7 @@
     "href": "project/project-assignment-1.html#overview",
     "title": "Project Assignment 1",
     "section": "",
-    "text": "For this project you will work in groups to use data to answer a question. This is your chance to use the skills you are developing in this class to help guide decision-making in a real-world context.\nCrucially, your data analysis should be question-driven. Part of the challenge is to identify the most appropriate data and analysis to answer your question. You will need to think about how to do this and the answer will not always be obvious–a level of creativity is involved.\nFor this first project assignment, you are to form groups of 3-4 students. You will select a question to work on, do some preliminary research on the type of data that might help you to answer the question, and discuss how you will use the data to provide an answer.",
+    "text": "For this project you will work in groups to use data to answer a question using datasets we have explored in class. This is your chance to apply the skills you are developing to guide decision-making in a real-world context using familiar data sources but exploring new variables and relationships.\nCrucially, your data analysis should be question-driven. You will identify the most appropriate variables and analysis to answer your question using data we have already worked with, combined with additional datasets as needed. Since this is a summer course with limited time, you will focus on creating a compelling RevealJS presentation rather than a written report.\nKey Requirements: - Use at least one dataset we have used in class (V-Dem, World Bank, peacesciencer). - Merge at least one additional dataset to the first dataset (can be class datasets or include new national-level data). Some options for additional datasets can be found here. - Choose different variables than what we have already analyzed in class. - Final deliverable will be a RevealJS presentation only (more info on RevealJS presentations will be provided later).",
     "crumbs": [
       "Project",
       "Assignment 1"
@@ -5670,7 +5670,7 @@
     "href": "project/project-assignment-1.html#groups",
     "title": "Project Assignment 1",
     "section": "Groups",
-    "text": "Groups\nYou will form groups of 3-4 students. You will work with this group for the duration of the project. Please list the names of your group members here:",
+    "text": "Groups\nYou will be randomly assigned to groups of 3-4 students. You will work with this group for the duration of the project.",
     "crumbs": [
       "Project",
       "Assignment 1"
@@ -5681,7 +5681,7 @@
     "href": "project/project-assignment-1.html#topics",
     "title": "Project Assignment 1",
     "section": "Topics",
-    "text": "Topics\nYou should select from the following list of topics. If you have another topic in mind, please discuss with me before proceeding. After choosing your topic, delete the other non-chosen topics and discuss briefly why you chose it.\n\nYou are the CEO of a multinational corporation considering expansion into emerging markets. Based on available data, which countries offer the most stable and profitable environment for expansion over the next five years? What factors are most relevant for your decision?\nAs a cosultant for the World Bank, you are tasked with improving democratic governance in developing countries. Based on trends in political and economic data over the past decade, what key areas (e.g., electoral integrity, gender equity, economic policy) should you prioritize to enhance democracy?\nA city mayor is planning to allocate resources to improve public health outcomes in response to rising pollution levels. Based on historical data, which factors should the mayor focus on to achieve the best results? Options could include things like healthcare infrastructure, public awareness campaigns, or environmental regulations.\nAs the head of a national education department, you need to decide where to allocate a limited budget: digital infrastructure for remote learning, teacher training programs, or curriculum development for STEM subjects. Which option is likely to yield the most significant improvement in educational outcomes based on available data?\nA company is considering launching a CSR initiative focused on reducing carbon emissions. As the head of the sustainability team, you need to determine the most effective strategy: investing in renewable energy, improving supply chain efficiency, or partnering with NGOs for reforestation projects. Which approach offers the best return on investment based on environmental and economic data?",
+    "text": "Topics\nYou should select from the following list of topics, which are designed to work with our class datasets. After choosing your topic, delete the other non-chosen topics and discuss briefly why you chose it.\n\nDemocratic Resilience and Economic Performance: Using V-Dem and World Bank data, examine which aspects of democratic governance (e.g., civil liberties, electoral integrity, judicial independence) are most strongly associated with economic stability and growth. What democratic features should policymakers prioritize to promote sustainable economic development?\nConflict Prevention and Development: Using peacesciencer and World Bank data, analyze what economic and development factors (e.g., education spending, inequality, natural resource wealth) are most effective at preventing the onset of interstate or civil conflicts. What development strategies offer the best conflict prevention benefits?\nTrade Integration and Democratic Governance: Using World Bank trade data and V-Dem, investigate how different forms of trade integration (exports, imports, trade complexity) relate to democratic quality and institutional strength. Should developing democracies prioritize certain types of trade relationships?\nGender Equality and National Development: Using V-Dem gender equality indices and World Bank development indicators, examine which aspects of gender equality (political participation, civil society representation, etc.) have the strongest relationship with broader development outcomes like health, education, or economic growth.\nEnvironmental Governance and Climate Resilience: Using World Bank environmental data and V-Dem governance indicators, analyze which governance factors (transparency, accountability, civil society space) are most important for effective climate adaptation and environmental protection policies.\nInstitutional Quality and Foreign Investment: Using V-Dem institutional measures and World Bank economic data, determine which specific institutional features (rule of law, corruption control, regulatory quality) are most crucial for attracting and maintaining foreign direct investment.\n\nWhy we chose this topic:",
     "crumbs": [
       "Project",
       "Assignment 1"
@@ -5692,7 +5692,7 @@
     "href": "project/project-assignment-1.html#hypotheses",
     "title": "Project Assignment 1",
     "section": "Hypotheses",
-    "text": "Hypotheses\nBefore gathering any data, or even looking at any data, you should write down your hypotheses. These are the assumptions you are making about the world that you will test with your data. Or, another way to think about hypotheses is as the predicted relationships between variables that you will test with your data. What do you expect to find and how do you expect the variables to be related? Write these down in a list here.\n\nH1:\nH2:\nH3:\netc.",
+    "text": "Hypotheses\nBefore gathering any data, or even looking at any data, you should write down your hypotheses. These are the assumptions you are making about the world that you will test with your data. What do you expect to find and how do you expect the variables to be related? Write these down in a list here.\n\nH1:\nH2:\nH3:\netc.",
     "crumbs": [
       "Project",
       "Assignment 1"
@@ -5714,7 +5714,7 @@
     "href": "project/project-assignment-1.html#submission",
     "title": "Project Assignment 1",
     "section": "Submission",
-    "text": "Submission\nThat is it for Project Assignment 1! Please export this document and submit it via Blackboard by the due date. Each student should submit a separate QMD file so that we have something in Blackboard to grade.",
+    "text": "Submission\nPlease export this document and submit it via Blackboard by the due date. Each student should submit a separate file so that we have something in Blackboard to grade.",
     "crumbs": [
       "Project",
       "Assignment 1"
@@ -7042,5 +7042,93 @@
     "title": "Homework 5",
     "section": "Extra Credit 2 (2 pts)",
     "text": "Extra Credit 2 (2 pts)\nApply one of the advanced regression techniques that we learned about in the last model to modernize the F&L model like clustering standard errors, using random effects, introducing an appropriate “treatment” variable, or implementing a robustness check. What is the justification for the technique you chose? How does it change the results of the model?\n\n\n\n\n\n\nSubmission Instructions\n\n\n\nAfter rendering your document, export your project folder and submit it on Blackboard. You will find the link to the Coding Assignment one submission portal under the Assignments link. There is a screen capture video in the Discord server that will help you understand how to do this."
+  },
+  {
+    "objectID": "project/project-assignment-1.html#data-sources-and-merging-plan",
+    "href": "project/project-assignment-1.html#data-sources-and-merging-plan",
+    "title": "Project Assignment 1",
+    "section": "Data Sources and Merging Plan",
+    "text": "Data Sources and Merging Plan\nNow identify your specific data sources and plan how you will merge them. Remember: you must use at least one dataset from our class (V-Dem, World Bank, peacesciencer) and merge at least one additional dataset to it.\n\nRequired Class Dataset\nPrimary Dataset (from class): - Dataset name: - Specific variables you plan to use (different from what we’ve analyzed): - Time period: - Geographic scope:\n\n\nAdditional Dataset(s) for Merging\nSecond Dataset: - Dataset name: - Source: - Variables to be used: - How it will merge with primary dataset (common identifier - usually country-year):\nOptional Third Dataset: - Dataset name: - Source: - Variables to be used: - Merging plan:\n\n\nMerging Strategy\nBriefly describe how you will combine these datasets: - What will be your unit of analysis (country-year, country, etc.)? - What is the common identifier for merging? - What time period will your final merged dataset cover? - How will you handle missing data or different time coverage across datasets?",
+    "crumbs": [
+      "Project",
+      "Assignment 1"
+    ]
+  },
+  {
+    "objectID": "project/project-assignment-1.html#available-data-sources",
+    "href": "project/project-assignment-1.html#available-data-sources",
+    "title": "Project Assignment 1",
+    "section": "Available Data Sources",
+    "text": "Available Data Sources\nIn addition to our class datasets (V-Dem, World Bank, peacesciencer), you can use any of the national-level datasets listed on the course website, including:\n\nFreedom House\nPolity IV\nQuality of Government\nOECD data\nUN data\nRegional development banks\nNational statistical offices",
+    "crumbs": [
+      "Project",
+      "Assignment 1"
+    ]
+  },
+  {
+    "objectID": "project/project-assignment-2.html#data-merging-and-preparation",
+    "href": "project/project-assignment-2.html#data-merging-and-preparation",
+    "title": "Project Assignment 2",
+    "section": "Data Merging and Preparation",
+    "text": "Data Merging and Preparation\n\nStep 1: Load and Examine Your Datasets\nStart by loading your datasets and examining their structure:\n# Load your primary dataset (from class)\n# Load your secondary dataset(s)\n# Examine structure and key variables\nBriefly describe what you found: - Primary dataset: [Name, number of observations, time coverage] - Secondary dataset: [Name, number of observations, time coverage] - Key challenges identified:\n\n\nStep 2: Merge Your Datasets\nImplement your merging strategy. Remember: you must successfully merge at least two datasets, with one being from our class datasets.\n# Your merging code here\n# Include any data cleaning needed for successful merge\nDocument your merging process: - Common identifier used: - Type of join performed: - Observations in final merged dataset: - Any data lost in merging:\n\n\nStep 3: Create Your Analysis Variables\nSelect and prepare the specific variables you will use to test your hypotheses:\nYour final variables (list the exact column names in your dataset):\nDependent variable: - Variable name: - Description: - Source dataset:\nIndependent variables: - Variable 1 name: - Description: - Source dataset:\n\nVariable 2 name:\nDescription:\nSource dataset:\nVariable 3 name (if applicable):\nDescription:\nSource dataset:\n\nControl variables (if any): - Variable name(s): - Description:\n\n\nStep 4: Data Cleaning\nClean your dataset to prepare it for analysis:\n# Handle missing values\n# Address any outliers\n# Create derived variables if needed\n# Filter to your analysis sample\nCleaning decisions made: - How you handled missing values: - Time period of final dataset: - Final sample size: - Any transformations applied:",
+    "crumbs": [
+      "Project",
+      "Assignment 2"
+    ]
+  },
+  {
+    "objectID": "project/project-assignment-2.html#final-dataset-validation",
+    "href": "project/project-assignment-2.html#final-dataset-validation",
+    "title": "Project Assignment 2",
+    "section": "Final Dataset Validation",
+    "text": "Final Dataset Validation\nBefore submitting, validate that your dataset is analysis-ready:\n\nDataset merges successfully with no errors\nAll analysis variables are present and correctly named\nMissing values are appropriately handled\nDataset is saved as a CSV file\nYou can successfully run a basic regression with your variables\n\nBasic descriptive statistics: Provide summary statistics for your key variables (mean, median, min, max, missing values):\n# summary(your_data)\n# Or use your preferred summary function",
+    "crumbs": [
+      "Project",
+      "Assignment 2"
+    ]
+  },
+  {
+    "objectID": "project/project-assignment-3.html#regression-modeling-requirements",
+    "href": "project/project-assignment-3.html#regression-modeling-requirements",
+    "title": "Project Assignment 3",
+    "section": "Regression Modeling Requirements",
+    "text": "Regression Modeling Requirements\nBefore creating your presentation, you must complete a full regression analysis using your cleaned dataset. This forms the analytical backbone of your presentation.\n\nModel Selection and Specification\nChoose your regression approach: - Linear regression (OLS): If your dependent variable is continuous - Logistic regression: If your dependent variable is binary/categorical - Other: Justify if a different approach is more appropriate\nWrite your regression equations using your actual variable names:\nMain Model: \\[\n\\text{[dependent\\_variable]} = \\beta_0 + \\beta_1 \\cdot \\text{[independent\\_var1]} + \\beta_2 \\cdot \\text{[independent\\_var2]} + \\beta_3 \\cdot \\text{[control\\_var]} + \\epsilon\n\\]\nAlternative Models (you must fit at least 2-3 models): \\[\n\\text{[Simpler or alternative specifications]}\n\\]\n\n\nRequired Analysis Components\nYour analysis must include all of the following elements, which will be presented in your slides:\n\nExploratory Data Analysis (EDA)\n\nDistribution of key variables (histograms, boxplots)\nCorrelation matrix or scatterplot matrix\nIdentification of outliers or unusual patterns\n\nData Transformations\n\nDocument any variable transformations (log, standardization, etc.)\nJustify why transformations were necessary\nShow before/after distributions if relevant\n\nModel Fitting and Selection\n\nFit multiple model specifications\nCompare models using appropriate criteria (R², AIC, etc.)\nExplain your final model selection process\n\nRegression Assumptions (if using OLS)\n\nCheck linearity assumptions\nExamine residuals for heteroskedasticity\nTest for normality of residuals\nAddress any assumption violations\n\nResults Visualization\n\nCreate a professional regression table\nGenerate coefficient plot with confidence intervals\nInclude at least one substantive interpretation plot\n\nPredictions and Scenarios\n\nUse your model to make predictions for specific cases\nShow how changes in key variables affect outcomes\nDemonstrate practical application of your findings",
+    "crumbs": [
+      "Project",
+      "Assignment 3"
+    ]
+  },
+  {
+    "objectID": "project/project-assignment-3.html#presentation-structure-and-requirements",
+    "href": "project/project-assignment-3.html#presentation-structure-and-requirements",
+    "title": "Project Assignment 3",
+    "section": "Presentation Structure and Requirements",
+    "text": "Presentation Structure and Requirements\nYour RevealJS presentation should include the following slides, integrating your statistical analysis throughout:\n\nMinimum Required Slides:\nYour presentation should include at least the following slides, but you may add additional slides as needed to tell your story effectively:\nSlide 1: Title Slide - Project title, group member names, date\nSlide 2: Research Question & Motivation - Clear statement of your research question - Why this question matters for policy/decision-making - Brief preview of your main finding\nSlide 3: Data Overview - Description of your merged datasets - Key variables and their sources - Sample size and time coverage\nSlides 4-5: Exploratory Data Analysis - Distribution of your dependent variable - Key relationships in the data (correlations, scatterplots) - Any interesting patterns or outliers discovered\nSlide 6: Analytical Approach - Regression model type chosen (OLS/logistic) and why - Your main regression equation - Brief overview of model selection process\nSlide 7: Model Selection & Assumptions - Comparison of alternative models - Key assumption checks (if OLS) - Justification for final model choice\nSlide 8: Main Results - Professional regression table or coefficient plot - Highlight statistically significant findings - Effect sizes and practical significance\nSlide 9: Model Application - Specific predictions or scenarios - “What if” analysis showing policy implications - Confidence intervals around predictions\nSlide 10: Policy Implications & Conclusions - Direct answer to your research question - Actionable recommendations based on findings - Limitations and future directions\nYou may include additional slides if needed to adequately cover your analysis, but aim to keep your presentation focused and within the 7-10 minute time limit.\n\n\nPresentation Guidelines\nTechnical Requirements: - Use RevealJS format (.qmd file with format: revealjs) - Include well-designed visualizations (ggplot2 recommended) - Ensure all plots are readable and professional - Include proper statistical notation where appropriate\nContent Guidelines: - Focus on clear interpretation of statistical results - Emphasize practical significance, not just statistical significance - Connect findings back to your original hypotheses - Maintain focus on policy/decision-making applications\nPresentation Tips: - Keep slide text minimal - let visuals tell the story - Practice timing to stay within 7-10 minutes - Prepare to explain your statistical choices if asked - Focus on insights, not just methods",
+    "crumbs": [
+      "Project",
+      "Assignment 3"
+    ]
+  },
+  {
+    "objectID": "project/project-assignment-3.html#technical-checklist",
+    "href": "project/project-assignment-3.html#technical-checklist",
+    "title": "Project Assignment 3",
+    "section": "Technical Checklist",
+    "text": "Technical Checklist\nBefore submitting, ensure your analysis includes:\n\nComplete EDA with appropriate visualizations\nAt least 2-3 different model specifications tested\nProper regression assumption checking (if applicable)\nProfessional regression results table\nCoefficient plot with confidence intervals\nAt least one prediction/scenario analysis\nClear interpretation of all statistical results\nPolicy recommendations based on findings",
+    "crumbs": [
+      "Project",
+      "Assignment 3"
+    ]
+  },
+  {
+    "objectID": "project/project-assignment-3.html#submission",
+    "href": "project/project-assignment-3.html#submission",
+    "title": "Project Assignment 3",
+    "section": "Submission",
+    "text": "Submission\nPlease export your RevealJS presentation as a QMD file and submit it via Blackboard by the due date. Each group member should submit a copy so that we have something in Blackboard to grade. Your presentation should be self-contained and ready to present.\nIn addition to submitting your QMD file, you must also record your presentation using Zoom, Vimeo, or a similar screen recording tool. Your recording should be 7-10 minutes in length and should walk through your slides as if you were presenting to a live audience. Practice your presentation beforehand to ensure smooth delivery and proper timing.\nOnce you have recorded your presentation, upload it to a platform that allows sharing (such as Vimeo, YouTube, or Zoom cloud) and post the link to your recorded presentation in the Discord server. This will allow your classmates and instructor to view your presentations and provide feedback.",
+    "crumbs": [
+      "Project",
+      "Assignment 3"
+    ]
   }
 ]

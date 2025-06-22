@@ -20,6 +20,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -74,41 +109,12 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 <meta property="og:title" content="Project Assignment 2 – DATS 1001–Fall Schedule">
-<meta property="og:description" content="Analysis Plan and Data Preparation">
+<meta property="og:description" content="Data Preparation and Merging">
 <meta property="og:site_name" content="DATS 1001--Fall Schedule">
 <meta name="twitter:title" content="Project Assignment 2 – DATS 1001–Fall Schedule">
-<meta name="twitter:description" content="Analysis Plan and Data Preparation">
+<meta name="twitter:description" content="Data Preparation and Merging">
 <meta name="twitter:card" content="summary">
 </head>
 
@@ -396,7 +402,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../assignments/coding-assignment-4.qmd" class="sidebar-item-text sidebar-link">
+  <a href="../assignments/coding-assignment-4.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Assignment 4</span></a>
   </div>
 </li>
@@ -483,9 +489,14 @@ window.Quarto = {
    
   <ul>
   <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a></li>
-  <li><a href="#analytical-approach" id="toc-analytical-approach" class="nav-link" data-scroll-target="#analytical-approach">Analytical Approach</a></li>
-  <li><a href="#regression-equations" id="toc-regression-equations" class="nav-link" data-scroll-target="#regression-equations">Regression Equations</a></li>
-  <li><a href="#data-preparation" id="toc-data-preparation" class="nav-link" data-scroll-target="#data-preparation">Data Preparation</a></li>
+  <li><a href="#data-merging-and-preparation" id="toc-data-merging-and-preparation" class="nav-link" data-scroll-target="#data-merging-and-preparation">Data Merging and Preparation</a>
+  <ul class="collapse">
+  <li><a href="#step-1-load-and-examine-your-datasets" id="toc-step-1-load-and-examine-your-datasets" class="nav-link" data-scroll-target="#step-1-load-and-examine-your-datasets">Step 1: Load and Examine Your Datasets</a></li>
+  <li><a href="#step-2-merge-your-datasets" id="toc-step-2-merge-your-datasets" class="nav-link" data-scroll-target="#step-2-merge-your-datasets">Step 2: Merge Your Datasets</a></li>
+  <li><a href="#step-3-create-your-analysis-variables" id="toc-step-3-create-your-analysis-variables" class="nav-link" data-scroll-target="#step-3-create-your-analysis-variables">Step 3: Create Your Analysis Variables</a></li>
+  <li><a href="#step-4-data-cleaning" id="toc-step-4-data-cleaning" class="nav-link" data-scroll-target="#step-4-data-cleaning">Step 4: Data Cleaning</a></li>
+  </ul></li>
+  <li><a href="#final-dataset-validation" id="toc-final-dataset-validation" class="nav-link" data-scroll-target="#final-dataset-validation">Final Dataset Validation</a></li>
   <li><a href="#submission" id="toc-submission" class="nav-link" data-scroll-target="#submission">Submission</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/eteitelbaum/dats1001-summer/edit/main/project/project-assignment-2.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/eteitelbaum/dats1001-summer/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
@@ -497,7 +508,7 @@ window.Quarto = {
 <header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../project/project-assignment-1.html">Project</a></li><li class="breadcrumb-item"><a href="../project/project-assignment-2.html">Assignment 2</a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title">Project Assignment 2</h1>
-<p class="subtitle lead">Analysis Plan and Data Preparation</p>
+<p class="subtitle lead">Data Preparation and Merging</p>
 </div>
 
 
@@ -516,45 +527,70 @@ window.Quarto = {
 
 <section id="overview" class="level2">
 <h2 class="anchored" data-anchor-id="overview">Overview</h2>
-<p>In this assignment, you will take the next step in your project by planning the type of analysis you will perform. You will scope out the specific analytical approach, write regression equations relevant to your question, and prepare your data for analysis. This assignment builds directly on the work you did in Project Assignment 1, where you identified your research question, hypotheses, and potential data sources.</p>
+<p>In this assignment, you will prepare your data for analysis by merging your datasets and creating a clean, rectangular dataset ready for analysis. This is a hands-on assignment where the main deliverable is your <strong>cleaned, merged dataset</strong> along with brief documentation of your process.</p>
+<p>Building on Project Assignment 1, you will now implement your data merging plan and prepare the specific variables you will use to test your hypotheses.</p>
+<p><strong>Main Deliverable</strong>: A cleaned, merged dataset saved as a CSV file that is ready for analysis in your final presentation.</p>
 </section>
-<section id="analytical-approach" class="level2">
-<h2 class="anchored" data-anchor-id="analytical-approach">Analytical Approach</h2>
-<p>Start by briefly describing the type of analysis you plan to use to answer your question. This could include exploratory data analysis (EDA) techniques, descriptive statistics, or regression analysis. Focus on why these methods are appropriate for testing your hypotheses and addressing your research question. Consider the following:</p>
-<ul>
-<li><strong>Type of Analysis</strong>: Will you conduct a linear regression, logistic regression, or perhaps time-series analysis?</li>
-<li><strong>Justification</strong>: Why is this approach suitable for answering your research question?</li>
-<li><strong>Expected Outcomes</strong>: What will this analysis allow you to determine or predict?</li>
-</ul>
-<p><strong>Example</strong>: <em>“For the question of which emerging markets are best suited for expansion, we will perform multiple regression analysis, testing how factors like political stability, GDP growth, and trade openness predict market profitability.”</em></p>
-<p>In your discussion, elaborate as much as possible on the type of analysis you plan to conduct. This will help you clarify your thinking and prepare for the next steps in your project.</p>
+<section id="data-merging-and-preparation" class="level2">
+<h2 class="anchored" data-anchor-id="data-merging-and-preparation">Data Merging and Preparation</h2>
+<section id="step-1-load-and-examine-your-datasets" class="level3">
+<h3 class="anchored" data-anchor-id="step-1-load-and-examine-your-datasets">Step 1: Load and Examine Your Datasets</h3>
+<p>Start by loading your datasets and examining their structure:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load your primary dataset (from class)</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Load your secondary dataset(s)</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Examine structure and key variables</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Briefly describe what you found:</strong> - Primary dataset: [Name, number of observations, time coverage] - Secondary dataset: [Name, number of observations, time coverage] - Key challenges identified:</p>
 </section>
-<section id="regression-equations" class="level2">
-<h2 class="anchored" data-anchor-id="regression-equations">Regression Equations</h2>
-<p>Next, translate your hypotheses into regression equations. Each equation should represent a specific relationship that you are testing in your data.</p>
-<ul>
-<li><strong>Define Your Variables</strong>: Identify the dependent and independent variables in your analysis.</li>
-<li><strong>Write the Equations</strong>: Formulate the equations that correspond to each hypothesis.</li>
-</ul>
-<p>For example, if you hypothesized that political stability (measured as a stability index) positively influences foreign direct investment (FDI), your regression equation might look like:</p>
-<p><span class="math display">\[
-\text{FDI} = \beta_0 + \beta_1 \cdot \text{StabilityIndex} + \beta_2 \cdot \text{GDPGrowth} + \epsilon
-\]</span></p>
-<p>Provide 2-3 equations if your research question has multiple hypotheses. This will help clarify your analytical plan. The discuss the euqations and what hypotheses they are supposed to test.</p>
+<section id="step-2-merge-your-datasets" class="level3">
+<h3 class="anchored" data-anchor-id="step-2-merge-your-datasets">Step 2: Merge Your Datasets</h3>
+<p>Implement your merging strategy. Remember: you must successfully merge at least two datasets, with one being from our class datasets.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your merging code here</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Include any data cleaning needed for successful merge</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Document your merging process:</strong> - Common identifier used: - Type of join performed: - Observations in final merged dataset: - Any data lost in merging:</p>
 </section>
-<section id="data-preparation" class="level2">
-<h2 class="anchored" data-anchor-id="data-preparation">Data Preparation</h2>
-<p>In this section, prepare your data for analysis. List the specific steps you will take to get the data ready, including cleaning, transforming, and merging datasets if necessary. Consider the following:</p>
+<section id="step-3-create-your-analysis-variables" class="level3">
+<h3 class="anchored" data-anchor-id="step-3-create-your-analysis-variables">Step 3: Create Your Analysis Variables</h3>
+<p>Select and prepare the specific variables you will use to test your hypotheses:</p>
+<p><strong>Your final variables (list the exact column names in your dataset):</strong></p>
+<p><em>Dependent variable:</em> - Variable name: - Description: - Source dataset:</p>
+<p><em>Independent variables:</em> - Variable 1 name: - Description: - Source dataset:</p>
 <ul>
-<li><strong>Data Cleaning</strong>: Describe any initial steps to handle missing values, outliers, or inconsistent data.</li>
-<li><strong>Variable Transformation</strong>: Indicate if any variables need to be transformed (e.g., logged, scaled) for regression analysis.</li>
-<li><strong>Data Merging</strong>: Describe any steps needed to combine multiple datasets, if applicable.</li>
+<li><p>Variable 2 name:</p></li>
+<li><p>Description:</p></li>
+<li><p>Source dataset:</p></li>
+<li><p>Variable 3 name (if applicable):</p></li>
+<li><p>Description:</p></li>
+<li><p>Source dataset:</p></li>
 </ul>
-<p>Write a list of tasks below that you expect to complete to prepare your data for analysis. Make it as comprehensive as possible.</p>
+<p><em>Control variables (if any):</em> - Variable name(s): - Description:</p>
+</section>
+<section id="step-4-data-cleaning" class="level3">
+<h3 class="anchored" data-anchor-id="step-4-data-cleaning">Step 4: Data Cleaning</h3>
+<p>Clean your dataset to prepare it for analysis:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Handle missing values</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Address any outliers</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Create derived variables if needed</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter to your analysis sample</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Cleaning decisions made:</strong> - How you handled missing values: - Time period of final dataset: - Final sample size: - Any transformations applied:</p>
+</section>
+</section>
+<section id="final-dataset-validation" class="level2">
+<h2 class="anchored" data-anchor-id="final-dataset-validation">Final Dataset Validation</h2>
+<p>Before submitting, validate that your dataset is analysis-ready:</p>
+<ul class="task-list">
+<li><label><input type="checkbox">Dataset merges successfully with no errors</label></li>
+<li><label><input type="checkbox">All analysis variables are present and correctly named</label></li>
+<li><label><input type="checkbox">Missing values are appropriately handled</label></li>
+<li><label><input type="checkbox">Dataset is saved as a CSV file</label></li>
+<li><label><input type="checkbox">You can successfully run a basic regression with your variables</label></li>
+</ul>
+<p><strong>Basic descriptive statistics:</strong> Provide summary statistics for your key variables (mean, median, min, max, missing values):</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># summary(your_data)</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Or use your preferred summary function</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="submission" class="level2">
 <h2 class="anchored" data-anchor-id="submission">Submission</h2>
-<p>Please post a document outlining your analytical approach, regression equations, and data preparation steps to your team’s workspace. Make sure that Prof.&nbsp;T is added as an admin to the workspace. Then, export this document and submit it via Blackboard by the due date. Each group member should submit a copy for grading purposes.</p>
+<p>Please export your cleaned dataset as a CSV file and this completed QMD document, then submit both files via Blackboard by the due date. If your dataset is large, put both files in a zipped folder and submit the zip file. Each group member should submit the files so that we have something in Blackboard to grade.</p>
 
 
 </section>

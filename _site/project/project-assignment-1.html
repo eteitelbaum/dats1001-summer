@@ -457,7 +457,13 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#groups" id="toc-groups" class="nav-link" data-scroll-target="#groups">Groups</a></li>
   <li><a href="#topics" id="toc-topics" class="nav-link" data-scroll-target="#topics">Topics</a></li>
   <li><a href="#hypotheses" id="toc-hypotheses" class="nav-link" data-scroll-target="#hypotheses">Hypotheses</a></li>
-  <li><a href="#data-sources" id="toc-data-sources" class="nav-link" data-scroll-target="#data-sources">Data Sources</a></li>
+  <li><a href="#data-sources-and-merging-plan" id="toc-data-sources-and-merging-plan" class="nav-link" data-scroll-target="#data-sources-and-merging-plan">Data Sources and Merging Plan</a>
+  <ul class="collapse">
+  <li><a href="#required-class-dataset" id="toc-required-class-dataset" class="nav-link" data-scroll-target="#required-class-dataset">Required Class Dataset</a></li>
+  <li><a href="#additional-datasets-for-merging" id="toc-additional-datasets-for-merging" class="nav-link" data-scroll-target="#additional-datasets-for-merging">Additional Dataset(s) for Merging</a></li>
+  <li><a href="#merging-strategy" id="toc-merging-strategy" class="nav-link" data-scroll-target="#merging-strategy">Merging Strategy</a></li>
+  </ul></li>
+  <li><a href="#available-data-sources" id="toc-available-data-sources" class="nav-link" data-scroll-target="#available-data-sources">Available Data Sources</a></li>
   <li><a href="#submission" id="toc-submission" class="nav-link" data-scroll-target="#submission">Submission</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/eteitelbaum/dats1001-summer/edit/main/project/project-assignment-1.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/eteitelbaum/dats1001-summer/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
@@ -488,28 +494,30 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="overview" class="level2">
 <h2 class="anchored" data-anchor-id="overview">Overview</h2>
-<p>For this project you will work in groups to use data to answer a question. This is your chance to use the skills you are developing in this class to help guide decision-making in a real-world context.</p>
-<p>Crucially, your data analysis should be question-driven. Part of the challenge is to identify the most appropriate data and analysis to answer your question. You will need to think about how to do this and the answer will not always be obvious–a level of creativity is involved.</p>
-<p>For this first project assignment, you are to form groups of 3-4 students. You will select a question to work on, do some preliminary research on the type of data that might help you to answer the question, and discuss how you will use the data to provide an answer.</p>
+<p>For this project you will work in groups to use data to answer a question using datasets we have explored in class. This is your chance to apply the skills you are developing to guide decision-making in a real-world context using familiar data sources but exploring new variables and relationships.</p>
+<p>Crucially, your data analysis should be question-driven. You will identify the most appropriate variables and analysis to answer your question using data we have already worked with, combined with additional datasets as needed. Since this is a summer course with limited time, you will focus on creating a compelling RevealJS presentation rather than a written report.</p>
+<p><strong>Key Requirements:</strong> - Use <strong>at least one</strong> dataset we have used in class (V-Dem, World Bank, peacesciencer). - <strong>Merge at least one additional dataset to the first dataset</strong> (can be class datasets or include new national-level data). Some options for additional datasets can be found <a href="https://ds4all.rocks/project/project-datasets">here</a>. - Choose <strong>different variables</strong> than what we have already analyzed in class. - Final deliverable will be a <strong>RevealJS presentation only</strong> (more info on RevealJS presentations will be provided later).</p>
 </section>
 <section id="groups" class="level2">
 <h2 class="anchored" data-anchor-id="groups">Groups</h2>
-<p>You will form groups of 3-4 students. You will work with this group for the duration of the project. Please list the names of your group members here:</p>
+<p>You will be <strong>randomly assigned</strong> to groups of 3-4 students. You will work with this group for the duration of the project.</p>
 </section>
 <section id="topics" class="level2">
 <h2 class="anchored" data-anchor-id="topics">Topics</h2>
-<p>You should select from the following list of topics. If you have another topic in mind, please discuss with me before proceeding. After choosing your topic, delete the other non-chosen topics and discuss briefly why you chose it.</p>
+<p>You should select from the following list of topics, which are designed to work with our class datasets. After choosing your topic, delete the other non-chosen topics and discuss briefly why you chose it.</p>
 <ul>
-<li><p>You are the CEO of a multinational corporation considering expansion into emerging markets. Based on available data, which countries offer the most stable and profitable environment for expansion over the next five years? What factors are most relevant for your decision?</p></li>
-<li><p>As a cosultant for the World Bank, you are tasked with improving democratic governance in developing countries. Based on trends in political and economic data over the past decade, what key areas (e.g., electoral integrity, gender equity, economic policy) should you prioritize to enhance democracy?</p></li>
-<li><p>A city mayor is planning to allocate resources to improve public health outcomes in response to rising pollution levels. Based on historical data, which factors should the mayor focus on to achieve the best results? Options could include things like healthcare infrastructure, public awareness campaigns, or environmental regulations.</p></li>
-<li><p>As the head of a national education department, you need to decide where to allocate a limited budget: digital infrastructure for remote learning, teacher training programs, or curriculum development for STEM subjects. Which option is likely to yield the most significant improvement in educational outcomes based on available data?</p></li>
-<li><p>A company is considering launching a CSR initiative focused on reducing carbon emissions. As the head of the sustainability team, you need to determine the most effective strategy: investing in renewable energy, improving supply chain efficiency, or partnering with NGOs for reforestation projects. Which approach offers the best return on investment based on environmental and economic data?</p></li>
+<li><p><strong>Democratic Resilience and Economic Performance</strong>: Using V-Dem and World Bank data, examine which aspects of democratic governance (e.g., civil liberties, electoral integrity, judicial independence) are most strongly associated with economic stability and growth. What democratic features should policymakers prioritize to promote sustainable economic development?</p></li>
+<li><p><strong>Conflict Prevention and Development</strong>: Using peacesciencer and World Bank data, analyze what economic and development factors (e.g., education spending, inequality, natural resource wealth) are most effective at preventing the onset of interstate or civil conflicts. What development strategies offer the best conflict prevention benefits?</p></li>
+<li><p><strong>Trade Integration and Democratic Governance</strong>: Using World Bank trade data and V-Dem, investigate how different forms of trade integration (exports, imports, trade complexity) relate to democratic quality and institutional strength. Should developing democracies prioritize certain types of trade relationships?</p></li>
+<li><p><strong>Gender Equality and National Development</strong>: Using V-Dem gender equality indices and World Bank development indicators, examine which aspects of gender equality (political participation, civil society representation, etc.) have the strongest relationship with broader development outcomes like health, education, or economic growth.</p></li>
+<li><p><strong>Environmental Governance and Climate Resilience</strong>: Using World Bank environmental data and V-Dem governance indicators, analyze which governance factors (transparency, accountability, civil society space) are most important for effective climate adaptation and environmental protection policies.</p></li>
+<li><p><strong>Institutional Quality and Foreign Investment</strong>: Using V-Dem institutional measures and World Bank economic data, determine which specific institutional features (rule of law, corruption control, regulatory quality) are most crucial for attracting and maintaining foreign direct investment.</p></li>
 </ul>
+<p><strong>Why we chose this topic:</strong></p>
 </section>
 <section id="hypotheses" class="level2">
 <h2 class="anchored" data-anchor-id="hypotheses">Hypotheses</h2>
-<p>Before gathering any data, or even looking at any data, you should write down your hypotheses. These are the assumptions you are making about the world that you will test with your data. Or, another way to think about hypotheses is as the predicted relationships between variables that you will test with your data. What do you <strong>expect</strong> to find and how do you <strong>expect</strong> the variables to be related? Write these down in a list here.</p>
+<p>Before gathering any data, or even looking at any data, you should write down your hypotheses. These are the assumptions you are making about the world that you will test with your data. What do you <strong>expect</strong> to find and how do you <strong>expect</strong> the variables to be related? Write these down in a list here.</p>
 <ul>
 <li>H1:</li>
 <li>H2:</li>
@@ -517,19 +525,39 @@ ul.task-list li input[type="checkbox"] {
 <li>etc.</li>
 </ul>
 </section>
-<section id="data-sources" class="level2">
-<h2 class="anchored" data-anchor-id="data-sources">Data Sources</h2>
-<p>Now it is time to identify your data sources. You can use any data source that will be relevant in answering your question. This could be data from a government agency, an international organization, a non-profit, a private company, or even data that you collect yourself. A partial list of data sources is available <a href="../project/project-datasets.html">here</a>.</p>
-<p>Briefly list and discuss the data sources you plan to use. What data do they contain? How will you use them to answer your question? I would limit the number of data sources to 2-3. But just one data source is also OK if you think it is sufficient to answer your question.</p>
+<section id="data-sources-and-merging-plan" class="level2">
+<h2 class="anchored" data-anchor-id="data-sources-and-merging-plan">Data Sources and Merging Plan</h2>
+<p>Now identify your specific data sources and plan how you will merge them. <strong>Remember: you must use at least one dataset from our class (V-Dem, World Bank, peacesciencer) and merge at least one additional dataset to it.</strong></p>
+<section id="required-class-dataset" class="level3">
+<h3 class="anchored" data-anchor-id="required-class-dataset">Required Class Dataset</h3>
+<p><strong>Primary Dataset (from class):</strong> - Dataset name: - Specific variables you plan to use (different from what we’ve analyzed): - Time period: - Geographic scope:</p>
+</section>
+<section id="additional-datasets-for-merging" class="level3">
+<h3 class="anchored" data-anchor-id="additional-datasets-for-merging">Additional Dataset(s) for Merging</h3>
+<p><strong>Second Dataset:</strong> - Dataset name: - Source: - Variables to be used: - How it will merge with primary dataset (common identifier - usually country-year):</p>
+<p><strong>Optional Third Dataset:</strong> - Dataset name: - Source: - Variables to be used: - Merging plan:</p>
+</section>
+<section id="merging-strategy" class="level3">
+<h3 class="anchored" data-anchor-id="merging-strategy">Merging Strategy</h3>
+<p>Briefly describe how you will combine these datasets: - What will be your unit of analysis (country-year, country, etc.)? - What is the common identifier for merging? - What time period will your final merged dataset cover? - How will you handle missing data or different time coverage across datasets?</p>
+</section>
+</section>
+<section id="available-data-sources" class="level2">
+<h2 class="anchored" data-anchor-id="available-data-sources">Available Data Sources</h2>
+<p>In addition to our class datasets (V-Dem, World Bank, peacesciencer), you can use any of the national-level datasets listed on the <a href="https://ds4all.rocks/project/project-datasets">course website</a>, including:</p>
 <ul>
-<li><p>Data Source 1:</p></li>
-<li><p>Data Source 2:</p></li>
-<li><p>Data Source 3:</p></li>
+<li>Freedom House</li>
+<li>Polity IV</li>
+<li>Quality of Government</li>
+<li>OECD data</li>
+<li>UN data</li>
+<li>Regional development banks</li>
+<li>National statistical offices</li>
 </ul>
 </section>
 <section id="submission" class="level2">
 <h2 class="anchored" data-anchor-id="submission">Submission</h2>
-<p><em>That is it for Project Assignment 1! Please export this document and submit it via Blackboard by the due date. Each student should submit a separate QMD file so that we have something in Blackboard to grade.</em></p>
+<p><em>Please export this document and submit it via Blackboard by the due date. Each student should submit a separate file so that we have something in Blackboard to grade.</em></p>
 
 
 </section>

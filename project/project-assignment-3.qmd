@@ -1,87 +1,164 @@
 ---
 title: "Project Assignment 3"
-subtitle: "Final Presentation and Report"
-format: html
+subtitle: "Final RevealJS Presentation"
 ---
-
-::: {.callout-important}
-## Due dates
-
-Note that the submission instructions and due date for this assignment have changed.
-
-Instead of giving a lightning talk, you are going to submit recorded presentations of 5–7 minutes in length.
-
-The due date for this is the same as the original due date for the assignment (**May 2nd at 11:59 p.m.**).
-
-The due date for the report is now the day of the scheduled final exam for this course (**May 9th at 11:59 p.m.**).
-:::
 
 ## Overview
 
-For this final assignment, you will synthesize the work completed in Parts 1 and 2 into a polished deliverable that communicates your findings effectively. This assignment has **two components**:
+For this final assignment, you will synthesize all your work into a polished RevealJS presentation that demonstrates your data analysis skills and communicates your findings effectively. Your presentation should tell a complete story from research question to policy implications, showcasing rigorous statistical analysis using your merged datasets.
 
-1. **A Quarto RevealJS Presentation**: A lightning talk summarizing your project, findings, and policy implications.
-2. **A Final Written Report**: A detailed document that provides a comprehensive overview of your analysis, results, and recommendations.
+This assignment builds on your research question and hypotheses (Assignment 1) and your cleaned, merged dataset (Assignment 2) to create a comprehensive analytical presentation.
 
-Together, these components should demonstrate your ability to apply data analysis skills to answer a question relevant to decision-making in a real-world context.
+**Deliverable**: A 7-10 minute RevealJS presentation that includes exploratory data analysis, statistical modeling, and policy recommendations.
 
-## Component 1: RevealJS Presentation (due May 2nd)
+## Regression Modeling Requirements
 
-You will create a **5-minute presentation** using Quarto's RevealJS slide deck format. The goal is to provide a concise and engaging summary of your project.
+Before creating your presentation, you must complete a full regression analysis using your cleaned dataset. This forms the analytical backbone of your presentation.
 
-**Rough outline for your presentation:**
+### Model Selection and Specification
 
-- **Slide 1**: Title slide with project title, group member names, and date.
-- **Slide 2**: Introduction of your research question and its importance.
-- **Slide 3**: Overview of your data, including the source and key variables.
-- **Slides 4–5**: Key results, supported by 1–2 visuals (e.g., plots or tables).
-- **Slide 6**: Summary of findings and policy implications.
+**Choose your regression approach:**
+- **Linear regression (OLS)**: If your dependent variable is continuous
+- **Logistic regression**: If your dependent variable is binary/categorical
+- **Other**: Justify if a different approach is more appropriate
 
-**Tips:**
+**Write your regression equations using your actual variable names:**
 
-- Use visuals to make your presentation engaging and accessible.
-- Keep text minimal—focus on high-level points and key insights.
-- Practice your timing to stay within the 5-minute limit.
-- You can add a few more slides if needed, but only if it still allows you to stay within the time limit.
+**Main Model:**
+$$
+\text{[dependent\_variable]} = \beta_0 + \beta_1 \cdot \text{[independent\_var1]} + \beta_2 \cdot \text{[independent\_var2]} + \beta_3 \cdot \text{[control\_var]} + \epsilon
+$$
 
-**Submission Instructions:**
+**Alternative Models (you must fit at least 2-3 models):**
+$$
+\text{[Simpler or alternative specifications]}
+$$
 
-- On **May 2nd**, upload your RevealJS presentation to [Quarto Pub](https://quartopub.com/) and share the link on Discord.
-- Also by **May 2nd**, record your presentation using a screen recording tool (e.g., Zoom, Vimeo) and post the link to the recording to Discord or, if you decided to do the writeup/reflection, post that to Discord instead.
-- Submit the QMD file for the presentation to Blackboard **on May 9**, along with your full project folder.
+### Required Analysis Components
 
-## Component 2: Final Written Report (due May 9th)
+Your analysis must include all of the following elements, which will be presented in your slides:
 
-The final report should be a **3–5 page policy memo** or technical report that provides a detailed narrative of your project. It should build upon Parts 1 and 2, integrating your research question, hypotheses, analysis, and conclusions.
+1. **Exploratory Data Analysis (EDA)**
+   - Distribution of key variables (histograms, boxplots)
+   - Correlation matrix or scatterplot matrix
+   - Identification of outliers or unusual patterns
 
-**Your report should include:**
+2. **Data Transformations**
+   - Document any variable transformations (log, standardization, etc.)
+   - Justify why transformations were necessary
+   - Show before/after distributions if relevant
 
-1. **Introduction**
-   - Clearly state your research question and why it is important.
-   - Provide background context, citing relevant literature or examples.
+3. **Model Fitting and Selection**
+   - Fit multiple model specifications
+   - Compare models using appropriate criteria (R², AIC, etc.)
+   - Explain your final model selection process
 
-2. **Data and Methodology**
-   - Describe your data sources and key variables (outcome and explanatory).
-   - Justify your analytical approach, including the methods used (e.g., regression, hypothesis testing).
+4. **Regression Assumptions (if using OLS)**
+   - Check linearity assumptions
+   - Examine residuals for heteroskedasticity
+   - Test for normality of residuals
+   - Address any assumption violations
 
-3. **Analysis and Results**
-   - Present your findings, supported by tables, plots, or statistical results.
-   - Include at least one visualization (e.g., regression plot, histogram).
+5. **Results Visualization**
+   - Create a professional regression table
+   - Generate coefficient plot with confidence intervals
+   - Include at least one substantive interpretation plot
 
-4. **Discussion**
-   - Interpret your results in context of your research question and hypotheses.
-   - Discuss the statistical significance and implications of your findings.
+6. **Predictions and Scenarios**
+   - Use your model to make predictions for specific cases
+   - Show how changes in key variables affect outcomes
+   - Demonstrate practical application of your findings
 
-5. **Policy Implications**
-   - Summarize how your findings inform policy or decision-making.
-   - Propose actionable recommendations based on your analysis.
+## Presentation Structure and Requirements
 
-6. **Conclusion**
-   - Provide a clear answer to your research question.
-   - Reflect briefly on limitations and next steps.
+Your RevealJS presentation should include the following slides, integrating your statistical analysis throughout:
 
-**Submission Instructions:**
+### Minimum Required Slides:
 
-- Render your report in **HTML** format and upload it to Quarto Pub.
-- Submit the link on Discord.
-- Upload your group’s zipped project folder (QMD file and data) to Blackboard.
+Your presentation should include **at least** the following slides, but you may add additional slides as needed to tell your story effectively:
+
+**Slide 1: Title Slide**
+- Project title, group member names, date
+
+**Slide 2: Research Question & Motivation**
+- Clear statement of your research question
+- Why this question matters for policy/decision-making
+- Brief preview of your main finding
+
+**Slide 3: Data Overview**
+- Description of your merged datasets
+- Key variables and their sources
+- Sample size and time coverage
+
+**Slides 4-5: Exploratory Data Analysis**
+- Distribution of your dependent variable
+- Key relationships in the data (correlations, scatterplots)
+- Any interesting patterns or outliers discovered
+
+**Slide 6: Analytical Approach**
+- Regression model type chosen (OLS/logistic) and why
+- Your main regression equation
+- Brief overview of model selection process
+
+**Slide 7: Model Selection & Assumptions**
+- Comparison of alternative models
+- Key assumption checks (if OLS)
+- Justification for final model choice
+
+**Slide 8: Main Results**
+- Professional regression table or coefficient plot
+- Highlight statistically significant findings
+- Effect sizes and practical significance
+
+**Slide 9: Model Application**
+- Specific predictions or scenarios
+- "What if" analysis showing policy implications
+- Confidence intervals around predictions
+
+**Slide 10: Policy Implications & Conclusions**
+- Direct answer to your research question
+- Actionable recommendations based on findings
+- Limitations and future directions
+
+You may include additional slides if needed to adequately cover your analysis, but aim to keep your presentation focused and within the 7-10 minute time limit.
+
+### Presentation Guidelines
+
+**Technical Requirements:**
+- Use RevealJS format (`.qmd` file with `format: revealjs`)
+- Include well-designed visualizations (ggplot2 recommended)
+- Ensure all plots are readable and professional
+- Include proper statistical notation where appropriate
+
+**Content Guidelines:**
+- Focus on clear interpretation of statistical results
+- Emphasize practical significance, not just statistical significance
+- Connect findings back to your original hypotheses
+- Maintain focus on policy/decision-making applications
+
+**Presentation Tips:**
+- Keep slide text minimal - let visuals tell the story
+- Practice timing to stay within 7-10 minutes
+- Prepare to explain your statistical choices if asked
+- Focus on insights, not just methods
+
+## Technical Checklist
+
+Before submitting, ensure your analysis includes:
+
+- [ ] Complete EDA with appropriate visualizations
+- [ ] At least 2-3 different model specifications tested
+- [ ] Proper regression assumption checking (if applicable)
+- [ ] Professional regression results table
+- [ ] Coefficient plot with confidence intervals
+- [ ] At least one prediction/scenario analysis
+- [ ] Clear interpretation of all statistical results
+- [ ] Policy recommendations based on findings
+
+## Submission
+
+*Please export your RevealJS presentation as a QMD file and submit it via Blackboard by the due date. Each group member should submit a copy so that we have something in Blackboard to grade. Your presentation should be self-contained and ready to present.*
+
+*In addition to submitting your QMD file, you must also record your presentation using Zoom, Vimeo, or a similar screen recording tool. Your recording should be 7-10 minutes in length and should walk through your slides as if you were presenting to a live audience. Practice your presentation beforehand to ensure smooth delivery and proper timing.*
+
+*Once you have recorded your presentation, upload it to a platform that allows sharing (such as Vimeo, YouTube, or Zoom cloud) and post the link to your recorded presentation in the Discord server. This will allow your classmates and instructor to view your presentations and provide feedback.*
