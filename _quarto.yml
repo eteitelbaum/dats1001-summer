@@ -59,6 +59,8 @@ website:
             text: "Assignment 3"
           - href: assignments/coding-assignment-4.qmd
             text: "Assignment 4"
+          - href: assignments/coding-assignment-5.qmd
+            text: "Assignment 5"
       - section: "Project"
         contents:
            #- href: project-description.qmd
