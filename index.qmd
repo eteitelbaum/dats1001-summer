@@ -61,10 +61,10 @@ will go live as the semester progresses.
 |  | `r advdate(thur,4)` | Multiple predictors & interactions | [📖](https://openintro-ims.netlify.app/model-logistic#logistic-model-with-many-variables "IMS, chap. 9.3 and 9.4") | [📺](https://youtu.be/eb5lGVHHlY0?si=BCQJhZHezE9ihLg3 "Effect Multipliers in Logistic Regression") | [📒](modules/module-5.4.qmd "Multiple Predictors & Interactions") |  |  |
 |  | `r advdate(fri,4)` | Visualizing and communicating results |  | [📺](https://youtu.be/My6_X6x5TZw "Display Multiple Models with Model Summary") [📺](https://youtu.be/gif_wkqyub8 "Coefficient Plots for Single Models") | [📒](modules/module-5.5 "Visualizing and Communicating Results") |  |  |
 |  | `r advdate(sat,4)` | How Would We Model This Today? |  |  | [📒](modules/module-5.6.qmd "How Would We Model This Today?") | 📘 [🧮](assignments/coding-assignment-5.qmd "Coding Assignment 5") | `r advdate(sun,5)` |
-| 6 | `r advdate(mon,5)` | Final Project |  |  | 📒 |  |  |
+| 6 | `r advdate(mon,5)` | Final Project |  |  |  |  |  |
 |  | `r advdate(tues,5)` | Final Project |  |  |  | [✍️](project/project-assignment-1.qmd "Project assignment 1") | `r advdate(tues,5)` |
 |  | `r advdate(wed,5)` | Final Project |  |  |  |  |  |
 |  | `r advdate(thur,5)` | Final Project |  |  |  | [✍️](project/project-assignment-2.qmd "Project assignment 2") | `r advdate(thur,5)` |
 |  | `r advdate(fri,5)` | Final project |  |  |  |  |  |
-|  | `r advdate(sat,5)` | Final project |  |  |  | [✍️](project/project-assignment-3.qmd "Project assignment 3") | `r advdate(sat,5)` |
+|  | `r advdate(sat,5)` | Final project |  |  | [📒](moduels/reveal-how-to.qmd "How to RevealJS") | [✍️](project/project-assignment-3.qmd "Project assignment 3") | `r advdate(sat,5)` |
 :::

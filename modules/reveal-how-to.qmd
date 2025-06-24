@@ -1,0 +1,306 @@
+---
+title: "How to Make RevealJS Presentations"
+format: 
+  html:
+    code-link: true
+highlight-style: atom-one
+execute: 
+  echo: true
+  message: false
+  warning: false
+---
+
+::: {.callout-tip}
+## Prework
+
+- Read the Quarto [revealjs guide](https://quarto.org/docs/presentations/revealjs/)
+- Check out [Quarto Pub](https://quartopub.com/) and sign up for an account
+:::
+
+## Overview
+
+Reveal.js presentations are ultimately an extension of the HTML documents you have already been creating with Quarto. Instead of producing a single scrolling webpage, Quarto generates an interactive slide-based presentation that runs in any web browser. All the skills that you developed for creating HTML documents like embedding code, adding visualizations, formatting with markdown transfer directly to presentations.
+
+The key advantage of Reveal.js for data science is that your presentations remain dynamic and interactive. Unlike PowerPoint slides, you can include live code execution, interactive visualizations, and real-time data displays. Since presentations run in browsers, sharing becomes as simple as sending a URL, and your audience can interact with embedded charts, maps, and widgets during your presentation.
+
+## Getting Started with Reveal.js
+
+### From HTML Documents to Presentations
+
+If you have been creating HTML documents with Quarto, you already understand most of what you need for Reveal.js presentations. The primary difference lies in structure: whereas HTML documents flow as continuous content, presentations organize content into discrete slides using markdown headers.
+
+Reveal.js offers significant advantages over traditional presentation software through its web-based nature. Interactive elements like clickable charts and embedded widgets work seamlessly, presentations display identically across all devices and platforms, and sharing requires only a URL rather than managing file compatibility issues.
+
+### Basic Setup
+
+Creating a Reveal.js presentation requires minimal changes to your existing Quarto workflow. Simply specify `revealjs` as your output format:
+
+```yaml
+---
+title: "My Data Science Presentation"
+author: "Your Name"
+date: today
+format: revealjs
+---
+```
+
+You can enhance this basic setup with additional options that control presentation behavior:
+
+```yaml
+---
+title: "Advanced Data Analysis"
+subtitle: "Q4 Performance Review"
+author: "Data Science Team"
+footer: "[Company Website](https://company.com)"
+format:
+  revealjs:
+    theme: simple
+    transition: fade
+    slide-number: true
+execute:
+  echo: false
+  message: false
+  warning: false
+---
+```
+
+The `execute` section controls R code behavior throughout your presentation, just as it does in HTML documents.
+
+## Building Presentation Structure
+
+### Slide Hierarchy
+
+Reveal.js translates markdown hierarchy directly into slide organization. Single hash marks (`#`) create section headers that appear as title slides for major topics. Double hash marks (`##`) create individual content slides. This structure mirrors how you might organize longer HTML documents with sections and subsections.
+
+Regular markdown content fills each slide. For data science presentations, you might organize sections around analysis phases, methodologies, or research questions, with individual slides covering specific findings or techniques within each section.
+
+### Managing Content and Spacing
+
+Effective spacing prevents slides from appearing cramped. Use HTML break tags (`<br>`) strategically to create visual breathing room:
+
+```markdown
+## Key Findings
+
+<br>
+
+Our analysis revealed three major insights that will guide future strategy development.
+
+<br>
+
+Customer retention improved by 23%, representing our strongest performance in this metric over the past five years.
+```
+
+### Progressive Content Revelation
+
+Reveal.js can display content incrementally, keeping audiences focused on specific points. Enable this globally in your YAML:
+
+```yaml
+format:
+  revealjs:
+    incremental: true
+```
+
+Or selectively using div blocks:
+
+```markdown
+::: {.incremental}
+- Our analysis process followed three critical phases. 
+- First, comprehensive data collection from multiple sources. 
+- Second, rigorous cleaning and validation procedures. 
+- Finally, advanced analytical techniques to extract meaningful insights.
+:::
+```
+
+Turn off incremental behavior for specific slides when needed:
+
+```markdown
+::: {.nonincremental}
+Final performance metrics demonstrate success across all categories: 
+
+- Revenue increased 23% year-over-year
+- Customer satisfaction reached 4.2/5.0
+- Market share expanded 3.2 percentage points
+:::
+```
+
+## Advanced Layout and Content
+
+### Handling Content Overflow
+
+When slides contain more information than standard layouts accommodate, use the `.smaller` class to reduce text size proportionally:
+
+```markdown
+## Detailed Analysis Results {.smaller}
+
+- This 
+- is 
+- a
+- very
+- long 
+- slide
+- with 
+- lots 
+- of 
+- points
+  - and 
+  - subpoints...
+```
+
+For truly extensive content, enable scrolling with `.scrollable`:
+
+```markdown
+## Complete Dataset Overview {.scrollable}
+
+- This 
+- is 
+- another
+- very
+- long 
+- slide
+- with 
+- lots 
+- of 
+- points
+  - and 
+  - subpoints...
+```
+
+### Images and Multi-Column Layouts
+
+Images follow standard markdown syntax, with size control through width attributes:
+
+```markdown
+![Analysis workflow](images/workflow-diagram.png){width=70%}
+```
+
+Multi-column layouts work excellently for comparing visualizations or presenting code alongside output:
+
+```markdown
+:::: {.columns}
+
+::: {.column width="40%"}
+Our machine learning methodology involved comprehensive feature engineering, cross-validation to prevent overfitting, and extensive hyperparameter tuning to optimize performance.
+:::
+
+::: {.column width="60%"}
+![Model performance comparison](images/model-comparison.png){width=100%}
+:::
+
+::::
+```
+
+## Code Integration and Interactivity
+
+### Displaying Code and Results
+
+Code integration in Reveal.js presentations works identically to HTML documents. Basic code blocks use standard markdown:
+
+````markdown
+```r
+library(ggplot2)
+ggplot(mtcars, aes(x = mpg, y = hp)) +
+  geom_point() +
+  theme_minimal()
+```
+````
+
+R code chunks execute and display results:
+
+```{r}
+#| echo: fenced
+
+summary(mtcars$mpg)
+```
+
+Control what displays using familiar chunk options. Show only output by setting `echo: false`, show only code with `eval: false`, or highlight specific lines:
+
+```{r}
+#| echo: fenced
+#| code-line-numbers: "2-3"
+
+library(dplyr)
+mtcars |>
+  filter(cyl == 6) |>
+  summarize(avg_mpg = mean(mpg))
+```
+
+### Interactive Elements
+
+Interactive visualizations transform static presentations into engaging experiences:
+
+```{r}
+#| echo: fenced
+
+library(leaflet)
+leaflet() |>
+  addTiles() |>
+  addMarkers(lat = 38.9072, lng = -77.0369,
+             popup = "Data Science Hub")
+```
+
+Audiences can interact with maps, charts, and widgets during your presentation, creating opportunities for dynamic discussion and exploration.
+
+## Customization and Styling
+
+### Themes and Visual Design
+
+Reveal.js offers numerous built-in themes through simple YAML specification:
+
+```yaml
+format:
+  revealjs:
+    theme: dark        # Options: simple, dark, white, solarized, etc.
+```
+
+Choose themes that support your content: `simple` for clean, data-focused presentations; `dark` for modern aesthetics that make visualizations pop; `white` for professional business environments.
+
+### Custom Styling and Backgrounds
+
+Create custom SCSS files for specific branding requirements:
+
+```scss
+/*-- scss:defaults --*/
+$body-bg: #f8f9fa;
+$link-color: #007bff;
+
+/*-- scss:rules --*/
+.reveal .slide blockquote {
+  border-left: 3px solid #007bff;
+  padding-left: 0.5em;
+}
+```
+
+Reference custom styles alongside base themes:
+
+```yaml
+format:
+  revealjs:
+    theme: [simple, custom.scss]
+```
+
+Add background colors or images to specific slides:
+
+```markdown
+## Important Results {background-color="#1e3a8a"}
+
+## Market Analysis {background-image="images/trends.png" 
+                   data-background-opacity="0.3"}
+```
+
+## Publishing and Sharing
+
+[Quarto Pub](https://quartopub.com/) provides free hosting optimized for Quarto content. You can publish Reveal.js presentations directly from your Quarto project, making it easy to share with colleagues or the public.
+
+After you set up your Quarto Pub account, you can deploy presentations with a single terminal command:
+
+```bash
+quarto publish quarto-pub your-presentation.qmd
+```
+
+First-time users will authenticate through GitHub, Google, or email, then choose a site name. Your presentation becomes available at `https://yoursitename.quarto.pub/presentation-name/` and updates automatically when you republish.
+
+## Conclusion
+
+Reveal.js presentations extend your existing HTML document skills into dynamic, interactive presentation formats. The same techniques you've learned for embedding code, creating visualizations, and formatting content apply directly to presentation creation, with the added benefits of slide organization and interactive delivery.
+
+These skills enable you to communicate complex analyses engagingly, share interactive visualizations that invite audience participation, and create memorable presentations that showcase your data science expertise effectively. The combination of familiar Quarto workflows with Reveal.js's presentation capabilities provides powerful tools for professional data science communication.
