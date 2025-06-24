@@ -66,5 +66,5 @@ will go live as the semester progresses.
 |  | `r advdate(wed,5)` | Final Project |  |  |  |  |  |
 |  | `r advdate(thur,5)` | Final Project |  |  |  | [✍️](project/project-assignment-2.qmd "Project assignment 2") | `r advdate(thur,5)` |
 |  | `r advdate(fri,5)` | Final project |  |  |  |  |  |
-|  | `r advdate(sat,5)` | Final project |  |  | [📒](moduels/reveal-how-to.qmd "How to RevealJS") | [✍️](project/project-assignment-3.qmd "Project assignment 3") | `r advdate(sat,5)` |
+|  | `r advdate(sat,5)` | Final project |  |  | [📒](modules/reveal-how-to.qmd "How to RevealJS") | [✍️](project/project-assignment-3.qmd "Project assignment 3") | `r advdate(sat,5)` |
 :::
