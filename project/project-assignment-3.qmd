@@ -157,7 +157,7 @@ Before submitting, ensure your analysis includes:
 
 ## Submission
 
-Please export your RevealJS presentation as a QMD file and submit it via Blackboard by the due date. Each group member should submit a copy so that we have something in Blackboard to grade. Your presentation should be self-contained and ready to present.*
+Please export your RevealJS presentation as a QMD file and submit it via Blackboard by the due date. Each group member should submit a copy so that we have something in Blackboard to grade. Your presentation should be self-contained and ready to present.
 
 In addition to submitting your QMD file, you must also record your presentation using Zoom, Vimeo, or a similar screen recording tool. Your recording should be 7-10 minutes in length and should walk through your slides as if you were presenting to a live audience. Practice your presentation beforehand to ensure smooth delivery and proper timing.
 
