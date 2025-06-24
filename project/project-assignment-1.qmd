@@ -10,6 +10,7 @@ For this project you will work in groups to use data to answer a question using 
 Crucially, your data analysis should be question-driven. You will identify the most appropriate variables and analysis to answer your question using data we have already worked with, combined with additional datasets as needed. Since this is a summer course with limited time, you will focus on creating a compelling RevealJS presentation rather than a written report.
 
 **Key Requirements:**
+
 - Use **at least one** dataset we have used in class (V-Dem, World Bank, peacesciencer).
 - **Merge at least one additional dataset to the first dataset** (can be class datasets or include new national-level data). Some options for additional datasets can be found [here](https://ds4all.rocks/project/project-datasets).
 - Choose **different variables** than what we have already analyzed in class.
